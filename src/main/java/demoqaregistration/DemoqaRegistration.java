@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.fest.assertions.api.Fail;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -132,43 +131,43 @@ public class DemoqaRegistration extends PageObject {
   private WebElement submit;
 
   public String getConfirmRegistrationTextOk() {
-    return utils.getText(confirmRegistrationOk, By.cssSelector(confirmRegistrationOkCss));
+    return utils.getText(confirmRegistrationOk);
   }
 
   public String getLoginErrorText() {
-    return utils.getText(loginError, By.cssSelector(loginErrorCss));
+    return utils.getText(loginError);
   }
 
   public String getPasswordStrengthText() {
-    return utils.getText(passwordStrength, By.cssSelector(passwordStrengthCss));
+    return utils.getText(passwordStrength);
   }
 
   public String getFirstLastNameRequiredText() {
-    return utils.getText(firstLastNameRequiredText, By.cssSelector(firstLastNameRequiredCss));
+    return utils.getText(firstLastNameRequiredText);
   }
 
   public String getHobbyRequiredText() {
-    return utils.getText(hobbyRequiredText, By.cssSelector(hobbyRequiredCss));
+    return utils.getText(hobbyRequiredText);
   }
 
   public String getPhoneRequiredText() {
-    return utils.getText(phoneRequiredText, By.cssSelector(phoneRequiredCss));
+    return utils.getText(phoneRequiredText);
   }
 
   public String getUserRequiredText() {
-    return utils.getText(userRequiredText, By.cssSelector(userRequiredCss));
+    return utils.getText(userRequiredText);
   }
 
   public String getEmailRequiredText() {
-    return utils.getText(emailRequiredText, By.cssSelector(emailRequiredCss));
+    return utils.getText(emailRequiredText);
   }
 
   public String getPasswordRequired() {
-    return utils.getText(passworRequiredText, By.cssSelector(passworRequiredCss));
+    return utils.getText(passworRequiredText);
   }
 
   public String getConfirmPasswordRequiredText() {
-    return utils.getText(confirmPasswordRequiredText, By.cssSelector(confirmPasswordRequiredCss));
+    return utils.getText(confirmPasswordRequiredText);
   }
 
   public void clickSubmit() {

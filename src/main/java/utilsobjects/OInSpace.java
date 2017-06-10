@@ -2,18 +2,18 @@ package utilsobjects;
 
 import org.openqa.selenium.Point;
 
-public class ObjectInSpace {
+public class OInSpace {
 
   private Point leftTop;
   private Point rightTop;
-  private Point rightDown;
   private Point leftDown;
+  private Point rightDown;
 
-  public ObjectInSpace(Point leftTop, Point rightTop, Point rightDown, Point leftDown) {
+  public OInSpace(Point leftTop, Point rightTop, Point leftDown, Point rightDown) {
     this.leftTop = leftTop;
     this.rightTop = rightTop;
-    this.rightDown = rightDown;
     this.leftDown = leftDown;
+    this.rightDown = rightDown;
   }
 
   public Point getLeftTop() {
@@ -24,16 +24,16 @@ public class ObjectInSpace {
     return rightTop;
   }
 
-  public Point getRightDown() {
-    return rightDown;
-  }
-
   public Point getLeftDown() {
     return leftDown;
   }
 
+  public Point getRightDown() {
+    return rightDown;
+  }
+
   @Override
   public String toString() {
-    return "[leftTop=" + leftTop + ", rightTop=" + rightTop + ", rightDown=" + rightDown + ", leftDown=" + leftDown + "]";
+    return "[leftTop=" + leftTop + ", rightTop=" + rightTop + ", leftDown=" + leftDown + ", rightDown=" + rightDown + "]";
   }
 }

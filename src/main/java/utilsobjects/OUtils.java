@@ -14,8 +14,10 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.fest.assertions.api.Fail;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,11 +52,6 @@ public class OUtils {
     return date2.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
   }
 
-  public String getTitle() {
-    LOG.info("Title of the page: " + driver.getTitle());
-    return driver.getTitle();
-  }
-
   public void waitForVisibilityOfElement(WebElement element) {
     webDriverWait.until(ExpectedConditions.visibilityOf(element));
   }
@@ -87,12 +84,28 @@ public class OUtils {
     return driver.findElements(locator).size() != 0;
   }
 
+  public boolean isElementPresent(WebElement element) {
+    return element.isDisplayed();
+  }
+
+  public boolean isElementsPresent(List<WebElement> elements) {
+    return elements.size() != 0;
+  }
+
   public boolean isElementEnabled(By locator) {
     return driver.findElement(locator).isEnabled();
   }
 
   public boolean isElementSelected(By locator) {
     return driver.findElement(locator).isSelected();
+  }
+
+  public boolean isElementEnabled(WebElement element) {
+    return element.isEnabled();
+  }
+
+  public boolean isElementSelected(WebElement element) {
+    return element.isSelected();
   }
 
   /**
@@ -104,7 +117,6 @@ public class OUtils {
         return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
       }
     };
-    // WebDriverWait wait = new WebDriverWait(driver, 30);
     webDriverWait.until(pageLoadCondition);
   }
 
@@ -116,6 +128,11 @@ public class OUtils {
       e.printStackTrace();
     }
     return this;
+  }
+
+  public String getTitle() {
+    LOG.info("Title of page: " + driver.getTitle());
+    return driver.getTitle();
   }
 
   public List<String> getStringsFromWebElements(List<WebElement> elements) {
@@ -130,17 +147,12 @@ public class OUtils {
     return listStrings;
   }
 
-  public String getText(WebElement element, By locator) {
-    if (isElementPresent(locator))
+  public String getText(WebElement element) {
+    if (isElementPresent(element))
       scrollToElement(element);
     else {
       Fail.fail("Element is not present");
     }
-    return element.getText();
-  }
-
-  public String getText(WebElement element) {
-    scrollToElement(element);
     return element.getText();
   }
 
@@ -168,70 +180,69 @@ public class OUtils {
     return index;
   }
 
+  public static Point getCenterPointOfElement(WebElement element) {
+    Point point = element.getLocation();
+    Dimension dimension = element.getSize();
+    int x = point.getX() + dimension.getWidth() / 2;
+    int y = point.getY() + dimension.getHeight() / 2;
+    return new Point(x, y);
+  }
+
   public void dragAndDrop(WebElement drag, WebElement drop) {
     LOG.info("Drag element " + drag.getLocation() + " to " + drop.getLocation());
-    actions.dragAndDrop(drag, drop).build().perform();
+    actions.dragAndDrop(drag, drop);
+    actions.build().perform();
   }
 
   public void dragAndDropByOffset(WebElement element, int xOffset, int yOffset) {
     LOG.info("Drag element by offset " + "(" + xOffset + "," + yOffset + ")");
-    actions.dragAndDropBy(element, xOffset, yOffset).build().perform();
+    actions.dragAndDropBy(element, xOffset, yOffset);
+    actions.build().perform();
   }
 
   public void dragAndDropCenterToCenter(ODraggable obj1, ODraggable obj2) {
-    actions.moveToElement(obj1.getElement(), obj1.getHalfWidth(), obj1.getHalfHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getHalfWidth(), obj2.getHalfHeight()).release().build()
-        .perform();
+    actions.moveToElement(obj1.getElement(), obj1.getHalfWidth(), obj1.getHalfHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getHalfWidth(), obj2.getHalfHeight()).release();
+    actions.build().perform();
   }
 
   public void dragAndDropTopLeftToTopLeft(ODraggable obj1, ODraggable obj2) {
-    actions.moveToElement(obj1.getElement(), 0, 0).clickAndHold().moveToElement(obj2.getElement(), 0, 0).release().build().perform();
+    actions.moveToElement(obj1.getElement(), 0, 0).clickAndHold().moveToElement(obj2.getElement(), 0, 0).release();
+    actions.build().perform();
   }
 
   public void dragAndDropTopRightToTopRight(ODraggable obj1, ODraggable obj2) {
-    actions.moveToElement(obj1.getElement(), obj1.getWidth(), 0).clickAndHold().moveToElement(obj2.getElement(), obj2.getWidth(), 0).release().build().perform();
+    actions.moveToElement(obj1.getElement(), obj1.getWidth(), 0).clickAndHold().moveToElement(obj2.getElement(), obj2.getWidth(), 0).release();
+    actions.build().perform();
   }
 
   public void dragAndDropDownRightToDownRight(ODraggable obj1, ODraggable obj2) {
-    actions.moveToElement(obj1.getElement(), obj1.getWidth(), obj1.getHeight()).clickAndHold()
-        .moveToElement(obj2.getElement(), obj2.getWidth(), obj2.getHeight()).release().build().perform();
+    actions.moveToElement(obj1.getElement(), obj1.getWidth(), obj1.getHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getWidth(), obj2.getHeight()).release();
+    actions.build().perform();
   }
 
   public void dragAndDropDownLeftToDownLeft(ODraggable obj1, ODraggable obj2) {
-    actions.moveToElement(obj1.getElement(), 0, obj1.getHeight()).clickAndHold()
-        .moveToElement(obj2.getElement(), 0, obj2.getHeight()).release().build().perform();
-  }
-
-  public boolean elementIsNotVisibleOnScreen(WebElement element) {
-
-    ODraggable obj = new ODraggable(element);
-    int windowWidth = driver.manage().window().getSize().getWidth() / 2;
-    int windowHeight = driver.manage().window().getSize().getHeight() / 2;
-
-    if (obj.getCenter().getX() > windowWidth && obj.getCenter().getY() > windowHeight || obj.getCenter().getX() < windowWidth && obj.getCenter().getY() < windowHeight) {
-      return true;
-    }
-    return false;
+    actions.moveToElement(obj1.getElement(), 0, obj1.getHeight()).clickAndHold().moveToElement(obj2.getElement(), 0, obj2.getHeight()).release();
+    actions.build().perform();
   }
 
   /**
    * Scrolling web page with Selenium Webdriver using java https://www.seleniumeasy.com/selenium-tutorials/scrolling-web-page-with-selenium-webdriver-using-java
    */
-  public void scrollToBottom() {
+  public OUtils scrollToBottom() {
     // LOG.info("Scroll to bottom");
     ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    return this;
   }
 
-  public void scrollTo(WebElement element) {
+  public OUtils scrollTo(WebElement element) {
     // LOG.info("Scroll to element " + element.getLocation());
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    return this;
   }
 
   public OUtils scrollToElement(WebElement element) {
-
-    if (elementIsNotVisibleOnScreen(element)) {
-      ODraggable obj = new ODraggable(element);
-      ((JavascriptExecutor) driver).executeScript("window.scrollTo(" + obj.getCenter().getX() + "," + (obj.getCenter().getY()) + ");");
-    }
+    ODraggable obj = new ODraggable(element);
+    ((JavascriptExecutor) driver).executeScript("window.scrollTo(" + obj.getCenter().getX() + "," + (obj.getCenter().getY() - 150) + ");");
     return this;
   }
 
@@ -268,10 +279,10 @@ public class OUtils {
     elementList.get(index).click();
   }
 
-  public void linkClick(WebElement elementList) {
+  public void linkClick(WebElement element) {
     LOG.info("Click on link");
-    scrollToElement(elementList).waitTime(1);
-    elementList.click();
+    scrollToElement(element).waitTime(1);
+    element.click();
   }
 
   public String getImgExampleFile(String fileName) {

@@ -159,15 +159,10 @@ public class DemoqaDroppable extends PageObject {
 
     ODraggable drag = new ODraggable(preventPropagationDraggable);
     ODraggable drop = new ODraggable(preventPropagationDroppable);
-
-    // utils.dragAndDropCenterToCenter(drag, drop);
+    utils.dragAndDropCenterToCenter(drag, drop);
     // utils.dragAndDropLeftToLeft(drag, drop);
     // utils.dragAndDropTopRightToTopRight(drag, drop);
     // utils.dragAndDropDownRightToDownRight(drag, drop);
     // utils.dragAndDropDownLeftToDownLeft(drag, drop);
-    utils.elementIsNotVisibleOnScreen(preventPropagationDraggable);
-
-    utils.waitTime(5);
-
   }
 }

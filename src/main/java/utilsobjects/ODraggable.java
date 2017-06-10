@@ -16,12 +16,12 @@ public class ODraggable {
     return element;
   }
 
-  private Dimension getDimension() {
+  public Dimension getDimension() {
     Dimension dimension = element.getSize();
     return dimension;
   }
 
-  private Point getPoint() {
+  public Point getPoint() {
     Point point = element.getLocation();
     return point;
   }
@@ -50,24 +50,30 @@ public class ODraggable {
     return getPoint().getY();
   }
 
-  public ObjectInSpace getPosition() {
+  public OInSpace getPosition() {
     Point point = element.getLocation();
     Dimension dimension = element.getSize();
 
     Point leftTop = new Point(point.getX(), point.getY());
     Point rightTop = new Point(point.getX() + dimension.getWidth(), point.getY());
-    Point rightDown = new Point(point.getX() + dimension.getWidth(), point.getY() + dimension.getHeight());
     Point leftDown = new Point(point.getX(), point.getY() + dimension.getHeight());
+    Point rightDown = new Point(point.getX() + dimension.getWidth(), point.getY() + dimension.getHeight());
 
-    return new ObjectInSpace(leftTop, rightTop, rightDown, leftDown);
+    return new OInSpace(leftTop, rightTop, leftDown, rightDown);
   }
 
   public Point getCenter() {
-    Point point = element.getLocation();
-
-    int x = point.getX() + getHalfWidth();
-    int y = point.getY() + getHalfHeight();
-
-    return new Point(x, y);
+    return OUtils.getCenterPointOfElement(element);
   }
+
+  public Point getCenterSecondElement(WebElement element) {
+    return OUtils.getCenterPointOfElement(element);
+  }
+
+  public double getDistanceCenterToCenter(WebElement element) {
+    double dx = getCenter().getX() - getCenterSecondElement(element).getX();
+    double dy = getCenter().getY() - getCenterSecondElement(element).getY();
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
 }
