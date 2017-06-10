@@ -1,0 +1,297 @@
+package utilsobjects;
+
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.text.WordUtils;
+import org.fest.assertions.api.Fail;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import webdriverobjects.OWebDriver;
+
+public class OUtils {
+
+  private static final Logger LOG = LoggerFactory.getLogger(OUtils.class.getName());
+
+  private WebDriverWait webDriverWait = OWebDriver.getWebDriverWait();
+  private WebDriver driver = OWebDriver.getDriver();
+  private Actions actions;
+
+  public OUtils() {
+    actions = new Actions(driver);
+  }
+
+  public String startDate() {
+    LocalDateTime date = LocalDateTime.now();
+    return date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+  }
+
+  public String endDate() {
+    LocalDateTime date2 = LocalDateTime.now();
+    return date2.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+  }
+
+  public String getTitle() {
+    LOG.info("Title of the page: " + driver.getTitle());
+    return driver.getTitle();
+  }
+
+  public void waitForVisibilityOfElement(WebElement element) {
+    webDriverWait.until(ExpectedConditions.visibilityOf(element));
+  }
+
+  public void waitForVisibilityOfElements(List<WebElement> elements) {
+    webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
+  }
+
+  public void waitForVisibilityOfElement(By locator) {
+    webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+  }
+
+  public void waitForVisibilityOfElements(By locator) {
+    webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+  }
+
+  public void numberOfElementsToBeMoreThan(By locator) {
+    webDriverWait.until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, 0));
+  }
+
+  public void numberOfElementsToBeLessThan(By locator) {
+    webDriverWait.until(ExpectedConditions.numberOfElementsToBeLessThan(locator, 10));
+  }
+
+  public boolean isElementPresent(By locator) {
+    return driver.findElement(locator).isDisplayed();
+  }
+
+  public boolean isElementsPresent(By locator) {
+    return driver.findElements(locator).size() != 0;
+  }
+
+  public boolean isElementEnabled(By locator) {
+    return driver.findElement(locator).isEnabled();
+  }
+
+  public boolean isElementSelected(By locator) {
+    return driver.findElement(locator).isSelected();
+  }
+
+  /**
+   * http://www.testingexcellence.com/webdriver-wait-page-load-example-java/
+   */
+  public void waitForPageLoad() {
+    ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
+      public Boolean apply(WebDriver driver) {
+        return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+      }
+    };
+    // WebDriverWait wait = new WebDriverWait(driver, 30);
+    webDriverWait.until(pageLoadCondition);
+  }
+
+  public OUtils waitTime(long timeout) {
+    try {
+      LOG.info("Wait: " + timeout + " seconds");
+      TimeUnit.SECONDS.sleep(timeout);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    return this;
+  }
+
+  public List<String> getStringsFromWebElements(List<WebElement> elements) {
+    List<String> listStrings = new ArrayList<String>();
+    if (elements.size() > 0) {
+      for (WebElement el : elements) {
+        listStrings.add(el.getText());
+      }
+    } else {
+      Fail.fail("List of WebElements is empty.");
+    }
+    return listStrings;
+  }
+
+  public String getText(WebElement element, By locator) {
+    if (isElementPresent(locator))
+      scrollToElement(element);
+    else {
+      Fail.fail("Element is not present");
+    }
+    return element.getText();
+  }
+
+  public String getText(WebElement element) {
+    scrollToElement(element);
+    return element.getText();
+  }
+
+  public void setText(WebElement element, String text) {
+    scrollToElement(element);
+    element.clear();
+    element.sendKeys(text);
+  }
+
+  public Integer getId(List<WebElement> elements, String title) {
+    int index = -1;
+
+    if (elements.size() > 0) {
+      waitForVisibilityOfElements(elements);
+      for (int i = 0; i < elements.size(); i++) {
+        if (elements.get(i).getText().equals(title)) {
+          index = i;
+          // LOG.info("Index of " + title + " is " + index);
+          return index;
+        }
+      }
+    } else {
+      Fail.fail("The list of webelements is empty.");
+    }
+    return index;
+  }
+
+  public void dragAndDrop(WebElement drag, WebElement drop) {
+    LOG.info("Drag element " + drag.getLocation() + " to " + drop.getLocation());
+    actions.dragAndDrop(drag, drop).build().perform();
+  }
+
+  public void dragAndDropByOffset(WebElement element, int xOffset, int yOffset) {
+    LOG.info("Drag element by offset " + "(" + xOffset + "," + yOffset + ")");
+    actions.dragAndDropBy(element, xOffset, yOffset).build().perform();
+  }
+
+  public void dragAndDropCenterToCenter(ODraggable obj1, ODraggable obj2) {
+    actions.moveToElement(obj1.getElement(), obj1.getHalfWidth(), obj1.getHalfHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getHalfWidth(), obj2.getHalfHeight()).release().build()
+        .perform();
+  }
+
+  public void dragAndDropTopLeftToTopLeft(ODraggable obj1, ODraggable obj2) {
+    actions.moveToElement(obj1.getElement(), 0, 0).clickAndHold().moveToElement(obj2.getElement(), 0, 0).release().build().perform();
+  }
+
+  public void dragAndDropTopRightToTopRight(ODraggable obj1, ODraggable obj2) {
+    actions.moveToElement(obj1.getElement(), obj1.getWidth(), 0).clickAndHold().moveToElement(obj2.getElement(), obj2.getWidth(), 0).release().build().perform();
+  }
+
+  public void dragAndDropDownRightToDownRight(ODraggable obj1, ODraggable obj2) {
+    actions.moveToElement(obj1.getElement(), obj1.getWidth(), obj1.getHeight()).clickAndHold()
+        .moveToElement(obj2.getElement(), obj2.getWidth(), obj2.getHeight()).release().build().perform();
+  }
+
+  public void dragAndDropDownLeftToDownLeft(ODraggable obj1, ODraggable obj2) {
+    actions.moveToElement(obj1.getElement(), 0, obj1.getHeight()).clickAndHold()
+        .moveToElement(obj2.getElement(), 0, obj2.getHeight()).release().build().perform();
+  }
+
+  public boolean elementIsNotVisibleOnScreen(WebElement element) {
+
+    ODraggable obj = new ODraggable(element);
+    int windowWidth = driver.manage().window().getSize().getWidth() / 2;
+    int windowHeight = driver.manage().window().getSize().getHeight() / 2;
+
+    if (obj.getCenter().getX() > windowWidth && obj.getCenter().getY() > windowHeight || obj.getCenter().getX() < windowWidth && obj.getCenter().getY() < windowHeight) {
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Scrolling web page with Selenium Webdriver using java https://www.seleniumeasy.com/selenium-tutorials/scrolling-web-page-with-selenium-webdriver-using-java
+   */
+  public void scrollToBottom() {
+    // LOG.info("Scroll to bottom");
+    ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+  }
+
+  public void scrollTo(WebElement element) {
+    // LOG.info("Scroll to element " + element.getLocation());
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+  }
+
+  public OUtils scrollToElement(WebElement element) {
+
+    if (elementIsNotVisibleOnScreen(element)) {
+      ODraggable obj = new ODraggable(element);
+      ((JavascriptExecutor) driver).executeScript("window.scrollTo(" + obj.getCenter().getX() + "," + (obj.getCenter().getY()) + ");");
+    }
+    return this;
+  }
+
+  public String generateRandomText(int length, int spaces) {
+
+    Random rand = new Random();
+    String str = RandomStringUtils.randomAlphanumeric(length);
+    StringBuilder sb = new StringBuilder(str);
+    int randNumber = rand.nextInt(length);
+    for (int i = 0; i < spaces; i++) {
+      randNumber = rand.nextInt(length);
+      sb.insert(randNumber, " ");
+    }
+
+    str = sb.toString();
+    WordUtils.capitalize(str);
+    return str;
+  }
+
+  public String generateRandomNumber(int length) {
+    String str = RandomStringUtils.randomNumeric(length);
+    return str;
+  }
+
+  public void linkClick(List<WebElement> elementList, String title) {
+    LOG.info("Click on link by title: " + title);
+    scrollToElement(elementList.get(getId(elementList, title)));
+    elementList.get(getId(elementList, title)).click();
+  }
+
+  public void linkClick(List<WebElement> elementList, int index) {
+    LOG.info("Click on link by index: " + index);
+    scrollToElement(elementList.get(index));
+    elementList.get(index).click();
+  }
+
+  public void linkClick(WebElement elementList) {
+    LOG.info("Click on link");
+    scrollToElement(elementList).waitTime(1);
+    elementList.click();
+  }
+
+  public String getImgExampleFile(String fileName) {
+    LOG.info("Get example file " + fileName);
+    String path = System.getProperty("user.dir") + "\\img\\";
+    return path + fileName;
+  }
+
+  public void takeScreenShoot(String testName) {
+
+    String path = "C:\\seleniumTest\\";
+    String fileName = testName + LocalDateTime.now().format(DateTimeFormatter.ofPattern("_yyyyMMdd_HHmmss")) + ".png";
+
+    try {
+      File screenShoot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+      FileUtils.copyFile(screenShoot, new File(path + fileName));
+
+    } catch (IOException e) {
+      LOG.info("Cannot copy " + fileName + " to: " + path);
+      // e.printStackTrace();
+    }
+  }
+}
