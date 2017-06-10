@@ -1,6 +1,6 @@
 # selenium
 
-# This repository is for learn Java with Selenium WebDriver. 
+# Repository: Java,JUnit,Selenium WebDriver. 
 
 # Based on POM.
 # Tested pages:
@@ -12,6 +12,4 @@
 # DEMOQA("http://demoqa.com/"),
 # ORANGEHRM("https://enterprise-demo.orangehrmlive.com/auth/login")
 
-## Please. If You see something not quite correct leave me a comment.
-## With respect to all who watch this
 ## Greetings
