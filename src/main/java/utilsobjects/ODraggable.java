@@ -51,8 +51,8 @@ public class ODraggable {
   }
 
   public OInSpace getPosition() {
-    Point point = element.getLocation();
-    Dimension dimension = element.getSize();
+    Point point = this.element.getLocation();
+    Dimension dimension = this.element.getSize();
 
     Point leftTop = new Point(point.getX(), point.getY());
     Point rightTop = new Point(point.getX() + dimension.getWidth(), point.getY());
@@ -63,17 +63,25 @@ public class ODraggable {
   }
 
   public Point getCenter() {
-    return OUtils.getCenterPointOfElement(element);
+    return getCenterPointOfElement(element);
   }
 
   public Point getCenterSecondElement(WebElement element) {
-    return OUtils.getCenterPointOfElement(element);
+    return getCenterPointOfElement(element);
   }
 
   public double getDistanceCenterToCenter(WebElement element) {
     double dx = getCenter().getX() - getCenterSecondElement(element).getX();
     double dy = getCenter().getY() - getCenterSecondElement(element).getY();
     return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  private Point getCenterPointOfElement(WebElement element) {
+    Point point = element.getLocation();
+    Dimension dimension = element.getSize();
+    int x = point.getX() + dimension.getWidth() / 2;
+    int y = point.getY() + dimension.getHeight() / 2;
+    return new Point(x, y);
   }
 
 }

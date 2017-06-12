@@ -71,12 +71,27 @@ public class DemoqaDroppableTest extends TestObject {
   public void preventPropagationDragAndDropAll() {
 
     commonElements.tabsLinkClick("Prevent propagation");
-    // assertThat(droppable.getPreventPropagationDroppableInnerText()).isNotEqualTo("Drop here");
-    // assertThat(droppable.getPreventPropagationDroppable2InnerText()).isNotEqualTo("Drop here");
-    // assertThat(droppable.getPreventPropagationDroppableText()).isNotEqualTo("Drop here");
-    // assertThat(droppable.getPreventPropagationDroppable2Text()).isNotEqualTo("Drop here");
+    assertThat(droppable.getPreventPropagationDroppableInnerText()).isNotEqualTo("Drop here");
+    assertThat(droppable.getPreventPropagationDroppable2InnerText()).isNotEqualTo("Drop here");
+    assertThat(droppable.getPreventPropagationDroppableText()).isNotEqualTo("Drop here");
+    assertThat(droppable.getPreventPropagationDroppable2Text()).isNotEqualTo("Drop here");
 
     droppable.preventPropagationDragAndDropAll();
 
+    assertThat(droppable.getPreventPropagationDroppableInnerText()).isEqualTo("Dropped!");
+    assertThat(droppable.getPreventPropagationDroppable2InnerText()).isEqualTo("Dropped!");
+    assertThat(droppable.getPreventPropagationDroppableText()).isEqualTo("Dropped!");
+    assertThat(droppable.getPreventPropagationDroppable2Text()).isEqualTo("Dropped!");
+  }
+
+  @Test
+  public void revertDraggablePosition() {
+    commonElements.tabsLinkClick("Revert draggable Position");
+
+    assertThat(droppable.getRevertDropablePositionText()).isEqualTo("Drop me here");
+
+    droppable.revertDraggablePosition();
+
+    assertThat(droppable.getRevertDropablePositionText()).isEqualTo("Dropped!");
   }
 }

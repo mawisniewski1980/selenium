@@ -14,7 +14,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.fest.assertions.api.Fail;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
@@ -180,49 +179,61 @@ public class OUtils {
     return index;
   }
 
-  public static Point getCenterPointOfElement(WebElement element) {
-    Point point = element.getLocation();
-    Dimension dimension = element.getSize();
-    int x = point.getX() + dimension.getWidth() / 2;
-    int y = point.getY() + dimension.getHeight() / 2;
-    return new Point(x, y);
-  }
-
-  public void dragAndDrop(WebElement drag, WebElement drop) {
+  public OUtils dragAndDrop(WebElement drag, WebElement drop) {
     LOG.info("Drag element " + drag.getLocation() + " to " + drop.getLocation());
     actions.dragAndDrop(drag, drop);
     actions.build().perform();
+    return this;
   }
 
-  public void dragAndDropByOffset(WebElement element, int xOffset, int yOffset) {
+  public OUtils dragAndDrop(Point point1, Point point2) {
+    LOG.info("Drag element by point " + point1 + " to " + point2);
+    actions.moveByOffset(point1.getX(), point1.getY()).clickAndHold().moveByOffset(point2.getX(), point2.getY()).release();
+    actions.build().perform();
+    return this;
+  }
+
+  public OUtils dragAndDropByOffset(WebElement element, int xOffset, int yOffset) {
     LOG.info("Drag element by offset " + "(" + xOffset + "," + yOffset + ")");
     actions.dragAndDropBy(element, xOffset, yOffset);
     actions.build().perform();
+    waitTime(1);
+    return this;
   }
 
-  public void dragAndDropCenterToCenter(ODraggable obj1, ODraggable obj2) {
+  public OUtils dragAndDropCenterToCenter(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), obj1.getHalfWidth(), obj1.getHalfHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getHalfWidth(), obj2.getHalfHeight()).release();
     actions.build().perform();
+    waitTime(1);
+    return this;
   }
 
-  public void dragAndDropTopLeftToTopLeft(ODraggable obj1, ODraggable obj2) {
+  public OUtils dragAndDropTopLeftToTopLeft(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), 0, 0).clickAndHold().moveToElement(obj2.getElement(), 0, 0).release();
     actions.build().perform();
+    waitTime(1);
+    return this;
   }
 
-  public void dragAndDropTopRightToTopRight(ODraggable obj1, ODraggable obj2) {
+  public OUtils dragAndDropTopRightToTopRight(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), obj1.getWidth(), 0).clickAndHold().moveToElement(obj2.getElement(), obj2.getWidth(), 0).release();
     actions.build().perform();
+    waitTime(1);
+    return this;
   }
 
-  public void dragAndDropDownRightToDownRight(ODraggable obj1, ODraggable obj2) {
+  public OUtils dragAndDropDownRightToDownRight(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), obj1.getWidth(), obj1.getHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getWidth(), obj2.getHeight()).release();
     actions.build().perform();
+    waitTime(1);
+    return this;
   }
 
-  public void dragAndDropDownLeftToDownLeft(ODraggable obj1, ODraggable obj2) {
+  public OUtils dragAndDropDownLeftToDownLeft(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), 0, obj1.getHeight()).clickAndHold().moveToElement(obj2.getElement(), 0, obj2.getHeight()).release();
     actions.build().perform();
+    waitTime(1);
+    return this;
   }
 
   /**

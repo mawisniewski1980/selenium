@@ -2,6 +2,7 @@ package demoqa;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,13 +11,17 @@ import org.slf4j.LoggerFactory;
 
 import pageobject.PageObject;
 import utilsobjects.ODraggable;
+import utilsobjects.OInSpace;
 
 public class DemoqaDroppable extends PageObject {
 
   private static final Logger LOG = LoggerFactory.getLogger(DemoqaDroppable.class.getName());
 
+  private DemoqaCommonElements commonElements;
+
   public DemoqaDroppable(WebDriver driver) {
     super(driver);
+    commonElements = new DemoqaCommonElements(driver);
   }
 
   private final String defaultFunctionalistyDragMeCss = "#draggableview";
@@ -46,6 +51,10 @@ public class DemoqaDroppable extends PageObject {
   private final String acceptDroppableTextCss = "#droppableaccept p";
   @FindBy(css = acceptDroppableTextCss)
   private WebElement acceptDroppableText;
+
+  private final String preventPropagationDraggableContenerCss = "#tabs-3";
+  @FindBy(css = preventPropagationDraggableContenerCss)
+  private WebElement preventPropagationDraggableContener;
 
   private final String preventPropagationDraggableCss = "#draggableprop";
   @FindBy(css = preventPropagationDraggableCss)
@@ -87,6 +96,10 @@ public class DemoqaDroppable extends PageObject {
   @FindBy(css = revertDraggablePositionCss)
   private WebElement revertDraggablePosition;
 
+  private final String revertDraggablePositionContenerCss = "#tabs-4";
+  @FindBy(css = revertDraggablePositionContenerCss)
+  private WebElement revertDraggablePositionContener;
+
   private final String revertDraggablePosition2Css = "#draggablerevert2";
   @FindBy(css = revertDraggablePosition2Css)
   private WebElement revertDraggablePosition2;
@@ -94,6 +107,10 @@ public class DemoqaDroppable extends PageObject {
   private final String revertDropablePositionCss = "#droppablerevert";
   @FindBy(css = revertDropablePositionCss)
   private WebElement revertDropablePosition;
+
+  private final String revertDropablePositionTextCss = "#droppablerevert>p";
+  @FindBy(css = revertDropablePositionTextCss)
+  private WebElement revertDropablePositionText;
 
   private final String productCatalogCss = "#products #catalog";
   @FindBy(css = productCatalogCss)
@@ -155,14 +172,46 @@ public class DemoqaDroppable extends PageObject {
     return preventPropagationDroppable2InnerText.getText();
   }
 
+  public String getRevertDropablePositionText() {
+    return revertDropablePositionText.getText();
+  }
+
   public void preventPropagationDragAndDropAll() {
 
     ODraggable drag = new ODraggable(preventPropagationDraggable);
-    ODraggable drop = new ODraggable(preventPropagationDroppable);
+    ODraggable outDrop = new ODraggable(preventPropagationDroppable);
+    ODraggable outDrop2 = new ODraggable(preventPropagationDroppable2);
+    ODraggable innerDrop = new ODraggable(preventPropagationDroppableInner);
+    ODraggable innerDrop2 = new ODraggable(preventPropagationDroppable2Inner);
+    ODraggable contener = new ODraggable(preventPropagationDraggableContener.findElement(By.cssSelector(".inside_contain")));
+
+    utils.dragAndDropTopLeftToTopLeft(drag, outDrop)
+        .dragAndDropTopLeftToTopLeft(drag, outDrop2)
+        .dragAndDropTopLeftToTopLeft(drag, innerDrop)
+        .dragAndDropTopLeftToTopLeft(drag, innerDrop2)
+        .dragAndDropTopLeftToTopLeft(drag, contener);
+  }
+
+  public OInSpace getRevertDraggablePosition() {
+    return new ODraggable(revertDraggablePosition).getPosition();
+  }
+
+  public OInSpace getRevertDraggablePosition2() {
+    return new ODraggable(revertDraggablePosition2).getPosition();
+  }
+
+  public OInSpace getRevertDropablePosition() {
+    return new ODraggable(revertDropablePosition).getPosition();
+  }
+
+  public void revertDraggablePosition() {
+
+    ODraggable drag = new ODraggable(revertDraggablePosition);
+    ODraggable drag2 = new ODraggable(revertDraggablePosition2);
+    ODraggable drop = new ODraggable(revertDropablePosition);
+    ODraggable contener = new ODraggable(revertDraggablePositionContener.findElement(By.cssSelector(".inside_contain")));
+
     utils.dragAndDropCenterToCenter(drag, drop);
-    // utils.dragAndDropLeftToLeft(drag, drop);
-    // utils.dragAndDropTopRightToTopRight(drag, drop);
-    // utils.dragAndDropDownRightToDownRight(drag, drop);
-    // utils.dragAndDropDownLeftToDownLeft(drag, drop);
+    utils.dragAndDropCenterToCenter(drag2, drop);
   }
 }
