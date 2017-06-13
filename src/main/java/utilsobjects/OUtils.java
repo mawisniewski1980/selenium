@@ -201,6 +201,14 @@ public class OUtils {
     return this;
   }
 
+  public OUtils dragAndDropByOffset(ODraggable obj, int xOffset, int yOffset) {
+    LOG.info("Drag element by offset " + "(" + xOffset + "," + yOffset + ")");
+    actions.dragAndDropBy(obj.getElement(), xOffset, yOffset);
+    actions.build().perform();
+    waitTime(1);
+    return this;
+  }
+
   public OUtils dragAndDropCenterToCenter(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), obj1.getHalfWidth(), obj1.getHalfHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getHalfWidth(), obj2.getHalfHeight()).release();
     actions.build().perform();

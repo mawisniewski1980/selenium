@@ -1,5 +1,7 @@
 package demoqa;
 
+import static org.fest.assertions.api.Assertions.assertThat;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -114,7 +116,7 @@ public class DemoqaDroppable extends PageObject {
 
   private final String productCatalogCss = "#products #catalog";
   @FindBy(css = productCatalogCss)
-  private List<WebElement> productCatalog;
+  private WebElement productCatalog;
 
   private final String productCatalogCategoryCss = "#products #catalog h2";
   @FindBy(css = productCatalogCategoryCss)
@@ -209,9 +211,49 @@ public class DemoqaDroppable extends PageObject {
     ODraggable drag = new ODraggable(revertDraggablePosition);
     ODraggable drag2 = new ODraggable(revertDraggablePosition2);
     ODraggable drop = new ODraggable(revertDropablePosition);
-    ODraggable contener = new ODraggable(revertDraggablePositionContener.findElement(By.cssSelector(".inside_contain")));
+    // ODraggable contener = new ODraggable(revertDraggablePositionContener.findElement(By.cssSelector(".inside_contain")));
+
+    OInSpace oDragPositionBefore = drag.getPosition();
+    OInSpace oDrag2PositionBefore = drag2.getPosition();
+    OInSpace oDropPositionBefore = drop.getPosition();
 
     utils.dragAndDropCenterToCenter(drag, drop);
     utils.dragAndDropCenterToCenter(drag2, drop);
+
+    OInSpace oDragPositionAfter = drag.getPosition();
+    OInSpace oDrag2PositionAfter = drag2.getPosition();
+    OInSpace oDropPositionAfter = drop.getPosition();
+
+    assertThat(oDragPositionBefore).isEqualsToByComparingFields(oDragPositionAfter);
+    assertThat(oDrag2PositionBefore).isNotEqualTo(oDrag2PositionAfter);
+    assertThat(oDropPositionBefore).isEqualsToByComparingFields(oDropPositionAfter);
+  }
+
+  public String getCartItemText() {
+    return cartItem.getText();
+  }
+
+  public DemoqaDroppable openClickCartCatalog(String title) {
+
+    LOG.info("Open Catalog cart by title: " + title);
+    int index = utils.getId(productCatalogCategory, title);
+    productCatalogCategory.get(index).click();
+    List<WebElement> listCatalogItems = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li"));
+    utils.waitForVisibilityOfElements(listCatalogItems);
+    return this;
+  }
+
+  public DemoqaDroppable dragItemFromCartCatalogToCartItem(String catalogTitle, String itemTitle) {
+
+    openClickCartCatalog(catalogTitle);
+
+    LOG.info("Drag " + itemTitle + " from catalog " + catalogTitle + " to cart");
+    int index = utils.getId(productCatalogCategory, catalogTitle);
+    List<WebElement> listCatalogItems = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li"));
+    utils.waitForVisibilityOfElements(listCatalogItems);
+    int index2 = utils.getId(listCatalogItems, itemTitle);
+    WebElement listCatalogItem = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li")).get(index2);
+    utils.dragAndDropCenterToCenter(new ODraggable(listCatalogItem), new ODraggable(cart));
+    return this;
   }
 }

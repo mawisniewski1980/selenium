@@ -94,4 +94,14 @@ public class DemoqaDroppableTest extends TestObject {
 
     assertThat(droppable.getRevertDropablePositionText()).isEqualTo("Dropped!");
   }
+
+  @Test
+  public void shoppingCartDemo() {
+
+    commonElements.tabsLinkClick("Shopping cart demo");
+
+    assertThat(droppable.getCartItemText()).isEqualTo("Add your items here");
+    droppable.dragItemFromCartCatalogToCartItem("Bags", "Zebra Striped");
+    assertThat(droppable.getCartItemText()).isEqualTo("Zebra Striped");
+  }
 }

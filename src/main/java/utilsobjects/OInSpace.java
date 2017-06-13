@@ -32,22 +32,6 @@ public class OInSpace {
     return rightDown;
   }
 
-  public void setLeftTop(Point leftTop) {
-    this.leftTop = leftTop;
-  }
-
-  public void setRightTop(Point rightTop) {
-    this.rightTop = rightTop;
-  }
-
-  public void setLeftDown(Point leftDown) {
-    this.leftDown = leftDown;
-  }
-
-  public void setRightDown(Point rightDown) {
-    this.rightDown = rightDown;
-  }
-
   public Point getCenter() {
     int x = (this.rightTop.getX() - this.leftTop.getX()) / 2;
     int y = (this.leftDown.getY() - this.leftTop.getY()) / 2;
