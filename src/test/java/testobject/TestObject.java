@@ -11,8 +11,6 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.gargoylesoftware.htmlunit.javascript.configuration.BrowserName;
-
 import enums.PageUrls.PageUrl;
 import utilsobjects.OUtils;
 import webdriverobjects.OWebDriver;
@@ -21,9 +19,8 @@ public class TestObject {
 
   private static final Logger LOG = LoggerFactory.getLogger(TestObject.class.getName());
 
-  private OWebDriver webDriver = new OWebDriver(BrowserName.CHROME);
-  protected WebDriver driver = OWebDriver.getDriver();
-  protected OUtils utils = new OUtils();
+  protected WebDriver driver = OWebDriver.getOWebDriverInstance().initChromeBrowser();
+  protected OUtils utils = new OUtils(driver);
 
   @Rule
   public TestName testName = new TestName();

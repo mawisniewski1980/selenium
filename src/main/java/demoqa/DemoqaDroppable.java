@@ -253,6 +253,7 @@ public class DemoqaDroppable extends PageObject {
     utils.waitForVisibilityOfElements(listCatalogItems);
     int index2 = utils.getId(listCatalogItems, itemTitle);
     WebElement listCatalogItem = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li")).get(index2);
+    utils.waitTime(2);
     utils.dragAndDropCenterToCenter(new ODraggable(listCatalogItem), new ODraggable(cart));
     return this;
   }

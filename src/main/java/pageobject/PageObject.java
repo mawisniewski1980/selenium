@@ -17,7 +17,7 @@ public class PageObject {
 
   protected PageObject(WebDriver driver) {
     this.driver = driver;
-    this.utils = new OUtils();
+    this.utils = new OUtils(driver);
     PageFactory.initElements(new AjaxElementLocatorFactory(driver, 90), this);
   }
 

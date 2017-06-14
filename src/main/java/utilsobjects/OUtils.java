@@ -27,18 +27,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import webdriverobjects.OWebDriver;
-
 public class OUtils {
 
   private static final Logger LOG = LoggerFactory.getLogger(OUtils.class.getName());
 
-  private WebDriverWait webDriverWait = OWebDriver.getWebDriverWait();
-  private WebDriver driver = OWebDriver.getDriver();
+  private WebDriver driver;
+  private WebDriverWait webDriverWait;
   private Actions actions;
 
-  public OUtils() {
-    actions = new Actions(driver);
+  public OUtils(WebDriver driver) {
+    this.driver = driver;
+    this.webDriverWait = new WebDriverWait(driver, 10);
+    this.actions = new Actions(driver);
   }
 
   public String startDate() {
