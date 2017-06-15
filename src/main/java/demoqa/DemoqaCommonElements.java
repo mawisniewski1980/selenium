@@ -34,10 +34,6 @@ public class DemoqaCommonElements extends PageObject {
   @FindBy(css = tabsLinksACss)
   private List<WebElement> tabsLinksA;
 
-  private final String contenerCss = ".inside_contain";
-  @FindBy(css = contenerCss)
-  private WebElement contener;
-
   public String getEntryTitle() {
     LOG.info("Title of entry: " + title.getText());
     return title.getText();
@@ -49,10 +45,6 @@ public class DemoqaCommonElements extends PageObject {
     } else {
       LOG.info("Tab '" + title + "' is active.");
     }
-  }
-
-  public WebElement getContener() {
-    return contener;
   }
 
 }

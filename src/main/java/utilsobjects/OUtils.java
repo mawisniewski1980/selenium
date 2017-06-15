@@ -37,7 +37,7 @@ public class OUtils {
 
   public OUtils(WebDriver driver) {
     this.driver = driver;
-    this.webDriverWait = new WebDriverWait(driver, 10);
+    this.webDriverWait = new WebDriverWait(driver, 15);
     this.actions = new Actions(driver);
   }
 
@@ -67,12 +67,12 @@ public class OUtils {
     webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
   }
 
-  public void numberOfElementsToBeMoreThan(By locator) {
-    webDriverWait.until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, 0));
+  public WebElement findNextElementByCssSelector(WebElement element, By locator) {
+    return element.findElement(locator);
   }
 
-  public void numberOfElementsToBeLessThan(By locator) {
-    webDriverWait.until(ExpectedConditions.numberOfElementsToBeLessThan(locator, 10));
+  public WebElement findNextElementByCssSelector(WebElement element, String locator) {
+    return element.findElement(By.cssSelector(locator));
   }
 
   public boolean isElementPresent(By locator) {
@@ -198,6 +198,24 @@ public class OUtils {
     actions.dragAndDropBy(element, xOffset, yOffset);
     actions.build().perform();
     waitTime(1);
+    return this;
+  }
+
+  public OUtils dragByX(WebElement element, int xOffset) {
+    actions.moveToElement(element).clickAndHold().moveByOffset(xOffset, 0).release();
+    actions.build().perform();
+    return this;
+  }
+
+  public OUtils dragByY(WebElement element, int yOffset) {
+    actions.moveToElement(element).clickAndHold().moveByOffset(0, yOffset).release();
+    actions.build().perform();
+    return this;
+  }
+
+  public OUtils dragByXY(WebElement element, int xOffset, int yOffset) {
+    actions.moveToElement(element).clickAndHold().moveByOffset(xOffset, yOffset).release();
+    actions.build().perform();
     return this;
   }
 
