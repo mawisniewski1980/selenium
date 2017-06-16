@@ -14,7 +14,9 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.fest.assertions.api.Fail;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
@@ -127,6 +129,16 @@ public class OUtils {
       e.printStackTrace();
     }
     return this;
+  }
+
+  public void waitUntilAnimationStop(WebElement element) {
+    Dimension state = null;
+    Dimension stateCheck = null;
+    do {
+      state = element.getSize();
+      stateCheck = element.getSize();
+      waitTime(1);
+    } while (!stateCheck.equals(state));
   }
 
   public String getTitle() {
@@ -258,6 +270,29 @@ public class OUtils {
   public OUtils dragAndDropDownLeftToDownLeft(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), 0, obj1.getHeight()).clickAndHold().moveToElement(obj2.getElement(), 0, obj2.getHeight()).release();
     actions.build().perform();
+    waitTime(1);
+    return this;
+  }
+
+  public OUtils selectFromCenterToCenter(ODraggable obj1, ODraggable obj2) {
+    actions.moveToElement(obj1.getElement(), obj1.getHalfWidth(), obj1.getHalfHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getHalfWidth(), obj2.getHalfHeight()).release();
+    actions.build().perform();
+    waitTime(1);
+    return this;
+  }
+
+  public OUtils selectItemByClick(List<WebElement> elements, String title) {
+    elements.get(getId(elements, title)).click();
+    waitTime(1);
+    return this;
+  }
+
+  public OUtils selectItemByClickWithCTRL(List<WebElement> elements, List<String> titles) {
+    actions.keyDown(Keys.LEFT_CONTROL);
+    for (String text : titles) {
+      actions.click(elements.get(getId(elements, text)));
+    }
+    actions.keyUp(Keys.CONTROL).build().perform();
     waitTime(1);
     return this;
   }

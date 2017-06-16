@@ -110,7 +110,7 @@ public class DemoqaResizableTest extends TestObject {
   public void resizeAnimateBoxByXY() {
     commonElements.tabsLinkClick("Animate");
     Dimension before = resizable.getAnimateResizableDimension();
-    resizable.resizeAnimateByXY(200, 300);
+    resizable.resizeAnimateByXY(1000, 10000);
     Dimension after = resizable.getAnimateResizableDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
     assertThat(before).isNotEqualTo(after);

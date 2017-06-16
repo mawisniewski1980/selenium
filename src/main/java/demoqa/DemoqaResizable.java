@@ -93,19 +93,19 @@ public class DemoqaResizable extends PageObject {
 
   public DemoqaResizable resizeAnimateByX(int xOffset) {
     utils.dragByX(utils.findNextElementByCssSelector(animateResizable, xLineCss), xOffset);
-    utils.waitTime(1);
+    utils.waitUntilAnimationStop(animateResizable);
     return this;
   }
 
   public DemoqaResizable resizeAnimateByY(int yOffset) {
     utils.dragByY(utils.findNextElementByCssSelector(animateResizable, yLineCss), yOffset);
-    utils.waitTime(1);
+    utils.waitUntilAnimationStop(animateResizable);
     return this;
   }
 
   public DemoqaResizable resizeAnimateByXY(int xOffset, int yOffset) {
     utils.dragByXY(utils.findNextElementByCssSelector(animateResizable, xyLineCss), xOffset, yOffset);
-    utils.waitTime(1);
+    utils.waitUntilAnimationStop(animateResizable);
     return this;
   }
 
