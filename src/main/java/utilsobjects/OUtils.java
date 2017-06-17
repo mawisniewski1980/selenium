@@ -77,6 +77,14 @@ public class OUtils {
     return element.findElement(By.cssSelector(locator));
   }
 
+  public List<WebElement> findNextElementsByCssSelector(WebElement element, By locator) {
+    return element.findElements(locator);
+  }
+
+  public List<WebElement> findNextElementsByCssSelector(WebElement element, String locator) {
+    return element.findElements(By.cssSelector(locator));
+  }
+
   public boolean isElementPresent(By locator) {
     return driver.findElement(locator).isDisplayed();
   }
@@ -239,6 +247,24 @@ public class OUtils {
     return this;
   }
 
+  public OUtils dragByX(ODraggable obj, int xOffset) {
+    actions.moveToElement(obj.getElement()).clickAndHold().moveByOffset(xOffset, 0).release();
+    actions.build().perform();
+    return this;
+  }
+
+  public OUtils dragByY(ODraggable obj, int yOffset) {
+    actions.moveToElement(obj.getElement()).clickAndHold().moveByOffset(0, yOffset).release();
+    actions.build().perform();
+    return this;
+  }
+
+  public OUtils dragByXY(ODraggable obj, int xOffset, int yOffset) {
+    actions.moveToElement(obj.getElement()).clickAndHold().moveByOffset(xOffset, yOffset).release();
+    actions.build().perform();
+    return this;
+  }
+
   public OUtils dragAndDropCenterToCenter(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), obj1.getHalfWidth(), obj1.getHalfHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getHalfWidth(), obj2.getHalfHeight()).release();
     actions.build().perform();
@@ -269,6 +295,13 @@ public class OUtils {
 
   public OUtils dragAndDropDownLeftToDownLeft(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), 0, obj1.getHeight()).clickAndHold().moveToElement(obj2.getElement(), 0, obj2.getHeight()).release();
+    actions.build().perform();
+    waitTime(1);
+    return this;
+  }
+
+  public OUtils dragAndDropTopLeftToTopLeftWithOffset(ODraggable obj1, int x1, int y1, ODraggable obj2, int x2, int y2) {
+    actions.moveToElement(obj1.getElement(), x1, y1).clickAndHold().moveToElement(obj2.getElement(), x2, y2).release();
     actions.build().perform();
     waitTime(1);
     return this;
