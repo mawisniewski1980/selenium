@@ -18,7 +18,6 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -149,6 +148,16 @@ public class OUtils {
     } while (!stateCheck.equals(state));
   }
 
+  public void waitUntilAnimationStop(ODraggable element) {
+    Dimension state = null;
+    Dimension stateCheck = null;
+    do {
+      state = element.getDimension();
+      stateCheck = element.getDimension();
+      waitTime(1);
+    } while (!stateCheck.equals(state));
+  }
+
   public String getTitle() {
     LOG.info("Title of page: " + driver.getTitle());
     return driver.getTitle();
@@ -167,6 +176,7 @@ public class OUtils {
   }
 
   public String getText(WebElement element) {
+    LOG.info("Get text from element.");
     if (isElementPresent(element))
       scrollToElement(element);
     else {
@@ -176,6 +186,7 @@ public class OUtils {
   }
 
   public void setText(WebElement element, String text) {
+    LOG.info("Set text " + text);
     scrollToElement(element);
     element.clear();
     element.sendKeys(text);
@@ -199,43 +210,11 @@ public class OUtils {
     return index;
   }
 
-  public OUtils dragAndDrop(WebElement drag, WebElement drop) {
-    LOG.info("Drag element " + drag.getLocation() + " to " + drop.getLocation());
-    actions.dragAndDrop(drag, drop);
-    actions.build().perform();
-    return this;
-  }
-
-  public OUtils dragAndDrop(Point point1, Point point2) {
-    LOG.info("Drag element by point " + point1 + " to " + point2);
-    actions.moveByOffset(point1.getX(), point1.getY()).clickAndHold().moveByOffset(point2.getX(), point2.getY()).release();
-    actions.build().perform();
-    return this;
-  }
-
-  public OUtils dragAndDropByOffset(WebElement element, int xOffset, int yOffset) {
-    LOG.info("Drag element by offset " + "(" + xOffset + "," + yOffset + ")");
-    actions.dragAndDropBy(element, xOffset, yOffset);
+  public OUtils dragAndDrop(ODraggable drag, ODraggable drop) {
+    LOG.info("Drag element " + drag.getCenter() + " to " + drop.getCenter());
+    actions.dragAndDrop(drag.getElement(), drop.getElement());
     actions.build().perform();
     waitTime(1);
-    return this;
-  }
-
-  public OUtils dragByX(WebElement element, int xOffset) {
-    actions.moveToElement(element).clickAndHold().moveByOffset(xOffset, 0).release();
-    actions.build().perform();
-    return this;
-  }
-
-  public OUtils dragByY(WebElement element, int yOffset) {
-    actions.moveToElement(element).clickAndHold().moveByOffset(0, yOffset).release();
-    actions.build().perform();
-    return this;
-  }
-
-  public OUtils dragByXY(WebElement element, int xOffset, int yOffset) {
-    actions.moveToElement(element).clickAndHold().moveByOffset(xOffset, yOffset).release();
-    actions.build().perform();
     return this;
   }
 
@@ -247,60 +226,63 @@ public class OUtils {
     return this;
   }
 
-  public OUtils dragByX(ODraggable obj, int xOffset) {
+  public OUtils moveByX(ODraggable obj, int xOffset) {
     actions.moveToElement(obj.getElement()).clickAndHold().moveByOffset(xOffset, 0).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
-  public OUtils dragByY(ODraggable obj, int yOffset) {
+  public OUtils moveByY(ODraggable obj, int yOffset) {
     actions.moveToElement(obj.getElement()).clickAndHold().moveByOffset(0, yOffset).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
-  public OUtils dragByXY(ODraggable obj, int xOffset, int yOffset) {
+  public OUtils moveByXY(ODraggable obj, int xOffset, int yOffset) {
     actions.moveToElement(obj.getElement()).clickAndHold().moveByOffset(xOffset, yOffset).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
-  public OUtils dragAndDropCenterToCenter(ODraggable obj1, ODraggable obj2) {
+  public OUtils moveElementFromCenterToCenter(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), obj1.getHalfWidth(), obj1.getHalfHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getHalfWidth(), obj2.getHalfHeight()).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils dragAndDropTopLeftToTopLeft(ODraggable obj1, ODraggable obj2) {
+  public OUtils moveElementFromTopLeftToTopLeft(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), 0, 0).clickAndHold().moveToElement(obj2.getElement(), 0, 0).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils dragAndDropTopRightToTopRight(ODraggable obj1, ODraggable obj2) {
+  public OUtils moveElementFromTopRightToTopRight(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), obj1.getWidth(), 0).clickAndHold().moveToElement(obj2.getElement(), obj2.getWidth(), 0).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils dragAndDropDownRightToDownRight(ODraggable obj1, ODraggable obj2) {
+  public OUtils moveElementFromDownRightToDownRight(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), obj1.getWidth(), obj1.getHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getWidth(), obj2.getHeight()).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils dragAndDropDownLeftToDownLeft(ODraggable obj1, ODraggable obj2) {
+  public OUtils moveElementFromDownLeftToDownLeft(ODraggable obj1, ODraggable obj2) {
     actions.moveToElement(obj1.getElement(), 0, obj1.getHeight()).clickAndHold().moveToElement(obj2.getElement(), 0, obj2.getHeight()).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils dragAndDropTopLeftToTopLeftWithOffset(ODraggable obj1, int x1, int y1, ODraggable obj2, int x2, int y2) {
+  public OUtils moveElementFromTopLeftToTopLeftWithOffset(ODraggable obj1, int x1, int y1, ODraggable obj2, int x2, int y2) {
     actions.moveToElement(obj1.getElement(), x1, y1).clickAndHold().moveToElement(obj2.getElement(), x2, y2).release();
     actions.build().perform();
     waitTime(1);

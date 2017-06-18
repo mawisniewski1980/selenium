@@ -26,6 +26,10 @@ public class ODraggable {
     return point;
   }
 
+  public String getText() {
+    return element.getText();
+  }
+
   public int getWidth() {
     return getDimension().getWidth();
   }
@@ -70,10 +74,10 @@ public class ODraggable {
     return getCenterPointOfElement(element);
   }
 
-  public double getDistanceCenterToCenter(WebElement element) {
+  public int getDistanceCenterToCenter(WebElement element) {
     double dx = getCenter().getX() - getCenterSecondElement(element).getX();
     double dy = getCenter().getY() - getCenterSecondElement(element).getY();
-    return Math.sqrt(dx * dx + dy * dy);
+    return (int) Math.sqrt(dx * dx + dy * dy);
   }
 
   private Point getCenterPointOfElement(WebElement element) {

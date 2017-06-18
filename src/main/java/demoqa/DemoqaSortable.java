@@ -95,7 +95,7 @@ public class DemoqaSortable extends PageObject {
   public DemoqaSortable dragDefaultFunctionalityItem(String item1, String item2) {
     ODraggable obj1 = new ODraggable(defaultFunctionalityItems.get(utils.getId(defaultFunctionalityItems, item1)));
     ODraggable obj2 = new ODraggable(defaultFunctionalityItems.get(utils.getId(defaultFunctionalityItems, item2)));
-    utils.dragByY(obj1, (int) obj1.getDistanceCenterToCenter(obj2.getElement()) + 1);
+    utils.moveByY(obj1, (int) obj1.getDistanceCenterToCenter(obj2.getElement()) + 1);
     return this;
   }
 
@@ -103,7 +103,7 @@ public class DemoqaSortable extends PageObject {
     List<WebElement> itemsWeb1 = utils.findNextElementsByCssSelector(connectListOne, connectListsDefaultItemsCss);
     ODraggable obj1 = new ODraggable(itemsWeb1.get(utils.getId(itemsWeb1, item1)));
     ODraggable obj2 = new ODraggable(itemsWeb1.get(utils.getId(itemsWeb1, item2)));
-    utils.dragByY(obj1, (int) obj1.getDistanceCenterToCenter(obj2.getElement()) + 1);
+    utils.moveByY(obj1, (int) obj1.getDistanceCenterToCenter(obj2.getElement()) + 1);
     return this;
   }
 
@@ -111,7 +111,7 @@ public class DemoqaSortable extends PageObject {
     List<WebElement> itemsWeb1 = utils.findNextElementsByCssSelector(connectListTwo, connectListsHighlightItemsCss);
     ODraggable obj1 = new ODraggable(itemsWeb1.get(utils.getId(itemsWeb1, item1)));
     ODraggable obj2 = new ODraggable(itemsWeb1.get(utils.getId(itemsWeb1, item2)));
-    utils.dragByY(obj1, (int) obj1.getDistanceCenterToCenter(obj2.getElement()) + 1);
+    utils.moveByY(obj1, (int) obj1.getDistanceCenterToCenter(obj2.getElement()) + 1);
     return this;
   }
 
@@ -122,7 +122,7 @@ public class DemoqaSortable extends PageObject {
     List<WebElement> items2Web1 = utils.findNextElementsByCssSelector(connectListTwo, connectListsHighlightItemsCss);
     ODraggable obj2 = new ODraggable(items2Web1.get(utils.getId(items2Web1, item2)));
 
-    utils.dragAndDropCenterToCenter(obj1, obj2);
+    utils.moveElementFromCenterToCenter(obj1, obj2);
     return this;
   }
 
@@ -133,7 +133,7 @@ public class DemoqaSortable extends PageObject {
     List<WebElement> items2Web1 = utils.findNextElementsByCssSelector(connectListTwo, connectListsHighlightItemsCss);
     ODraggable obj2 = new ODraggable(items2Web1.get(utils.getId(items2Web1, item2)));
 
-    utils.dragAndDropCenterToCenter(obj2, obj1);
+    utils.moveElementFromCenterToCenter(obj2, obj1);
     return this;
   }
 

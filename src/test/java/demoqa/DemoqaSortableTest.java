@@ -80,6 +80,11 @@ public class DemoqaSortableTest extends TestObject {
 
     commonElements.tabsLinkClick("Connect Lists");
 
+    List<String> listAllLeftBefore = sortable.getConnectListsAllItemsOnDefaultText();
+    List<String> listAllRightBefore = sortable.getConnectListsAllItemsOnHighlightText();
+    LOG.info("List All left before: " + listAllLeftBefore);
+    LOG.info("List All right before: " + listAllRightBefore);
+
     List<String> listLeftBefore = sortable.getConnectListsDefaultItemsText();
     LOG.info("List Left before: " + listLeftBefore);
 
@@ -89,12 +94,18 @@ public class DemoqaSortableTest extends TestObject {
     LOG.info("List Left after: " + listLeftAfter);
 
     assertThat(listLeftBefore).isNotEqualTo(listLeftAfter);
+
   }
 
   @Test
   public void dragItemFromRightToLeftConnectList() {
 
     commonElements.tabsLinkClick("Connect Lists");
+
+    List<String> listAllLeftBefore = sortable.getConnectListsAllItemsOnDefaultText();
+    List<String> listAllRightBefore = sortable.getConnectListsAllItemsOnHighlightText();
+    LOG.info("List All left before: " + listAllLeftBefore);
+    LOG.info("List All right before: " + listAllRightBefore);
 
     List<String> listRightBefore = sortable.getConnectListsHighlightItemsText();
     LOG.info("List right before: " + listRightBefore);
@@ -106,10 +117,6 @@ public class DemoqaSortableTest extends TestObject {
 
     assertThat(listRightBefore).isNotEqualTo(listRightAfter);
 
-    List<String> listAllLeftBefore = sortable.getConnectListsAllItemsOnDefaultText();
-    List<String> listAllRightBefore = sortable.getConnectListsAllItemsOnHighlightText();
-    LOG.info("List All left before: " + listAllLeftBefore);
-    LOG.info("List All right before: " + listAllRightBefore);
   }
 
   @Test

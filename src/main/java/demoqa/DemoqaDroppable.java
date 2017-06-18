@@ -139,11 +139,11 @@ public class DemoqaDroppable extends PageObject {
   }
 
   public void defaultFunctionalityDragAndDrop() {
-    utils.dragAndDrop(defaultFunctionalistyDragMe, defaultFunctionalistyDropMe);
+    utils.dragAndDrop(new ODraggable(defaultFunctionalistyDragMe), new ODraggable(defaultFunctionalistyDropMe));
   }
 
   public void defaultFunctionalityDragAndDropBy(int xOffset, int yOffset) {
-    utils.dragAndDropByOffset(defaultFunctionalistyDragMe, xOffset, yOffset);
+    utils.dragAndDropByOffset(new ODraggable(defaultFunctionalistyDragMe), xOffset, yOffset);
   }
 
   public String getAcceptDroppableText() {
@@ -151,11 +151,11 @@ public class DemoqaDroppable extends PageObject {
   }
 
   public void acceptNonValidDragAndDrop() {
-    utils.dragAndDrop(acceptNonValid, acceptDroppable);
+    utils.dragAndDrop(new ODraggable(acceptNonValid), new ODraggable(acceptDroppable));
   }
 
   public void acceptValidDragAndDrop() {
-    utils.dragAndDrop(acceptDragable, acceptDroppable);
+    utils.dragAndDrop(new ODraggable(acceptDragable), new ODraggable(acceptDroppable));
   }
 
   public String getPreventPropagationDroppableText() {
@@ -187,11 +187,11 @@ public class DemoqaDroppable extends PageObject {
     ODraggable innerDrop2 = new ODraggable(preventPropagationDroppable2Inner);
     ODraggable contener = new ODraggable(preventPropagationDraggableContener.findElement(By.cssSelector(".inside_contain")));
 
-    utils.dragAndDropTopLeftToTopLeft(drag, outDrop)
-        .dragAndDropTopLeftToTopLeft(drag, outDrop2)
-        .dragAndDropTopLeftToTopLeft(drag, innerDrop)
-        .dragAndDropTopLeftToTopLeft(drag, innerDrop2)
-        .dragAndDropTopLeftToTopLeft(drag, contener);
+    utils.moveElementFromTopLeftToTopLeft(drag, outDrop)
+        .moveElementFromTopLeftToTopLeft(drag, outDrop2)
+        .moveElementFromTopLeftToTopLeft(drag, innerDrop)
+        .moveElementFromTopLeftToTopLeft(drag, innerDrop2)
+        .moveElementFromTopLeftToTopLeft(drag, contener);
   }
 
   public OInSpace getRevertDraggablePosition() {
@@ -217,8 +217,8 @@ public class DemoqaDroppable extends PageObject {
     OInSpace oDrag2PositionBefore = drag2.getPosition();
     OInSpace oDropPositionBefore = drop.getPosition();
 
-    utils.dragAndDropCenterToCenter(drag, drop);
-    utils.dragAndDropCenterToCenter(drag2, drop);
+    utils.moveElementFromCenterToCenter(drag, drop);
+    utils.moveElementFromCenterToCenter(drag2, drop);
 
     OInSpace oDragPositionAfter = drag.getPosition();
     OInSpace oDrag2PositionAfter = drag2.getPosition();
@@ -254,7 +254,7 @@ public class DemoqaDroppable extends PageObject {
     int index2 = utils.getId(listCatalogItems, itemTitle);
     WebElement listCatalogItem = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li")).get(index2);
     utils.waitTime(2);
-    utils.dragAndDropCenterToCenter(new ODraggable(listCatalogItem), new ODraggable(cart));
+    utils.moveElementFromCenterToCenter(new ODraggable(listCatalogItem), new ODraggable(cart));
     return this;
   }
 }

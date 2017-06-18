@@ -38,6 +38,19 @@ public class OInSpace {
     return new Point(x, y);
   }
 
+  public void checkIfObjectIsInAnotherObject(OInSpace second) {
+
+    System.out.println("Obj1 LT: " + getLeftTop());
+    System.out.println("Obj1 RT: " + getRightTop());
+    System.out.println("Obj1 LD: " + getLeftDown());
+    System.out.println("Obj1 RD: " + getRightDown());
+
+    System.out.println("Obj2 LT: " + second.getLeftTop());
+    System.out.println("Obj2 RT: " + second.getRightTop());
+    System.out.println("Obj2 LD: " + second.getLeftDown());
+    System.out.println("Obj2 RD: " + second.getRightDown());
+  }
+
   @Override
   public String toString() {
     return "[leftTop=" + leftTop + ", rightTop=" + rightTop + ", leftDown=" + leftDown + ", rightDown=" + rightDown + "]";
