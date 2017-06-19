@@ -142,6 +142,14 @@ public class DemoqaDroppable extends PageObject {
     utils.dragAndDrop(new ODraggable(defaultFunctionalistyDragMe), new ODraggable(defaultFunctionalistyDropMe));
   }
 
+  public OInSpace getPositionDefaultFunctionalistyDragMe() {
+    return new ODraggable(defaultFunctionalistyDragMe).getPosition();
+  }
+
+  public OInSpace getPositionDefaultFunctionalistyDropMe() {
+    return new ODraggable(defaultFunctionalistyDropMe).getPosition();
+  }
+
   public void defaultFunctionalityDragAndDropBy(int xOffset, int yOffset) {
     utils.dragAndDropByOffset(new ODraggable(defaultFunctionalistyDragMe), xOffset, yOffset);
   }

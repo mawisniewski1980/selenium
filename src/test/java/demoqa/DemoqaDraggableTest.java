@@ -62,21 +62,12 @@ public class DemoqaDraggableTest extends TestObject {
     OInSpace position1 = draggable.getPositionConMovVertically();
     LOG.info("Position 1 " + position1);
 
-    draggable.dragConMovVertically(200, 300);
+    draggable.dragConMovVertically(0, 100);
 
     OInSpace position2 = draggable.getPositionConMovVertically();
     LOG.info("Position 2 " + position2);
 
     assertThat(position1).isNotEqualTo(position2);
-  }
-
-  @Test
-  public void xx() {
-    commonElements.tabsLinkClick("Cursor style");
-
-    LOG.info("Get position box1: " + draggable.getPositiondragCursorStyleBox1());
-    LOG.info("Get position box2: " + draggable.getPositiondragCursorStyleBox2());
-    draggable.getPositionxxx();
   }
 
 }

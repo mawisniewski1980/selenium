@@ -38,17 +38,16 @@ public class OInSpace {
     return new Point(x, y);
   }
 
-  public void checkIfObjectIsInAnotherObject(OInSpace second) {
+  public boolean checkIfObjectIsInAnotherObject(OInSpace second) {
 
-    System.out.println("Obj1 LT: " + getLeftTop());
-    System.out.println("Obj1 RT: " + getRightTop());
-    System.out.println("Obj1 LD: " + getLeftDown());
-    System.out.println("Obj1 RD: " + getRightDown());
+    if ((getLeftTop().getX() > second.getLeftTop().getX() && getLeftTop().getY() > second.getLeftTop().getY()) &&
+        (getRightTop().getX() < second.getRightTop().getX() && getRightTop().getY() > second.getRightTop().getY()) &&
+        (getLeftDown().getX() > second.getLeftDown().getX() && getLeftDown().getY() < second.getLeftDown().getY()) &&
+        (getRightDown().getX() < second.getRightDown().getX() && getRightDown().getY() < second.getRightDown().getY()))
+      return true;
 
-    System.out.println("Obj2 LT: " + second.getLeftTop());
-    System.out.println("Obj2 RT: " + second.getRightTop());
-    System.out.println("Obj2 LD: " + second.getLeftDown());
-    System.out.println("Obj2 RD: " + second.getRightDown());
+    return false;
+
   }
 
   @Override

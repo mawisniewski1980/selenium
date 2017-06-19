@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import enums.PageUrls.PageUrl;
 import testobject.TestObject;
+import utilsobjects.OInSpace;
 
 public class DemoqaDroppableTest extends TestObject {
 
@@ -40,9 +41,20 @@ public class DemoqaDroppableTest extends TestObject {
   @Test
   public void defaultFunctionalityDragMeToTargetInside() {
     commonElements.tabsLinkClick("Default functionality");
+
+    OInSpace position1a = droppable.getPositionDefaultFunctionalistyDragMe();
+    OInSpace position1b = droppable.getPositionDefaultFunctionalistyDropMe();
+
+    assertThat(position1a.checkIfObjectIsInAnotherObject(position1b)).isFalse();
+
     assertThat(droppable.getDefaultFunctionalistyDropMeText()).isEqualTo("Drop here");
     droppable.defaultFunctionalityDragAndDrop();
     assertThat(droppable.getDefaultFunctionalistyDropMeText()).isEqualTo("Dropped!");
+
+    position1a = droppable.getPositionDefaultFunctionalistyDragMe();
+    position1b = droppable.getPositionDefaultFunctionalistyDropMe();
+
+    assertThat(position1a.checkIfObjectIsInAnotherObject(position1b)).isTrue();
   }
 
   @Test
