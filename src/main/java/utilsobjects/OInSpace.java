@@ -39,7 +39,7 @@ public class OInSpace {
   }
 
   public boolean checkIfObjectIsInAnotherObject(OInSpace second) {
-
+    // comment
     if ((getLeftTop().getX() > second.getLeftTop().getX() && getLeftTop().getY() > second.getLeftTop().getY()) &&
         (getRightTop().getX() < second.getRightTop().getX() && getRightTop().getY() > second.getRightTop().getY()) &&
         (getLeftDown().getX() > second.getLeftDown().getX() && getLeftDown().getY() < second.getLeftDown().getY()) &&
