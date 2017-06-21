@@ -5,6 +5,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,17 +14,13 @@ import org.slf4j.LoggerFactory;
 
 import pageobject.PageObject;
 import utilsobjects.ODraggable;
-import utilsobjects.OInSpace;
 
 public class DemoqaDroppable extends PageObject {
 
   private static final Logger LOG = LoggerFactory.getLogger(DemoqaDroppable.class.getName());
 
-  private DemoqaCommonElements commonElements;
-
   public DemoqaDroppable(WebDriver driver) {
     super(driver);
-    commonElements = new DemoqaCommonElements(driver);
   }
 
   private final String defaultFunctionalistyDragMeCss = "#draggableview";
@@ -142,12 +139,16 @@ public class DemoqaDroppable extends PageObject {
     utils.dragAndDrop(new ODraggable(defaultFunctionalistyDragMe), new ODraggable(defaultFunctionalistyDropMe));
   }
 
-  public OInSpace getPositionDefaultFunctionalistyDragMe() {
-    return new ODraggable(defaultFunctionalistyDragMe).getPosition();
+  public Point getPositionDefaultFunctionalistyDragMe() {
+    return new ODraggable(defaultFunctionalistyDragMe).getRectangle().getPoint();
   }
 
-  public OInSpace getPositionDefaultFunctionalistyDropMe() {
-    return new ODraggable(defaultFunctionalistyDropMe).getPosition();
+  public Point getPositionDefaultFunctionalistyDropMe() {
+    return new ODraggable(defaultFunctionalistyDropMe).getRectangle().getPoint();
+  }
+
+  public void check() {
+    utils.checkIfElementIsInAnotherElement(new ODraggable(defaultFunctionalistyDragMe), new ODraggable(defaultFunctionalistyDropMe));
   }
 
   public void defaultFunctionalityDragAndDropBy(int xOffset, int yOffset) {
@@ -202,16 +203,16 @@ public class DemoqaDroppable extends PageObject {
         .moveElementFromTopLeftToTopLeft(drag, contener);
   }
 
-  public OInSpace getRevertDraggablePosition() {
-    return new ODraggable(revertDraggablePosition).getPosition();
+  public Point getRevertDraggablePosition() {
+    return new ODraggable(revertDraggablePosition).getRectangle().getPoint();
   }
 
-  public OInSpace getRevertDraggablePosition2() {
-    return new ODraggable(revertDraggablePosition2).getPosition();
+  public Point getRevertDraggablePosition2() {
+    return new ODraggable(revertDraggablePosition2).getRectangle().getPoint();
   }
 
-  public OInSpace getRevertDropablePosition() {
-    return new ODraggable(revertDropablePosition).getPosition();
+  public Point getRevertDropablePosition() {
+    return new ODraggable(revertDropablePosition).getRectangle().getPoint();
   }
 
   public void revertDraggablePosition() {
@@ -221,16 +222,16 @@ public class DemoqaDroppable extends PageObject {
     ODraggable drop = new ODraggable(revertDropablePosition);
     // ODraggable contener = new ODraggable(revertDraggablePositionContener.findElement(By.cssSelector(".inside_contain")));
 
-    OInSpace oDragPositionBefore = drag.getPosition();
-    OInSpace oDrag2PositionBefore = drag2.getPosition();
-    OInSpace oDropPositionBefore = drop.getPosition();
+    Point oDragPositionBefore = drag.getRectangle().getPoint();
+    Point oDrag2PositionBefore = drag2.getRectangle().getPoint();
+    Point oDropPositionBefore = drop.getRectangle().getPoint();
 
     utils.moveElementFromCenterToCenter(drag, drop);
     utils.moveElementFromCenterToCenter(drag2, drop);
 
-    OInSpace oDragPositionAfter = drag.getPosition();
-    OInSpace oDrag2PositionAfter = drag2.getPosition();
-    OInSpace oDropPositionAfter = drop.getPosition();
+    Point oDragPositionAfter = drag.getRectangle().getPoint();
+    Point oDrag2PositionAfter = drag2.getRectangle().getPoint();
+    Point oDropPositionAfter = drop.getRectangle().getPoint();
 
     assertThat(oDragPositionBefore).isEqualsToByComparingFields(oDragPositionAfter);
     assertThat(oDrag2PositionBefore).isNotEqualTo(oDrag2PositionAfter);
@@ -265,4 +266,5 @@ public class DemoqaDroppable extends PageObject {
     utils.moveElementFromCenterToCenter(new ODraggable(listCatalogItem), new ODraggable(cart));
     return this;
   }
+
 }

@@ -4,12 +4,12 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Point;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import enums.PageUrls.PageUrl;
 import testobject.TestObject;
-import utilsobjects.OInSpace;
 
 public class DemoqaDraggableTest extends TestObject {
 
@@ -43,12 +43,12 @@ public class DemoqaDraggableTest extends TestObject {
 
     commonElements.tabsLinkClick("Default functionality");
 
-    OInSpace position1 = draggable.getPositionDefFuncDraggable();
+    Point position1 = draggable.getPositionDefFuncDraggable();
     LOG.info("Position 1 " + position1);
 
     draggable.dragDefFuncDraggable(200, 300);
 
-    OInSpace position2 = draggable.getPositionDefFuncDraggable();
+    Point position2 = draggable.getPositionDefFuncDraggable();
     LOG.info("Position 2 " + position2);
 
     assertThat(position1).isNotEqualTo(position2);
@@ -59,12 +59,12 @@ public class DemoqaDraggableTest extends TestObject {
 
     commonElements.tabsLinkClick("Constrain movement");
 
-    OInSpace position1 = draggable.getPositionConMovVertically();
+    Point position1 = draggable.getPositionConMovVertically();
     LOG.info("Position 1 " + position1);
 
     draggable.dragConMovVertically(0, 100);
 
-    OInSpace position2 = draggable.getPositionConMovVertically();
+    Point position2 = draggable.getPositionConMovVertically();
     LOG.info("Position 2 " + position2);
 
     assertThat(position1).isNotEqualTo(position2);

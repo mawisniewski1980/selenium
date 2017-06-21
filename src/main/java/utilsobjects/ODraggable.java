@@ -2,9 +2,14 @@ package utilsobjects;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ODraggable {
+
+  private static final Logger LOG = LoggerFactory.getLogger(ODraggable.class.getName());
 
   private WebElement element;
 
@@ -16,75 +21,43 @@ public class ODraggable {
     return element;
   }
 
-  public Dimension getDimension() {
-    Dimension dimension = element.getSize();
-    return dimension;
-  }
-
-  public Point getPoint() {
-    Point point = element.getLocation();
-    return point;
-  }
-
   public String getText() {
     return element.getText();
   }
 
+  public Rectangle getRectangle() {
+    Point point = element.getLocation();
+    Dimension dimension = element.getSize();
+    return new Rectangle(point, dimension);
+  }
+
   public int getWidth() {
-    return getDimension().getWidth();
+    return getRectangle().getWidth();
   }
 
   public int getHeight() {
-    return getDimension().getHeight();
+    return getRectangle().getHeight();
   }
 
   public int getHalfWidth() {
-    return getDimension().getWidth() / 2;
+    return getRectangle().getWidth() / 2;
   }
 
   public int getHalfHeight() {
-    return getDimension().getHeight() / 2;
+    return getRectangle().getHeight() / 2;
   }
 
   public int getX() {
-    return getPoint().getX();
+    return getRectangle().getX();
   }
 
   public int getY() {
-    return getPoint().getY();
-  }
-
-  public OInSpace getPosition() {
-    Point point = this.element.getLocation();
-    Dimension dimension = this.element.getSize();
-
-    Point leftTop = new Point(point.getX(), point.getY());
-    Point rightTop = new Point(point.getX() + dimension.getWidth(), point.getY());
-    Point leftDown = new Point(point.getX(), point.getY() + dimension.getHeight());
-    Point rightDown = new Point(point.getX() + dimension.getWidth(), point.getY() + dimension.getHeight());
-
-    return new OInSpace(leftTop, rightTop, leftDown, rightDown);
+    return getRectangle().getY();
   }
 
   public Point getCenter() {
-    return getCenterPointOfElement(element);
-  }
-
-  public Point getCenterSecondElement(WebElement element) {
-    return getCenterPointOfElement(element);
-  }
-
-  public int getDistanceCenterToCenter(WebElement element) {
-    double dx = getCenter().getX() - getCenterSecondElement(element).getX();
-    double dy = getCenter().getY() - getCenterSecondElement(element).getY();
-    return (int) Math.sqrt(dx * dx + dy * dy);
-  }
-
-  private Point getCenterPointOfElement(WebElement element) {
-    Point point = element.getLocation();
-    Dimension dimension = element.getSize();
-    int x = point.getX() + dimension.getWidth() / 2;
-    int y = point.getY() + dimension.getHeight() / 2;
+    int x = getX() + getWidth() / 2;
+    int y = getY() + getHeight() / 2;
     return new Point(x, y);
   }
 

@@ -152,8 +152,8 @@ public class OUtils {
     Dimension state = null;
     Dimension stateCheck = null;
     do {
-      state = element.getDimension();
-      stateCheck = element.getDimension();
+      state = element.getRectangle().getDimension();
+      stateCheck = element.getRectangle().getDimension();
       waitTime(1);
     } while (!stateCheck.equals(state));
   }
@@ -218,79 +218,79 @@ public class OUtils {
     return this;
   }
 
-  public OUtils dragAndDropByOffset(ODraggable obj, int xOffset, int yOffset) {
+  public OUtils dragAndDropByOffset(ODraggable drag, int xOffset, int yOffset) {
     LOG.info("Drag element by offset " + "(" + xOffset + "," + yOffset + ")");
-    actions.dragAndDropBy(obj.getElement(), xOffset, yOffset);
+    actions.dragAndDropBy(drag.getElement(), xOffset, yOffset);
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils moveByX(ODraggable obj, int xOffset) {
-    actions.moveToElement(obj.getElement()).clickAndHold().moveByOffset(xOffset, 0).release();
+  public OUtils moveByX(ODraggable drag, int xOffset) {
+    actions.moveToElement(drag.getElement()).clickAndHold().moveByOffset(xOffset, 0).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils moveByY(ODraggable obj, int yOffset) {
-    actions.moveToElement(obj.getElement()).clickAndHold().moveByOffset(0, yOffset).release();
+  public OUtils moveByY(ODraggable drag, int yOffset) {
+    actions.moveToElement(drag.getElement()).clickAndHold().moveByOffset(0, yOffset).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils moveByXY(ODraggable obj, int xOffset, int yOffset) {
-    actions.moveToElement(obj.getElement()).clickAndHold().moveByOffset(xOffset, yOffset).release();
+  public OUtils moveByXY(ODraggable drag, int xOffset, int yOffset) {
+    actions.moveToElement(drag.getElement()).clickAndHold().moveByOffset(xOffset, yOffset).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils moveElementFromCenterToCenter(ODraggable obj1, ODraggable obj2) {
-    actions.moveToElement(obj1.getElement(), obj1.getHalfWidth(), obj1.getHalfHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getHalfWidth(), obj2.getHalfHeight()).release();
+  public OUtils moveElementFromCenterToCenter(ODraggable drag, ODraggable drop) {
+    actions.moveToElement(drag.getElement(), drag.getHalfWidth(), drag.getHalfHeight()).clickAndHold().moveToElement(drop.getElement(), drop.getHalfWidth(), drop.getHalfHeight()).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils moveElementFromTopLeftToTopLeft(ODraggable obj1, ODraggable obj2) {
-    actions.moveToElement(obj1.getElement(), 0, 0).clickAndHold().moveToElement(obj2.getElement(), 0, 0).release();
+  public OUtils moveElementFromTopLeftToTopLeft(ODraggable drag, ODraggable drop) {
+    actions.moveToElement(drag.getElement(), 0, 0).clickAndHold().moveToElement(drop.getElement(), 0, 0).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils moveElementFromTopRightToTopRight(ODraggable obj1, ODraggable obj2) {
-    actions.moveToElement(obj1.getElement(), obj1.getWidth(), 0).clickAndHold().moveToElement(obj2.getElement(), obj2.getWidth(), 0).release();
+  public OUtils moveElementFromTopRightToTopRight(ODraggable drag, ODraggable drop) {
+    actions.moveToElement(drag.getElement(), drag.getWidth(), 0).clickAndHold().moveToElement(drop.getElement(), drop.getWidth(), 0).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils moveElementFromDownRightToDownRight(ODraggable obj1, ODraggable obj2) {
-    actions.moveToElement(obj1.getElement(), obj1.getWidth(), obj1.getHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getWidth(), obj2.getHeight()).release();
+  public OUtils moveElementFromDownRightToDownRight(ODraggable drag, ODraggable drop) {
+    actions.moveToElement(drag.getElement(), drag.getWidth(), drag.getHeight()).clickAndHold().moveToElement(drop.getElement(), drop.getWidth(), drop.getHeight()).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils moveElementFromDownLeftToDownLeft(ODraggable obj1, ODraggable obj2) {
-    actions.moveToElement(obj1.getElement(), 0, obj1.getHeight()).clickAndHold().moveToElement(obj2.getElement(), 0, obj2.getHeight()).release();
+  public OUtils moveElementFromDownLeftToDownLeft(ODraggable drag, ODraggable drop) {
+    actions.moveToElement(drag.getElement(), 0, drag.getHeight()).clickAndHold().moveToElement(drop.getElement(), 0, drop.getHeight()).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils moveElementFromTopLeftToTopLeftWithOffset(ODraggable obj1, int x1, int y1, ODraggable obj2, int x2, int y2) {
-    actions.moveToElement(obj1.getElement(), x1, y1).clickAndHold().moveToElement(obj2.getElement(), x2, y2).release();
+  public OUtils moveElementFromTopLeftToTopLeftWithOffset(ODraggable drag, int x1, int y1, ODraggable drop, int x2, int y2) {
+    actions.moveToElement(drag.getElement(), x1, y1).clickAndHold().moveToElement(drop.getElement(), x2, y2).release();
     actions.build().perform();
     waitTime(1);
     return this;
   }
 
-  public OUtils selectFromCenterToCenter(ODraggable obj1, ODraggable obj2) {
-    actions.moveToElement(obj1.getElement(), obj1.getHalfWidth(), obj1.getHalfHeight()).clickAndHold().moveToElement(obj2.getElement(), obj2.getHalfWidth(), obj2.getHalfHeight()).release();
+  public OUtils selectFromCenterToCenter(ODraggable drag, ODraggable drop) {
+    actions.moveToElement(drag.getElement(), drag.getHalfWidth(), drag.getHalfHeight()).clickAndHold().moveToElement(drop.getElement(), drop.getHalfWidth(), drop.getHalfHeight()).release();
     actions.build().perform();
     waitTime(1);
     return this;
@@ -310,6 +310,26 @@ public class OUtils {
     actions.keyUp(Keys.CONTROL).build().perform();
     waitTime(1);
     return this;
+  }
+
+  public int getDistanceBetweenCenterToCenter(ODraggable drag, ODraggable drop) {
+    double dx = drag.getCenter().getX() - drop.getCenter().getX();
+    double dy = drag.getCenter().getY() - drop.getCenter().getY();
+    return (int) Math.sqrt(dx * dx + dy * dy);
+  }
+
+  public boolean checkIfElementIsInAnotherElement(ODraggable drag, ODraggable drop) {
+
+    System.out.println("Point obj1 " + drag.getX() + " " + drag.getY());
+    System.out.println("Point obj2 " + drop.getX() + " " + drop.getY());
+
+    System.out.println("Width/height obj1 " + drag.getWidth() + " " + drag.getHeight());
+    System.out.println("Width/height obj2 " + drop.getWidth() + " " + drop.getHeight());
+    /*
+     * if ( (obj1.getX() > obj2.getX()) && (obj1.getY() > obj2.getY()) && obj1.getWidth() < obj2.getWidth() && ) return true;
+     */
+
+    return false;
   }
 
   /**

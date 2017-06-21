@@ -2,6 +2,7 @@ package demoqa;
 
 import java.util.List;
 
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +11,6 @@ import org.slf4j.LoggerFactory;
 
 import pageobject.PageObject;
 import utilsobjects.ODraggable;
-import utilsobjects.OInSpace;
 
 public class DemoqaDraggable extends PageObject {
 
@@ -76,51 +76,44 @@ public class DemoqaDraggable extends PageObject {
   @FindBy(css = sortableBoxLiCss)
   private List<WebElement> sortableBoxLi;
 
-  public OInSpace getPositionDefFuncDraggable() {
-    return new ODraggable(defFuncDraggable).getPosition();
+  public Point getPositionDefFuncDraggable() {
+    return new ODraggable(defFuncDraggable).getRectangle().getPoint();
   }
 
-  public OInSpace getPositionConMovVertically() {
-    return new ODraggable(conMovVertically).getPosition();
+  public Point getPositionConMovVertically() {
+    return new ODraggable(conMovVertically).getRectangle().getPoint();
   }
 
-  public OInSpace getPositionConMovHorizontally() {
-    return new ODraggable(conMovHorizontally).getPosition();
+  public Point getPositionConMovHorizontally() {
+    return new ODraggable(conMovHorizontally).getRectangle().getPoint();
   }
 
-  public OInSpace getPositionConWrapper1Dimension() {
-    return new ODraggable(conWrapper1).getPosition();
+  public Point getPositionConWrapper1Dimension() {
+    return new ODraggable(conWrapper1).getRectangle().getPoint();
   }
 
-  public OInSpace getPositionConWrapper1Box() {
-    return new ODraggable(conWrapper1Box).getPosition();
+  public Point getPositionConWrapper1Box() {
+    return new ODraggable(conWrapper1Box).getRectangle().getPoint();
   }
 
-  public OInSpace getPositionConWrapper2() {
-    return new ODraggable(conWrapper2).getPosition();
+  public Point getPositionConWrapper2() {
+    return new ODraggable(conWrapper2).getRectangle().getPoint();
   }
 
-  public OInSpace getPositionConWrapper2Box() {
-    return new ODraggable(conWrapper2Box).getPosition();
+  public Point getPositionConWrapper2Box() {
+    return new ODraggable(conWrapper2Box).getRectangle().getPoint();
   }
 
-  public OInSpace getPositiondragCursorStyleBox1() {
-    return new ODraggable(dragBox1).getPosition();
+  public Point getPositiondragCursorStyleBox1() {
+    return new ODraggable(dragBox1).getRectangle().getPoint();
   }
 
-  public OInSpace getPositiondragCursorStyleBox2() {
-    return new ODraggable(dragBox2).getPosition();
+  public Point getPositiondragCursorStyleBox2() {
+    return new ODraggable(dragBox2).getRectangle().getPoint();
   }
 
-  public OInSpace getPositiondragCursorStyleBox3() {
-    return new ODraggable(dragBox3).getPosition();
-  }
-
-  public void getPositionxxx() {
-    OInSpace obj1 = new ODraggable(dragBox1).getPosition();
-    OInSpace obj2 = new ODraggable(dragBox2).getPosition();
-
-    obj1.checkIfObjectIsInAnotherObject(obj2);
+  public Point getPositiondragCursorStyleBox3() {
+    return new ODraggable(dragBox3).getRectangle().getPoint();
   }
 
   public DemoqaDraggable dragDefFuncDraggable(int xOffset, int yOffset) {

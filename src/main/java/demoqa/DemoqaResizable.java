@@ -47,33 +47,27 @@ public class DemoqaResizable extends PageObject {
   private WebElement minMaxSize;
 
   public Dimension getDefaultFunctionalityResizableDimension() {
-    ODraggable obj = new ODraggable(defaultFunctionalityResizable);
-    return obj.getDimension();
+    return new ODraggable(defaultFunctionalityResizable).getRectangle().getDimension();
   }
 
   public Dimension getAnimateResizableDimension() {
-    ODraggable obj = new ODraggable(animateResizable);
-    return obj.getDimension();
+    return new ODraggable(animateResizable).getRectangle().getDimension();
   }
 
   public Dimension getConstrainResizableAreaContainerDimension() {
-    ODraggable obj = new ODraggable(constrainResizableAreaContainer);
-    return obj.getDimension();
+    return new ODraggable(constrainResizableAreaContainer).getRectangle().getDimension();
   }
 
   public Dimension getConstrainResizableAreaContainerResizableConstrainDimension() {
-    ODraggable obj = new ODraggable(constrainResizableAreaContainerResizableConstrain);
-    return obj.getDimension();
+    return new ODraggable(constrainResizableAreaContainerResizableConstrain).getRectangle().getDimension();
   }
 
   public Dimension getResizableHelperDimension() {
-    ODraggable obj = new ODraggable(resizableHelper);
-    return obj.getDimension();
+    return new ODraggable(resizableHelper).getRectangle().getDimension();
   }
 
   public Dimension getMinMaxSizeDimension() {
-    ODraggable obj = new ODraggable(minMaxSize);
-    return obj.getDimension();
+    return new ODraggable(minMaxSize).getRectangle().getDimension();
   }
 
   public DemoqaResizable resizeDefaultFunctionalityByX(int xOffset) {
