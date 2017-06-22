@@ -52,20 +52,24 @@ public class OUtils {
     return date2.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
   }
 
-  public void waitForVisibilityOfElement(WebElement element) {
+  public OUtils waitForVisibilityOfElement(WebElement element) {
     webDriverWait.until(ExpectedConditions.visibilityOf(element));
+    return this;
   }
 
-  public void waitForVisibilityOfElements(List<WebElement> elements) {
+  public OUtils waitForVisibilityOfElements(List<WebElement> elements) {
     webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
+    return this;
   }
 
-  public void waitForVisibilityOfElement(By locator) {
+  public OUtils waitForVisibilityOfElement(By locator) {
     webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    return this;
   }
 
-  public void waitForVisibilityOfElements(By locator) {
+  public OUtils waitForVisibilityOfElements(By locator) {
     webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    return this;
   }
 
   public WebElement findNextElementByCssSelector(WebElement element, By locator) {
@@ -119,13 +123,14 @@ public class OUtils {
   /**
    * http://www.testingexcellence.com/webdriver-wait-page-load-example-java/
    */
-  public void waitForPageLoad() {
+  public OUtils waitForPageLoad() {
     ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
       public Boolean apply(WebDriver driver) {
         return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
       }
     };
     webDriverWait.until(pageLoadCondition);
+    return this;
   }
 
   public OUtils waitTime(long timeout) {
@@ -138,7 +143,7 @@ public class OUtils {
     return this;
   }
 
-  public void waitUntilAnimationStop(WebElement element) {
+  public OUtils waitUntilAnimationStop(WebElement element) {
     Dimension state = null;
     Dimension stateCheck = null;
     do {
@@ -146,9 +151,10 @@ public class OUtils {
       stateCheck = element.getSize();
       waitTime(1);
     } while (!stateCheck.equals(state));
+    return this;
   }
 
-  public void waitUntilAnimationStop(ODraggable element) {
+  public OUtils waitUntilAnimationStop(ODraggable element) {
     Dimension state = null;
     Dimension stateCheck = null;
     do {
@@ -156,6 +162,7 @@ public class OUtils {
       stateCheck = element.getRectangle().getDimension();
       waitTime(1);
     } while (!stateCheck.equals(state));
+    return this;
   }
 
   public String getTitle() {
@@ -192,7 +199,7 @@ public class OUtils {
     element.sendKeys(text);
   }
 
-  public Integer getId(List<WebElement> elements, String title) {
+  public int getId(List<WebElement> elements, String title) {
     int index = -1;
 
     if (elements.size() > 0) {

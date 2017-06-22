@@ -137,12 +137,13 @@ public class DemoqaSortable extends PageObject {
     return this;
   }
 
-  public DemoqaSortable dragSortableGridItems(String item1, String item2) {
+  public DemoqaSortable dragSortableGridItems(String item1, int offset) {
 
     ODraggable obj1 = new ODraggable(sortableGridItems.get(utils.getId(sortableGridItems, item1)));
-    ODraggable obj2 = new ODraggable(sortableGridItems.get(utils.getId(sortableGridItems, item2)));
+    System.out.println(obj1.getText());
+    System.out.println(obj1.getCenter());
+    utils.dragAndDropByOffset(obj1, 200, 100);
 
-    utils.waitTime(4);
     return this;
   }
 }

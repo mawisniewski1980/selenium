@@ -126,7 +126,7 @@ public class DemoqaSortableTest extends TestObject {
     List<String> listBefore = sortable.getSortableGridItemsText();
     LOG.info("List before: " + listBefore);
 
-    sortable.dragSortableGridItems("1", "5");
+    sortable.dragSortableGridItems("1", 500);
 
     List<String> listAfter = sortable.getSortableGridItemsText();
     LOG.info("List after: " + listAfter);
