@@ -1,7 +1,9 @@
 package demoqa;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -46,7 +48,11 @@ public class DemoqaSortable extends PageObject {
   private List<WebElement> portletItemsColumn;
 
   private final String portletItemsListCss = ".portlet";
+
   private final String portletItemsHeaderCss = ".portlet-header";
+  @FindBy(css = portletItemsHeaderCss)
+  private List<WebElement> portletItemsHeader;
+
   private final String portletItemsHeaderToggleCss = ".ui-icon-minusthick";
 
   public List<String> getDefaultFunctionalityItemsText() {
@@ -83,13 +89,33 @@ public class DemoqaSortable extends PageObject {
     for (int i = 0; i < sumOfColumns; i++) {
       List<WebElement> theList = utils.findNextElementsByCssSelector(portletItemsColumn.get(i), portletItemsListCss);
       int sumOfPortlets = theList.size();
-      // LOG.info("In column " + (i + 1) + " is " + sumOfPortlets + " portlet/portlets");
+      LOG.info("In column " + (i + 1) + " is " + sumOfPortlets + " portlet/portlets");
       for (int j = 0; j < sumOfPortlets; j++) {
-        // LOG.info("Title: " + utils.getStringsFromWebElements(utils.findNextElementsByCssSelector(theList.get(j), portletItemsHeaderCss)));
+        LOG.info("Title: " + utils.getStringsFromWebElements(utils.findNextElementsByCssSelector(theList.get(j), portletItemsHeaderCss)));
         listStrings.addAll(utils.getStringsFromWebElements(utils.findNextElementsByCssSelector(theList.get(j), portletItemsHeaderCss)));
       }
     }
     return listStrings;
+  }
+
+  public Map<Integer, String> getPortletMapItemsText() {
+    Map<Integer, String> mapStrings = new HashMap<Integer, String>();
+    int sumOfColumns = portletItemsColumn.size();
+    for (int i = 0; i < sumOfColumns; i++) {
+      List<WebElement> theList = utils.findNextElementsByCssSelector(portletItemsColumn.get(i), portletItemsListCss);
+      int sumOfPortlets = theList.size();
+      // LOG.info("In column " + (i + 1) + " is " + sumOfPortlets + " portlet/portlets");
+      int col = i + 1;
+      for (int j = 0; j < sumOfPortlets; j++) {
+        List<String> theListTitles = utils.getStringsFromWebElements(utils.findNextElementsByCssSelector(theList.get(j), portletItemsHeaderCss));
+        // LOG.info("Title: " + theListTitles);
+        for (int k = 0; k < theListTitles.size(); k++) {
+          LOG.info("In column " + col + " is portlet " + theListTitles.get(k).toString());
+          mapStrings.put(col, theListTitles.get(k).toString());
+        }
+      }
+    }
+    return mapStrings;
   }
 
   public DemoqaSortable dragDefaultFunctionalityItem(String item1, String item2) {
@@ -137,13 +163,17 @@ public class DemoqaSortable extends PageObject {
     return this;
   }
 
-  public DemoqaSortable dragSortableGridItems(String item1, int offset) {
+  public DemoqaSortable dragSortableGridItems(String item1, int xOffset, int yOffset, int wait) {
 
     ODraggable obj1 = new ODraggable(sortableGridItems.get(utils.getId(sortableGridItems, item1)));
-    System.out.println(obj1.getText());
-    System.out.println(obj1.getCenter());
-    utils.dragAndDropByOffset(obj1, 200, 100);
+    utils.moveByXYWithWait(obj1, xOffset, yOffset, wait);
+    return this;
+  }
 
+  public DemoqaSortable dragPortletsToAnotherColumn(String item1, int column) {
+    ODraggable obj1 = new ODraggable(portletItemsHeader.get(utils.getId(portletItemsHeader, item1)));
+    ODraggable obj2 = new ODraggable(portletItemsColumn.get(column));
+    utils.dragAndDrop(obj1, obj2);
     return this;
   }
 }

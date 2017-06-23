@@ -3,6 +3,7 @@ package demoqa;
 import static org.fest.assertions.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -126,17 +127,25 @@ public class DemoqaSortableTest extends TestObject {
     List<String> listBefore = sortable.getSortableGridItemsText();
     LOG.info("List before: " + listBefore);
 
-    sortable.dragSortableGridItems("1", 500);
+    sortable.dragSortableGridItems("1", 150, 100, 3);
 
     List<String> listAfter = sortable.getSortableGridItemsText();
     LOG.info("List after: " + listAfter);
+
+    assertThat(listBefore).isNotEqualTo(listAfter);
   }
 
   @Test
   public void checkCountOfPortletsInColumns() {
 
     commonElements.tabsLinkClick("Portlets");
-    LOG.info("Titles: " + sortable.getPortletItemsText());
+    Map<Integer, String> mapBefore = sortable.getPortletMapItemsText();
 
+    sortable.dragPortletsToAnotherColumn("Feeds", 2);
+    // sortable.dragPortletsToAnotherColumn("News", 1);
+
+    Map<Integer, String> mapAfter = sortable.getPortletMapItemsText();
+
+    assertThat(mapBefore).isNotSameAs(mapAfter);
   }
 }

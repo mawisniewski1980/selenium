@@ -289,9 +289,10 @@ public class OUtils {
     return this;
   }
 
-  public OUtils moveElementFromTopLeftToTopLeftWithOffset(ODraggable drag, int x1, int y1, ODraggable drop, int x2, int y2) {
-    actions.moveToElement(drag.getElement(), x1, y1).clickAndHold().moveToElement(drop.getElement(), x2, y2).release();
-    actions.build().perform();
+  public OUtils moveByXYWithWait(ODraggable drag, int xOffset, int yOffset, int wait) {
+    actions.moveToElement(drag.getElement()).clickAndHold().moveByOffset(xOffset, yOffset);
+    waitTime(wait);
+    actions.release().build().perform();
     waitTime(1);
     return this;
   }
