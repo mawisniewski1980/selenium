@@ -13,6 +13,8 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import enums.CalendarEnums.TIMEHOURS;
+import enums.CalendarEnums.VIEW;
 import pageobject.PageObject;
 
 public class FullCalendarPage extends PageObject {
@@ -21,36 +23,6 @@ public class FullCalendarPage extends PageObject {
 
   public FullCalendarPage(WebDriver driver) {
     super(driver);
-  }
-
-  public enum TIMEHOURS {
-    _000000("00:00:00", 1), _003000("00:30:00", 2), _010000("01:00:00", 3), _013000("01:30:00", 4), _020000("02:00:00", 5), _023000("02:30:00", 6), _030000("03:00:00", 7), _033000("03:30:00",
-        8), _040000("04:00:00", 9), _043000("04:30:00", 10), _050000("05:00:00", 11), _053000("05:30:00", 12), _060000("06:00:00", 13), _063000("06:30:00", 14), _070000("07:00:00",
-            15), _073000("07:30:00", 16), _080000("08:00:00", 17), _083000("08:30:00", 18), _090000("09:00:00", 19), _093000("09:30:00", 20), _100000("10:00:00", 21), _103000("10:30:00",
-                22), _110000("11:00:00", 23), _113000("11:30:00", 24), _120000("12:00:00", 25), _123000("12:30:00", 26), _130000("13:00:00", 27), _133000("13:30:00", 28), _140000("14:00:00",
-                    29), _143000("14:30:00", 30), _150000("15:00:00", 31), _153000("15:30:00", 32), _160000("16:00:00", 33), _163000("16:30:00", 34), _170000("17:00:00", 35), _173000("17:30:00",
-                        36), _180000("18:00:00", 37), _183000("18:30:00", 38), _190000("19:00:00", 39), _193000("19:30:00", 40), _200000("20:00:00", 41), _203000("20:30:00",
-                            42), _210000("21:00:00", 43), _213000("21:30:00", 44), _220000("22:00:00", 45), _223000("22:30:00", 46), _230000("23:00:00", 47), _233000("23:30:00", 48);
-
-    TIMEHOURS(String hour, int index) {
-      this.hour = hour;
-      this.index = index;
-    }
-
-    private final String hour;
-    private final int index;
-
-    public String getStringHour() {
-      return this.hour;
-    }
-
-    public int getIndexHour() {
-      return this.index;
-    }
-  }
-
-  public enum VIEW {
-    DAY, WEEK, MONTH, LIST;
   }
 
   @FindBy(css = ".fc-prev-button")
