@@ -3,12 +3,14 @@ package pageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import utilsobjects.OUtils;
 
 public class PageObject {
 
-  // private static final Logger LOG = LoggerFactory.getLogger(PageObject.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(PageObject.class.getName());
 
   protected WebDriver driver;
   protected OUtils utils;

@@ -1,14 +1,12 @@
 package fullcalendar;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 import java.time.Month;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import enums.PageUrls.PageUrl;
 import fullcalendar.FullCalendarPage.TIMEHOURS;
@@ -17,7 +15,7 @@ import testobject.TestObject;
 
 public class FullCalendarTest extends TestObject {
 
-  private static final Logger LOG = LoggerFactory.getLogger(FullCalendarTest.class.getName());
+  // private static final Logger LOG = LoggerFactory.getLogger(FullCalendarTest.class.getName());
 
   private FullCalendarPage fp;
 
@@ -29,88 +27,77 @@ public class FullCalendarTest extends TestObject {
 
   @Test
   public void getTitle() {
-    assertThat(driver.getTitle()).isEqualTo("FullCalendar - JavaScript Event Calendar");
+    assertEquals("FullCalendar - JavaScript Event Calendar", driver.getTitle());
   }
 
   @Test
   public void clickOnAllButtons() {
     fp.listButtonClick();
+    utils.waitTime(2);
     fp.monthButtonClick();
+    utils.waitTime(2);
     fp.weekButtonClick();
+    utils.waitTime(2);
     fp.dayButtonClick();
-    assertThat(fp.checkIfDayButtonIsActive()).isTrue();
+    utils.waitTime(2);
+    fp.buttonArrayClick(1);
   }
 
   @Test
-  public void checkIfDateNowIsNotOnCalendarMonthView() {
-    LocalDate checkedDated = LocalDate.now();
-    LOG.info("Check date " + checkedDated + " on month view");
+  public void checkIfDateIsOnCalendar() {
     fp.monthButtonClick();
-    assertThat(fp.isDateOnCalendar(checkedDated)).isFalse();
-  }
-
-  @Test
-  public void checkIfDateNowIsOnCalendarToday() {
-    LocalDate checkedDated = LocalDate.now();
-    LOG.info("Check date " + checkedDated + " after click [Today] button on today view");
+    fp.isDateOnCalendar(LocalDate.now());
     fp.todayButtonClick();
-    assertThat(fp.isDateOnCalendar(checkedDated)).isTrue();
-  }
+    fp.isDateOnCalendar(LocalDate.now());
 
-  @Test
-  public void checkIfDateNowIsNotOnCalendarWeekView() {
-    LocalDate checkedDated = LocalDate.now();
-    LOG.info("Check date " + checkedDated + " on week view");
     fp.weekButtonClick();
-    assertThat(fp.isDateOnCalendar(checkedDated)).isFalse();
-  }
+    fp.isDateOnCalendar(LocalDate.now());
 
-  @Test
-  public void checkIfDateNowIsNotOnCalendarDayView() {
-    LocalDate checkedDated = LocalDate.now();
-    LOG.info("Check date " + checkedDated + " on day view");
     fp.dayButtonClick();
-    assertThat(fp.isDateOnCalendar(checkedDated)).isFalse();
+    fp.isDateOnCalendar(LocalDate.now());
+
+    fp.listButtonClick();
+    // fp.isDateOnCalendar(LocalDate.now());
   }
 
   @Test
-  public void setDateMonthView() {
+  public void setDateTest() {
 
-    LocalDate dateNow = LocalDate.now();
-    LocalDate checkDate = dateNow.minusDays(42);
+    LocalDate checkDate = LocalDate.now().minusDays(42);
 
     fp.monthButtonClick();
     fp.setDate(checkDate);
-    assertThat(checkDate).isEqualTo(dateNow.minusDays(42));
-  }
-
-  @Test
-  public void setDateWeekView() {
-
-    LocalDate dateNow = LocalDate.now();
-    LocalDate checkDate = dateNow.plusDays(42);
+    System.out.println("##################################################");
+    utils.waitTime(3);
 
     fp.weekButtonClick();
     fp.setDate(checkDate);
-    assertThat(checkDate).isEqualTo(dateNow.plusDays(42));
+    System.out.println("##################################################");
+    utils.waitTime(3);
+
+    fp.dayButtonClick();
+    fp.setDate(checkDate);
+    System.out.println("##################################################");
+    utils.waitTime(3);
+
   }
 
   @Test
-  public void setDateDayView() {
+  public void getEventsSizeFromCalendarInMonth() {
+    fp.monthButtonClick();
 
-    LocalDate dateNow = LocalDate.now();
-    LocalDate checkDate = dateNow.plusDays(15);
-
-    fp.weekButtonClick();
-    fp.setDate(checkDate);
-    assertThat(checkDate).isEqualTo(dateNow.plusDays(15));
+    for (int i = 1; i <= 12; i++) {
+      System.out.println(fp.getHeaderOfCalendar().getText().toString());
+      System.out.println(fp.getEventsSize());
+      fp.nextButtonClick();
+    }
   }
 
-  // TODO
   @Test
   public void moveWebElement() {
     LocalDate date = LocalDate.of(2016, Month.SEPTEMBER, 17);
     fp.moveWebElement(VIEW.WEEK, date, TIMEHOURS._100000, "Lunch");
+    utils.waitTime(5);
   }
 
 }

@@ -4,13 +4,15 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import pageobject.PageObject;
 import utilsobjects.ODraggable;
 
 public class DemoqaResizable extends PageObject {
 
-  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaResizable.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(DemoqaResizable.class.getName());
 
   public DemoqaResizable(WebDriver driver) {
     super(driver);
@@ -84,23 +86,20 @@ public class DemoqaResizable extends PageObject {
   }
 
   public DemoqaResizable resizeAnimateByX(int xOffset) {
-    ODraggable obj = new ODraggable(utils.findNextElementByCssSelector(animateResizable, xLineCss));
-    utils.moveByX(obj, xOffset);
-    utils.waitUntilAnimationStop(obj);
+    utils.moveByX(new ODraggable(utils.findNextElementByCssSelector(animateResizable, xLineCss)), xOffset);
+    utils.waitUntilAnimationStop(animateResizable);
     return this;
   }
 
   public DemoqaResizable resizeAnimateByY(int yOffset) {
-    ODraggable obj = new ODraggable(utils.findNextElementByCssSelector(animateResizable, yLineCss));
-    utils.moveByY(obj, yOffset);
-    utils.waitUntilAnimationStop(obj);
+    utils.moveByY(new ODraggable(utils.findNextElementByCssSelector(animateResizable, yLineCss)), yOffset);
+    utils.waitUntilAnimationStop(animateResizable);
     return this;
   }
 
   public DemoqaResizable resizeAnimateByXY(int xOffset, int yOffset) {
-    ODraggable obj = new ODraggable(utils.findNextElementByCssSelector(animateResizable, xyLineCss));
-    utils.moveByXY(obj, xOffset, yOffset);
-    utils.waitUntilAnimationStop(obj);
+    utils.moveByXY(new ODraggable(utils.findNextElementByCssSelector(animateResizable, xyLineCss)), xOffset, yOffset);
+    utils.waitUntilAnimationStop(animateResizable);
     return this;
   }
 

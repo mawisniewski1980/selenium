@@ -6,13 +6,15 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import pageobject.PageObject;
 import utilsobjects.ODraggable;
 
 public class DemoqaDraggable extends PageObject {
 
-  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaDraggable.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(DemoqaDraggable.class.getName());
 
   public DemoqaDraggable(WebDriver driver) {
     super(driver);

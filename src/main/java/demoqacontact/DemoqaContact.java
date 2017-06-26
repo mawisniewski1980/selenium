@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import menus.OLink;
 import pageobject.PageObject;
 
 public class DemoqaContact extends PageObject {
@@ -79,7 +80,7 @@ public class DemoqaContact extends PageObject {
 
   public void clickSendButton() {
     LOG.info("Set [Send] button");
-    utils.linkClick(sendButton);
+    new OLink(driver, sendButton).click();
   }
 
   public void fillContactForm(DemoqaContactForm dcform) {

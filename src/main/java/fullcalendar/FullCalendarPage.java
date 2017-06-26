@@ -13,6 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import menus.OButton;
 import pageobject.PageObject;
 
 public class FullCalendarPage extends PageObject {
@@ -100,55 +101,47 @@ public class FullCalendarPage extends PageObject {
   @FindBy(css = "#foot a")
   private List<WebElement> linksFooter;
 
-  public FullCalendarPage todayButtonClick() {
-    utils.linkClick(todayButton);
-    return this;
+  public void todayButtonClick() {
+    new OButton(driver, todayButton).click();
   }
 
-  public FullCalendarPage nextButtonClick() {
-    utils.linkClick(nextButton);
-    return this;
+  public void nextButtonClick() {
+    new OButton(driver, nextButton).click();
   }
 
-  public FullCalendarPage prevButtonClick() {
-    utils.linkClick(prevButton);
-    return this;
+  public void prevButtonClick() {
+    new OButton(driver, prevButton).click();
   }
 
-  public FullCalendarPage monthButtonClick() {
-    utils.linkClick(monthButton);
-    return this;
+  public void monthButtonClick() {
+    new OButton(driver, monthButton).click();
   }
 
-  public FullCalendarPage weekButtonClick() {
-    utils.linkClick(weekButton);
-    return this;
+  public void weekButtonClick() {
+    new OButton(driver, weekButton).click();
   }
 
-  public FullCalendarPage dayButtonClick() {
-    utils.linkClick(dayButton);
-    return this;
+  public void dayButtonClick() {
+    new OButton(driver, dayButton).click();
   }
 
-  public FullCalendarPage listButtonClick() {
-    utils.linkClick(listButton);
-    return this;
+  public void listButtonClick() {
+    new OButton(driver, listButton).click();
   }
 
-  public boolean checkIfMonthButtonIsActive() {
-    return utils.isElementActive(monthButton);
+  public void buttonArrayClick(int time) {
+    OButton[] buttonObj = { new OButton(driver, listButton), new OButton(driver, weekButton), new OButton(driver, dayButton), new OButton(driver, monthButton) };
+    for (int i = 0; i < buttonObj.length; i++) {
+      buttonObj[i].click();
+      utils.waitTime(time);
+    }
   }
 
-  public boolean checkIfWeekButtonIsActive() {
-    return utils.isElementActive(weekButton);
-  }
-
-  public boolean checkIfDayButtonIsActive() {
-    return utils.isElementActive(dayButton);
-  }
-
-  public boolean checkIfListButtonIsActive() {
-    return utils.isElementActive(listButton);
+  public void listFcMoreLinksClick() {
+    LOG.info("List more links Click");
+    for (WebElement w : fcMoreLinks) {
+      w.click();
+    }
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -235,7 +228,7 @@ public class FullCalendarPage extends PageObject {
 
     int index = 0;
 
-    fcMoreLinks.get(0);
+    fcMoreLinks.get(0).click();
     for (int i = 0; i < events.size(); i++) {
       LOG.info(" title - > " + events.get(i).getText());
 

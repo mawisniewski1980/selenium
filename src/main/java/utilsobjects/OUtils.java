@@ -120,13 +120,6 @@ public class OUtils {
     return element.isSelected();
   }
 
-  public boolean isElementActive(WebElement element) {
-    if (element.getAttribute("class").contains("active")) {
-      return true;
-    }
-    return false;
-  }
-
   /**
    * http://www.testingexcellence.com/webdriver-wait-page-load-example-java/
    */
@@ -147,6 +140,17 @@ public class OUtils {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
+    return this;
+  }
+
+  public OUtils waitUntilAnimationStop(WebElement element) {
+    Dimension state = null;
+    Dimension stateCheck = null;
+    do {
+      state = element.getSize();
+      stateCheck = element.getSize();
+      waitTime(1);
+    } while (!stateCheck.equals(state));
     return this;
   }
 
@@ -217,6 +221,7 @@ public class OUtils {
     LOG.info("Drag element " + drag.getCenter() + " to " + drop.getCenter());
     actions.dragAndDrop(drag.getElement(), drop.getElement());
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
@@ -224,54 +229,63 @@ public class OUtils {
     LOG.info("Drag element by offset " + "(" + xOffset + "," + yOffset + ")");
     actions.dragAndDropBy(drag.getElement(), xOffset, yOffset);
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
   public OUtils moveByX(ODraggable drag, int xOffset) {
     actions.moveToElement(drag.getElement()).clickAndHold().moveByOffset(xOffset, 0).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
   public OUtils moveByY(ODraggable drag, int yOffset) {
     actions.moveToElement(drag.getElement()).clickAndHold().moveByOffset(0, yOffset).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
   public OUtils moveByXY(ODraggable drag, int xOffset, int yOffset) {
     actions.moveToElement(drag.getElement()).clickAndHold().moveByOffset(xOffset, yOffset).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
   public OUtils moveElementFromCenterToCenter(ODraggable drag, ODraggable drop) {
     actions.moveToElement(drag.getElement(), drag.getHalfWidth(), drag.getHalfHeight()).clickAndHold().moveToElement(drop.getElement(), drop.getHalfWidth(), drop.getHalfHeight()).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
   public OUtils moveElementFromTopLeftToTopLeft(ODraggable drag, ODraggable drop) {
     actions.moveToElement(drag.getElement(), 0, 0).clickAndHold().moveToElement(drop.getElement(), 0, 0).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
   public OUtils moveElementFromTopRightToTopRight(ODraggable drag, ODraggable drop) {
     actions.moveToElement(drag.getElement(), drag.getWidth(), 0).clickAndHold().moveToElement(drop.getElement(), drop.getWidth(), 0).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
   public OUtils moveElementFromDownRightToDownRight(ODraggable drag, ODraggable drop) {
     actions.moveToElement(drag.getElement(), drag.getWidth(), drag.getHeight()).clickAndHold().moveToElement(drop.getElement(), drop.getWidth(), drop.getHeight()).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
   public OUtils moveElementFromDownLeftToDownLeft(ODraggable drag, ODraggable drop) {
     actions.moveToElement(drag.getElement(), 0, drag.getHeight()).clickAndHold().moveToElement(drop.getElement(), 0, drop.getHeight()).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
@@ -279,17 +293,20 @@ public class OUtils {
     actions.moveToElement(drag.getElement()).clickAndHold().moveByOffset(xOffset, yOffset);
     waitTime(wait);
     actions.release().build().perform();
+    waitTime(1);
     return this;
   }
 
   public OUtils selectFromCenterToCenter(ODraggable drag, ODraggable drop) {
     actions.moveToElement(drag.getElement(), drag.getHalfWidth(), drag.getHalfHeight()).clickAndHold().moveToElement(drop.getElement(), drop.getHalfWidth(), drop.getHalfHeight()).release();
     actions.build().perform();
+    waitTime(1);
     return this;
   }
 
   public OUtils selectItemByClick(List<WebElement> elements, String title) {
     elements.get(getId(elements, title)).click();
+    waitTime(1);
     return this;
   }
 
@@ -299,6 +316,7 @@ public class OUtils {
       actions.click(elements.get(getId(elements, text)));
     }
     actions.keyUp(Keys.CONTROL).build().perform();
+    waitTime(1);
     return this;
   }
 
@@ -308,7 +326,6 @@ public class OUtils {
     return (int) Math.sqrt(dx * dx + dy * dy);
   }
 
-  // TODO
   public boolean checkIfElementIsInAnotherElement(ODraggable drag, ODraggable drop) {
 
     System.out.println("Point obj1 " + drag.getX() + " " + drag.getY());
@@ -378,8 +395,8 @@ public class OUtils {
   }
 
   public void linkClick(WebElement element) {
-    LOG.info("Click on link " + element.getText());
-    scrollToElement(element);
+    LOG.info("Click on link");
+    scrollToElement(element).waitTime(1);
     element.click();
   }
 

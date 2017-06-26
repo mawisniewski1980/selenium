@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import enums.DemoqaEnums.DemoqaRegistrationHobby;
 import enums.DemoqaEnums.DemoqaRegistrationMaritalStatus;
 import enums.DemoqaEnums.DemoqaReistrationCountry;
+import menus.OLink;
 import pageobject.PageObject;
 
 public class DemoqaRegistration extends PageObject {
@@ -170,7 +171,7 @@ public class DemoqaRegistration extends PageObject {
   }
 
   public void clickSubmit() {
-    utils.linkClick(submit);
+    new OLink(driver, submit).click();
   }
 
   public void setFirstName(String text) {
