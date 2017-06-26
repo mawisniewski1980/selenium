@@ -4,12 +4,10 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class ODraggable {
 
-  private static final Logger LOG = LoggerFactory.getLogger(ODraggable.class.getName());
+  // private static final Logger LOG = LoggerFactory.getLogger(ODraggable.class.getName());
 
   private WebElement element;
 
@@ -56,6 +54,7 @@ public class ODraggable {
   }
 
   public Point getCenter() {
+    // LOG.info("Center of the webelement");
     int x = getX() + getWidth() / 2;
     int y = getY() + getHeight() / 2;
     return new Point(x, y);

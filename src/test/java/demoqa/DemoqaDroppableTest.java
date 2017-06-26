@@ -4,16 +4,13 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Point;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import enums.PageUrls.PageUrl;
 import testobject.TestObject;
 
 public class DemoqaDroppableTest extends TestObject {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaDroppable.class.getName());
+  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaDroppable.class.getName());
 
   private DemoqaDroppable droppable;
   private DemoqaPageMenu demoqaMenu;
@@ -44,15 +41,15 @@ public class DemoqaDroppableTest extends TestObject {
 
     droppable.check();
 
-    Point position1a = droppable.getPositionDefaultFunctionalistyDragMe();
-    Point position1b = droppable.getPositionDefaultFunctionalistyDropMe();
+    // Point position1a = droppable.getPositionDefaultFunctionalistyDragMe();
+    // Point position1b = droppable.getPositionDefaultFunctionalistyDropMe();
 
     assertThat(droppable.getDefaultFunctionalistyDropMeText()).isEqualTo("Drop here");
     droppable.defaultFunctionalityDragAndDrop();
     assertThat(droppable.getDefaultFunctionalistyDropMeText()).isEqualTo("Dropped!");
 
-    position1a = droppable.getPositionDefaultFunctionalistyDragMe();
-    position1b = droppable.getPositionDefaultFunctionalistyDropMe();
+    // position1a = droppable.getPositionDefaultFunctionalistyDragMe();
+    // position1b = droppable.getPositionDefaultFunctionalistyDropMe();
 
     droppable.check();
     // assertThat(position1a.checkIfObjectIsInAnotherObject(position1b)).isTrue();

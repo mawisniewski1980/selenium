@@ -22,13 +22,13 @@ public class OWebDriver {
   }
 
   public WebDriver initChromeBrowser() {
-    System.out.println("Driver Chrome Browser");
+    LOG.info("Driver Chrome Browser");
     System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, System.getProperty("user.dir") + "/lib/chromedriver.exe");
     return new ChromeDriver();
   }
 
   public WebDriver initFireFoxBrowser() {
-    System.out.println("Driver FireFox Browser");
+    LOG.info("Driver FireFox Browser");
     System.setProperty(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY, System.getProperty("user.dir") + "/lib/geckodriver.exe");
     return new FirefoxDriver();
   }

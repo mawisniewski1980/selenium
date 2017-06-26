@@ -4,15 +4,13 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import enums.PageUrls.PageUrl;
 import testobject.TestObject;
 
 public class DemoqaTabsTest extends TestObject {
 
-  private final Logger LOG = LoggerFactory.getLogger(DemoqaTabsTest.class);
+  // private final Logger LOG = LoggerFactory.getLogger(DemoqaTabsTest.class);
 
   private DemoqaTabs tabs;
   private DemoqaNavbar navbar;

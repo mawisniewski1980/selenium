@@ -3,16 +3,13 @@ package demoqa;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import demoqaregistration.DemoqaRegistration;
-import menus.OLink;
 import pageobject.PageObject;
 
 public class DemoqaPageMenu extends PageObject {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaPageMenu.class.getName());
+  // rivate static final Logger LOG = LoggerFactory.getLogger(DemoqaPageMenu.class.getName());
 
   public DemoqaPageMenu(WebDriver driver) {
     super(driver);
@@ -75,72 +72,72 @@ public class DemoqaPageMenu extends PageObject {
   private WebElement framesAndWindows;
 
   public DemoqaRegistration registrationLinkClick() {
-    new OLink(driver, registrationLink).click();
+    utils.linkClick(registrationLink);
     return new DemoqaRegistration(driver);
   }
 
   public DemoqaDraggable draggableLinkClick() {
-    new OLink(driver, draggableLink).click();
+    utils.linkClick(draggableLink);
     return new DemoqaDraggable(driver);
   }
 
   public DemoqaDroppable droppableLinkClick() {
-    new OLink(driver, droppableLink).click();
+    utils.linkClick(droppableLink);
     return new DemoqaDroppable(driver);
   }
 
   public DemoqaResizable resizableLinkClick() {
-    new OLink(driver, resizableLink).click();
+    utils.linkClick(resizableLink);
     return new DemoqaResizable(driver);
   }
 
   public DemoqaSelectable selectableLinkClick() {
-    new OLink(driver, selectableLink).click();
+    utils.linkClick(selectableLink);
     return new DemoqaSelectable(driver);
   }
 
   public DemoqaSortable sortableLinkClick() {
-    new OLink(driver, sortableLink).click();
+    utils.linkClick(sortableLink);
     return new DemoqaSortable(driver);
   }
 
   public DemoqaAccordion accordionLinkClick() {
-    new OLink(driver, accordionLink).click();
+    utils.linkClick(accordionLink);
     return new DemoqaAccordion(driver);
   }
 
   public DemoqaAutocomplete autocompleteLinkClick() {
-    new OLink(driver, autocompleteLink).click();
+    utils.linkClick(autocompleteLink);
     return new DemoqaAutocomplete(driver);
   }
 
   public DemoqaDatepicker datapickerLinkClick() {
-    new OLink(driver, datepickerLink).click();
+    utils.linkClick(datepickerLink);
     return new DemoqaDatepicker(driver);
   }
 
   public DemoqaPageMenu menuLinkClick() {
-    new OLink(driver, menuLink).click();
+    utils.linkClick(menuLink);
     return new DemoqaPageMenu(driver);
   }
 
   public DemoqaSlider sliderLinkClick() {
-    new OLink(driver, sliderLink).click();
+    utils.linkClick(sliderLink);
     return new DemoqaSlider(driver);
   }
 
   public DemoqaTabs tabsLinkClick() {
-    new OLink(driver, tabsLink).click();
+    utils.linkClick(tabsLink);
     return new DemoqaTabs(driver);
   }
 
   public DemoqaTooltip tooltipLinkClick() {
-    new OLink(driver, tooltipLink).click();
+    utils.linkClick(tooltipLink);
     return new DemoqaTooltip(driver);
   }
 
   public DemoqaFramesAndWindows framesAndWindowsLinkClick() {
-    new OLink(driver, framesAndWindows).click();
+    utils.linkClick(framesAndWindows);
     return new DemoqaFramesAndWindows(driver);
   }
 
