@@ -5,14 +5,12 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import pageobject.PageObject;
 
 public class DemoqaAccordion extends PageObject {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaAccordion.class.getName());
+  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaAccordion.class.getName());
 
   public DemoqaAccordion(WebDriver driver) {
     super(driver);

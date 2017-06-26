@@ -3,14 +3,12 @@ package demoqa;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import pageobject.PageObject;
 
 public class DemoqaDatepicker extends PageObject {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaDatepicker.class.getName());
+  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaDatepicker.class.getName());
 
   public DemoqaDatepicker(WebDriver driver) {
     super(driver);

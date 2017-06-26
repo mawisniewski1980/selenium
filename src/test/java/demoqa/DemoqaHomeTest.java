@@ -4,8 +4,6 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.ImmutableList;
 
@@ -15,7 +13,7 @@ import testobject.TestObject;
 
 public class DemoqaHomeTest extends TestObject {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaHomeTest.class.getName());
+  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaHomeTest.class.getName());
 
   private DemoqaHome demoqaHome;
   private DemoqaNavbar demoqaNavbar;

@@ -3,14 +3,12 @@ package demoqa;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import pageobject.PageObject;
 
 public class DemoqaSlider extends PageObject {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaSlider.class.getName());
+  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaSlider.class.getName());
 
   public DemoqaSlider(WebDriver driver) {
     super(driver);

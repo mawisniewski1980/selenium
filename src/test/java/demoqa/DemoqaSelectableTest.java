@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.ImmutableList;
 
@@ -16,7 +14,7 @@ import testobject.TestObject;
 
 public class DemoqaSelectableTest extends TestObject {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaSelectableTest.class.getName());
+  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaSelectableTest.class.getName());
 
   private DemoqaSelectable selectable;
   private DemoqaCommonElements commonElements;

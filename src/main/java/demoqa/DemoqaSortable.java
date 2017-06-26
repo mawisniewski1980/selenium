@@ -53,7 +53,7 @@ public class DemoqaSortable extends PageObject {
   @FindBy(css = portletItemsHeaderCss)
   private List<WebElement> portletItemsHeader;
 
-  private final String portletItemsHeaderToggleCss = ".ui-icon-minusthick";
+  // private final String portletItemsHeaderToggleCss = ".ui-icon-minusthick";
 
   public List<String> getDefaultFunctionalityItemsText() {
     return utils.getStringsFromWebElements(defaultFunctionalityItems);
