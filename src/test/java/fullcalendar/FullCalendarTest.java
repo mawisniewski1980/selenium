@@ -10,9 +10,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import enums.CalendarEnums.TIMEHOURS;
+import enums.CalendarEnums.VIEW;
 import enums.PageUrls.PageUrl;
-import fullcalendar.FullCalendarPage.TIMEHOURS;
-import fullcalendar.FullCalendarPage.VIEW;
 import testobject.TestObject;
 
 public class FullCalendarTest extends TestObject {
@@ -30,6 +30,30 @@ public class FullCalendarTest extends TestObject {
   @Test
   public void getTitle() {
     assertThat(driver.getTitle()).isEqualTo("FullCalendar - JavaScript Event Calendar");
+  }
+
+  @Test
+  public void clickOnListButton() {
+    fp.listButtonClick();
+    assertThat(fp.checkIfDayButtonIsActive()).isTrue();
+  }
+
+  @Test
+  public void clickOnMonthButton() {
+    fp.monthButtonClick();
+    assertThat(fp.checkIfDayButtonIsActive()).isTrue();
+  }
+
+  @Test
+  public void clickOnWeekButton() {
+    fp.weekButtonClick();
+    assertThat(fp.checkIfDayButtonIsActive()).isTrue();
+  }
+
+  @Test
+  public void clickOnDayButton() {
+    fp.dayButtonClick();
+    assertThat(fp.checkIfDayButtonIsActive()).isTrue();
   }
 
   @Test
