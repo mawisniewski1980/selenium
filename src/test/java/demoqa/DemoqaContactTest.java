@@ -47,10 +47,10 @@ public class DemoqaContactTest extends TestObject {
   @Test
   public void fillAllFieldsAndSendFormCheckMessageOk() {
 
-    String name = "Name " + utils.generateRandomText(15, 0);
+    String name = "Name " + utils.generateRandomAlphabeticWithSpaces(15, 0);
     String email = "email@o2.com";
-    String subject = "Subject " + utils.generateRandomText(25, 3);
-    String message = "Message " + utils.generateRandomText(250, 9);
+    String subject = "Subject " + utils.generateRandomAlphabeticWithSpaces(25, 3);
+    String message = "Message " + utils.generateRandomAlphabeticWithSpaces(250, 9);
     DemoqaContactForm cform = new DemoqaContactForm(name, email, subject, message);
     demoqacontact.fillContactForm(cform);
     demoqacontact.clickSendButton();
@@ -82,10 +82,10 @@ public class DemoqaContactTest extends TestObject {
   @Test
   public void checkValidationEmailField() {
 
-    String name = "Name " + utils.generateRandomText(15, 0);
+    String name = "Name " + utils.generateRandomAlphabeticWithSpaces(15, 0);
     String validEmail = "email@o2.com";
-    String subject = "Subject " + utils.generateRandomText(25, 4);
-    String message = "Message " + utils.generateRandomText(260, 10);
+    String subject = "Subject " + utils.generateRandomAlphabeticWithSpaces(25, 4);
+    String message = "Message " + utils.generateRandomAlphabeticWithSpaces(260, 10);
     demoqacontact.setNameInput(name);
     demoqacontact.setSubjectInput(subject);
     demoqacontact.setMessageInput(message);

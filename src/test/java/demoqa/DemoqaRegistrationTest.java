@@ -59,17 +59,17 @@ public class DemoqaRegistrationTest extends TestObject {
   @Test
   public void fillAllFieldsConfirmRegistrationTextOK() {
 
-    String firstName = utils.generateRandomText(10, 0);
-    String lastName = utils.generateRandomText(15, 1);
+    String firstName = utils.generateRandomAlphabeticWithSpaces(10, 0);
+    String lastName = utils.generateRandomAlphabeticWithSpaces(15, 1);
     DemoqaRegistrationMaritalStatus maritalStatus = DemoqaRegistrationMaritalStatus.MARRIED;
     DemoqaRegistrationHobby hobby = DemoqaRegistrationHobby.DANCE;
     DemoqaReistrationCountry country = DemoqaReistrationCountry.AZERBAIJAN;
     LocalDate dateofBirth = LocalDate.of(1980, 1, 8);
-    String phone = "48" + utils.generateRandomNumber(10);
-    String userName = utils.generateRandomText(10, 0);
-    String email = utils.generateRandomText(15, 0) + "@xx.xx";
+    String phone = "48" + utils.generateRandomNumeric(10);
+    String userName = utils.generateRandomAlphabeticWithSpaces(10, 0);
+    String email = utils.generateRandomAlphabeticWithSpaces(15, 0) + "@xx.xx";
     String yourProfilePicture = utils.getImgExampleFile("star.png");
-    String aboutYourself = utils.generateRandomText(150, 7);
+    String aboutYourself = utils.generateRandomAlphabeticWithSpaces(150, 7);
     String password = "Passw0rd!";
     String confirmPassword = password;
 

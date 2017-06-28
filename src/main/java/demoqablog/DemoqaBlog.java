@@ -39,8 +39,8 @@ public class DemoqaBlog extends PageObject {
   private List<WebElement> readMoreEntry;
 
   public List<String> getEntryTitle() {
-    LOG.info("Title of entrys: " + utils.getStringsFromWebElements(titlesEntry));
-    return utils.getStringsFromWebElements(titlesEntry);
+    LOG.info("Title of entrys: " + utils.getTextFromWebElementList(titlesEntry));
+    return utils.getTextFromWebElementList(titlesEntry);
   }
 
   public void clickTitleEntry(String title) {

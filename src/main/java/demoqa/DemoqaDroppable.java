@@ -136,7 +136,7 @@ public class DemoqaDroppable extends PageObject {
   }
 
   public void defaultFunctionalityDragAndDrop() {
-    utils.dragAndDrop(new ODraggable(defaultFunctionalistyDragMe), new ODraggable(defaultFunctionalistyDropMe));
+    utils.actions.dragAndDrop(new ODraggable(defaultFunctionalistyDragMe), new ODraggable(defaultFunctionalistyDropMe));
   }
 
   public Point getPositionDefaultFunctionalistyDragMe() {
@@ -148,11 +148,11 @@ public class DemoqaDroppable extends PageObject {
   }
 
   public void check() {
-    utils.checkIfElementIsInAnotherElement(new ODraggable(defaultFunctionalistyDragMe), new ODraggable(defaultFunctionalistyDropMe));
+    utils.actions.checkIfElementIsInAnotherElement(new ODraggable(defaultFunctionalistyDragMe), new ODraggable(defaultFunctionalistyDropMe));
   }
 
   public void defaultFunctionalityDragAndDropBy(int xOffset, int yOffset) {
-    utils.dragAndDropByOffset(new ODraggable(defaultFunctionalistyDragMe), xOffset, yOffset);
+    utils.actions.dragAndDropByOffset(new ODraggable(defaultFunctionalistyDragMe), xOffset, yOffset);
   }
 
   public String getAcceptDroppableText() {
@@ -160,11 +160,11 @@ public class DemoqaDroppable extends PageObject {
   }
 
   public void acceptNonValidDragAndDrop() {
-    utils.dragAndDrop(new ODraggable(acceptNonValid), new ODraggable(acceptDroppable));
+    utils.actions.dragAndDrop(new ODraggable(acceptNonValid), new ODraggable(acceptDroppable));
   }
 
   public void acceptValidDragAndDrop() {
-    utils.dragAndDrop(new ODraggable(acceptDragable), new ODraggable(acceptDroppable));
+    utils.actions.dragAndDrop(new ODraggable(acceptDragable), new ODraggable(acceptDroppable));
   }
 
   public String getPreventPropagationDroppableText() {
@@ -196,7 +196,7 @@ public class DemoqaDroppable extends PageObject {
     ODraggable innerDrop2 = new ODraggable(preventPropagationDroppable2Inner);
     ODraggable contener = new ODraggable(preventPropagationDraggableContener.findElement(By.cssSelector(".inside_contain")));
 
-    utils.moveElementFromTopLeftToTopLeft(drag, outDrop)
+    utils.actions.moveElementFromTopLeftToTopLeft(drag, outDrop)
         .moveElementFromTopLeftToTopLeft(drag, outDrop2)
         .moveElementFromTopLeftToTopLeft(drag, innerDrop)
         .moveElementFromTopLeftToTopLeft(drag, innerDrop2)
@@ -226,8 +226,8 @@ public class DemoqaDroppable extends PageObject {
     Point oDrag2PositionBefore = drag2.getRectangle().getPoint();
     Point oDropPositionBefore = drop.getRectangle().getPoint();
 
-    utils.moveElementFromCenterToCenter(drag, drop);
-    utils.moveElementFromCenterToCenter(drag2, drop);
+    utils.actions.moveElementFromCenterToCenter(drag, drop);
+    utils.actions.moveElementFromCenterToCenter(drag2, drop);
 
     Point oDragPositionAfter = drag.getRectangle().getPoint();
     Point oDrag2PositionAfter = drag2.getRectangle().getPoint();
@@ -248,22 +248,20 @@ public class DemoqaDroppable extends PageObject {
     int index = utils.getId(productCatalogCategory, title);
     productCatalogCategory.get(index).click();
     List<WebElement> listCatalogItems = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li"));
-    utils.waitForVisibilityOfElements(listCatalogItems);
+    utils.waits.waitForVisibilityOfElements(listCatalogItems);
     return this;
   }
 
   public DemoqaDroppable dragItemFromCartCatalogToCartItem(String catalogTitle, String itemTitle) {
-
     openClickCartCatalog(catalogTitle);
 
     LOG.info("Drag " + itemTitle + " from catalog " + catalogTitle + " to cart");
     int index = utils.getId(productCatalogCategory, catalogTitle);
     List<WebElement> listCatalogItems = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li"));
-    utils.waitForVisibilityOfElements(listCatalogItems);
+    utils.waits.waitForVisibilityOfElements(listCatalogItems);
     int index2 = utils.getId(listCatalogItems, itemTitle);
     WebElement listCatalogItem = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li")).get(index2);
-    utils.waitTime(2);
-    utils.moveElementFromCenterToCenter(new ODraggable(listCatalogItem), new ODraggable(cart));
+    utils.actions.moveElementFromCenterToCenter(new ODraggable(listCatalogItem), new ODraggable(cart));
     return this;
   }
 

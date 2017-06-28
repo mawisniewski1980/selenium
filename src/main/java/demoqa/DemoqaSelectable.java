@@ -41,19 +41,19 @@ public class DemoqaSelectable extends PageObject {
 
   public DemoqaSelectable selectDefaltFunctionalityOneItem(String title) {
     LOG.info("Select one item " + title + " on Defalt Functionality");
-    utils.selectItemByClick(defaultFunctionalityItems, title);
+    utils.actions.selectItemByClick(defaultFunctionalityItems, title);
     return this;
   }
 
   public DemoqaSelectable selectDisplayAsGridOneItem(String title) {
     LOG.info("Select one item " + title + " on Display As Grid");
-    utils.selectItemByClick(displayAsGridItems, title);
+    utils.actions.selectItemByClick(displayAsGridItems, title);
     return this;
   }
 
   public DemoqaSelectable selectSerializeFeedbackOneItem(String title) {
     LOG.info("Select one item " + title + " on Serialize Feedback");
-    utils.selectItemByClick(serializeFeedbackItems, title);
+    utils.actions.selectItemByClick(serializeFeedbackItems, title);
     return this;
   }
 
@@ -76,7 +76,7 @@ public class DemoqaSelectable extends PageObject {
     LOG.info("Select more items from item " + one + " to " + two + " on Defalt Functionality");
     ODraggable objOne = new ODraggable(defaultFunctionalityItems.get(utils.getId(defaultFunctionalityItems, one)));
     ODraggable objTwo = new ODraggable(defaultFunctionalityItems.get(utils.getId(defaultFunctionalityItems, two)));
-    utils.selectFromCenterToCenter(objOne, objTwo);
+    utils.actions.selectFromCenterToCenter(objOne, objTwo);
     return this;
   }
 
@@ -84,7 +84,7 @@ public class DemoqaSelectable extends PageObject {
     LOG.info("Select more items from item " + one + " to " + two + " on Display As Grid");
     ODraggable objOne = new ODraggable(displayAsGridItems.get(utils.getId(displayAsGridItems, one)));
     ODraggable objTwo = new ODraggable(displayAsGridItems.get(utils.getId(displayAsGridItems, two)));
-    utils.selectFromCenterToCenter(objOne, objTwo);
+    utils.actions.selectFromCenterToCenter(objOne, objTwo);
     return this;
   }
 
@@ -92,7 +92,7 @@ public class DemoqaSelectable extends PageObject {
     LOG.info("Select more items from item " + one + " to " + two + " on Serialize Feedback");
     ODraggable objOne = new ODraggable(serializeFeedbackItems.get(utils.getId(serializeFeedbackItems, one)));
     ODraggable objTwo = new ODraggable(serializeFeedbackItems.get(utils.getId(serializeFeedbackItems, two)));
-    utils.selectFromCenterToCenter(objOne, objTwo);
+    utils.actions.selectFromCenterToCenter(objOne, objTwo);
     return this;
   }
 
@@ -103,19 +103,19 @@ public class DemoqaSelectable extends PageObject {
 
   public DemoqaSelectable selectDefaltFunctionalityMoreItemsWithCTRL(List<String> titles) {
     LOG.info("Select items " + titles + " on Defalt Functionality");
-    utils.selectItemByClickWithCTRL(defaultFunctionalityItems, titles);
+    utils.actions.selectItemByClickWithCTRL(defaultFunctionalityItems, titles);
     return this;
   }
 
   public DemoqaSelectable selectDisplayAsGridMoreItemsWithCTRL(List<String> titles) {
     LOG.info("Select items " + titles + " on Display As Grid");
-    utils.selectItemByClickWithCTRL(displayAsGridItems, titles);
+    utils.actions.selectItemByClickWithCTRL(displayAsGridItems, titles);
     return this;
   }
 
   public DemoqaSelectable selectSerializeFeedbackMoreItemsWithCTRL(List<String> titles) {
     LOG.info("Select items " + titles + " on Serialize Feedback");
-    utils.selectItemByClickWithCTRL(serializeFeedbackItems, titles);
+    utils.actions.selectItemByClickWithCTRL(serializeFeedbackItems, titles);
     return this;
   }
 

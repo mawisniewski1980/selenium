@@ -110,7 +110,7 @@ public class DemoqaContact extends PageObject {
 
   public Boolean allertMessageOk() {
     LOG.info("Message confirmation after sended mail. OK.");
-    utils.waitForVisibilityOfElement(allertMessage);
+    utils.waits.waitForVisibilityOfElement(allertMessage);
     if (allertMessage.getAttribute("class").contains("sent-ok"))
       return true;
     return false;
@@ -118,7 +118,7 @@ public class DemoqaContact extends PageObject {
 
   public Boolean allertMessageFail() {
     LOG.info("Message confirmation after sended mail. Fail.");
-    utils.waitForVisibilityOfElement(allertMessage);
+    utils.waits.waitForVisibilityOfElement(allertMessage);
     if (allertMessage.getAttribute("class").contains("validation-errors"))
       return true;
     return false;

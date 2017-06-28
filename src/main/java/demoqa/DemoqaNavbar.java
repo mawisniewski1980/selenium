@@ -73,7 +73,7 @@ public class DemoqaNavbar extends PageObject {
 
   private void demoLinkClick() {
     utils.linkClick(demoLink);
-    utils.waitForVisibilityOfElements(demoLinksList);
+    utils.waits.waitForVisibilityOfElements(demoLinksList);
   }
 
   public DemoqaDraggable draggableLinkClick() {

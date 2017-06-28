@@ -189,7 +189,7 @@ public class FullCalendarPage extends PageObject {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   public List<WebElement> getEvents() {
-    utils.waitForVisibilityOfElements(allDay);
+    utils.waits.waitForVisibilityOfElements(allDay);
     return events;
   }
 
