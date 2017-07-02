@@ -15,7 +15,7 @@ import enums.PageUrls.PageUrl;
 import utilsobjects.OUtils;
 import webdriverobjects.OWebDriver;
 
-public class TestObject {
+public abstract class TestObject {
 
   private static final Logger LOG = LoggerFactory.getLogger(TestObject.class.getName());
 

@@ -6,9 +6,7 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 import utilsobjects.OUtils;
 
-public class PageObject {
-
-  // private static final Logger LOG = LoggerFactory.getLogger(PageObject.class.getName());
+public abstract class PageObject {
 
   protected WebDriver driver;
   protected OUtils utils;
