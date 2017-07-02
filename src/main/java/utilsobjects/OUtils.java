@@ -44,6 +44,10 @@ public class OUtils {
     return date2.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
   }
 
+  public String getInfoAboutSystem() {
+    return "[Java " + System.getProperty("java.version") + "][" + System.getProperty("os.name") + ", " + System.getProperty("os.version") + ", " + System.getProperty("os.arch") + "]";
+  }
+
   public WebElement findNextElementByCssSelector(WebElement element, By locator) {
     return element.findElement(locator);
   }

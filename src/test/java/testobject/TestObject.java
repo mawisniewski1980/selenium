@@ -34,7 +34,7 @@ public abstract class TestObject {
     driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
     driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
     driver.manage().window().maximize();
-    System.out.println("#####################################  START " + utils.startDate() + " #####################################");
+    System.out.println("#####################################  START " + utils.startDate() + " " + utils.getInfoAboutSystem() + " #####################################");
   }
 
   @After

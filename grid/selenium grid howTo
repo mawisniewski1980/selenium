@@ -1,0 +1,44 @@
+
+#### Documentation
+#### http://www.seleniumhq.org/docs/07_selenium_grid.jsp
+
+#### Start Selenium HUB
+#1 Open http://www.seleniumhq.org/download/ and download "Selenium Standalone Server"
+#2 Open CMD in folder where you save the selenium serwer file
+#3 In CMD (command line) write: 
+# java -jar selenium-server-standalone-3.4.0.jar -role hub
+#4 Open WebBrowser and check address: http://localhost:4444/grid/console
+
+#### Start Selenium NODE
+#6 Open another CMD in folder where you save the selenium serwer file and write: 
+## java -jar selenium-server-standalone-3.4.0.jar -role webdriver -hub http://localhost:4444/grid/register -port 5556
+#7 Refresh http://localhost:4444/grid/console, you should see DefaultRemoteProxy (version : 3.4.0) id : http://192.168.2.100:5556, OS : WIN10
+
+##8 Launch NODE with only one webdriver e.g. FireFox
+##9 Open another CMD in folder where you save the selenium serwer file and write: 
+### java -jar selenium-server-standalone-3.4.0.jar -role webdriver -hub http://localhost:4444/grid/register -port 5557 -browser browserName=firefox
+#10 Refresh http://localhost:4444/grid/console
+
+#11 Launch NODE with only 2 webdriver e.g. FireFox
+#12 Open another CMD in folder where you save the selenium serwer file and write: 
+### java -jar selenium-server-standalone-3.4.0.jar -role webdriver -hub http://localhost:4444/grid/register -port 5558 -browser browserName=firefox,maxInstances=2,maxSession=2
+#13 Refresh http://localhost:4444/grid/console
+
+#14 Launch NODE with chrome
+#15 Open another CMD in folder where you save the selenium serwer file and write: 
+### java -Dwebdriver.chrome.driver=chromedriver.exe -jar selenium-server-standalone-3.4.0.jar -role webdriver -hub http://localhost:4444/grid/register -port 5558 -browser browserName=chrome
+### java -Dwebdriver.chrome.driver=chromedriver.exe -jar selenium-server-standalone-3.4.0.jar -role webdriver -hub http://localhost:4444/grid/register -port 5559 -browser browserName=chrome,maxInstances=3,maxSession=2
+#16 Refresh http://localhost:4444/grid/console
+
+
+
+#### JSON
+
+## https://github.com/SeleniumHQ/selenium/wiki/Grid2#configuring-the-nodes-by-json
+
+# Start hub
+# java -jar selenium-server-standalone-3.4.0.jar -role hub -hubConfig hub.json
+
+# Start node
+# java -jar selenium-server-standalone-3.4.0.jar -role node -nodeConfig all_node.json
+
