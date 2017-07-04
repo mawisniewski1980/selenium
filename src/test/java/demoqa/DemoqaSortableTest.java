@@ -15,7 +15,7 @@ import testobject.TestObject;
 
 public class DemoqaSortableTest extends TestObject {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaSortable.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(DemoqaSortableTest.class.getName());
 
   private DemoqaSortable sortable;
   private DemoqaCommonElements commonElements;
