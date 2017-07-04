@@ -17,7 +17,7 @@ import utilsobjects.ODraggable;
 
 public class DemoqaSortable extends PageObject {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaSortableTest.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(DemoqaSortable.class.getName());
 
   public DemoqaSortable(WebDriver driver) {
     super(driver);
@@ -84,7 +84,7 @@ public class DemoqaSortable extends PageObject {
   }
 
   public List<String> getPortletItemsText() {
-    List<String> listStrings = new ArrayList<String>();
+    List<String> listStrings = new ArrayList<String> ();
     int sumOfColumns = portletItemsColumn.size();
     for (int i = 0; i < sumOfColumns; i++) {
       List<WebElement> theList = utils.findNextElementsByCssSelector(portletItemsColumn.get(i), portletItemsListCss);
