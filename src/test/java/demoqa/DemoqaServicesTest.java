@@ -1,37 +1,51 @@
 package demoqa;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import enums.PageUrls.PageUrl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import testobject.TestObject;
 
 public class DemoqaServicesTest extends TestObject {
 
-  // private final Logger LOG = LoggerFactory.getLogger(DemoqaServicesTest.class);
+  private final Logger LOG = LoggerFactory.getLogger(DemoqaServicesTest.class);
 
-  // private DemoqaServices demoqaServices;
+  private DemoqaServices demoqaServices;
   private DemoqaNavbar demoqaNavbar;
   private DemoqaCommonElements commonElements;
 
   @Before
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
-    // demoqaServices = new DemoqaServices(driver);
+    demoqaServices = new DemoqaServices(driver);
     commonElements = new DemoqaCommonElements(driver);
     demoqaNavbar = new DemoqaNavbar(driver);
     demoqaNavbar.servicesLinkClick();
   }
 
   @Test
-  public void getTitle() {
-    assertThat(utils.getTitle()).isEqualTo("Services | Demoqa");
+  public void checkTitlePage() {
+    assertEquals("Check Services page title:", "Services | Demoqa", utils.getTitle());
   }
 
   @Test
-  public void getEntryTitle() {
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Services");
+  public void checkEntryTitle() {
+    assertEquals("Check Services entry title:", "Services", commonElements.getEntryTitle());
+  }
+
+  @Test
+  public void checkTextArticleOnDemoqaServicesPage(){
+    String textToCheck = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using ‘lorem ipsum’ is that it " +
+            "has a " +
+            "more-or-less normal distribution of letters, as opposed to using ‘This here is content’ or ‘Osama Bin Laden wanted dead or alive’, making it look like readable text and there also has been many examples what has happened if someone has forgotten to change the dummy text for the final copywrite text.\n" +
+            "In Finland there was couple of years ago this one bookshop banner in public internet with ‘Buying a book is as easy as hitting a child’ text in it.";
+
+    assertEquals("Check whole text on Demoqa Services Page", textToCheck, demoqaServices.getDemoqaServicesText());
   }
 }

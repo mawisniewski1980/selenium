@@ -22,6 +22,6 @@ public class DemoqaAboutUs extends PageObject {
 
   public String getAboutAssText() {
   LOG.info("Get text from article from About Ass page.");
-  return aboutAssText.getText();
+  return utils.getText(aboutAssText);
   }
 }
