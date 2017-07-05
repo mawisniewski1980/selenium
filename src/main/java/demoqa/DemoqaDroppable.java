@@ -228,6 +228,7 @@ public class DemoqaDroppable extends PageObject {
 
     utils.actions.moveElementFromCenterToCenter(drag, drop);
     utils.actions.moveElementFromCenterToCenter(drag2, drop);
+    utils.waits.waitUntilAnimationStop(drag);
 
     Point oDragPositionAfter = drag.getRectangle().getPoint();
     Point oDrag2PositionAfter = drag2.getRectangle().getPoint();

@@ -1,6 +1,8 @@
 package demoqa;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,13 +31,13 @@ public class DemoqaBlogTest extends TestObject {
   }
 
   @Test
-  public void getTitle() {
-    assertThat(utils.getTitle()).isEqualTo("Blog | Demoqa | Just another WordPress site");
+  public void checkTitle() {
+    assertEquals("Check Blog page title:", "Blog | Demoqa | Just another WordPress site", utils.getTitle());
   }
 
   @Test
-  public void getEntrysTitle() {
-    assertThat(demoqaBlog.getEntryTitle()).containsAll(ImmutableList.of("Sample Post", "Sample Post2"));
+  public void checkEntrysTitle() {
+    assertTrue("Check titles of entry:", demoqaBlog.getEntryTitle().containsAll(ImmutableList.of("Sample Post", "Sample Post2")));
   }
 
   @Test

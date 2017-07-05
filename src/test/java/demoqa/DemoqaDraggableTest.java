@@ -1,6 +1,7 @@
 package demoqa;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,13 +30,13 @@ public class DemoqaDraggableTest extends TestObject {
   }
 
   @Test
-  public void getTitle() {
-    assertThat(utils.getTitle()).isEqualTo("Draggable | Demoqa");
+  public void checkPageTitle() {
+    assertEquals("Check Draggable page title:", "Draggable | Demoqa", utils.getTitle());
   }
 
   @Test
-  public void getEntryTitle() {
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Draggable");
+  public void checkEntryTitle() {
+    assertEquals("Check Draggable entry title:", "Draggable", commonElements.getEntryTitle());
   }
 
   @Test

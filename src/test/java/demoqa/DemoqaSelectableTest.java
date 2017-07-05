@@ -1,6 +1,7 @@
 package demoqa;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
@@ -28,13 +29,13 @@ public class DemoqaSelectableTest extends TestObject {
   }
 
   @Test
-  public void getTitle() {
-    assertThat(utils.getTitle()).isEqualTo("Selectable | Demoqa");
+  public void checkPageTitle() {
+    assertEquals("Check Selectable page title:", "Selectable | Demoqa", utils.getTitle());
   }
 
   @Test
-  public void getEntryTitle() {
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Selectable");
+  public void checkEntryTitle() {
+    assertEquals("Check Selectable entry title:", "Selectable", commonElements.getEntryTitle());
   }
 
   @Test

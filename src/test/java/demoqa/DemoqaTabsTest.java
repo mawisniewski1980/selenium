@@ -1,7 +1,10 @@
 package demoqa;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,26 +29,31 @@ public class DemoqaTabsTest extends TestObject {
   }
 
   @Test
-  public void getTitle() {
-    assertThat(utils.getTitle()).isEqualTo("Tabs | Demoqa");
+  public void checkPageTitle() {
+    assertEquals("Check page title", "Tabs | Demoqa", utils.getTitle() );
   }
 
   @Test
-  public void getEntryTitle() {
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Tabs");
+  public void checkEntryTitle() {
+    assertEquals("Check page title", "Tabs", commonElements.getEntryTitle() );
   }
 
   @Test
-  public void getTabsContent() {
-
-    tabs.tabsLinkClick("Tab 2");
-    assertThat(tabs.getTabsContent2()).startsWith("Morbi tincidunt, d");
-
+  public void checkTab3ContentTextContains() {
     tabs.tabsLinkClick("Tab 3");
-    assertThat(tabs.getTabsContent3()).contains("Mauris eleifend est et turpis. ");
+    assertTrue("Check if text on Tab3 contians \"Mauris eleifend est et turpis.\" ", tabs.getTabsContent3().contains("Mauris eleifend est et turpis. ") );
+  }
 
+  @Test
+  public void checkTab2ContentTextStartsWith() {
+    tabs.tabsLinkClick("Tab 2");
+    assertTrue("Check if text on Tab2 start with \"Morbi tincidunt, d\" ", tabs.getTabsContent2().startsWith("Morbi tincidunt, d" ) );
+  }
+
+  @Test
+  public void checkTab1ContentText() {
     tabs.tabsLinkClick("Tab 1");
-    assertThat(tabs.getTabsContent1()).contains("Proin elit arcu, rutrum commodo");
+    assertTrue("Check if text on Tab2 start with \"Morbi tincidunt, d\" ", tabs.getTabsContent1().contains("Proin elit arcu, rutrum commodo") );
   }
 
 }

@@ -1,6 +1,7 @@
 package demoqa;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,13 +36,13 @@ public class DemoqaContactTest extends TestObject {
   }
 
   @Test
-  public void getTitle() {
-    assertThat(utils.getTitle()).isEqualTo("Contact | Demoqa");
+  public void checkTitle() {
+    assertEquals("Check Contact page title:", "Contact | Demoqa", utils.getTitle());
   }
 
   @Test
-  public void getEntryTitle() {
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Contact");
+  public void checkEntryTitle() {
+    assertEquals("Check Contact page entry title:", "Contact", commonElements.getEntryTitle());
   }
 
   @Test

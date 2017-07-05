@@ -1,6 +1,7 @@
 package demoqa;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,13 +28,13 @@ public class DemoqaResizableTest extends TestObject {
   }
 
   @Test
-  public void getTitle() {
-    assertThat(utils.getTitle()).isEqualTo("Resizable | Demoqa");
+  public void checkPageTitle() {
+    assertEquals("Check Resizable page title:", "Resizable | Demoqa", utils.getTitle());
   }
 
   @Test
-  public void getEntryTitle() {
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Resizable");
+  public void checkEntryTitle() {
+    assertEquals("Check Resizable entry title:", "Resizable", commonElements.getEntryTitle());
   }
 
   @Test

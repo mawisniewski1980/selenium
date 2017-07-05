@@ -35,7 +35,7 @@ public class DemoqaAboutUsTest extends TestObject {
 
   @Test
   public void checkEntryTitle() {
-    assertEquals("Check About Us entry title:", "About us", commonElements.getEntryTitle());
+   assertEquals("Check About Us entry title:", "About us", commonElements.getEntryTitle());
   }
 
   @Test

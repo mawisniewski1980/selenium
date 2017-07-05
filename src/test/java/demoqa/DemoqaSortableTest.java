@@ -1,6 +1,7 @@
 package demoqa;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 import java.util.Map;
@@ -29,13 +30,13 @@ public class DemoqaSortableTest extends TestObject {
   }
 
   @Test
-  public void getTitle() {
-    assertThat(utils.getTitle()).isEqualTo("Sortable | Demoqa");
+  public void checkPageTitle() {
+    assertEquals("Check Sortable page title:", "Sortable | Demoqa", utils.getTitle());
   }
 
   @Test
-  public void getEntryTitle() {
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Sortable");
+  public void checkEntryTitle() {
+    assertEquals("Check Sortable entry title:", "Sortable", commonElements.getEntryTitle());
   }
 
   @Test

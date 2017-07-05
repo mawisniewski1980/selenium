@@ -41,15 +41,15 @@ public class DemoqaTabs extends PageObject {
   }
 
   public String getTabsContent1() {
-    return tabsContent1.getText();
+    return utils.getText(tabsContent1);
   }
 
   public String getTabsContent2() {
-    return tabsContent2.getText();
+    return utils.getText(tabsContent2);
   }
 
   public String getTabsContent3() {
-    return tabsContent3.getText();
+    return utils.getText(tabsContent3);
   }
 
   public void tabsLinkClick(String title) {

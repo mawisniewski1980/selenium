@@ -1,6 +1,7 @@
 package demoqa;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,8 +30,8 @@ public class DemoqaHomeTest extends TestObject {
   }
 
   @Test
-  public void getTitle() {
-    assertThat(utils.getTitle()).isEqualTo("Demoqa | Just another WordPress site");
+  public void checkPageTitle() {
+    assertEquals("Check Home page title:", "Demoqa | Just another WordPress site", utils.getTitle());
   }
 
   @Test

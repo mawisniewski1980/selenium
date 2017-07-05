@@ -1,6 +1,7 @@
 package demoqa;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 
@@ -35,13 +36,13 @@ public class DemoqaRegistrationTest extends TestObject {
   }
 
   @Test
-  public void getTitle() {
-    assertThat(utils.getTitle()).isEqualTo("Registration | Demoqa");
+  public void checkPageTitle() {
+    assertEquals("Check Registration page title:", "Registration | Demoqa", utils.getTitle());
   }
 
   @Test
-  public void getEntryTitle() {
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Registration");
+  public void checkEntryTitle() {
+    assertEquals("Check Registration entry title:", "Registration", commonElements.getEntryTitle());
   }
 
   @Test
