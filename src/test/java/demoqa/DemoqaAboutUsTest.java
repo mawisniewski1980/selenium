@@ -2,6 +2,7 @@ package demoqa;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,27 +13,32 @@ public class DemoqaAboutUsTest extends TestObject {
 
   // private final Logger LOG = LoggerFactory.getLogger(DemoqaAboutUsTest.class);
 
-  // private DemoqaAboutUs demoqaAboutUs;
+  private DemoqaAboutUs demoqaAboutUs;
   private DemoqaNavbar demoqaNavbar;
   private DemoqaCommonElements commonElements;
 
   @Before
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
-    // demoqaAboutUs = new DemoqaAboutUs(driver);
+    demoqaAboutUs = new DemoqaAboutUs(driver);
     commonElements = new DemoqaCommonElements(driver);
     demoqaNavbar = new DemoqaNavbar(driver);
     demoqaNavbar.aboutUsLinkClick();
   }
 
   @Test
-  public void getTitle() {
+  public void checkPageTitle() {
     assertThat(utils.getTitle()).isEqualTo("About us | Demoqa");
   }
 
   @Test
-  public void getEntryTitle() {
+  public void checkEntryTitle() {
     assertThat(commonElements.getEntryTitle()).isEqualTo("About us");
+  }
+
+  @Test
+  public void checkTextActicleOnAboutAssPageIfContainsSince() {
+    Assert.assertTrue ("Check text in article :", demoqaAboutUs.getAboutAssText().contains ("since the 1500s"));
   }
 
 }
