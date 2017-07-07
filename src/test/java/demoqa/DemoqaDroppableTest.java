@@ -14,16 +14,14 @@ public class DemoqaDroppableTest extends TestObject {
   // private static final Logger LOG = LoggerFactory.getLogger(DemoqaDroppable.class.getName());
 
   private DemoqaDroppable droppable;
-  private DemoqaPageMenu demoqaMenu;
   private DemoqaCommonElements commonElements;
 
   @Before
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
-    commonElements = new DemoqaCommonElements(driver);
     droppable = new DemoqaDroppable(driver);
-    demoqaMenu = new DemoqaPageMenu(driver);
-    demoqaMenu.droppableLinkClick();
+    commonElements = new DemoqaCommonElements(driver);
+    commonElements.demoqaMenu.droppableLinkClick();
   }
 
   @Test

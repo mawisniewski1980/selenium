@@ -1,7 +1,6 @@
 package demoqa;
 
 import enums.PageUrls.PageUrl;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.TestObject;
@@ -15,7 +14,6 @@ public class DemoqaAccordionTest extends TestObject {
   // private final Logger LOG = LoggerFactory.getLogger(DemoqaAboutUsTest.class);
 
   private DemoqaAccordion demoqaAccordion;
-  private DemoqaPageMenu demoqaMenu;
   private DemoqaCommonElements commonElements;
 
   @Before
@@ -23,8 +21,7 @@ public class DemoqaAccordionTest extends TestObject {
     setUrl(PageUrl.DEMOQA);
     demoqaAccordion = new DemoqaAccordion(driver);
     commonElements = new DemoqaCommonElements(driver);
-    demoqaMenu = new DemoqaPageMenu(driver);
-    demoqaMenu.accordionLinkClick();
+    commonElements.demoqaMenu.accordionLinkClick();
   }
 
   @Test

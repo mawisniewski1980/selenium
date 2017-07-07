@@ -23,9 +23,9 @@ public class DemoqaSelectableTest extends TestObject {
   @Before
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
-    commonElements = new DemoqaCommonElements(driver);
     selectable = new DemoqaSelectable(driver);
-    new DemoqaPageMenu(driver).selectableLinkClick();
+    commonElements = new DemoqaCommonElements(driver);
+    commonElements.demoqaMenu.selectableLinkClick();
   }
 
   @Test

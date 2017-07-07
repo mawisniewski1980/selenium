@@ -56,4 +56,5 @@ public class DemoqaAutocomplete extends PageObject {
   @FindBy(css = categoriesSearchUlLiCss)
   private List<WebElement> categoriesSearchUlLi;
 
+
 }

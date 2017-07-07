@@ -16,16 +16,14 @@ public class DemoqaTabsTest extends TestObject {
   // private final Logger LOG = LoggerFactory.getLogger(DemoqaTabsTest.class);
 
   private DemoqaTabs tabs;
-  private DemoqaNavbar navbar;
   private DemoqaCommonElements commonElements;
 
   @Before
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
-    navbar = new DemoqaNavbar(driver);
     tabs = new DemoqaTabs(driver);
     commonElements = new DemoqaCommonElements(driver);
-    navbar.tabsLinkClick();
+    commonElements.demoqaNavbar.tabsLinkClick();
   }
 
   @Test

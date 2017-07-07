@@ -17,7 +17,6 @@ public class DemoqaHomeTest extends TestObject {
   // private static final Logger LOG = LoggerFactory.getLogger(DemoqaHomeTest.class.getName());
 
   private DemoqaHome demoqaHome;
-  private DemoqaNavbar demoqaNavbar;
   private DemoqaCommonElements commonElements;
 
   @Before
@@ -25,8 +24,7 @@ public class DemoqaHomeTest extends TestObject {
     setUrl(PageUrl.DEMOQA);
     demoqaHome = new DemoqaHome(driver);
     commonElements = new DemoqaCommonElements(driver);
-    demoqaNavbar = new DemoqaNavbar(driver);
-    demoqaNavbar.homeLinkClick();
+    commonElements.demoqaNavbar.homeLinkClick();
   }
 
   @Test
@@ -36,31 +34,31 @@ public class DemoqaHomeTest extends TestObject {
 
   @Test
   public void clickHomeLink() {
-    demoqaNavbar.aboutUsLinkClick();
+    commonElements.demoqaNavbar.aboutUsLinkClick();
     assertThat(commonElements.getEntryTitle()).isEqualTo("About us");
     assertThat(utils.getTitle()).isEqualTo("About us | Demoqa");
 
-    demoqaNavbar.servicesLinkClick();
+    commonElements.demoqaNavbar.servicesLinkClick();
     assertThat(commonElements.getEntryTitle()).isEqualTo("Services");
     assertThat(utils.getTitle()).isEqualTo("Services | Demoqa");
 
-    demoqaNavbar.draggableLinkClick();
+    commonElements.demoqaNavbar.draggableLinkClick();
     assertThat(commonElements.getEntryTitle()).isEqualTo("Draggable");
     assertThat(utils.getTitle()).isEqualTo("Draggable | Demoqa");
 
-    demoqaNavbar.tabsLinkClick();
+    commonElements.demoqaNavbar.tabsLinkClick();
     assertThat(commonElements.getEntryTitle()).isEqualTo("Tabs");
     assertThat(utils.getTitle()).isEqualTo("Tabs | Demoqa");
 
-    demoqaNavbar.blogLinkClick();
+    commonElements.demoqaNavbar.blogLinkClick();
     assertThat(new DemoqaBlog(driver).getEntryTitle()).containsAll(ImmutableList.of("Sample Post", "Sample Post2"));
     assertThat(utils.getTitle()).isEqualTo("Blog | Demoqa | Just another WordPress site");
 
-    demoqaNavbar.contactLinkClick();
+    commonElements.demoqaNavbar.contactLinkClick();
     assertThat(commonElements.getEntryTitle()).isEqualTo("Contact");
     assertThat(utils.getTitle()).isEqualTo("Contact | Demoqa");
 
-    demoqaNavbar.homeLinkClick();
+    commonElements.demoqaNavbar.homeLinkClick();
     assertThat(commonElements.getEntryTitle()).isEqualTo("Home");
     assertThat(utils.getTitle()).isEqualTo("Demoqa | Just another WordPress site");
   }
@@ -68,7 +66,7 @@ public class DemoqaHomeTest extends TestObject {
   @Test
   public void contentTabsTitleHome() {
 
-    demoqaNavbar.homeLinkClick();
+    commonElements.demoqaNavbar.homeLinkClick();
 
     demoqaHome.tabsLinkClick("Tab 4");
     assertThat(demoqaHome.getTabsContentTitle("Tab 4")).contains("Content 4 Title");

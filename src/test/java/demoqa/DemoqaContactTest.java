@@ -23,16 +23,14 @@ public class DemoqaContactTest extends TestObject {
   private final Logger LOG = LoggerFactory.getLogger(DemoqaContactTest.class);
 
   private DemoqaContact demoqacontact;
-  private DemoqaNavbar demoqaNavbar;
   private DemoqaCommonElements commonElements;
 
   @Before
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
-    demoqaNavbar = new DemoqaNavbar(driver);
     demoqacontact = new DemoqaContact(driver);
     commonElements = new DemoqaCommonElements(driver);
-    demoqaNavbar.contactLinkClick();
+    commonElements.demoqaNavbar.contactLinkClick();
   }
 
   @Test

@@ -18,16 +18,14 @@ public class DemoqaBlogTest extends TestObject {
   // private final Logger LOG = LoggerFactory.getLogger(DemoqaBlogTest.class);
 
   private DemoqaBlog demoqaBlog;
-  private DemoqaNavbar demoqaNavbar;
   private DemoqaCommonElements commonElements;
 
   @Before
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
     demoqaBlog = new DemoqaBlog(driver);
-    demoqaNavbar = new DemoqaNavbar(driver);
     commonElements = new DemoqaCommonElements(driver);
-    demoqaNavbar.blogLinkClick();
+    commonElements.demoqaNavbar.blogLinkClick();
   }
 
   @Test

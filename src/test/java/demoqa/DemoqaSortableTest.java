@@ -24,9 +24,9 @@ public class DemoqaSortableTest extends TestObject {
   @Before
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
-    commonElements = new DemoqaCommonElements(driver);
     sortable = new DemoqaSortable(driver);
-    new DemoqaPageMenu(driver).sortableLinkClick();
+    commonElements = new DemoqaCommonElements(driver);
+    commonElements.demoqaMenu.sortableLinkClick();
   }
 
   @Test

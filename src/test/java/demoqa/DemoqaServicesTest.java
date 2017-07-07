@@ -17,7 +17,6 @@ public class DemoqaServicesTest extends TestObject {
   private final Logger LOG = LoggerFactory.getLogger(DemoqaServicesTest.class);
 
   private DemoqaServices demoqaServices;
-  private DemoqaNavbar demoqaNavbar;
   private DemoqaCommonElements commonElements;
 
   @Before
@@ -25,8 +24,7 @@ public class DemoqaServicesTest extends TestObject {
     setUrl(PageUrl.DEMOQA);
     demoqaServices = new DemoqaServices(driver);
     commonElements = new DemoqaCommonElements(driver);
-    demoqaNavbar = new DemoqaNavbar(driver);
-    demoqaNavbar.servicesLinkClick();
+    commonElements.demoqaNavbar.servicesLinkClick();
   }
 
   @Test

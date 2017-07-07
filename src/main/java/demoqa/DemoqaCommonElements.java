@@ -14,8 +14,13 @@ public class DemoqaCommonElements extends PageObject {
 
   private static final Logger LOG = LoggerFactory.getLogger(DemoqaCommonElements.class.getName());
 
+  public DemoqaNavbar demoqaNavbar;
+  public DemoqaPageMenu demoqaMenu;
+
   public DemoqaCommonElements(WebDriver driver) {
     super(driver);
+    this.demoqaNavbar = new DemoqaNavbar(driver);
+    this.demoqaMenu = new DemoqaPageMenu(driver);
   }
 
   private final String titleCss = ".entry-title";
@@ -26,9 +31,9 @@ public class DemoqaCommonElements extends PageObject {
   @FindBy(css = tabsCss)
   private WebElement tabs;
 
-  private final String tabsLinksLiCss = "#tabs ul[role='tablist'] li";
+/*  private final String tabsLinksLiCss = "#tabs ul[role='tablist'] li";
   @FindBy(css = tabsLinksLiCss)
-  private List<WebElement> tabsLinksLi;
+  private List<WebElement> tabsLinksLi;*/
 
   private final String tabsLinksACss = "#tabs ul[role='tablist'] li a";
   @FindBy(css = tabsLinksACss)
@@ -40,7 +45,7 @@ public class DemoqaCommonElements extends PageObject {
   }
 
   public void tabsLinkClick(String title) {
-    if (!(tabsLinksLi.get(utils.getId(tabsLinksA, title)).getAttribute("class").contains("ui-state-active"))) {
+    if (!(tabsLinksA.get(utils.getId(tabsLinksA, title)).getAttribute("class").contains("ui-state-active"))) {
       utils.linkClick(tabsLinksA, title);
     } else {
       LOG.info("Tab '" + title + "' is active.");

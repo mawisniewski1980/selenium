@@ -17,16 +17,14 @@ public class DemoqaDraggableTest extends TestObject {
   private final Logger LOG = LoggerFactory.getLogger(DemoqaDraggableTest.class);
 
   private DemoqaDraggable draggable;
-  private DemoqaNavbar navbar;
   private DemoqaCommonElements commonElements;
 
   @Before
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
-    navbar = new DemoqaNavbar(driver);
-    commonElements = new DemoqaCommonElements(driver);
     draggable = new DemoqaDraggable(driver);
-    navbar.draggableLinkClick();
+    commonElements = new DemoqaCommonElements(driver);
+    commonElements.demoqaNavbar.draggableLinkClick();
   }
 
   @Test

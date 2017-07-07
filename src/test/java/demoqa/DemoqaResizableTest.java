@@ -22,9 +22,9 @@ public class DemoqaResizableTest extends TestObject {
   @Before
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
-    commonElements = new DemoqaCommonElements(driver);
     resizable = new DemoqaResizable(driver);
-    new DemoqaPageMenu(driver).resizableLinkClick();
+    commonElements = new DemoqaCommonElements(driver);
+    commonElements.demoqaMenu.resizableLinkClick();
   }
 
   @Test

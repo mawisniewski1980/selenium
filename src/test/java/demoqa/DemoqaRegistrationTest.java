@@ -23,7 +23,6 @@ public class DemoqaRegistrationTest extends TestObject {
   // private final Logger LOG = LoggerFactory.getLogger(DemoqaRegistrationTest.class);
 
   private DemoqaRegistration demoqaReg;
-  private DemoqaPageMenu demoqaMenu;
   private DemoqaCommonElements commonElements;
 
   @Before
@@ -31,8 +30,7 @@ public class DemoqaRegistrationTest extends TestObject {
     setUrl(PageUrl.DEMOQA);
     demoqaReg = new DemoqaRegistration(driver);
     commonElements = new DemoqaCommonElements(driver);
-    demoqaMenu = new DemoqaPageMenu(driver);
-    demoqaMenu.registrationLinkClick();
+    commonElements.demoqaMenu.registrationLinkClick();
   }
 
   @Test
