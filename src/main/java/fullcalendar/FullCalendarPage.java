@@ -1,10 +1,7 @@
 package fullcalendar;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-
+import enums.CalendarEnums.TIMEHOURS;
+import enums.CalendarEnums.VIEW;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,10 +9,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import enums.CalendarEnums.TIMEHOURS;
-import enums.CalendarEnums.VIEW;
 import pageobject.PageObject;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FullCalendarPage extends PageObject {
 
@@ -125,17 +124,17 @@ public class FullCalendarPage extends PageObject {
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   public List<LocalDate> getAllDayDates() {
-    List<LocalDate> listDates = new ArrayList<LocalDate>();
+    List<LocalDate> listDates = new ArrayList<>();
     for (WebElement a : allDay) {
-      listDates.add(LocalDate.parse(a.getAttribute("data-date").toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+      listDates.add(LocalDate.parse(a.getAttribute("data-date"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
     }
     return listDates;
   }
 
   public List<LocalDate> getDayOfWeekDate() {
-    List<LocalDate> listDates = new ArrayList<LocalDate>();
+    List<LocalDate> listDates = new ArrayList<>();
     for (WebElement a : dayOfWeek) {
-      LocalDate dataConvert = LocalDate.parse(a.getAttribute("data-date").toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+      LocalDate dataConvert = LocalDate.parse(a.getAttribute("data-date"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
       System.out.println(dataConvert.getDayOfWeek().getValue());
       listDates.add(dataConvert);
     }
@@ -160,28 +159,26 @@ public class FullCalendarPage extends PageObject {
       isDateOnCalendar(localDate);
     } else if (localDate.isBefore(currentDay)) {
       LOG.info("Date: " + localDate + " is before " + currentDay);
-      while (isDateOnCalendar(localDate) == false) {
+      while (!isDateOnCalendar(localDate)) {
         if (isDateOnCalendar(localDate))
           break;
         prevButtonClick();
       }
-      ;
     } else if (localDate.isAfter(currentDay)) {
       LOG.info("Date: " + localDate + " is after " + currentDay);
-      while (isDateOnCalendar(localDate) == false) {
+      while (!isDateOnCalendar(localDate)) {
         if (isDateOnCalendar(localDate))
           break;
         nextButtonClick();
       }
-      ;
     }
   }
 
   ///////////////////////////////////////////////////////////////////////////////////////
   public List<LocalDate> getRowsTimeGridDates() {
-    List<LocalDate> listDates = new ArrayList<LocalDate>();
+    List<LocalDate> listDates = new ArrayList<>();
     for (WebElement a : rowsTimeGrid) {
-      listDates.add(LocalDate.parse(a.getAttribute("data-date").toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+      listDates.add(LocalDate.parse(a.getAttribute("data-date"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
     }
     return listDates;
   }
@@ -243,7 +240,7 @@ public class FullCalendarPage extends PageObject {
     } else if (view.equals(VIEW.WEEK)) {
       weekButtonClick();
       for (int i = 0; i < rowsTimeGrid.size(); i++) {
-        LocalDate date = LocalDate.parse(rowsTimeGrid.get(i).getAttribute("data-date").toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDate date = LocalDate.parse(rowsTimeGrid.get(i).getAttribute("data-date"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         if (date.equals(localDate)) {
           LOG.info(date + " - " + localDate + " - " + i);
@@ -261,15 +258,15 @@ public class FullCalendarPage extends PageObject {
 
     } else if (view.equals(VIEW.MONTH)) {
       monthButtonClick();
-      for (int i = 0; i < allDay.size(); i++) {
-        LocalDate date = LocalDate.parse(allDay.get(i).getAttribute("data-date").toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+      for (WebElement anAllDay : allDay) {
+        LocalDate date = LocalDate.parse(anAllDay.getAttribute("data-date").toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         if (date.equals(localDate)) {
 
           for (WebElement element : events) {
             if (element.findElement(By.cssSelector(".fc-title")).getText().equals(event)) {
               LOG.info("Found event: " + event + ", move mouse to " + localDate);
-              action.moveToElement(element).clickAndHold(element).moveToElement(allDay.get(i)).release().build().perform();
+              action.moveToElement(element).clickAndHold(element).moveToElement(anAllDay).release().build().perform();
               break;
             }
           }

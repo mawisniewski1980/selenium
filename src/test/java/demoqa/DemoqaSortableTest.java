@@ -1,18 +1,18 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-import java.util.Map;
-
+import enums.PageUrls.PageUrl;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import enums.PageUrls.PageUrl;
 import testobject.TestObject;
+
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotSame;
 
 public class DemoqaSortableTest extends TestObject {
 
@@ -52,7 +52,7 @@ public class DemoqaSortableTest extends TestObject {
     List<String> listAfter = sortable.getDefaultFunctionalityItemsText();
     LOG.info("List after: " + listAfter);
 
-    assertThat(listBefore).isNotEqualTo(listAfter);
+    assertNotEquals(listBefore, listAfter);
   }
 
   @Test
@@ -73,8 +73,8 @@ public class DemoqaSortableTest extends TestObject {
     LOG.info("List Left after: " + listLeftAfter);
     LOG.info("List Right after: " + listRightAfter);
 
-    assertThat(listLeftBefore).isNotEqualTo(listLeftAfter);
-    assertThat(listRightBefore).isNotEqualTo(listRightAfter);
+    assertNotEquals(listLeftBefore, listLeftAfter);
+    assertNotEquals(listRightBefore, listRightAfter);
   }
 
   @Test
@@ -95,8 +95,7 @@ public class DemoqaSortableTest extends TestObject {
     List<String> listLeftAfter = sortable.getConnectListsDefaultItemsText();
     LOG.info("List Left after: " + listLeftAfter);
 
-    assertThat(listLeftBefore).isNotEqualTo(listLeftAfter);
-
+    assertNotEquals(listLeftBefore, listLeftAfter);
   }
 
   @Test
@@ -117,7 +116,7 @@ public class DemoqaSortableTest extends TestObject {
     List<String> listRightAfter = sortable.getConnectListsHighlightItemsText();
     LOG.info("List right after: " + listRightAfter);
 
-    assertThat(listRightBefore).isNotEqualTo(listRightAfter);
+    assertNotEquals(listRightBefore, listRightAfter);
 
   }
 
@@ -133,7 +132,7 @@ public class DemoqaSortableTest extends TestObject {
     List<String> listAfter = sortable.getSortableGridItemsText();
     LOG.info("List after: " + listAfter);
 
-    assertThat(listBefore).isNotEqualTo(listAfter);
+    assertNotEquals(listBefore, listAfter);
   }
 
   @Test
@@ -147,6 +146,6 @@ public class DemoqaSortableTest extends TestObject {
 
     Map<Integer, String> mapAfter = sortable.getPortletMapItemsText();
 
-    assertThat(mapBefore).isNotSameAs(mapAfter);
+    assertNotSame(mapBefore, mapAfter);
   }
 }

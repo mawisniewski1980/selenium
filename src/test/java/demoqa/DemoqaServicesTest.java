@@ -1,16 +1,13 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Assert;
+import enums.PageUrls.PageUrl;
 import org.junit.Before;
 import org.junit.Test;
-
-import enums.PageUrls.PageUrl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import testobject.TestObject;
+
+import static org.junit.Assert.assertEquals;
 
 public class DemoqaServicesTest extends TestObject {
 

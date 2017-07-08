@@ -1,19 +1,18 @@
 package demoqa;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import pageobject.PageObject;
 import utilsobjects.ODraggable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DemoqaSortable extends PageObject {
 
@@ -84,34 +83,34 @@ public class DemoqaSortable extends PageObject {
   }
 
   public List<String> getPortletItemsText() {
-    List<String> listStrings = new ArrayList<String> ();
+    List<String> listStrings = new ArrayList<>();
     int sumOfColumns = portletItemsColumn.size();
     for (int i = 0; i < sumOfColumns; i++) {
       List<WebElement> theList = utils.findNextElementsByCssSelector(portletItemsColumn.get(i), portletItemsListCss);
       int sumOfPortlets = theList.size();
       LOG.info("In column " + (i + 1) + " is " + sumOfPortlets + " portlet/portlets");
-      for (int j = 0; j < sumOfPortlets; j++) {
-        LOG.info("Title: " + utils.getTextFromWebElementList(utils.findNextElementsByCssSelector(theList.get(j), portletItemsHeaderCss)));
-        listStrings.addAll(utils.getTextFromWebElementList(utils.findNextElementsByCssSelector(theList.get(j), portletItemsHeaderCss)));
+      for (WebElement aTheList : theList) {
+        LOG.info("Title: " + utils.getTextFromWebElementList(utils.findNextElementsByCssSelector(aTheList, portletItemsHeaderCss)));
+        listStrings.addAll(utils.getTextFromWebElementList(utils.findNextElementsByCssSelector(aTheList, portletItemsHeaderCss)));
       }
     }
     return listStrings;
   }
 
   public Map<Integer, String> getPortletMapItemsText() {
-    Map<Integer, String> mapStrings = new HashMap<Integer, String>();
+    Map<Integer, String> mapStrings = new HashMap<>();
     int sumOfColumns = portletItemsColumn.size();
     for (int i = 0; i < sumOfColumns; i++) {
       List<WebElement> theList = utils.findNextElementsByCssSelector(portletItemsColumn.get(i), portletItemsListCss);
       int sumOfPortlets = theList.size();
       // LOG.info("In column " + (i + 1) + " is " + sumOfPortlets + " portlet/portlets");
       int col = i + 1;
-      for (int j = 0; j < sumOfPortlets; j++) {
-        List<String> theListTitles = utils.getTextFromWebElementList(utils.findNextElementsByCssSelector(theList.get(j), portletItemsHeaderCss));
+      for (WebElement aTheList : theList) {
+        List<String> theListTitles = utils.getTextFromWebElementList(utils.findNextElementsByCssSelector(aTheList, portletItemsHeaderCss));
         // LOG.info("Title: " + theListTitles);
         for (int k = 0; k < theListTitles.size(); k++) {
           LOG.info("In column " + col + " is portlet " + theListTitles.get(k).toString());
-          mapStrings.put(col, theListTitles.get(k).toString());
+          mapStrings.put(col, theListTitles.get(k));
         }
       }
     }

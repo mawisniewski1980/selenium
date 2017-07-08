@@ -1,14 +1,13 @@
 package demoqa;
 
-import java.util.List;
-
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import pageobject.PageObject;
 import utilsobjects.ODraggable;
+
+import java.util.List;
 
 public class DemoqaDraggable extends PageObject {
 

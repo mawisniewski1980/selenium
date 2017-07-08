@@ -1,7 +1,6 @@
 package phptravelsuserpage;
 
 import org.openqa.selenium.WebDriver;
-
 import pageobject.PageObject;
 
 public class PhpTravelsUserPage extends PageObject {

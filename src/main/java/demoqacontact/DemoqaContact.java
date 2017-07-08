@@ -1,12 +1,10 @@
 package demoqacontact;
 
-import org.fest.assertions.api.Fail;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import pageobject.PageObject;
 
 public class DemoqaContact extends PageObject {
@@ -104,31 +102,26 @@ public class DemoqaContact extends PageObject {
       }
 
     } else {
-      Fail.fail("Object Demoqa Contact Form is not set. Demoqa Contact Form is null");
     }
   }
 
-  public Boolean allertMessageOk() {
+  public Boolean alertMessageOk() {
     LOG.info("Message confirmation after sended mail. OK.");
     utils.waits.waitForVisibilityOfElement(allertMessage);
-    if (allertMessage.getAttribute("class").contains("sent-ok"))
-      return true;
-    return false;
+    return allertMessage.getAttribute("class").contains("sent-ok");
   }
 
-  public Boolean allertMessageFail() {
+  public Boolean alertMessageFail() {
     LOG.info("Message confirmation after sended mail. Fail.");
     utils.waits.waitForVisibilityOfElement(allertMessage);
-    if (allertMessage.getAttribute("class").contains("validation-errors"))
-      return true;
-    return false;
+    return allertMessage.getAttribute("class").contains("validation-errors");
   }
 
-  public String getAllertMessageOk() {
-    LOG.info("Get allert message. OK.");
+  public String getAlertMessageOk() {
+    LOG.info("Get alert message. OK.");
     String strNull = null;
 
-    if (allertMessageOk()) {
+    if (alertMessageOk()) {
       strNull = allertMessage.getText();
       LOG.info("Message: " + strNull);
       return strNull;
@@ -137,11 +130,11 @@ public class DemoqaContact extends PageObject {
     return strNull;
   }
 
-  public String getAllertMessageFail() {
-    LOG.info("Get allert message. Fail.");
+  public String getAlertMessageFail() {
+    LOG.info("Get alert message. Fail.");
     String strNull = null;
 
-    if (allertMessageFail()) {
+    if (alertMessageFail()) {
       strNull = allertMessage.getText();
       LOG.info("Message: " + strNull);
       return strNull;

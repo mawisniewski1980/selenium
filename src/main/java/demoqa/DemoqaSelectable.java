@@ -1,17 +1,16 @@
 package demoqa;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import pageobject.PageObject;
 import utilsobjects.ODraggable;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DemoqaSelectable extends PageObject {
 
@@ -97,8 +96,7 @@ public class DemoqaSelectable extends PageObject {
   }
 
   public ArrayList<String> getSerializeSelectedList() {
-    ArrayList<String> list = new ArrayList<String>(Arrays.asList(serializeFeedback.getText().split("#")));
-    return list;
+    return new ArrayList<String>(Arrays.asList(serializeFeedback.getText().split("#")));
   }
 
   public DemoqaSelectable selectDefaltFunctionalityMoreItemsWithCTRL(List<String> titles) {

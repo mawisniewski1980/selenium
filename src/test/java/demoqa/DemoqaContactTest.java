@@ -1,22 +1,21 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-
-import java.util.Arrays;
-import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import demoqacontact.DemoqaContact;
 import demoqacontact.DemoqaContactForm;
 import enums.DemoqaEnums.DemoqaContactValidationFormText;
 import enums.DemoqaEnums.DemoqaContactValidationInputText;
 import enums.PageUrls.PageUrl;
+import org.junit.Before;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import testobject.TestObject;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class DemoqaContactTest extends TestObject {
 
@@ -53,8 +52,8 @@ public class DemoqaContactTest extends TestObject {
     DemoqaContactForm cform = new DemoqaContactForm(name, email, subject, message);
     demoqacontact.fillContactForm(cform);
     demoqacontact.clickSendButton();
-    assertThat(demoqacontact.allertMessageOk()).isTrue();
-    assertThat(demoqacontact.getAllertMessageOk()).isEqualTo(DemoqaContactValidationFormText.SUCCESS.getText());
+    assertTrue("Check if there is an alert massage ok.", demoqacontact.alertMessageOk());
+    assertEquals("Your message was sent successfully. Thanks.", DemoqaContactValidationFormText.SUCCESS.getText(), demoqacontact.getAlertMessageOk());
   }
 
   @Test
@@ -63,8 +62,8 @@ public class DemoqaContactTest extends TestObject {
     DemoqaContactForm cform = new DemoqaContactForm("", "emailxx.com", "", "");
     demoqacontact.fillContactForm(cform);
     demoqacontact.clickSendButton();
-    assertThat(demoqacontact.allertMessageFail()).isTrue();
-    assertThat(demoqacontact.getAllertMessageFail()).isEqualTo(DemoqaContactValidationFormText.ERROR.getText());
+    assertTrue("Message confirmation after sended mail. Fail.", demoqacontact.alertMessageFail());
+    assertEquals("Validation errors occurred. Please confirm the fields and submit it again.", DemoqaContactValidationFormText.ERROR.getText(), demoqacontact.getAlertMessageFail());
   }
 
   @Test
@@ -72,10 +71,10 @@ public class DemoqaContactTest extends TestObject {
 
     demoqacontact.clickSendButton();
 
-    assertThat(demoqacontact.getTextValidationNameField()).isEqualTo(DemoqaContactValidationInputText.REQUIREFIELD.getText());
-    assertThat(demoqacontact.getTextValidationEmailField()).isEqualTo(DemoqaContactValidationInputText.REQUIREFIELD.getText());
-    assertThat(demoqacontact.allertMessageFail()).isTrue();
-    assertThat(demoqacontact.getAllertMessageFail()).isEqualTo(DemoqaContactValidationFormText.ERROR.getText());
+    assertEquals(DemoqaContactValidationInputText.REQUIREFIELD.getText(), demoqacontact.getTextValidationNameField());
+    assertEquals(DemoqaContactValidationInputText.REQUIREFIELD.getText(), demoqacontact.getTextValidationEmailField());
+    assertTrue("Message confirmation after sended mail. Fail.", demoqacontact.alertMessageFail());
+    assertEquals("Validation errors occurred. Please confirm the fields and submit it again.", DemoqaContactValidationFormText.ERROR.getText(), demoqacontact.getAlertMessageFail());
   }
 
   @Test
@@ -89,7 +88,7 @@ public class DemoqaContactTest extends TestObject {
     demoqacontact.setSubjectInput(subject);
     demoqacontact.setMessageInput(message);
 
-    /**
+    /*
      * .email@example.com, email.@example.com, email..email@example.com, Abc..123@example.com - with this examples page have big problem email@example.web, email@111.222.333.44444 - this emails - are
      * correct on email field :(
      */
@@ -97,19 +96,19 @@ public class DemoqaContactTest extends TestObject {
         "email@example@example.com", "あいうえお@example.com", "email@example.com (Joe Smith)", "email@example", "email@-example.com", "email@example..com", "just\"not\"right@example.com",
         "this is\"really\"not\\allowed@example.com");
 
-    for (int i = 0; i < invalidEmails.size(); i++) {
-      LOG.info("Get email: " + invalidEmails.get(i));
-      demoqacontact.setEmailInput(invalidEmails.get(i));
+    for (String invalidEmail : invalidEmails) {
+      LOG.info("Get email: " + invalidEmail);
+      demoqacontact.setEmailInput(invalidEmail);
       demoqacontact.clickSendButton();
-      assertThat(demoqacontact.allertMessageFail()).isTrue();
-      assertThat(demoqacontact.getAllertMessageFail()).isEqualTo(DemoqaContactValidationFormText.ERROR.getText());
-      assertThat(demoqacontact.getTextValidationEmailField()).isEqualTo(DemoqaContactValidationInputText.INVALIDEMAIL.getText());
+      assertTrue("Message confirmation after sended mail. Fail.", demoqacontact.alertMessageFail());
+      assertEquals(DemoqaContactValidationFormText.ERROR.getText(), demoqacontact.getAlertMessageFail());
+      assertEquals(DemoqaContactValidationInputText.INVALIDEMAIL.getText(), demoqacontact.getTextValidationEmailField());
     }
 
     demoqacontact.setEmailInput(validEmail);
     demoqacontact.clickSendButton();
-    assertThat(demoqacontact.allertMessageOk()).isTrue();
-    assertThat(demoqacontact.getAllertMessageOk()).isEqualTo(DemoqaContactValidationFormText.SUCCESS.getText());
+    assertTrue("Check if there is an alert massage ok.", demoqacontact.alertMessageOk());
+    assertEquals(DemoqaContactValidationFormText.SUCCESS.getText(), demoqacontact.getAlertMessageOk());
   }
 
 }

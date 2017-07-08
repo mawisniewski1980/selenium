@@ -1,8 +1,6 @@
 package testobject;
 
-import java.util.concurrent.TimeUnit;
-
-import org.fest.assertions.api.Fail;
+import enums.PageUrls.PageUrl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -10,10 +8,10 @@ import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import enums.PageUrls.PageUrl;
 import utilsobjects.OUtils;
 import webdriverobjects.OWebDriver;
+
+import java.util.concurrent.TimeUnit;
 
 public abstract class TestObject {
 
@@ -28,7 +26,7 @@ public abstract class TestObject {
   @Before
   public void setUpBeforeClass() {
     if (driver == null) {
-      Fail.fail("Driver cannot be null");
+      //Fail.fail("Driver cannot be null");
     }
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
@@ -99,7 +97,7 @@ public abstract class TestObject {
 
     default: {
       LOG.info("No Url !");
-      Fail.fail("No Url !");
+      //Fail.fail("No Url !");
       break;
     }
     }

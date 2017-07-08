@@ -1,6 +1,5 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -41,28 +40,28 @@ public class DemoqaBlogTest extends TestObject {
   @Test
   public void clickTitleEntry() {
     demoqaBlog.clickTitleEntry("Sample Post");
-    assertThat(utils.getTitle()).isEqualTo("Sample Post | Demoqa");
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Sample Post");
+    assertEquals("Check Sample Post page title:", "Sample Post | Demoqa", utils.getTitle());
+    assertEquals("Check titles of entry:", "Sample Post", commonElements.getEntryTitle());
   }
 
   @Test
   public void clickDateEntry() {
     demoqaBlog.clickDateEntry("Sample Post");
-    assertThat(utils.getTitle()).isEqualTo("Sample Post | Demoqa");
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Sample Post");
+    assertEquals("Check Sample Post page title:", "Sample Post | Demoqa", utils.getTitle());
+    assertEquals("Check titles of entry:", "Sample Post", commonElements.getEntryTitle());
   }
 
   @Test
   public void clickImageEntry() {
     demoqaBlog.clickImageEntry("Sample Post2");
-    assertThat(utils.getTitle()).isEqualTo("Sample Post2 | Demoqa");
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Sample Post2");
+    assertEquals("Check Sample Post2 page title:", "Sample Post2 | Demoqa", utils.getTitle());
+    assertEquals("Check titles of entry:", "Sample Post2", commonElements.getEntryTitle());
   }
 
   @Test
   public void clickReadMoreLinkEntry() {
     demoqaBlog.clickReadMoreLinkEntry("Sample Post2");
-    assertThat(utils.getTitle()).isEqualTo("Sample Post2 | Demoqa");
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Sample Post2");
+    assertEquals("Check Sample Post2 page title:", "Sample Post2 | Demoqa", utils.getTitle());
+    assertEquals("Check titles of entry:", "Sample Post2", commonElements.getEntryTitle());
   }
 }

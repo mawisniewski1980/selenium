@@ -1,15 +1,12 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Assert;
+import enums.PageUrls.PageUrl;
 import org.junit.Before;
 import org.junit.Test;
-
-import enums.PageUrls.PageUrl;
 import testobject.TestObject;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class DemoqaAboutUsTest extends TestObject {
 

@@ -1,21 +1,19 @@
 package demoqaregistration;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-
-import org.fest.assertions.api.Fail;
+import enums.DemoqaEnums.DemoqaRegistrationHobby;
+import enums.DemoqaEnums.DemoqaRegistrationMaritalStatus;
+import enums.DemoqaEnums.DemoqaReistrationCountry;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import enums.DemoqaEnums.DemoqaRegistrationHobby;
-import enums.DemoqaEnums.DemoqaRegistrationMaritalStatus;
-import enums.DemoqaEnums.DemoqaReistrationCountry;
 import pageobject.PageObject;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class DemoqaRegistration extends PageObject {
 
@@ -313,7 +311,7 @@ public class DemoqaRegistration extends PageObject {
         setConfirmPassword(dRegForm.getConfigmPassword());
       }
     } else {
-      Fail.fail("Object Demoqa Registration Form is not set. Demoqa Registration Form is null");
+      //Fail.fail("Object Demoqa Registration Form is not set. Demoqa Registration Form is null");
     }
   }
 }

@@ -1,19 +1,22 @@
 package fullcalendar;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-
-import java.time.LocalDate;
-import java.time.Month;
-
+import enums.CalendarEnums.TIMEHOURS;
+import enums.CalendarEnums.VIEW;
+import enums.PageUrls.PageUrl;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import enums.CalendarEnums.TIMEHOURS;
-import enums.CalendarEnums.VIEW;
-import enums.PageUrls.PageUrl;
 import testobject.TestObject;
+
+import java.time.LocalDate;
+import java.time.Month;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 
 public class FullCalendarTest extends TestObject {
 
@@ -29,31 +32,31 @@ public class FullCalendarTest extends TestObject {
 
   @Test
   public void getTitle() {
-    assertThat(driver.getTitle()).isEqualTo("FullCalendar - JavaScript Event Calendar");
+    assertEquals("FullCalendar - JavaScript Event Calendar", driver.getTitle());
   }
 
   @Test
   public void clickOnListButton() {
     fp.listButtonClick();
-    assertThat(fp.checkIfDayButtonIsActive()).isTrue();
+    assertTrue(fp.checkIfDayButtonIsActive());
   }
 
   @Test
   public void clickOnMonthButton() {
     fp.monthButtonClick();
-    assertThat(fp.checkIfDayButtonIsActive()).isTrue();
+    assertTrue(fp.checkIfDayButtonIsActive());
   }
 
   @Test
   public void clickOnWeekButton() {
     fp.weekButtonClick();
-    assertThat(fp.checkIfDayButtonIsActive()).isTrue();
+    assertTrue(fp.checkIfDayButtonIsActive());
   }
 
   @Test
   public void clickOnDayButton() {
     fp.dayButtonClick();
-    assertThat(fp.checkIfDayButtonIsActive()).isTrue();
+    assertTrue(fp.checkIfDayButtonIsActive());
   }
 
   @Test
@@ -62,7 +65,7 @@ public class FullCalendarTest extends TestObject {
     fp.monthButtonClick();
     fp.weekButtonClick();
     fp.dayButtonClick();
-    assertThat(fp.checkIfDayButtonIsActive()).isTrue();
+    assertTrue(fp.checkIfDayButtonIsActive());
   }
 
   @Test
@@ -70,7 +73,7 @@ public class FullCalendarTest extends TestObject {
     LocalDate checkedDated = LocalDate.now();
     LOG.info("Check date " + checkedDated + " on month view");
     fp.monthButtonClick();
-    assertThat(fp.isDateOnCalendar(checkedDated)).isFalse();
+    assertFalse(fp.isDateOnCalendar(checkedDated));
   }
 
   @Test
@@ -78,7 +81,7 @@ public class FullCalendarTest extends TestObject {
     LocalDate checkedDated = LocalDate.now();
     LOG.info("Check date " + checkedDated + " after click [Today] button on today view");
     fp.todayButtonClick();
-    assertThat(fp.isDateOnCalendar(checkedDated)).isTrue();
+    assertTrue(fp.isDateOnCalendar(checkedDated));
   }
 
   @Test
@@ -86,7 +89,7 @@ public class FullCalendarTest extends TestObject {
     LocalDate checkedDated = LocalDate.now();
     LOG.info("Check date " + checkedDated + " on week view");
     fp.weekButtonClick();
-    assertThat(fp.isDateOnCalendar(checkedDated)).isFalse();
+    assertFalse(fp.isDateOnCalendar(checkedDated));
   }
 
   @Test
@@ -94,7 +97,7 @@ public class FullCalendarTest extends TestObject {
     LocalDate checkedDated = LocalDate.now();
     LOG.info("Check date " + checkedDated + " on day view");
     fp.dayButtonClick();
-    assertThat(fp.isDateOnCalendar(checkedDated)).isFalse();
+    assertFalse(fp.isDateOnCalendar(checkedDated));
   }
 
   @Test
@@ -105,7 +108,7 @@ public class FullCalendarTest extends TestObject {
 
     fp.monthButtonClick();
     fp.setDate(checkDate);
-    assertThat(checkDate).isEqualTo(dateNow.minusDays(42));
+    assertEquals(dateNow.minusDays(42), checkDate);
   }
 
   @Test
@@ -116,7 +119,7 @@ public class FullCalendarTest extends TestObject {
 
     fp.weekButtonClick();
     fp.setDate(checkDate);
-    assertThat(checkDate).isEqualTo(dateNow.plusDays(42));
+    assertEquals(dateNow.plusDays(42), checkDate);
   }
 
   @Test
@@ -127,7 +130,7 @@ public class FullCalendarTest extends TestObject {
 
     fp.weekButtonClick();
     fp.setDate(checkDate);
-    assertThat(checkDate).isEqualTo(dateNow.plusDays(15));
+    assertEquals(dateNow.plusDays(15), checkDate);
   }
 
   // TODO

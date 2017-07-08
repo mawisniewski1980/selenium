@@ -1,16 +1,14 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import com.google.common.collect.ImmutableList;
-
 import demoqablog.DemoqaBlog;
 import enums.PageUrls.PageUrl;
+import org.junit.Before;
+import org.junit.Test;
 import testobject.TestObject;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class DemoqaHomeTest extends TestObject {
 
@@ -35,32 +33,32 @@ public class DemoqaHomeTest extends TestObject {
   @Test
   public void clickHomeLink() {
     commonElements.demoqaNavbar.aboutUsLinkClick();
-    assertThat(commonElements.getEntryTitle()).isEqualTo("About us");
-    assertThat(utils.getTitle()).isEqualTo("About us | Demoqa");
+    assertEquals("About us", commonElements.getEntryTitle());
+    assertEquals("About us | Demoqa", utils.getTitle());
 
     commonElements.demoqaNavbar.servicesLinkClick();
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Services");
-    assertThat(utils.getTitle()).isEqualTo("Services | Demoqa");
+    assertEquals("Services", commonElements.getEntryTitle());
+    assertEquals("Services | Demoqa", utils.getTitle());
 
     commonElements.demoqaNavbar.draggableLinkClick();
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Draggable");
-    assertThat(utils.getTitle()).isEqualTo("Draggable | Demoqa");
+    assertEquals("Draggable", commonElements.getEntryTitle());
+    assertEquals("Draggable | Demoqa", utils.getTitle());
 
     commonElements.demoqaNavbar.tabsLinkClick();
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Tabs");
-    assertThat(utils.getTitle()).isEqualTo("Tabs | Demoqa");
+    assertEquals("Tabs", commonElements.getEntryTitle());
+    assertEquals("Tabs | Demoqa", utils.getTitle());
 
     commonElements.demoqaNavbar.blogLinkClick();
-    assertThat(new DemoqaBlog(driver).getEntryTitle()).containsAll(ImmutableList.of("Sample Post", "Sample Post2"));
-    assertThat(utils.getTitle()).isEqualTo("Blog | Demoqa | Just another WordPress site");
+    assertTrue(new DemoqaBlog(driver).getEntryTitle().containsAll(ImmutableList.of("Sample Post", "Sample Post2")));
+    assertEquals("Blog | Demoqa | Just another WordPress site", utils.getTitle());
 
     commonElements.demoqaNavbar.contactLinkClick();
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Contact");
-    assertThat(utils.getTitle()).isEqualTo("Contact | Demoqa");
+    assertEquals("Contact", commonElements.getEntryTitle());
+    assertEquals("Contact | Demoqa", utils.getTitle());
 
     commonElements.demoqaNavbar.homeLinkClick();
-    assertThat(commonElements.getEntryTitle()).isEqualTo("Home");
-    assertThat(utils.getTitle()).isEqualTo("Demoqa | Just another WordPress site");
+    assertEquals("Home", commonElements.getEntryTitle());
+    assertEquals("Demoqa | Just another WordPress site", utils.getTitle());
   }
 
   @Test
@@ -69,19 +67,19 @@ public class DemoqaHomeTest extends TestObject {
     commonElements.demoqaNavbar.homeLinkClick();
 
     demoqaHome.tabsLinkClick("Tab 4");
-    assertThat(demoqaHome.getTabsContentTitle("Tab 4")).contains("Content 4 Title");
+    assertTrue(demoqaHome.getTabsContentTitle("Tab 4").contains("Content 4 Title"));
 
     demoqaHome.tabsLinkClick("Tab 1");
-    assertThat(demoqaHome.getTabsContentTitle("Tab 1")).contains("Content 1 Title");
+    assertTrue(demoqaHome.getTabsContentTitle("Tab 1").contains("Content 1 Title"));
 
     demoqaHome.tabsLinkClick("Tab 2");
-    assertThat(demoqaHome.getTabsContentTitle("Tab 2")).contains("Content 2 Title");
+    assertTrue(demoqaHome.getTabsContentTitle("Tab 2").contains("Content 2 Title"));
 
     demoqaHome.tabsLinkClick("Tab 5");
-    assertThat(demoqaHome.getTabsContentTitle("Tab 5")).contains("Content 5 Title");
+    assertTrue(demoqaHome.getTabsContentTitle("Tab 5").contains("Content 5 Title"));
 
     demoqaHome.tabsLinkClick("Tab 3");
-    assertThat(demoqaHome.getTabsContentTitle("Tab 3")).contains("Content 3 Title");
+    assertTrue(demoqaHome.getTabsContentTitle("Tab 3").contains("Content 3 Title"));
   }
 
   @Test

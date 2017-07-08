@@ -1,22 +1,16 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
+import demoqaregistration.DemoqaRegistration;
+import demoqaregistration.DemoqaRegistrationForm;
+import enums.DemoqaEnums.*;
+import enums.PageUrls.PageUrl;
+import org.junit.Before;
+import org.junit.Test;
+import testobject.TestObject;
 
 import java.time.LocalDate;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import demoqaregistration.DemoqaRegistration;
-import demoqaregistration.DemoqaRegistrationForm;
-import enums.DemoqaEnums.DemoqaRegistrationFormText;
-import enums.DemoqaEnums.DemoqaRegistrationHobby;
-import enums.DemoqaEnums.DemoqaRegistrationMaritalStatus;
-import enums.DemoqaEnums.DemoqaRegistrationValidationInputText;
-import enums.DemoqaEnums.DemoqaReistrationCountry;
-import enums.PageUrls.PageUrl;
-import testobject.TestObject;
+import static org.junit.Assert.assertEquals;
 
 public class DemoqaRegistrationTest extends TestObject {
 
@@ -46,13 +40,13 @@ public class DemoqaRegistrationTest extends TestObject {
   @Test
   public void checkAllRequireFieldText() {
     demoqaReg.clickSubmit();
-    assertThat(demoqaReg.getFirstLastNameRequiredText()).isEqualTo(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText());
-    assertThat(demoqaReg.getHobbyRequiredText()).isEqualTo(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText());
-    assertThat(demoqaReg.getPhoneRequiredText()).isEqualTo(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText());
-    assertThat(demoqaReg.getUserRequiredText()).isEqualTo(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText());
-    assertThat(demoqaReg.getEmailRequiredText()).isEqualTo(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText());
-    assertThat(demoqaReg.getPasswordRequired()).isEqualTo(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText());
-    assertThat(demoqaReg.getConfirmPasswordRequiredText()).isEqualTo(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText());
+    assertEquals(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText(), demoqaReg.getFirstLastNameRequiredText());
+    assertEquals(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText(), demoqaReg.getHobbyRequiredText());
+    assertEquals(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText(), demoqaReg.getPhoneRequiredText());
+    assertEquals(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText(), demoqaReg.getUserRequiredText());
+    assertEquals(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText(), demoqaReg.getEmailRequiredText());
+    assertEquals(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText(), demoqaReg.getPasswordRequired());
+    assertEquals(DemoqaRegistrationValidationInputText.REQUIREFIELD.getText(), demoqaReg.getConfirmPasswordRequiredText());
   }
 
   @Test
@@ -81,7 +75,7 @@ public class DemoqaRegistrationTest extends TestObject {
 
     demoqaReg.clickSubmit();
 
-    assertThat(demoqaReg.getConfirmRegistrationTextOk()).isEqualTo(DemoqaRegistrationFormText.THANKYOU.getText());
+    assertEquals(DemoqaRegistrationFormText.THANKYOU.getText(), demoqaReg.getConfirmRegistrationTextOk());
   }
 
 }

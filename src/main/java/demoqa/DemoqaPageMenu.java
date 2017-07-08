@@ -1,10 +1,9 @@
 package demoqa;
 
+import demoqaregistration.DemoqaRegistration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import demoqaregistration.DemoqaRegistration;
 import pageobject.PageObject;
 
 public class DemoqaPageMenu extends PageObject {

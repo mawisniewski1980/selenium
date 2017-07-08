@@ -1,16 +1,15 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-
+import enums.PageUrls.PageUrl;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Point;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import enums.PageUrls.PageUrl;
 import testobject.TestObject;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class DemoqaDraggableTest extends TestObject {
 
@@ -50,7 +49,7 @@ public class DemoqaDraggableTest extends TestObject {
     Point position2 = draggable.getPositionDefFuncDraggable();
     LOG.info("Position 2 " + position2);
 
-    assertThat(position1).isNotEqualTo(position2);
+    assertNotEquals(position1, position2);
   }
 
   @Test
@@ -66,7 +65,7 @@ public class DemoqaDraggableTest extends TestObject {
     Point position2 = draggable.getPositionConMovVertically();
     LOG.info("Position 2 " + position2);
 
-    assertThat(position1).isNotEqualTo(position2);
+    assertNotEquals(position1, position2);
   }
 
 }

@@ -1,9 +1,5 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -11,9 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import pageobject.PageObject;
 import utilsobjects.ODraggable;
+
+import java.util.List;
 
 public class DemoqaDroppable extends PageObject {
 
@@ -234,9 +231,9 @@ public class DemoqaDroppable extends PageObject {
     Point oDrag2PositionAfter = drag2.getRectangle().getPoint();
     Point oDropPositionAfter = drop.getRectangle().getPoint();
 
-    assertThat(oDragPositionBefore).isEqualsToByComparingFields(oDragPositionAfter);
-    assertThat(oDrag2PositionBefore).isNotEqualTo(oDrag2PositionAfter);
-    assertThat(oDropPositionBefore).isEqualsToByComparingFields(oDropPositionAfter);
+    //assertThat(oDragPositionBefore).isEqualsToByComparingFields(oDragPositionAfter);
+    //assertThat(oDrag2PositionBefore).isNotEqualTo(oDrag2PositionAfter);
+    //assertThat(oDropPositionBefore).isEqualsToByComparingFields(oDropPositionAfter);
   }
 
   public String getCartItemText() {

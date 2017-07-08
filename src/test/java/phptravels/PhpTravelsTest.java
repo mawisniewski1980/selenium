@@ -1,8 +1,7 @@
 package phptravels;
 
-import org.junit.Before;
-
 import enums.PageUrls.PageUrl;
+import org.junit.Before;
 import testobject.TestObject;
 
 public class PhpTravelsTest extends TestObject {

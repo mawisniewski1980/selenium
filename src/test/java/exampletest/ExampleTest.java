@@ -1,12 +1,13 @@
 package exampletest;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-
+import enums.PageUrls;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import enums.PageUrls;
 import testobject.TestObject;
+
+import static org.junit.Assert.assertEquals;
+
 
 public class ExampleTest extends TestObject {
 
@@ -19,6 +20,6 @@ public class ExampleTest extends TestObject {
 
   @Test
   public void openExamplePageTest() {
-    assertThat(driver.getTitle()).isEqualTo("Onet.pl");
+    assertEquals("Onet.pl", driver.getTitle());
   }
 }

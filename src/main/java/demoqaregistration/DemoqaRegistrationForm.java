@@ -1,10 +1,10 @@
 package demoqaregistration;
 
-import java.time.LocalDate;
-
 import enums.DemoqaEnums.DemoqaRegistrationHobby;
 import enums.DemoqaEnums.DemoqaRegistrationMaritalStatus;
 import enums.DemoqaEnums.DemoqaReistrationCountry;
+
+import java.time.LocalDate;
 
 public class DemoqaRegistrationForm {
 

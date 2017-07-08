@@ -3,7 +3,6 @@ package pageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-
 import utilsobjects.OUtils;
 
 public abstract class PageObject {

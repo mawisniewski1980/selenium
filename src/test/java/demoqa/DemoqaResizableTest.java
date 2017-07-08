@@ -1,16 +1,15 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-
+import enums.PageUrls.PageUrl;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Dimension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import enums.PageUrls.PageUrl;
 import testobject.TestObject;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class DemoqaResizableTest extends TestObject {
 
@@ -64,7 +63,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeDefaultFunctionalityByX(200);
     Dimension after = resizable.getDefaultFunctionalityResizableDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -74,7 +73,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeDefaultFunctionalityByY(200);
     Dimension after = resizable.getDefaultFunctionalityResizableDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -84,7 +83,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeDefaultFunctionalityByXY(200, 300);
     Dimension after = resizable.getDefaultFunctionalityResizableDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -94,7 +93,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeAnimateByX(200);
     Dimension after = resizable.getAnimateResizableDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -104,7 +103,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeAnimateByY(200);
     Dimension after = resizable.getAnimateResizableDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -114,7 +113,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeAnimateByXY(1000, 10000);
     Dimension after = resizable.getAnimateResizableDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -124,7 +123,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeConstrainByX(-50);
     Dimension after = resizable.getConstrainResizableAreaContainerResizableConstrainDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -134,7 +133,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeConstrainByY(200);
     Dimension after = resizable.getConstrainResizableAreaContainerResizableConstrainDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -144,7 +143,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeConstrainByXY(-50, 100);
     Dimension after = resizable.getConstrainResizableAreaContainerResizableConstrainDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -154,7 +153,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeHelperByX(200);
     Dimension after = resizable.getResizableHelperDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -164,7 +163,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeHelperByY(200);
     Dimension after = resizable.getResizableHelperDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -174,7 +173,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeHelperByXY(200, 300);
     Dimension after = resizable.getResizableHelperDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -184,7 +183,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeMinMaxByX(200);
     Dimension after = resizable.getMinMaxSizeDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -194,7 +193,7 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeMinMaxByY(200);
     Dimension after = resizable.getMinMaxSizeDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 
   @Test
@@ -204,6 +203,6 @@ public class DemoqaResizableTest extends TestObject {
     resizable.resizeMinMaxByXY(200, 300);
     Dimension after = resizable.getMinMaxSizeDimension();
     LOG.info("Dimension before: " + before + " and after " + after);
-    assertThat(before).isNotEqualTo(after);
+    assertNotEquals(before, after);
   }
 }

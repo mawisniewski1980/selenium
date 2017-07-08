@@ -1,17 +1,16 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
+import com.google.common.collect.ImmutableList;
+import enums.PageUrls.PageUrl;
+import org.junit.Before;
+import org.junit.Test;
+import testobject.TestObject;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import com.google.common.collect.ImmutableList;
-
-import enums.PageUrls.PageUrl;
-import testobject.TestObject;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class DemoqaSelectableTest extends TestObject {
 
@@ -44,7 +43,7 @@ public class DemoqaSelectableTest extends TestObject {
     commonElements.tabsLinkClick("Default functionality");
 
     for (int i = 1; i < 8; i++) {
-      assertThat(selectable.isDefaltFunctionalityItemSelected("Item " + i)).isFalse();
+      assertFalse(selectable.isDefaltFunctionalityItemSelected("Item " + i));
     }
 
     selectable.selectDefaltFunctionalityOneItem("Item 1");
@@ -52,9 +51,9 @@ public class DemoqaSelectableTest extends TestObject {
 
     for (int i = 1; i < 8; i++) {
       if (i == 6)
-        assertThat(selectable.isDefaltFunctionalityItemSelected("Item " + i)).isTrue();
+        assertTrue(selectable.isDefaltFunctionalityItemSelected("Item " + i));
       else
-        assertThat(selectable.isDefaltFunctionalityItemSelected("Item " + i)).isFalse();
+        assertFalse(selectable.isDefaltFunctionalityItemSelected("Item " + i));
     }
   }
 
@@ -64,16 +63,16 @@ public class DemoqaSelectableTest extends TestObject {
     commonElements.tabsLinkClick("Default functionality");
 
     for (int i = 1; i < 8; i++) {
-      assertThat(selectable.isDefaltFunctionalityItemSelected("Item " + i)).isFalse();
+      assertFalse(selectable.isDefaltFunctionalityItemSelected("Item " + i));
     }
 
     selectable.selectDefaltFunctionalityMoreItems("Item 3", "Item 6");
 
     for (int i = 1; i < 8; i++) {
       if (i > 2 && i < 7)
-        assertThat(selectable.isDefaltFunctionalityItemSelected("Item " + i)).isTrue();
+        assertTrue(selectable.isDefaltFunctionalityItemSelected("Item " + i));
       else
-        assertThat(selectable.isDefaltFunctionalityItemSelected("Item " + i)).isFalse();
+        assertFalse(selectable.isDefaltFunctionalityItemSelected("Item " + i));
     }
   }
 
@@ -83,7 +82,7 @@ public class DemoqaSelectableTest extends TestObject {
     commonElements.tabsLinkClick("Display as grid");
 
     for (int i = 1; i < 13; i++) {
-      assertThat(selectable.isDisplayAsGridItemSelected(Integer.toString(i))).isFalse();
+      assertFalse(selectable.isDisplayAsGridItemSelected(Integer.toString(i)));
     }
 
     selectable.selectDisplayAsGridOneItem("1");
@@ -92,9 +91,9 @@ public class DemoqaSelectableTest extends TestObject {
 
     for (int i = 1; i < 13; i++) {
       if (i == 12)
-        assertThat(selectable.isDisplayAsGridItemSelected(Integer.toString(i))).isTrue();
+        assertTrue(selectable.isDisplayAsGridItemSelected(Integer.toString(i)));
       else
-        assertThat(selectable.isDisplayAsGridItemSelected(Integer.toString(i))).isFalse();
+        assertFalse(selectable.isDisplayAsGridItemSelected(Integer.toString(i)));
     }
   }
 
@@ -104,16 +103,16 @@ public class DemoqaSelectableTest extends TestObject {
     commonElements.tabsLinkClick("Display as grid");
 
     for (int i = 1; i < 13; i++) {
-      assertThat(selectable.isDisplayAsGridItemSelected(Integer.toString(i))).isFalse();
+      assertFalse(selectable.isDisplayAsGridItemSelected(Integer.toString(i)));
     }
 
     selectable.selectDisplayAsGridMoreItems("6", "12");
 
     for (int i = 1; i < 13; i++) {
       if (i == 6 || i == 7 || i == 8 || i == 10 || i == 11 || i == 12)
-        assertThat(selectable.isDisplayAsGridItemSelected(Integer.toString(i))).isTrue();
+        assertTrue(selectable.isDisplayAsGridItemSelected(Integer.toString(i)));
       else
-        assertThat(selectable.isDisplayAsGridItemSelected(Integer.toString(i))).isFalse();
+        assertFalse(selectable.isDisplayAsGridItemSelected(Integer.toString(i)));
     }
   }
 
@@ -122,10 +121,10 @@ public class DemoqaSelectableTest extends TestObject {
 
     commonElements.tabsLinkClick("Serialize");
 
-    assertThat(selectable.getSerializeSelectedList()).contains("none");
+    assertTrue(selectable.getSerializeSelectedList().contains("none"));
 
     for (int i = 1; i < 7; i++) {
-      assertThat(selectable.isSerializeFeedbackItemSelected("Item " + i)).isFalse();
+      assertFalse(selectable.isSerializeFeedbackItemSelected("Item " + i));
     }
 
     selectable.selectSerializeFeedbackOneItem("Item 1");
@@ -133,12 +132,12 @@ public class DemoqaSelectableTest extends TestObject {
 
     for (int i = 1; i < 7; i++) {
       if (i == 5)
-        assertThat(selectable.isSerializeFeedbackItemSelected("Item " + i)).isTrue();
+        assertTrue(selectable.isSerializeFeedbackItemSelected("Item " + i));
       else
-        assertThat(selectable.isSerializeFeedbackItemSelected("Item " + i)).isFalse();
+        assertFalse(selectable.isSerializeFeedbackItemSelected("Item " + i));
     }
 
-    assertThat(selectable.getSerializeSelectedList()).contains("5");
+    assertTrue(selectable.getSerializeSelectedList().contains("5"));
   }
 
   @Test
@@ -146,22 +145,22 @@ public class DemoqaSelectableTest extends TestObject {
 
     commonElements.tabsLinkClick("Serialize");
 
-    assertThat(selectable.getSerializeSelectedList()).contains("none");
+    assertTrue(selectable.getSerializeSelectedList().contains("none"));
 
     for (int i = 1; i < 7; i++) {
-      assertThat(selectable.isSerializeFeedbackItemSelected("Item " + i)).isFalse();
+      assertFalse(selectable.isSerializeFeedbackItemSelected("Item " + i));
     }
 
     selectable.selectSerializeFeedbackMoreItems("Item 1", "Item 2");
 
     for (int i = 1; i < 7; i++) {
       if (i > 0 && i < 3)
-        assertThat(selectable.isSerializeFeedbackItemSelected("Item " + i)).isTrue();
+        assertTrue(selectable.isSerializeFeedbackItemSelected("Item " + i));
       else
-        assertThat(selectable.isSerializeFeedbackItemSelected("Item " + i)).isFalse();
+        assertFalse(selectable.isSerializeFeedbackItemSelected("Item " + i));
     }
 
-    assertThat(selectable.getSerializeSelectedList()).containsAll(ImmutableList.of("1", "2"));
+    assertTrue(selectable.getSerializeSelectedList().containsAll(ImmutableList.of("1", "2")));
   }
 
   @Test
@@ -170,7 +169,7 @@ public class DemoqaSelectableTest extends TestObject {
     commonElements.tabsLinkClick("Default functionality");
 
     for (int i = 1; i < 8; i++) {
-      assertThat(selectable.isDefaltFunctionalityItemSelected("Item " + i)).isFalse();
+      assertFalse(selectable.isDefaltFunctionalityItemSelected("Item " + i));
     }
 
     List<String> selectedList = ImmutableList.of("Item 1", "Item 4", "Item 7");
@@ -178,9 +177,9 @@ public class DemoqaSelectableTest extends TestObject {
 
     for (int i = 1; i < 8; i++) {
       if (i == 1 || i == 4 || i == 7)
-        assertThat(selectable.isDefaltFunctionalityItemSelected("Item " + i)).isTrue();
+        assertTrue(selectable.isDefaltFunctionalityItemSelected("Item " + i));
       else
-        assertThat(selectable.isDefaltFunctionalityItemSelected("Item " + i)).isFalse();
+        assertFalse(selectable.isDefaltFunctionalityItemSelected("Item " + i));
     }
   }
 
@@ -190,7 +189,7 @@ public class DemoqaSelectableTest extends TestObject {
     commonElements.tabsLinkClick("Display as grid");
 
     for (int i = 1; i < 13; i++) {
-      assertThat(selectable.isDisplayAsGridItemSelected(Integer.toString(i))).isFalse();
+      assertFalse(selectable.isDisplayAsGridItemSelected(Integer.toString(i)));
     }
 
     List<String> selectedList = ImmutableList.of("3", "9", "8");
@@ -198,9 +197,9 @@ public class DemoqaSelectableTest extends TestObject {
 
     for (int i = 1; i < 13; i++) {
       if (i == 3 || i == 9 || i == 8)
-        assertThat(selectable.isDisplayAsGridItemSelected(Integer.toString(i))).isTrue();
+        assertTrue(selectable.isDisplayAsGridItemSelected(Integer.toString(i)));
       else
-        assertThat(selectable.isDisplayAsGridItemSelected(Integer.toString(i))).isFalse();
+        assertFalse(selectable.isDisplayAsGridItemSelected(Integer.toString(i)));
     }
   }
 
@@ -209,10 +208,10 @@ public class DemoqaSelectableTest extends TestObject {
 
     commonElements.tabsLinkClick("Serialize");
 
-    assertThat(selectable.getSerializeSelectedList()).contains("none");
+    assertTrue(selectable.getSerializeSelectedList().contains("none"));
 
     for (int i = 1; i < 7; i++) {
-      assertThat(selectable.isSerializeFeedbackItemSelected("Item " + i)).isFalse();
+      assertFalse(selectable.isSerializeFeedbackItemSelected("Item " + i));
     }
 
     List<String> selectedList = ImmutableList.of("Item 1", "Item 6");
@@ -220,12 +219,12 @@ public class DemoqaSelectableTest extends TestObject {
 
     for (int i = 1; i < 7; i++) {
       if (i == 1 || i == 6)
-        assertThat(selectable.isSerializeFeedbackItemSelected("Item " + i)).isTrue();
+        assertTrue(selectable.isSerializeFeedbackItemSelected("Item " + i));
       else
-        assertThat(selectable.isSerializeFeedbackItemSelected("Item " + i)).isFalse();
+        assertFalse(selectable.isSerializeFeedbackItemSelected("Item " + i));
     }
 
-    assertThat(selectable.getSerializeSelectedList()).containsAll(ImmutableList.of("1", "6"));
+    assertTrue(selectable.getSerializeSelectedList().containsAll(ImmutableList.of("1", "6")));
   }
 
 }

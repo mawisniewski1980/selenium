@@ -1,16 +1,15 @@
 package demoqa;
 
-import java.util.List;
-
+import demoqablog.DemoqaBlog;
+import demoqacontact.DemoqaContact;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import demoqablog.DemoqaBlog;
-import demoqacontact.DemoqaContact;
 import pageobject.PageObject;
+
+import java.util.List;
 
 public class DemoqaNavbar extends PageObject {
 

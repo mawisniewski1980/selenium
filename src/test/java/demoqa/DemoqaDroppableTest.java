@@ -1,13 +1,12 @@
 package demoqa;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-
+import enums.PageUrls.PageUrl;
 import org.junit.Before;
 import org.junit.Test;
-
-import enums.PageUrls.PageUrl;
 import testobject.TestObject;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class DemoqaDroppableTest extends TestObject {
 
@@ -43,65 +42,65 @@ public class DemoqaDroppableTest extends TestObject {
     // Point position1a = droppable.getPositionDefaultFunctionalistyDragMe();
     // Point position1b = droppable.getPositionDefaultFunctionalistyDropMe();
 
-    assertThat(droppable.getDefaultFunctionalistyDropMeText()).isEqualTo("Drop here");
+    assertEquals("Drop here", droppable.getDefaultFunctionalistyDropMeText());
     droppable.defaultFunctionalityDragAndDrop();
-    assertThat(droppable.getDefaultFunctionalistyDropMeText()).isEqualTo("Dropped!");
+    assertEquals("Dropped!", droppable.getDefaultFunctionalistyDropMeText());
 
     // position1a = droppable.getPositionDefaultFunctionalistyDragMe();
     // position1b = droppable.getPositionDefaultFunctionalistyDropMe();
 
     droppable.check();
-    // assertThat(position1a.checkIfObjectIsInAnotherObject(position1b)).isTrue();
+    // assertEquals(position1a.checkIfObjectIsInAnotherObject(position1b)).isTrue();
   }
 
   @Test
   public void defaultFunctionalityDragMeToTargetOutside() {
 
     commonElements.tabsLinkClick("Default functionality");
-    assertThat(droppable.getDefaultFunctionalistyDropMeText()).isEqualTo("Drop here");
+    assertEquals("Drop here", droppable.getDefaultFunctionalistyDropMeText());
     droppable.defaultFunctionalityDragAndDropBy(300, 100);
-    assertThat(droppable.getDefaultFunctionalistyDropMeText()).isEqualTo("Drop here");
+    assertEquals("Drop here", droppable.getDefaultFunctionalistyDropMeText());
   }
 
   @Test
   public void acceptDragMeToTargetNonValidAndValid() {
 
     commonElements.tabsLinkClick("Accept");
-    assertThat(droppable.getAcceptDroppableText()).isEqualTo("accept: ‘#draggableaccept’");
+    assertEquals("accept: ‘#draggableaccept’", droppable.getAcceptDroppableText());
     droppable.acceptNonValidDragAndDrop();
-    assertThat(droppable.getAcceptDroppableText()).isEqualTo("accept: ‘#draggableaccept’");
+    assertEquals("accept: ‘#draggableaccept’", droppable.getAcceptDroppableText());
 
-    assertThat(droppable.getAcceptDroppableText()).isEqualTo("accept: ‘#draggableaccept’");
+    assertEquals("accept: ‘#draggableaccept’", droppable.getAcceptDroppableText());
     droppable.acceptValidDragAndDrop();
-    assertThat(droppable.getAcceptDroppableText()).isEqualTo("Dropped!");
+    assertEquals("Dropped!", droppable.getAcceptDroppableText());
   }
 
   @Test
   public void preventPropagationDragAndDropAll() {
 
     commonElements.tabsLinkClick("Prevent propagation");
-    assertThat(droppable.getPreventPropagationDroppableInnerText()).isNotEqualTo("Drop here");
-    assertThat(droppable.getPreventPropagationDroppable2InnerText()).isNotEqualTo("Drop here");
-    assertThat(droppable.getPreventPropagationDroppableText()).isNotEqualTo("Drop here");
-    assertThat(droppable.getPreventPropagationDroppable2Text()).isNotEqualTo("Drop here");
+    assertNotEquals("Drop here", droppable.getPreventPropagationDroppableInnerText());
+    assertNotEquals("Drop here", droppable.getPreventPropagationDroppable2InnerText());
+    assertNotEquals("Drop here", droppable.getPreventPropagationDroppableText());
+    assertNotEquals("Drop here", droppable.getPreventPropagationDroppable2Text());
 
     droppable.preventPropagationDragAndDropAll();
 
-    assertThat(droppable.getPreventPropagationDroppableInnerText()).isEqualTo("Dropped!");
-    assertThat(droppable.getPreventPropagationDroppable2InnerText()).isEqualTo("Dropped!");
-    assertThat(droppable.getPreventPropagationDroppableText()).isEqualTo("Dropped!");
-    assertThat(droppable.getPreventPropagationDroppable2Text()).isEqualTo("Dropped!");
+    assertEquals("Dropped!", droppable.getPreventPropagationDroppableInnerText());
+    assertEquals("Dropped!", droppable.getPreventPropagationDroppable2InnerText());
+    assertEquals("Dropped!", droppable.getPreventPropagationDroppableText());
+    assertEquals("Dropped!", droppable.getPreventPropagationDroppable2Text());
   }
 
   @Test
   public void revertDraggablePosition() {
     commonElements.tabsLinkClick("Revert draggable Position");
 
-    assertThat(droppable.getRevertDropablePositionText()).isEqualTo("Drop me here");
+    assertEquals("Drop me here", droppable.getRevertDropablePositionText());
 
     droppable.revertDraggablePosition();
 
-    assertThat(droppable.getRevertDropablePositionText()).isEqualTo("Dropped!");
+    assertEquals("Dropped!", droppable.getRevertDropablePositionText());
   }
 
   @Test
@@ -109,8 +108,8 @@ public class DemoqaDroppableTest extends TestObject {
 
     commonElements.tabsLinkClick("Shopping cart demo");
 
-    assertThat(droppable.getCartItemText()).isEqualTo("Add your items here");
+    assertEquals("Add your items here", droppable.getCartItemText());
     droppable.dragItemFromCartCatalogToCartItem("Bags", "Zebra Striped");
-    assertThat(droppable.getCartItemText()).isEqualTo("Zebra Striped");
+    assertEquals("Zebra Striped", droppable.getCartItemText());
   }
 }
