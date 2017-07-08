@@ -54,6 +54,18 @@ public class OActions {
     return this;
   }
 
+  public OActions moveTo(ODraggable drag) {
+    actions.moveToElement(drag.getElement());
+    actions.build().perform();
+    return this;
+  }
+
+  public OActions moveTo(WebElement element) {
+    actions.moveToElement(element);
+    actions.build().perform();
+    return this;
+  }
+
   public OActions moveElementFromCenterToCenter(ODraggable drag, ODraggable drop) {
     actions.moveToElement(drag.getElement(), drag.getHalfWidth(), drag.getHalfHeight()).clickAndHold().moveToElement(drop.getElement(), drop.getHalfWidth(), drop.getHalfHeight()).release();
     actions.build().perform();
@@ -151,5 +163,9 @@ public class OActions {
     ODraggable obj = new ODraggable(element);
     ((JavascriptExecutor) driver).executeScript("window.scrollTo(" + obj.getCenter().getX() + "," + (obj.getCenter().getY() - 150) + ");");
     return this;
+  }
+
+  public OWaits waitTime(long time) {
+    return new OWaits(driver).waitTime(time);
   }
 }
