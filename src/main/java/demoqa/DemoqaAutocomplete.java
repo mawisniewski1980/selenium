@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pageobject.PageObject;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DemoqaAutocomplete extends PageObject {
@@ -55,5 +57,38 @@ public class DemoqaAutocomplete extends PageObject {
   @FindBy(css = categoriesSearchUlLiCss)
   private List<WebElement> categoriesSearchUlLi;
 
+  public DemoqaAutocomplete setInputAutocompleteDefaultFunctionality(String text) {
+    utils.setText(defaultFunctionalityTagsInput, text);
+    utils.waits.waitForVisibilityOfElement(defaultFunctionalityTagsUl);
+    defaultFunctionalityTagsUlLi.get(utils.getId(defaultFunctionalityTagsUlLi, text)).click();
+    return this;
+  }
 
+  public String getInputAutocompleteDefaultFunctionalityText() {
+    return defaultFunctionalityTagsInput.getAttribute("value");
+  }
+
+  public DemoqaAutocomplete setInputAutocompleteMultipleValue(List<String> textList) {
+    for(String textFromList : textList) {
+      utils.setText(multipleValuesInput, textFromList,false);
+      utils.waits.waitForVisibilityOfElement(multipleValuesInputUl);
+      multipleValuesInputUlLi.get(utils.getId(multipleValuesInputUlLi, textFromList)).click();
+    }
+    return this;
+  }
+
+  public List<String> getInputAutocompleteMultipleValueText() {
+    return Arrays.asList(multipleValuesInput.getAttribute("value").split(", "));
+  }
+
+  public DemoqaAutocomplete setInputAutocompleteCategories(String text) {
+    utils.setText(categoriesSearchInput, text);
+    utils.waits.waitForVisibilityOfElement(categoriesSearchUl);
+    categoriesSearchUlLi.get(utils.getId(categoriesSearchUlLi, text)).click();
+    return this;
+  }
+
+  public String getInputAutocompleteCategoriesText() {
+    return categoriesSearchInput.getAttribute("value");
+  }
 }

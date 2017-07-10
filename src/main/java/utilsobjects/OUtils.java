@@ -129,6 +129,13 @@ public class OUtils {
     element.sendKeys(text);
   }
 
+  public void setText(WebElement element, String text, boolean clearField) {
+    LOG.info("Set text " + text);
+    actions.scrollToElement(element);
+    if(clearField) element.clear();
+    element.sendKeys(text);
+  }
+
   public int getId(List<WebElement> elements, String title) {
     int index = -1;
 
