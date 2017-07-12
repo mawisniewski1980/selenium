@@ -168,4 +168,25 @@ public class OActions {
   public OWaits waitTime(long time) {
     return new OWaits(driver).waitTime(time);
   }
+
+  public OActions switchToDefaultContent(){
+    driver.switchTo().defaultContent();
+    new OWaits(driver).waitForPageLoad();
+    return this;
+  }
+
+  public OActions switchToDefaultWindow(){
+    driver.switchTo().window(driver.getWindowHandle());
+    new OWaits(driver).waitForPageLoad();
+    return this;
+  }
+
+  public OActions switchToNextWindow() {
+    switchToDefaultWindow();
+    for(String nextWindow : driver.getWindowHandles()){
+      driver.switchTo().window(nextWindow);
+    }
+    new OWaits(driver).waitForPageLoad();
+    return this;
+  }
 }

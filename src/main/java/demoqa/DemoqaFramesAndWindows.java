@@ -25,4 +25,19 @@ public class DemoqaFramesAndWindows extends PageObject {
   @FindBy(css = framsetWindowLinkCss)
   private WebElement framsetWindowLink;
 
+  public DemoqaFramesAndWindows newBrowserTabLinkClick() {
+    utils.linkClick(newBrowserTabLink);
+    return this;
+  }
+
+  public DemoqaFramesAndWindows openSeparateWindowLinkClick() {
+    utils.linkClick(openSeparateWindowLink);
+    return this;
+  }
+
+  public DemoqaFramesAndWindows framsetWindowLinkClick() {
+    utils.linkClick(framsetWindowLink);
+    return this;
+  }
+
 }
