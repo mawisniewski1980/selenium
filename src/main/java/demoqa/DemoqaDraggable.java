@@ -4,12 +4,12 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import pageobject.OPage;
 import utilsobjects.ODraggable;
 
 import java.util.List;
 
-public class DemoqaDraggable extends PageObject {
+public class DemoqaDraggable extends OPage {
 
   // private static final Logger LOG = LoggerFactory.getLogger(DemoqaDraggable.class.getName());
 

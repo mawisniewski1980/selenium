@@ -10,9 +10,9 @@ import com.google.common.collect.ImmutableList;
 
 import demoqablog.DemoqaBlog;
 import enums.PageUrls.PageUrl;
-import testobject.TestObject;
+import testobject.OTest;
 
-public class DemoqaBlogTest extends TestObject {
+public class DemoqaBlogTest extends OTest {
 
   // private final Logger LOG = LoggerFactory.getLogger(DemoqaBlogTest.class);
 

@@ -4,11 +4,11 @@ import enums.DemoqaEnums;
 import enums.PageUrls;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.TestObject;
+import testobject.OTest;
 
 import static org.junit.Assert.assertEquals;
 
-public class DemoqaSliderTest extends TestObject{
+public class DemoqaSliderTest extends OTest {
 
     // private final Logger LOG = LoggerFactory.getLogger(DemoqaSliderTest.class);
 

@@ -3,11 +3,11 @@ package demoqa;
 import enums.PageUrls;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.TestObject;
+import testobject.OTest;
 
 import static org.junit.Assert.assertEquals;
 
-public class DemoqaFramesAndWindowsTest extends TestObject{
+public class DemoqaFramesAndWindowsTest extends OTest {
 
     // private final Logger LOG = LoggerFactory.getLogger(DemoqaFramesAndWindowsTest.class);
 

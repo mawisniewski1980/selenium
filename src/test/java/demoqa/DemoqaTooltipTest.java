@@ -4,11 +4,11 @@ package demoqa;
 import enums.PageUrls;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.TestObject;
+import testobject.OTest;
 
 import static org.junit.Assert.assertEquals;
 
-public class DemoqaTooltipTest extends TestObject{
+public class DemoqaTooltipTest extends OTest {
 
     // private final Logger LOG = LoggerFactory.getLogger(DemoqaTooltipTest.class);
 

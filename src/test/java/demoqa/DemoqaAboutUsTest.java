@@ -3,12 +3,12 @@ package demoqa;
 import enums.PageUrls.PageUrl;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.TestObject;
+import testobject.OTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class DemoqaAboutUsTest extends TestObject {
+public class DemoqaAboutUsTest extends OTest {
 
   // private final Logger LOG = LoggerFactory.getLogger(DemoqaAboutUsTest.class);
 

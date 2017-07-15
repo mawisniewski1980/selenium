@@ -3,11 +3,11 @@ package demoqa;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import pageobject.OPage;
 
 import java.util.List;
 
-public class DemoqaTabs extends PageObject {
+public class DemoqaTabs extends OPage {
 
   // private static final Logger LOG = LoggerFactory.getLogger(DemoqaTabs.class.getName());
 

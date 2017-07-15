@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pageobject.PageObject;
+import pageobject.OPage;
 
 import java.util.List;
 
-public class DemoqaNavbar extends PageObject {
+public class DemoqaNavbar extends OPage {
 
   public static final Logger LOG = LoggerFactory.getLogger(DemoqaNavbar.class);
 

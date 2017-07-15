@@ -3,9 +3,9 @@ package demoqa;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import pageobject.OPage;
 
-public class DemoqaDatepicker extends PageObject {
+public class DemoqaDatepicker extends OPage {
 
   // private static final Logger LOG = LoggerFactory.getLogger(DemoqaDatepicker.class.getName());
 

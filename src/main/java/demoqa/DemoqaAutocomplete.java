@@ -3,13 +3,12 @@ package demoqa;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import pageobject.OPage;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-public class DemoqaAutocomplete extends PageObject {
+public class DemoqaAutocomplete extends OPage {
 
   // private static final Logger LOG = LoggerFactory.getLogger(DemoqaAutocomplete.class.getName());
 

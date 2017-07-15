@@ -5,21 +5,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pageobject.PageObject;
+import pageobject.OPage;
 
 import java.util.List;
 
-public class DemoqaCommonElements extends PageObject {
+public class DemoqaCommonElements extends OPage {
 
   private static final Logger LOG = LoggerFactory.getLogger(DemoqaCommonElements.class.getName());
 
   public DemoqaNavbar demoqaNavbar;
-  public DemoqaPageMenu demoqaMenu;
+  public DemoqaOPageMenu demoqaMenu;
 
   public DemoqaCommonElements(WebDriver driver) {
     super(driver);
     this.demoqaNavbar = new DemoqaNavbar(driver);
-    this.demoqaMenu = new DemoqaPageMenu(driver);
+    this.demoqaMenu = new DemoqaOPageMenu(driver);
   }
 
   private final String titleCss = ".entry-title";

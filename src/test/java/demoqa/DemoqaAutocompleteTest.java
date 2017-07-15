@@ -1,17 +1,15 @@
 package demoqa;
 
-import com.google.common.collect.ImmutableList;
 import enums.PageUrls;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.TestObject;
+import testobject.OTest;
 
 import static com.google.common.collect.ImmutableList.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class DemoqaAutocompleteTest extends TestObject {
+public class DemoqaAutocompleteTest extends OTest {
 
     // private final Logger LOG = LoggerFactory.getLogger(DemoqaAutocompleteTest.class);
 

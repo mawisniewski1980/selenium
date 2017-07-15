@@ -5,12 +5,12 @@ import demoqablog.DemoqaBlog;
 import enums.PageUrls.PageUrl;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.TestObject;
+import testobject.OTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class DemoqaHomeTest extends TestObject {
+public class DemoqaHomeTest extends OTest {
 
   // private static final Logger LOG = LoggerFactory.getLogger(DemoqaHomeTest.class.getName());
 

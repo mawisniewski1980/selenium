@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import enums.PageUrls.PageUrl;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.TestObject;
+import testobject.OTest;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class DemoqaSelectableTest extends TestObject {
+public class DemoqaSelectableTest extends OTest {
 
   // private static final Logger LOG = LoggerFactory.getLogger(DemoqaSelectableTest.class.getName());
 

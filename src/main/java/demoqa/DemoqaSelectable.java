@@ -5,14 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pageobject.PageObject;
+import pageobject.OPage;
 import utilsobjects.ODraggable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DemoqaSelectable extends PageObject {
+public class DemoqaSelectable extends OPage {
 
   private static final Logger LOG = LoggerFactory.getLogger(DemoqaSelectable.class.getName());
 

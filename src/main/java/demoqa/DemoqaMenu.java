@@ -1,14 +1,13 @@
 package demoqa;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import pageobject.OPage;
 
 import java.util.List;
 
-public class DemoqaMenu extends PageObject {
+public class DemoqaMenu extends OPage {
 
   // private static final Logger LOG = LoggerFactory.getLogger(DemoqaMenu.class.getName());
 

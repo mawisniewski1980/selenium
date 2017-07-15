@@ -1,15 +1,14 @@
 package exampletest;
 
 import enums.PageUrls;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.TestObject;
+import testobject.OTest;
 
 import static org.junit.Assert.assertEquals;
 
 
-public class ExampleTest extends TestObject {
+public class ExampleTest extends OTest {
 
   // private static final Logger LOG = LoggerFactory.getLogger(ExampleTest.class.getName());
 

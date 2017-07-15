@@ -6,12 +6,12 @@ import org.junit.Test;
 import org.openqa.selenium.Dimension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import testobject.TestObject;
+import testobject.OTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-public class DemoqaResizableTest extends TestObject {
+public class DemoqaResizableTest extends OTest {
 
   private static final Logger LOG = LoggerFactory.getLogger(DemoqaResizableTest.class.getName());
 

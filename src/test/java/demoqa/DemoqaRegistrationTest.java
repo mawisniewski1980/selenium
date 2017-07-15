@@ -6,13 +6,13 @@ import enums.DemoqaEnums.*;
 import enums.PageUrls.PageUrl;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.TestObject;
+import testobject.OTest;
 
 import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 
-public class DemoqaRegistrationTest extends TestObject {
+public class DemoqaRegistrationTest extends OTest {
 
   // private final Logger LOG = LoggerFactory.getLogger(DemoqaRegistrationTest.class);
 

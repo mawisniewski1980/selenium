@@ -4,10 +4,10 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import pageobject.OPage;
 import utilsobjects.ODraggable;
 
-public class DemoqaResizable extends PageObject {
+public class DemoqaResizable extends OPage {
 
   // private static final Logger LOG = LoggerFactory.getLogger(DemoqaResizable.class.getName());
 

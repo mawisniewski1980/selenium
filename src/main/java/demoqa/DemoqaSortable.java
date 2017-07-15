@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pageobject.PageObject;
+import pageobject.OPage;
 import utilsobjects.ODraggable;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DemoqaSortable extends PageObject {
+public class DemoqaSortable extends OPage {
 
   private static final Logger LOG = LoggerFactory.getLogger(DemoqaSortable.class.getName());
 

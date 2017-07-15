@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pageobject.PageObject;
+import pageobject.OPage;
 
-public class DemoqaContact extends PageObject {
+public class DemoqaContact extends OPage {
 
   private static final Logger LOG = LoggerFactory.getLogger(DemoqaContact.class.getName());
 

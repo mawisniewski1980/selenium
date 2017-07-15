@@ -9,13 +9,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pageobject.PageObject;
+import pageobject.OPage;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class DemoqaRegistration extends PageObject {
+public class DemoqaRegistration extends OPage {
 
   private static final Logger LOG = LoggerFactory.getLogger(DemoqaRegistration.class.getName());
 
