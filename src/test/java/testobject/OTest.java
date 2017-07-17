@@ -25,6 +25,9 @@ public abstract class OTest {
   @Rule
   public TestName testName = new TestName();
 
+  @Rule
+  public OTestRules failRule = new OTestRules(driver);
+
   @Before
   public void setUpBeforeClass() {
     if (driver == null) {
@@ -34,72 +37,66 @@ public abstract class OTest {
     driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
     driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
     driver.manage().window().maximize();
-    System.out.println("#####################################  START " + utils.startDate() + " " + utils.getInfoAboutSystem() + " #####################################");
   }
 
   @After
   public void tearDownAfterClass() {
-    // utils.takeScreenShoot("STOP_" + testName.getMethodName());
-    driver.manage().deleteAllCookies();
-    driver.quit();
-    System.out.println("#####################################  STOP " + utils.endDate() + " ######################################");
-    System.out.println("Quit webdriver");
   }
 
   protected void setUrl(PageUrl url) {
 
     switch (url) {
     case DEMOQA: {
-      System.out.println("Open Url: " + url.getAddress());
+      LOG.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case ONET: {
-      System.out.println("Open Url: " + url.getAddress());
+      LOG.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case FULLCALENDAR: {
-      System.out.println("Open Url: " + url.getAddress());
+      LOG.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case ORANGEHRM: {
-      System.out.println("Open Url: " + url.getAddress());
+      LOG.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case PHPTRAVELS_ADMIN: {
-      System.out.println("Open Url: " + url.getAddress());
+      LOG.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case PHPTRAVELS_DEMO: {
-      System.out.println("Open Url: " + url.getAddress());
+      LOG.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case PHPTRAVELS_SUPPLIER: {
-      System.out.println("Open Url: " + url.getAddress());
+      LOG.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case PHPTRAVELS_USER: {
-      System.out.println("Open Url: " + url.getAddress());
+      LOG.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     default: {
       LOG.info("No Url !");
-      //Fail.fail("No Url !");
+      fail("No Url !");
       break;
     }
     }

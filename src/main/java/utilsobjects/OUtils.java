@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -29,14 +30,12 @@ public class OUtils {
     this.waits = new OWaits(driver);
   }
 
-  public String startDate() {
-    LocalDateTime date = LocalDateTime.now();
-    return date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+  public LocalDateTime startDateTime() {
+    return LocalDateTime.now();
   }
 
-  public String endDate() {
-    LocalDateTime date2 = LocalDateTime.now();
-    return date2.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+  public LocalDateTime endDateTime() {
+    return LocalDateTime.now();
   }
 
   public String getInfoAboutSystem() {
@@ -197,10 +196,11 @@ public class OUtils {
     return path + fileName;
   }
 
-  public void takeScreenShoot(String testName) {
+  public void takeScreenShoot(String className, String methodName) {
 
-    String path = "C:\\seleniumTest\\";
-    String fileName = testName + LocalDateTime.now().format(DateTimeFormatter.ofPattern("_yyyyMMdd_HHmmss")) + ".png";
+    String dateTimeNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("_yyyyMMdd_HHmmss"));
+    String path = "C:\\seleniumTest\\" + className + "\\" + methodName + "\\";
+    String fileName = methodName + "_" + dateTimeNow + ".png";
 
     try {
       File screenShoot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

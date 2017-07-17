@@ -7,6 +7,7 @@ import org.junit.Test;
 import testobject.OTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class DemoqaTooltipTest extends OTest {
 
@@ -66,6 +67,6 @@ public class DemoqaTooltipTest extends OTest {
     @Test
     public void checkCustomAnimationDemoTooltipUnderOpenEventLink() {
         commonElements.tabsLinkClick("custom animation demo");
-        assertEquals("Check tooltip under Open event link", "move down on show", tooltip.getCustomeAnimationsLinksTextTooltip("open event"));
+        assertEquals("Check tooltip under Open event link", "move down on show2", tooltip.getCustomeAnimationsLinksTextTooltip("open event"));
     }
 }
