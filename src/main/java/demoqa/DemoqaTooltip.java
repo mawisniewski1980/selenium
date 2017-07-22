@@ -1,5 +1,6 @@
 package demoqa;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,9 +9,11 @@ import pageobject.OPage;
 
 import java.util.List;
 
+
+
 public class DemoqaTooltip extends OPage {
 
-  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaTooltip.class.getName());
+  private static final Logger LOG = Logger.getLogger(DemoqaTooltip.class.getName());
 
   public DemoqaTooltip(WebDriver driver) {
     super(driver);

@@ -1,23 +1,23 @@
 package testobject;
 
 import enums.PageUrls.PageUrl;
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+
 import utilsobjects.OUtils;
 import webdriverobjects.OWebDriver;
-
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
 public abstract class OTest {
 
-  private static final Logger LOG = LoggerFactory.getLogger(OTest.class.getName());
+  private static final Logger LOG = Logger.getLogger(OTest.class);
 
   protected WebDriver driver = OWebDriver.getOWebDriverInstance().initChromeBrowser();
   protected OUtils utils = new OUtils(driver);

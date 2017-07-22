@@ -1,14 +1,15 @@
 package demoqa;
 
 import enums.PageUrls.PageUrl;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import testobject.OTest;
 
 import java.util.List;
 import java.util.Map;
+
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -16,7 +17,7 @@ import static org.junit.Assert.assertNotSame;
 
 public class DemoqaSortableTest extends OTest {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaSortableTest.class.getName());
+  private static final Logger LOG = Logger.getLogger(DemoqaSortableTest.class.getName());
 
   private DemoqaSortable sortable;
   private DemoqaCommonElements commonElements;

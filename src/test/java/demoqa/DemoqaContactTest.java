@@ -5,21 +5,22 @@ import demoqacontact.DemoqaContactForm;
 import enums.DemoqaEnums.DemoqaContactValidationFormText;
 import enums.DemoqaEnums.DemoqaContactValidationInputText;
 import enums.PageUrls.PageUrl;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import testobject.OTest;
 
 import java.util.Arrays;
 import java.util.List;
+
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class DemoqaContactTest extends OTest {
 
-  private final Logger LOG = LoggerFactory.getLogger(DemoqaContactTest.class);
+  private static final Logger LOG = Logger.getLogger(DemoqaContactTest.class.getName());
 
   private DemoqaContact demoqacontact;
   private DemoqaCommonElements commonElements;

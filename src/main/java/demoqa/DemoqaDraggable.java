@@ -1,5 +1,6 @@
 package demoqa;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,9 +10,11 @@ import utilsobjects.ODraggable;
 
 import java.util.List;
 
+
+
 public class DemoqaDraggable extends OPage {
 
-  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaDraggable.class.getName());
+  private static final Logger LOG = Logger.getLogger(DemoqaDraggable.class.getName());
 
   public DemoqaDraggable(WebDriver driver) {
     super(driver);

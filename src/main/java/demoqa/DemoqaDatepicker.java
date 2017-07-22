@@ -1,13 +1,17 @@
 package demoqa;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pageobject.OPage;
 
+
+
+
 public class DemoqaDatepicker extends OPage {
 
-  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaDatepicker.class.getName());
+  private static final Logger LOG = Logger.getLogger(DemoqaDatepicker.class.getName());
 
   public DemoqaDatepicker(WebDriver driver) {
     super(driver);

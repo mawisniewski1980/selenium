@@ -1,22 +1,20 @@
 package webdriverobjects;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.GeckoDriverService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import utilsobjects.OProperties;
 
-import java.io.*;
-import java.util.Properties;
 
 public class OWebDriver {
 
-  private static final Logger LOG = LoggerFactory.getLogger(OWebDriver.class.getSimpleName());
+  private static final Logger LOG = Logger.getLogger(OWebDriver.class);
 
   private static OWebDriver oWebDriverInstance = new OWebDriver();
-  private Properties property = new Properties();
+  private OProperties properties = new OProperties();
   private String userPath = System.getProperty("user.dir");
 
   private OWebDriver() {
@@ -28,28 +26,14 @@ public class OWebDriver {
 
   public WebDriver initChromeBrowser() {
     LOG.info("Driver Chrome Browser");
-    System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, userPath + getProperty("chromefilepath"));
+    System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, userPath + properties.getProperty("chromefilepath"));
     return new ChromeDriver();
   }
 
   public WebDriver initFireFoxBrowser() {
     LOG.info("Driver FireFox Browser");
-    System.setProperty(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY, userPath + getProperty("firefoxfilepath"));
+    System.setProperty(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY, userPath + properties.getProperty("firefoxfilepath"));
     return new FirefoxDriver();
   }
 
-  public String getProperty(String key) {
-
-    try (BufferedReader buffer = new BufferedReader(new FileReader(new File(userPath + "/config.properties")))) {
-      property.load(buffer);
-      return property.getProperty(key);
-    } catch (FileNotFoundException e) {
-      LOG.info("No file 'config.properties'");
-      e.printStackTrace();
-    } catch (IOException e) {
-      LOG.info("Connot read file 'config.properties'");
-      e.printStackTrace();
-    }
-    return null;
-  }
 }

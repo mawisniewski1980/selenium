@@ -1,15 +1,19 @@
 package demoqa;
 
 import enums.PageUrls;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.OTest;
+
+
+
 
 import static org.junit.Assert.assertEquals;
 
 public class DemoqaDatapickerTest extends OTest {
 
-    // private final Logger LOG = LoggerFactory.getLogger(DemoqaDatapickerTest.class);
+    private static final Logger LOG = Logger.getLogger(DemoqaDatapickerTest.class.getName());
 
     private DemoqaDatepicker demoqaDatepicker;
     private DemoqaCommonElements commonElements;

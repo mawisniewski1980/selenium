@@ -2,13 +2,12 @@ package fullcalendar;
 
 import enums.CalendarEnums.TIMEHOURS;
 import enums.CalendarEnums.VIEW;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import pageobject.OPage;
 
 import java.time.LocalDate;
@@ -16,9 +15,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class FullCalendarOPage extends OPage {
 
-  private static final Logger LOG = LoggerFactory.getLogger(FullCalendarOPage.class.getName());
+  private static final Logger LOG = Logger.getLogger(FullCalendarOPage.class.getName());
 
   public FullCalendarOPage(WebDriver driver) {
     super(driver);

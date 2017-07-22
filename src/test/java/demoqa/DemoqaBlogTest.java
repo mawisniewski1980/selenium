@@ -3,6 +3,7 @@ package demoqa;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,9 +13,12 @@ import demoqablog.DemoqaBlog;
 import enums.PageUrls.PageUrl;
 import testobject.OTest;
 
+
+
+
 public class DemoqaBlogTest extends OTest {
 
-  // private final Logger LOG = LoggerFactory.getLogger(DemoqaBlogTest.class);
+  private static final Logger LOG = Logger.getLogger(DemoqaBlogTest.class.getName());
 
   private DemoqaBlog demoqaBlog;
   private DemoqaCommonElements commonElements;

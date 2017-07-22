@@ -1,9 +1,12 @@
 package demoqa;
 
 import enums.PageUrls;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.OTest;
+
+
 
 import static com.google.common.collect.ImmutableList.*;
 import static org.junit.Assert.assertEquals;
@@ -11,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 
 public class DemoqaAutocompleteTest extends OTest {
 
-    // private final Logger LOG = LoggerFactory.getLogger(DemoqaAutocompleteTest.class);
+    private static final Logger LOG = Logger.getLogger(DemoqaAutocompleteTest.class.getName());
 
     private DemoqaAutocomplete dAuto;
     private DemoqaCommonElements commonElements;

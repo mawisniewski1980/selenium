@@ -1,5 +1,6 @@
 package demoqa;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,9 +9,11 @@ import pageobject.OPage;
 import java.util.Arrays;
 import java.util.List;
 
+
+
 public class DemoqaAutocomplete extends OPage {
 
-  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaAutocomplete.class.getName());
+  private static final Logger LOG = Logger.getLogger(DemoqaAutocomplete.class.getName());
 
   public DemoqaAutocomplete(WebDriver driver) {
     super(driver);

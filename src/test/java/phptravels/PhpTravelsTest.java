@@ -1,12 +1,16 @@
 package phptravels;
 
 import enums.PageUrls.PageUrl;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import testobject.OTest;
 
+
+
+
 public class PhpTravelsTest extends OTest {
 
-  // private static final Logger LOG = LoggerFactory.getLogger(PhpTravelsTest.class.getName());
+  private static final Logger LOG = Logger.getLogger(PhpTravelsTest.class.getName());
 
   // private PhpTravelsUserOPage ptup;
 

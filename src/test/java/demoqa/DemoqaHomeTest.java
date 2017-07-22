@@ -3,16 +3,20 @@ package demoqa;
 import com.google.common.collect.ImmutableList;
 import demoqablog.DemoqaBlog;
 import enums.PageUrls.PageUrl;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.OTest;
+
+
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class DemoqaHomeTest extends OTest {
 
-  // private static final Logger LOG = LoggerFactory.getLogger(DemoqaHomeTest.class.getName());
+  private static final Logger LOG = Logger.getLogger(DemoqaHomeTest.class.getName());
 
   private DemoqaHome demoqaHome;
   private DemoqaCommonElements commonElements;

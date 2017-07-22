@@ -1,11 +1,10 @@
 package demoqa;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import pageobject.OPage;
 import utilsobjects.ODraggable;
 
@@ -14,9 +13,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+
 public class DemoqaSortable extends OPage {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaSortable.class.getName());
+  private static final Logger LOG = Logger.getLogger(DemoqaSortable.class.getName());
 
   public DemoqaSortable(WebDriver driver) {
     super(driver);

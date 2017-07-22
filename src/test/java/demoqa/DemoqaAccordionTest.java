@@ -1,15 +1,19 @@
 package demoqa;
 
 import enums.PageUrls.PageUrl;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.OTest;
+
+
+
 
 import static org.junit.Assert.*;
 
 public class DemoqaAccordionTest extends OTest {
 
-  // private final Logger LOG = LoggerFactory.getLogger(DemoqaAboutUsTest.class);
+  private static final Logger LOG = Logger.getLogger(DemoqaAboutUsTest.class.getName());
 
   private DemoqaAccordion demoqaAccordion;
   private DemoqaCommonElements commonElements;

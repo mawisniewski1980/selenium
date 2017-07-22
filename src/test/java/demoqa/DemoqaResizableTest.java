@@ -1,19 +1,19 @@
 package demoqa;
 
 import enums.PageUrls.PageUrl;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Dimension;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import testobject.OTest;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class DemoqaResizableTest extends OTest {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaResizableTest.class.getName());
+  private static final Logger LOG = Logger.getLogger(DemoqaResizableTest.class.getName());
 
   private DemoqaResizable resizable;
   private DemoqaCommonElements commonElements;

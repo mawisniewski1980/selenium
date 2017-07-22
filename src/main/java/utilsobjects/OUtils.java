@@ -1,24 +1,20 @@
 package utilsobjects;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.IOException;
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
+
+
 public class OUtils {
 
-  private static final Logger LOG = LoggerFactory.getLogger(OUtils.class.getName());
+  private static final Logger LOG = Logger.getLogger(OUtils.class);
 
   private WebDriver driver;
   public OWaits waits;
@@ -28,14 +24,6 @@ public class OUtils {
     this.driver = driver;
     this.actions = new OActions(driver);
     this.waits = new OWaits(driver);
-  }
-
-  public LocalDateTime startDateTime() {
-    return LocalDateTime.now();
-  }
-
-  public LocalDateTime endDateTime() {
-    return LocalDateTime.now();
   }
 
   public String getInfoAboutSystem() {
@@ -121,18 +109,20 @@ public class OUtils {
     return element.getText();
   }
 
-  public void setText(WebElement element, String text) {
+  public OUtils setText(WebElement element, String text) {
     LOG.info("Set text " + text);
     actions.scrollToElement(element);
     element.clear();
     element.sendKeys(text);
+    return this;
   }
 
-  public void setText(WebElement element, String text, boolean clearField) {
+  public OUtils setText(WebElement element, String text, boolean clearField) {
     LOG.info("Set text " + text);
     actions.scrollToElement(element);
     if(clearField) element.clear();
     element.sendKeys(text);
+    return this;
   }
 
   public int getId(List<WebElement> elements, String title) {
@@ -184,10 +174,11 @@ public class OUtils {
     elementList.get(getId(elementList, title)).click();
   }
 
-  public void linkClick(WebElement element) {
+  public OUtils linkClick(WebElement element) {
     LOG.info("Click on link " + element.getText());
     actions.scrollToElement(element);
     element.click();
+    return this;
   }
 
   public String getImgExampleFile(String fileName) {
@@ -195,22 +186,5 @@ public class OUtils {
     String path = System.getProperty("user.dir") + "\\img\\";
     return path + fileName;
   }
-
-  public void takeScreenShoot(String className, String methodName) {
-
-    String dateTimeNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("_yyyyMMdd_HHmmss"));
-    String path = "C:\\seleniumTest\\" + className + "\\" + methodName + "\\";
-    String fileName = methodName + "_" + dateTimeNow + ".png";
-
-    try {
-      File screenShoot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-      FileUtils.copyFile(screenShoot, new File(path + fileName));
-
-    } catch (IOException e) {
-      LOG.info("Cannot copy " + fileName + " to: " + path);
-      // e.printStackTrace();
-    }
-  }
-
 
 }

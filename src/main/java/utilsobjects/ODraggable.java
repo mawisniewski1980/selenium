@@ -1,13 +1,16 @@
 package utilsobjects;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
 
+
+
 public class ODraggable {
 
-  // private static final Logger LOG = LoggerFactory.getLogger(ODraggable.class.getName());
+  private static final Logger LOG = Logger.getLogger(ODraggable.class);
 
   private WebElement element;
 

@@ -1,16 +1,20 @@
 package demoqa;
 
 import enums.PageUrls;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.OTest;
+
+
+
 
 import static org.junit.Assert.assertEquals;
 
 public class DemoqaMenuTest extends OTest {
 
 
-    // private final Logger LOG = LoggerFactory.getLogger(DemoqaMenuTest.class);
+    private static final Logger LOG = Logger.getLogger(DemoqaMenuTest.class.getName());
 
     private DemoqaMenu dMenu;
     private DemoqaCommonElements commonElements;

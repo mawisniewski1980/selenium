@@ -1,16 +1,20 @@
 package demoqa;
 
 import enums.PageUrls.PageUrl;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.OTest;
+
+
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class DemoqaTabsTest extends OTest {
 
-  // private final Logger LOG = LoggerFactory.getLogger(DemoqaTabsTest.class);
+  private static final Logger LOG = Logger.getLogger(DemoqaTabsTest.class.getName());
 
   private DemoqaTabs tabs;
   private DemoqaCommonElements commonElements;

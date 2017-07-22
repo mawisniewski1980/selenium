@@ -3,7 +3,7 @@ package enums;
 public class CalendarEnums {
 
   public enum VIEW {
-    DAY, WEEK, MONTH, LIST;
+    DAY, WEEK, MONTH, LIST
   }
 
   public enum TIMEHOURS {
