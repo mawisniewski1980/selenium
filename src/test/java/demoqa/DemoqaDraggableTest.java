@@ -1,7 +1,9 @@
 package demoqa;
 
 import enums.PageUrls.PageUrl;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Point;
@@ -15,7 +17,7 @@ import static org.junit.Assert.assertNotEquals;
 
 public class DemoqaDraggableTest extends OTest {
 
-  private static final Logger LOG = Logger.getLogger(DemoqaDraggableTest.class.getName());
+  private static final Logger LOG = LogManager.getLogger("DemoqaDraggableTest");
 
   private DemoqaDraggable draggable;
   private DemoqaCommonElements commonElements;

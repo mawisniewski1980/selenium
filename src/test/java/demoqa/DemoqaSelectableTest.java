@@ -2,7 +2,9 @@ package demoqa;
 
 import com.google.common.collect.ImmutableList;
 import enums.PageUrls.PageUrl;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.OTest;
@@ -17,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 
 public class DemoqaSelectableTest extends OTest {
 
-  private static final Logger LOG = Logger.getLogger(DemoqaSelectableTest.class.getName());
+  private static final Logger LOG = LogManager.getLogger("DemoqaSelectableTest");
 
   private DemoqaSelectable selectable;
   private DemoqaCommonElements commonElements;

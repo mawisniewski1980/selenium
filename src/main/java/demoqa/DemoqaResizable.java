@@ -1,6 +1,8 @@
 package demoqa;
 
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +15,7 @@ import utilsobjects.ODraggable;
 
 public class DemoqaResizable extends OPage {
 
-  private static final Logger LOG = Logger.getLogger(DemoqaResizable.class.getName());
+  private static final Logger LOG = LogManager.getLogger("DemoqaResizable");
 
   public DemoqaResizable(WebDriver driver) {
     super(driver);

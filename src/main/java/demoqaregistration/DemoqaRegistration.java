@@ -3,7 +3,9 @@ package demoqaregistration;
 import enums.DemoqaEnums.DemoqaRegistrationHobby;
 import enums.DemoqaEnums.DemoqaRegistrationMaritalStatus;
 import enums.DemoqaEnums.DemoqaReistrationCountry;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,7 +20,7 @@ import java.util.List;
 
 public class DemoqaRegistration extends OPage {
 
-  private static final Logger LOG = Logger.getLogger(DemoqaRegistration.class.getName());
+  private static final Logger LOG = LogManager.getLogger("DemoqaRegistration");
 
   public DemoqaRegistration(WebDriver driver) {
     super(driver);

@@ -1,5 +1,7 @@
 package date;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import sun.plugin.com.Utils;
@@ -7,6 +9,8 @@ import sun.plugin.com.Utils;
 import java.time.LocalDate;
 
 public class ODate {
+
+    private static final Logger LOG = LogManager.getLogger("ODate");
 
     private final String containerCss = ".ui-datepicker";
     @FindBy(css = containerCss)

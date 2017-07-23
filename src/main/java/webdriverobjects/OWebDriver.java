@@ -1,6 +1,8 @@
 package webdriverobjects;
 
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -11,7 +13,7 @@ import utilsobjects.OProperties;
 
 public class OWebDriver {
 
-  private static final Logger LOG = Logger.getLogger(OWebDriver.class);
+  private static final Logger LOG = LogManager.getLogger("OWebDriver");
 
   private static OWebDriver oWebDriverInstance = new OWebDriver();
   private OProperties properties = new OProperties();

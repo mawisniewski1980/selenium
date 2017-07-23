@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Properties>
+        <Property name="basePath">C:\\seleniumLogs</Property>
+        <Property name="fileName">${date:yyyy-MM-dd_HH-mm-ss-SSS}</Property>
+    </Properties>
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <RollingFile name="FILE" fileName="${basePath}/${fileName}.log" filePattern="${basePath}/${filePattern}-%d{yyyy-MM-dd}-%i.log" >
+            <PatternLayout>
+                <pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1 KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+        <File name="FILEHTML" fileName="${basePath}/${fileName}.html">
+            <HTMLLayout charset="UTF-8" title="Selenium Logs" locationInfo="true" />
+        </File>
+    </Appenders>
+    <Loggers>
+
+        <Logger name="selenium" level="info" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+        </Logger>
+
+        <Logger name="FILE" level="info" additivity="false">
+            <AppenderRef ref="FILE"/>
+        </Logger>
+
+        <Logger name="FILEHTML" level="info" additivity="false">
+            <AppenderRef ref="FILEHTML"/>
+        </Logger>
+
+        <Root level="INFO">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="FILEHTML"/>
+        </Root>
+    </Loggers>
+</Configuration>

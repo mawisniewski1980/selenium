@@ -1,6 +1,7 @@
 package demoqa;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +10,7 @@ import pageobject.OPage;
 
 public class DemoqaAboutUs extends OPage {
 
-  private static final Logger LOG = Logger.getLogger(DemoqaAboutUs.class.getName());
+  private static final Logger LOG = LogManager.getLogger("DemoqaAboutUs");
 
   public DemoqaAboutUs(WebDriver driver) {
     super(driver);

@@ -5,7 +5,9 @@ import demoqacontact.DemoqaContactForm;
 import enums.DemoqaEnums.DemoqaContactValidationFormText;
 import enums.DemoqaEnums.DemoqaContactValidationInputText;
 import enums.PageUrls.PageUrl;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.OTest;
@@ -20,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 public class DemoqaContactTest extends OTest {
 
-  private static final Logger LOG = Logger.getLogger(DemoqaContactTest.class.getName());
+  private static final Logger LOG = LogManager.getLogger("DemoqaContactTest");
 
   private DemoqaContact demoqacontact;
   private DemoqaCommonElements commonElements;

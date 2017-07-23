@@ -3,10 +3,14 @@ package demoqaregistration;
 import enums.DemoqaEnums.DemoqaRegistrationHobby;
 import enums.DemoqaEnums.DemoqaRegistrationMaritalStatus;
 import enums.DemoqaEnums.DemoqaReistrationCountry;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
 
 public class DemoqaRegistrationForm {
+
+  private static final Logger LOG = LogManager.getLogger("DemoqaRegistrationForm");
 
   private String firstName;
   private String lastName;

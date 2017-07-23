@@ -3,7 +3,9 @@ package fullcalendar;
 import enums.CalendarEnums.TIMEHOURS;
 import enums.CalendarEnums.VIEW;
 import enums.PageUrls.PageUrl;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.OTest;
@@ -20,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 public class FullCalendarTest extends OTest {
 
-  private static final Logger LOG = Logger.getLogger(FullCalendarTest.class.getName());
+  private static final Logger LOG = LogManager.getLogger("FullCalendarTest");
 
   private FullCalendarOPage fp;
 

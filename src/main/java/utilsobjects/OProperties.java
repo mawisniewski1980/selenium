@@ -1,12 +1,15 @@
 package utilsobjects;
 
+import org.apache.logging.log4j.LogManager;
+
 import java.io.*;
 import java.util.Properties;
 import java.util.logging.Logger;
 
 public class OProperties {
 
-    private static final Logger LOG = Logger.getLogger(OProperties.class.getName());
+
+    private static final org.apache.logging.log4j.Logger LOG = LogManager.getLogger("OProperties");
 
     private Properties property = new Properties();
     private String userPath = System.getProperty("user.dir");

@@ -2,19 +2,17 @@ package utilsobjects;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
-
-
 public class OUtils {
 
-  private static final Logger LOG = Logger.getLogger(OUtils.class);
+  private static final Logger LOG = LogManager.getLogger("OUtils");
+
 
   private WebDriver driver;
   public OWaits waits;
@@ -144,7 +142,6 @@ public class OUtils {
   }
 
   public String generateRandomAlphabeticWithSpaces(int length, int spaces) {
-
     Random rand = new Random();
     String str = RandomStringUtils.randomAlphabetic(length);
     StringBuilder sb = new StringBuilder(str);
@@ -187,4 +184,16 @@ public class OUtils {
     return path + fileName;
   }
 
+  public void takeScreenFile() {
+
+    String pathAndFile = new OLogs().getPathAndFileName() + ".png";
+    System.out.println(pathAndFile);
+    /*try {
+      File screenShoot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+      FileUtils.copyFile(screenShoot, new File(pathAndFile));
+    } catch (IOException e) {
+      LOG.info("Cannot copy file");
+      e.printStackTrace();
+    }*/
+  }
 }

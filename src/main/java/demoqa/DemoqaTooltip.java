@@ -1,19 +1,17 @@
 package demoqa;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pageobject.OPage;
-
 import java.util.List;
-
-
 
 public class DemoqaTooltip extends OPage {
 
-  private static final Logger LOG = Logger.getLogger(DemoqaTooltip.class.getName());
+  private static final Logger LOG = LogManager.getLogger("DemoqaTooltip");
 
   public DemoqaTooltip(WebDriver driver) {
     super(driver);

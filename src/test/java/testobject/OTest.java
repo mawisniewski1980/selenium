@@ -1,7 +1,9 @@
 package testobject;
 
 import enums.PageUrls.PageUrl;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -17,7 +19,7 @@ import static org.junit.Assert.fail;
 
 public abstract class OTest {
 
-  private static final Logger LOG = Logger.getLogger(OTest.class);
+  private static final Logger LOG = LogManager.getLogger("OTest");
 
   protected WebDriver driver = OWebDriver.getOWebDriverInstance().initChromeBrowser();
   protected OUtils utils = new OUtils(driver);

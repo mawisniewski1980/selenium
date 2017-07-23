@@ -1,6 +1,8 @@
 package utilsobjects;
 
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +14,7 @@ import java.util.List;
 
 public class OActions {
 
-  private static final Logger LOG = Logger.getLogger(OActions.class);
+  private static final Logger LOG = LogManager.getLogger("OActions");
 
   private WebDriver driver;
   private Actions actions;

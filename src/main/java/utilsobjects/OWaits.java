@@ -1,6 +1,8 @@
 package utilsobjects;
 
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class OWaits {
 
-  private static final Logger LOG = Logger.getLogger(OWaits.class);
+  private static final Logger LOG = LogManager.getLogger("OWaits");
 
   private WebDriverWait waits;
 

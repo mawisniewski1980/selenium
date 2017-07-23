@@ -4,7 +4,9 @@ import demoqaregistration.DemoqaRegistration;
 import demoqaregistration.DemoqaRegistrationForm;
 import enums.DemoqaEnums.*;
 import enums.PageUrls.PageUrl;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.OTest;
@@ -17,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DemoqaRegistrationTest extends OTest {
 
-  private static final Logger LOG = Logger.getLogger(DemoqaRegistrationTest.class.getName());
+  private static final Logger LOG = LogManager.getLogger("DemoqaRegistrationTest");
 
   private DemoqaRegistration demoqaReg;
   private DemoqaCommonElements commonElements;

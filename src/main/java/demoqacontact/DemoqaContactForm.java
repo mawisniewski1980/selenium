@@ -1,6 +1,11 @@
 package demoqacontact;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class DemoqaContactForm {
+
+	private static final Logger LOG = LogManager.getLogger("DemoqaContactForm");
 
 	private String name;
 	private String email;

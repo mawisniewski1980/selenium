@@ -2,7 +2,9 @@ package demoqa;
 
 import enums.DemoqaEnums;
 import enums.PageUrls;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import testobject.OTest;
@@ -14,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DemoqaSliderTest extends OTest {
 
-    private static final Logger LOG = Logger.getLogger(DemoqaSliderTest.class.getName());
+    private static final Logger LOG = LogManager.getLogger("DemoqaSliderTest");
 
     private DemoqaSlider demoqaSlider;
     private DemoqaCommonElements commonElements;

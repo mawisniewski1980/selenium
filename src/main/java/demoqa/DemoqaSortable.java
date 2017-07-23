@@ -1,6 +1,8 @@
 package demoqa;
 
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +19,7 @@ import java.util.Map;
 
 public class DemoqaSortable extends OPage {
 
-  private static final Logger LOG = Logger.getLogger(DemoqaSortable.class.getName());
+  private static final Logger LOG = LogManager.getLogger("DemoqaSortable");
 
   public DemoqaSortable(WebDriver driver) {
     super(driver);

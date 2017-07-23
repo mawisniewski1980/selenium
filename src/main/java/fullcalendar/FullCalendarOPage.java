@@ -2,7 +2,9 @@ package fullcalendar;
 
 import enums.CalendarEnums.TIMEHOURS;
 import enums.CalendarEnums.VIEW;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,7 +21,7 @@ import java.util.List;
 
 public class FullCalendarOPage extends OPage {
 
-  private static final Logger LOG = Logger.getLogger(FullCalendarOPage.class.getName());
+  private static final Logger LOG = LogManager.getLogger("FullCalendarOPage");
 
   public FullCalendarOPage(WebDriver driver) {
     super(driver);

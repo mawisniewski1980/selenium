@@ -2,18 +2,18 @@ package demoqa;
 
 
 import enums.PageUrls;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-
-
 import testobject.OTest;
 
 import static org.junit.Assert.assertEquals;
 
 public class DemoqaTooltipTest extends OTest {
 
-    private static final Logger LOG =  Logger.getLogger(DemoqaTooltipTest.class);
+    private static final Logger LOG = LogManager.getLogger(DemoqaTooltipTest.class);
 
     private DemoqaTooltip tooltip;
     private DemoqaCommonElements commonElements;
@@ -69,6 +69,14 @@ public class DemoqaTooltipTest extends OTest {
     @Test
     public void checkCustomAnimationDemoTooltipUnderOpenEventLink() {
         commonElements.tabsLinkClick("custom animation demo");
-        assertEquals("Check tooltip under Open event link", "move down on show2", tooltip.getCustomeAnimationsLinksTextTooltip("open event"));
+        assertEquals("Check tooltip under Open event link", "move down on show", tooltip.getCustomeAnimationsLinksTextTooltip("open event"));
+    }
+
+    @Test
+    public void xxx() {
+        LOG.error("Errorek");
+        LOG.info("Inforek");
+        LOG.warn("Warning");
+        utils.takeScreenFile();
     }
 }
