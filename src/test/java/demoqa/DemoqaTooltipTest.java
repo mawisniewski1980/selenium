@@ -69,14 +69,7 @@ public class DemoqaTooltipTest extends OTest {
     @Test
     public void checkCustomAnimationDemoTooltipUnderOpenEventLink() {
         commonElements.tabsLinkClick("custom animation demo");
-        assertEquals("Check tooltip under Open event link", "move down on show", tooltip.getCustomeAnimationsLinksTextTooltip("open event"));
+        assertEquals("Check tooltip under Open event link", "move down on show2", tooltip.getCustomeAnimationsLinksTextTooltip("open event"));
     }
 
-    @Test
-    public void xxx() {
-        LOG.error("Errorek");
-        LOG.info("Inforek");
-        LOG.warn("Warning");
-        utils.takeScreenFile();
-    }
 }

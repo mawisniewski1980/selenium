@@ -13,15 +13,16 @@ public class OUtils {
 
   private static final Logger LOG = LogManager.getLogger("OUtils");
 
-
   private WebDriver driver;
   public OWaits waits;
   public OActions actions;
+  public OLogs logs;
 
   public OUtils(WebDriver driver) {
     this.driver = driver;
     this.actions = new OActions(driver);
     this.waits = new OWaits(driver);
+    this.logs = new OLogs(driver);
   }
 
   public String getInfoAboutSystem() {
@@ -184,16 +185,5 @@ public class OUtils {
     return path + fileName;
   }
 
-  public void takeScreenFile() {
 
-    String pathAndFile = new OLogs().getPathAndFileName() + ".png";
-    System.out.println(pathAndFile);
-    /*try {
-      File screenShoot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-      FileUtils.copyFile(screenShoot, new File(pathAndFile));
-    } catch (IOException e) {
-      LOG.info("Cannot copy file");
-      e.printStackTrace();
-    }*/
-  }
 }

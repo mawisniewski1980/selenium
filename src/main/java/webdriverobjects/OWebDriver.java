@@ -16,8 +16,10 @@ public class OWebDriver {
   private static final Logger LOG = LogManager.getLogger("OWebDriver");
 
   private static OWebDriver oWebDriverInstance = new OWebDriver();
-  private OProperties properties = new OProperties();
+
   private String userPath = System.getProperty("user.dir");
+  private String chromeFilePath = userPath + OProperties.getProperty("chromefilepath");
+  private String firefoxFilePath = userPath + OProperties.getProperty("firefoxfilepath");
 
   private OWebDriver() {
   }
@@ -28,13 +30,13 @@ public class OWebDriver {
 
   public WebDriver initChromeBrowser() {
     LOG.info("Driver Chrome Browser");
-    System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, userPath + properties.getProperty("chromefilepath"));
+    System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, chromeFilePath);
     return new ChromeDriver();
   }
 
   public WebDriver initFireFoxBrowser() {
     LOG.info("Driver FireFox Browser");
-    System.setProperty(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY, userPath + properties.getProperty("firefoxfilepath"));
+    System.setProperty(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY, firefoxFilePath);
     return new FirefoxDriver();
   }
 

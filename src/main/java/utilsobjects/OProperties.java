@@ -11,10 +11,10 @@ public class OProperties {
 
     private static final org.apache.logging.log4j.Logger LOG = LogManager.getLogger("OProperties");
 
-    private Properties property = new Properties();
-    private String userPath = System.getProperty("user.dir");
+    private static Properties property = new Properties();
+    private static String userPath = System.getProperty("user.dir");
 
-    public String getProperty(String key) {
+    public static String getProperty(String key) {
 
         try (BufferedReader buffer = new BufferedReader(new FileReader(new File(userPath + "/src/main/resources/config.properties")))) {
             property.load(buffer);

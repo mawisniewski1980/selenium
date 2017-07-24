@@ -5,12 +5,14 @@ import enums.PageUrls.PageUrl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 
 
+import utilsobjects.OLogs;
 import utilsobjects.OUtils;
 import webdriverobjects.OWebDriver;
 import java.util.concurrent.TimeUnit;
@@ -25,14 +27,12 @@ public abstract class OTest {
   protected OUtils utils = new OUtils(driver);
 
   @Rule
-  public TestName testName = new TestName();
-
-  @Rule
-  public OTestRules failRule = new OTestRules(driver);
+  public OTestRules rules = new OTestRules(utils.logs);
 
   @Before
   public void setUpBeforeClass() {
-    if (driver == null) {
+  if (driver == null) {
+      LOG.error("Driver cannot be null");
       fail("Driver cannot be null");
     }
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -43,6 +43,7 @@ public abstract class OTest {
 
   @After
   public void tearDownAfterClass() {
+
   }
 
   protected void setUrl(PageUrl url) {
@@ -97,7 +98,7 @@ public abstract class OTest {
     }
 
     default: {
-      LOG.info("No Url !");
+      LOG.error("No Url !");
       fail("No Url !");
       break;
     }
