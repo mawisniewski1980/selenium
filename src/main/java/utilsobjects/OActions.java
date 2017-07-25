@@ -100,7 +100,7 @@ public class OActions {
 
   public OActions moveByXYWithWait(ODraggable drag, int xOffset, int yOffset, int wait) {
     actions.moveToElement(drag.getElement()).clickAndHold().moveByOffset(xOffset, yOffset);
-    new OUtils(driver).waits.waitTime(wait);
+    new OUtils(driver).getWaits().waitTime(wait);
     actions.release().build().perform();
     return this;
   }

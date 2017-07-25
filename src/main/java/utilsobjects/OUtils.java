@@ -1,5 +1,6 @@
 package utilsobjects;
 
+import logs.OLogs;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.LogManager;
@@ -14,15 +15,31 @@ public class OUtils {
   private static final Logger LOG = LogManager.getLogger("OUtils");
 
   private WebDriver driver;
-  public OWaits waits;
-  public OActions actions;
-  public OLogs logs;
+  private OWaits waits;
+  private OActions actions;
+  private OLogs logs;
 
   public OUtils(WebDriver driver) {
     this.driver = driver;
     this.actions = new OActions(driver);
     this.waits = new OWaits(driver);
     this.logs = new OLogs(driver);
+  }
+
+  public WebDriver getDriver() {
+    return driver;
+  }
+
+  public OWaits getWaits() {
+    return waits;
+  }
+
+  public OActions getActions() {
+    return actions;
+  }
+
+  public OLogs getLogs() {
+    return logs;
   }
 
   public String getInfoAboutSystem() {

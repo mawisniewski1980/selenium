@@ -75,7 +75,7 @@ public class DemoqaNavbar extends OPage {
 
   private void demoLinkClick() {
     utils.linkClick(demoLink);
-    utils.waits.waitForVisibilityOfElements(demoLinksList);
+    utils.getWaits().waitForVisibilityOfElements(demoLinksList);
   }
 
   public DemoqaDraggable draggableLinkClick() {

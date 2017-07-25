@@ -42,13 +42,13 @@ public class DemoqaMenuTest extends OTest {
     public void moveToLinkOnSimpleMenuTab() {
         commonElements.tabsLinkClick("Simple Menu");
         dMenu.hoverLinkSimpleMenuItem("Contact");
-        utils.waits.waitTime(1);
+        utils.getWaits().waitTime(1);
     }
 
     @Test
     public void moveToLinkOnMenuWIthSubMenuTab() {
         commonElements.tabsLinkClick("Menu With Sub Menu");
         dMenu.hoverMenuWithSubmenuListSubLevel("News", "Sub Menu Item 1");
-        utils.waits.waitTime(1);
+        utils.getWaits().waitTime(1);
     }
 }

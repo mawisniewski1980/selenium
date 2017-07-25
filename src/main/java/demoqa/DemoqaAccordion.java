@@ -49,7 +49,7 @@ public class DemoqaAccordion extends OPage {
 
   public DemoqaAccordion clickDefFuncSection(String title) {
     utils.linkClick(defaultFunctionalityItems, title);
-    utils.waits.waitTime(1);
+    utils.getWaits().waitTime(1);
     return this;
   }
 
@@ -76,7 +76,7 @@ public class DemoqaAccordion extends OPage {
 
   public DemoqaAccordion clickCustIcoSection(String title) {
     utils.linkClick(customizeIconsItems, title);
-    utils.waits.waitTime(1);
+    utils.getWaits().waitTime(1);
     return this;
   }
 
@@ -94,7 +94,7 @@ public class DemoqaAccordion extends OPage {
 
   public DemoqaAccordion clickFillSpaceSection(String title) {
     utils.linkClick(fillSpaceItems, title);
-    utils.waits.waitTime(1);
+    utils.getWaits().waitTime(1);
     return this;
   }
 

@@ -1,4 +1,4 @@
-package utilsobjects;
+package logs;
 
 
 import org.apache.commons.io.FileUtils;
@@ -7,17 +7,12 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogEntry;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.Logs;
+import utilsobjects.OProperties;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-
 
 public class OLogs {
 
@@ -29,20 +24,6 @@ public class OLogs {
 
     public OLogs(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public OLogs(WebDriver driver, String className) {
-        this(driver);
-        this.className = className;
-    }
-
-    public OLogs(WebDriver driver, String className, String methodName) {
-        this(driver, className);
-        this.methodName = methodName;
-    }
-
-    public WebDriver getDriver() {
-        return driver;
     }
 
     public String getClassName() {
@@ -62,11 +43,7 @@ public class OLogs {
     }
 
     public String getDateNow_yyyyMMdd() {
-      return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-    }
-
-    public String getDateTimeNow_yyyyMMdd_HHmmss() {
-        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+      return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     public String getDateTimeNowFormated_yyyyMMdd_HHmmss() {
@@ -82,11 +59,15 @@ public class OLogs {
     }
 
     public String getFileName() {
-        return getDateTimeNow_yyyyMMdd_HHmmss() + "_" + getMethodName();
+        return getDateNow_yyyyMMdd() + "_" + getMethodName();
     }
 
     public String getPathAndFileName() {
         return getClassName() + "\\" + getMethodName() + "\\" + getFileName();
+    }
+
+    public String getFailPath() {
+       return getBasePath() + "\\" + getDateNow_yyyyMMdd()+ "_FAIL\\" + getPathAndFileName();
     }
 
     public void takeScreenFile() {
@@ -106,15 +87,16 @@ public class OLogs {
      }
         if(!pass) {
             try {
-                FileUtils.moveFile(destFile, new File(getBasePath() + "\\FAIL\\" + getPathAndFileName() + ".png"));
+                FileUtils.moveFile(destFile, new File(getFailPath() + ".png"));
             } catch (IOException e) {
-                LOG.error("Cannot copy file");
+                LOG.error("Cannot move file");
             }
         }
+    }
+
+    public void takeLogFile(boolean pass) {
 
 
     }
-
-
 
 }

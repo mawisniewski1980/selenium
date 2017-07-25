@@ -30,17 +30,17 @@ public class DemoqaTooltip extends OPage {
   private List<WebElement> customAnimationDemoLinks;
 
   public String getDefaultFunctionalityLinksTextTooltip(String linkText) {
-    utils.actions.moveTo(defaultFunctionalityLinks.get(utils.getId(defaultFunctionalityLinks, linkText))).waitTime(1);
+    utils.getActions().moveTo(defaultFunctionalityLinks.get(utils.getId(defaultFunctionalityLinks, linkText))).waitTime(1);
     return driver.findElement(By.cssSelector(".ui-tooltip-content")).getText();
   }
 
   public String getDefaultFunctionalityInputTextTooltip() {
-    utils.actions.moveTo(defaultFunctionalityInput).waitTime(1);
+    utils.getActions().moveTo(defaultFunctionalityInput).waitTime(1);
     return driver.findElement(By.cssSelector(".ui-tooltip-content")).getText();
   }
 
   public String getCustomeAnimationsLinksTextTooltip(String linkText) {
-    utils.actions.moveTo(customAnimationDemoLinks.get(utils.getId(customAnimationDemoLinks, linkText))).waitTime(1);
+    utils.getActions().moveTo(customAnimationDemoLinks.get(utils.getId(customAnimationDemoLinks, linkText))).waitTime(1);
     return driver.findElement(By.cssSelector(".ui-tooltip-content")).getText();
   }
 }

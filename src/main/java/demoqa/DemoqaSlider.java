@@ -44,12 +44,12 @@ public class DemoqaSlider extends OPage {
 
        if (value < rangeInInput) {
          while (rangeInInput != value) {
-           utils.actions.moveByX(new ODraggable(rangeSliderHandle), -jump);
+           utils.getActions().moveByX(new ODraggable(rangeSliderHandle), -jump);
            rangeInInput = getRangeAmount();
          }
        } else {
          while (rangeInInput != value) {
-           utils.actions.moveByX(new ODraggable(rangeSliderHandle), jump);
+           utils.getActions().moveByX(new ODraggable(rangeSliderHandle), jump);
            rangeInInput = getRangeAmount();
          }
        }

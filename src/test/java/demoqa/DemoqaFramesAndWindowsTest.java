@@ -44,7 +44,7 @@ public class DemoqaFramesAndWindowsTest extends OTest {
         commonElements.tabsLinkClick("Open New Window");
         demoqaFrames.newBrowserTabLinkClick();
         assertEquals("Check Frames and windows page title:", "Frames and windows | Demoqa", utils.getTitle());
-        utils.actions.switchToDefaultWindow();
+        utils.getActions().switchToDefaultWindow();
         assertEquals("Check Frames and windows entry title:", "Frames and windows", commonElements.getEntryTitle());
     }
 
@@ -53,7 +53,7 @@ public class DemoqaFramesAndWindowsTest extends OTest {
 
         commonElements.tabsLinkClick("Open Seprate New Window");
         demoqaFrames.openSeparateWindowLinkClick();
-        utils.actions.switchToNextWindow();
+        utils.getActions().switchToNextWindow();
 
         assertEquals("Check Frames and windows page title:", "Page Not Found | TOOLSQA", utils.getTitle());
     }
@@ -63,7 +63,7 @@ public class DemoqaFramesAndWindowsTest extends OTest {
 
         commonElements.tabsLinkClick("Frameset");
         demoqaFrames.framsetWindowLinkClick();
-        utils.actions.switchToNextWindow();
+        utils.getActions().switchToNextWindow();
 
         assertEquals("Check Frames and windows page title:", "HTML Frames - Example 1", utils.getTitle());
     }

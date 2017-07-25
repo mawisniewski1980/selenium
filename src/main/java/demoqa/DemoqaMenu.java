@@ -37,16 +37,16 @@ public class DemoqaMenu extends OPage {
   private List<WebElement> menuWithSubmenuListSubLevelUl;
 
   public DemoqaMenu hoverLinkSimpleMenuItem(String text) {
-    utils.actions.moveTo(simpleMenuListItems.get(utils.getId(simpleMenuListItems,text)));
+    utils.getActions().moveTo(simpleMenuListItems.get(utils.getId(simpleMenuListItems,text)));
     return this;
   }
 
   public DemoqaMenu hoverMenuWithSubmenuListSubLevel(String text, String subtext) {
 
-    utils.actions.moveTo(menuWithSubmenuListItemsA.get(utils.getId(menuWithSubmenuListItemsA,text)));
+    utils.getActions().moveTo(menuWithSubmenuListItemsA.get(utils.getId(menuWithSubmenuListItemsA,text)));
     if(subtext != null) {
       List<WebElement> listE = utils.findNextElementsByCssSelector(menuWithSubmenuListItemsLi.get(utils.getId(menuWithSubmenuListItemsA,text)), menuWithSubmenuListSubLevelUlCss);
-      utils.actions.moveTo(listE.get(utils.getId(listE, subtext)));
+      utils.getActions().moveTo(listE.get(utils.getId(listE, subtext)));
     }
     return this;
   }

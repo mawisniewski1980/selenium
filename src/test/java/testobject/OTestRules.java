@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.AssumptionViolatedException;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
-import utilsobjects.OLogs;
+import utilsobjects.OUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,56 +14,61 @@ public class OTestRules extends TestWatcher {
 
     private static final Logger LOG = LogManager.getLogger("OTestRules");
 
-    private OLogs logs;
+    private OUtils utils;
 
     private long startTime = System.currentTimeMillis();
 
-    public OTestRules(OLogs oLogs) {
-        this.logs = oLogs;
+    public OTestRules(OUtils utils) {
+        this.utils = utils;
     }
 
     @Override
     protected void starting(Description description) {
-        LOG.info("###  START " + logs.getDateTimeNowFormated_yyyyMMdd_HHmmss() + " ###");
+        LOG.info("###########################################################################################");
+        LOG.info("#########  START " + utils.getLogs().getDateTimeNowFormated_yyyyMMdd_HHmmss());
+        LOG.info("#########  SYSTEM INFO " + utils.getInfoAboutSystem());
+        LOG.info("#########  CLASS " + description.getClassName());
+        LOG.info("#########  METHOD " + description.getMethodName());
     }
 
     @Override
     protected void failed(Throwable t, Description description) {
-        LOG.error("### FAILED ###");
-        LOG.error("### CLASS " + description.getClassName() + " ###");
-        LOG.error("### METHOD " + description.getMethodName()+ " ###");
-        LOG.error("### ERROR " + t.getMessage() + " ###");
+        LOG.error("#########  FAILED  #########");
+        LOG.error("#########  CLASS " + description.getClassName());
+        LOG.error("#########  METHOD " + description.getMethodName());
+        LOG.error("#########  ERROR " + t.getMessage() + " ###");
         for(int i = 0; i < t.getStackTrace().length; i++) {
-            LOG.error("### STACKTRACE " + t.getStackTrace()[i] + " ###");
+            LOG.error("#########  STACKTRACE " + t.getStackTrace()[i]);
         }
-        logs.setClassName(description.getClassName());
-        logs.setMethodName(description.getMethodName());
-        logs.takeScreenFile(false);
+        LOG.error("#########  SCREEN SHOT FILE");
+        utils.getLogs().setClassName(description.getClassName());
+        utils.getLogs().setMethodName(description.getMethodName());
+        utils.getLogs().takeScreenFile(false);
     }
 
     @Override
     protected void succeeded(Description description) {
-        LOG.info("### SUCCEEDED ###");
-        LOG.info("### CLASS " + description.getClassName() + " ###");
-        LOG.info("### METHOD " + description.getMethodName()+ " ###");
+        LOG.info("#########  SUCCEEDED");
+        LOG.info("#########  CLASS " + description.getClassName());
+        LOG.info("#########  METHOD " + description.getMethodName());
     }
 
     @Override
     protected void skipped(AssumptionViolatedException e, Description description) {
-        LOG.info("### SKIPPED ###");
-        LOG.info("### CLASS " + description.getClassName() + " ###");
-        LOG.info("### METHOD " + description.getMethodName()+ " ###");
-        LOG.error("### ERROR " + e.getMessage() + " ###");
+        LOG.info("#########  SKIPPED");
+        LOG.info("#########  CLASS " + description.getClassName());
+        LOG.info("#########  METHOD " + description.getMethodName());
+        LOG.info("#########  ERROR " + e.getMessage());
         for(int i = 0; i < e.getStackTrace().length; i++) {
-            LOG.error("### STACKTRACE " + e.getStackTrace()[i] + " ###");
+            LOG.info("######### STACKTRACE " + e.getStackTrace()[i]);
         }
     }
 
     @Override
     protected void finished(Description description) {
-        logs.getDriver().manage().deleteAllCookies();
-        logs.getDriver().quit();
-        LOG.info("### STOP " + logs.getDateTimeNowFormated_yyyyMMdd_HHmmss() + " in " + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - startTime) + " seconds " +
-                " ###");
+        utils.getDriver().manage().deleteAllCookies();
+        utils.getDriver().quit();
+        LOG.info("#########  STOP " + utils.getLogs().getDateTimeNowFormated_yyyyMMdd_HHmmss() + " in " + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - startTime) + " seconds");
+        LOG.info("###########################################################################################");
     }
 }

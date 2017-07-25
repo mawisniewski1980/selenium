@@ -111,13 +111,13 @@ public class DemoqaContact extends OPage {
 
   public Boolean alertMessageOk() {
     LOG.info("Message confirmation after sended mail. OK.");
-    utils.waits.waitForVisibilityOfElement(allertMessage);
+    utils.getWaits().waitForVisibilityOfElement(allertMessage);
     return allertMessage.getAttribute("class").contains("sent-ok");
   }
 
   public Boolean alertMessageFail() {
     LOG.info("Message confirmation after sended mail. Fail.");
-    utils.waits.waitForVisibilityOfElement(allertMessage);
+    utils.getWaits().waitForVisibilityOfElement(allertMessage);
     return allertMessage.getAttribute("class").contains("validation-errors");
   }
 

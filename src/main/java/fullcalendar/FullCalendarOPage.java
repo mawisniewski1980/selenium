@@ -189,7 +189,7 @@ public class FullCalendarOPage extends OPage {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   public List<WebElement> getEvents() {
-    utils.waits.waitForVisibilityOfElements(allDay);
+    utils.getWaits().waitForVisibilityOfElements(allDay);
     return events;
   }
 

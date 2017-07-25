@@ -119,22 +119,22 @@ public class DemoqaDraggable extends OPage {
   }
 
   public DemoqaDraggable dragDefFuncDraggable(int xOffset, int yOffset) {
-    utils.actions.dragAndDropByOffset(new ODraggable(defFuncDraggable), xOffset, yOffset);
+    utils.getActions().dragAndDropByOffset(new ODraggable(defFuncDraggable), xOffset, yOffset);
     return this;
   }
 
   public DemoqaDraggable dragConMovVertically(int xOffset, int yOffset) {
-    utils.actions.dragAndDropByOffset(new ODraggable(conMovVertically), xOffset, yOffset);
+    utils.getActions().dragAndDropByOffset(new ODraggable(conMovVertically), xOffset, yOffset);
     return this;
   }
 
   public DemoqaDraggable dragConMovHorizontally(int xOffset, int yOffset) {
-    utils.actions.dragAndDropByOffset(new ODraggable(conMovHorizontally), xOffset, yOffset);
+    utils.getActions().dragAndDropByOffset(new ODraggable(conMovHorizontally), xOffset, yOffset);
     return this;
   }
 
   public DemoqaDraggable dragConWrapper1Box(int xOffset, int yOffset) {
-    utils.actions.dragAndDropByOffset(new ODraggable(conWrapper1Box), xOffset, yOffset);
+    utils.getActions().dragAndDropByOffset(new ODraggable(conWrapper1Box), xOffset, yOffset);
     return this;
   }
 }

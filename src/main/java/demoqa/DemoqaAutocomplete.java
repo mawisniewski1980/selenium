@@ -61,7 +61,7 @@ public class DemoqaAutocomplete extends OPage {
 
   public DemoqaAutocomplete setInputAutocompleteDefaultFunctionality(String text) {
     utils.setText(defaultFunctionalityTagsInput, text);
-    utils.waits.waitForVisibilityOfElement(defaultFunctionalityTagsUl);
+    utils.getWaits().waitForVisibilityOfElement(defaultFunctionalityTagsUl);
     defaultFunctionalityTagsUlLi.get(utils.getId(defaultFunctionalityTagsUlLi, text)).click();
     return this;
   }
@@ -73,7 +73,7 @@ public class DemoqaAutocomplete extends OPage {
   public DemoqaAutocomplete setInputAutocompleteMultipleValue(List<String> textList) {
     for(String textFromList : textList) {
       utils.setText(multipleValuesInput, textFromList,false);
-      utils.waits.waitForVisibilityOfElement(multipleValuesInputUl);
+      utils.getWaits().waitForVisibilityOfElement(multipleValuesInputUl);
       multipleValuesInputUlLi.get(utils.getId(multipleValuesInputUlLi, textFromList)).click();
     }
     return this;
@@ -85,7 +85,7 @@ public class DemoqaAutocomplete extends OPage {
 
   public DemoqaAutocomplete setInputAutocompleteCategories(String text) {
     utils.setText(categoriesSearchInput, text);
-    utils.waits.waitForVisibilityOfElement(categoriesSearchUl);
+    utils.getWaits().waitForVisibilityOfElement(categoriesSearchUl);
     categoriesSearchUlLi.get(utils.getId(categoriesSearchUlLi, text)).click();
     return this;
   }
