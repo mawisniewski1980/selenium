@@ -4,6 +4,7 @@
 ##  Java
 ##  JUnit
 ##  Selenium
+##  LOG4J2
 
 # TODO: https://trello.com/b/9dDLUySd/selenium
 

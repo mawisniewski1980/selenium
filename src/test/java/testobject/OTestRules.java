@@ -26,14 +26,20 @@ public class OTestRules extends TestWatcher {
     protected void starting(Description description) {
         LOG.info("###########################################################################################");
         LOG.info("#########  START " + utils.getLogs().getDateTimeNowFormated_yyyyMMdd_HHmmss());
+        LOG.info("###########################################################################################");
         LOG.info("#########  SYSTEM INFO " + utils.getInfoAboutSystem());
         LOG.info("#########  CLASS " + description.getClassName());
         LOG.info("#########  METHOD " + description.getMethodName());
+        LOG.info("###########################################################################################");
+        LOG.info("###########################################################################################");
     }
 
     @Override
     protected void failed(Throwable t, Description description) {
-        LOG.error("#########  FAILED  #########");
+        LOG.info("###########################################################################################");
+        LOG.info("###########################################################################################");
+        LOG.error("#########  #########  FAILED  #########  #########");
+        LOG.info("###########################################################################################");
         LOG.error("#########  CLASS " + description.getClassName());
         LOG.error("#########  METHOD " + description.getMethodName());
         LOG.error("#########  ERROR " + t.getMessage() + " ###");
@@ -48,14 +54,20 @@ public class OTestRules extends TestWatcher {
 
     @Override
     protected void succeeded(Description description) {
-        LOG.info("#########  SUCCEEDED");
+        LOG.info("###########################################################################################");
+        LOG.info("###########################################################################################");
+        LOG.info("#########  #########  SUCCEEDED  #########  #########");
+        LOG.info("###########################################################################################");
         LOG.info("#########  CLASS " + description.getClassName());
         LOG.info("#########  METHOD " + description.getMethodName());
     }
 
     @Override
     protected void skipped(AssumptionViolatedException e, Description description) {
-        LOG.info("#########  SKIPPED");
+        LOG.info("###########################################################################################");
+        LOG.info("###########################################################################################");
+        LOG.info("#########  #########  SKIPPED  #########  #########");
+        LOG.info("###########################################################################################");
         LOG.info("#########  CLASS " + description.getClassName());
         LOG.info("#########  METHOD " + description.getMethodName());
         LOG.info("#########  ERROR " + e.getMessage());
@@ -68,6 +80,7 @@ public class OTestRules extends TestWatcher {
     protected void finished(Description description) {
         utils.getDriver().manage().deleteAllCookies();
         utils.getDriver().quit();
+        LOG.info("###########################################################################################");
         LOG.info("#########  STOP " + utils.getLogs().getDateTimeNowFormated_yyyyMMdd_HHmmss() + " in " + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - startTime) + " seconds");
         LOG.info("###########################################################################################");
     }
