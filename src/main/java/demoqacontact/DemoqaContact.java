@@ -1,19 +1,16 @@
 package demoqacontact;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.OPage;
+import pageobject.PageObject;
 
 
 
 
-public class DemoqaContact extends OPage {
+public class DemoqaContact extends PageObject {
 
-  private static final Logger LOG = LogManager.getLogger("DemoqaContact");
 
   public DemoqaContact(WebDriver driver) {
     super(driver);
@@ -52,40 +49,40 @@ public class DemoqaContact extends OPage {
   private WebElement emailNotValidTip;
 
   public void setNameInput(String name) {
-    LOG.info("Set [Your Name (required)]: " + name);
+    //LOG.info("Set [Your Name (required)]: " + name);
     nameInput.click();
     nameInput.clear();
     nameInput.sendKeys(name);
   }
 
   public void setEmailInput(String email) {
-    LOG.info("Set [Your Email (required)]: " + email);
+    //LOG.info("Set [Your Email (required)]: " + email);
     emailInput.click();
     emailInput.clear();
     emailInput.sendKeys(email);
   }
 
   public void setSubjectInput(String subject) {
-    LOG.info("Set [Subject]: " + subject);
+    //LOG.info("Set [Subject]: " + subject);
     subjectInput.click();
     subjectInput.clear();
     subjectInput.sendKeys(subject);
   }
 
   public void setMessageInput(String message) {
-    LOG.info("Set [Your Message]: " + message);
+    //LOG.info("Set [Your Message]: " + message);
     messageInput.click();
     messageInput.clear();
     messageInput.sendKeys(message);
   }
 
   public void clickSendButton() {
-    LOG.info("Set [Send] button");
+    //LOG.info("Set [Send] button");
     utils.linkClick(sendButton);
   }
 
   public void fillContactForm(DemoqaContactForm dcform) {
-    LOG.info("Fill contact form.");
+    //LOG.info("Fill contact form.");
 
     if (dcform != null) {
 
@@ -110,24 +107,24 @@ public class DemoqaContact extends OPage {
   }
 
   public Boolean alertMessageOk() {
-    LOG.info("Message confirmation after sended mail. OK.");
+    //LOG.info("Message confirmation after sended mail. OK.");
     utils.getWaits().waitForVisibilityOfElement(allertMessage);
     return allertMessage.getAttribute("class").contains("sent-ok");
   }
 
   public Boolean alertMessageFail() {
-    LOG.info("Message confirmation after sended mail. Fail.");
+    //LOG.info("Message confirmation after sended mail. Fail.");
     utils.getWaits().waitForVisibilityOfElement(allertMessage);
     return allertMessage.getAttribute("class").contains("validation-errors");
   }
 
   public String getAlertMessageOk() {
-    LOG.info("Get alert message. OK.");
+    //LOG.info("Get alert message. OK.");
     String strNull = null;
 
     if (alertMessageOk()) {
       strNull = allertMessage.getText();
-      LOG.info("Message: " + strNull);
+      //LOG.info("Message: " + strNull);
       return strNull;
     }
 
@@ -135,12 +132,12 @@ public class DemoqaContact extends OPage {
   }
 
   public String getAlertMessageFail() {
-    LOG.info("Get alert message. Fail.");
+    //LOG.info("Get alert message. Fail.");
     String strNull = null;
 
     if (alertMessageFail()) {
       strNull = allertMessage.getText();
-      LOG.info("Message: " + strNull);
+      //LOG.info("Message: " + strNull);
       return strNull;
     }
 
@@ -148,12 +145,12 @@ public class DemoqaContact extends OPage {
   }
 
   public String getTextValidationNameField() {
-    LOG.info("Get text validation. Your Name input field: " + nameNotValidTip.getText());
+    //LOG.info("Get text validation. Your Name input field: " + nameNotValidTip.getText());
     return nameNotValidTip.getText();
   }
 
   public String getTextValidationEmailField() {
-    LOG.info("Get text validation. Email input field: " + emailNotValidTip.getText());
+    //LOG.info("Get text validation. Email input field: " + emailNotValidTip.getText());
     return emailNotValidTip.getText();
   }
 

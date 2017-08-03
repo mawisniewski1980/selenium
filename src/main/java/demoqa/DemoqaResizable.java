@@ -1,21 +1,16 @@
 package demoqa;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.OPage;
-import utilsobjects.ODraggable;
+import pageobject.PageObject;
+import utilsobjects.Draggable;
 
 
+public class DemoqaResizable extends PageObject {
 
-
-public class DemoqaResizable extends OPage {
-
-  private static final Logger LOG = LogManager.getLogger("DemoqaResizable");
 
   public DemoqaResizable(WebDriver driver) {
     super(driver);
@@ -50,107 +45,107 @@ public class DemoqaResizable extends OPage {
   private WebElement minMaxSize;
 
   public Dimension getDefaultFunctionalityResizableDimension() {
-    return new ODraggable(defaultFunctionalityResizable).getRectangle().getDimension();
+    return new Draggable(defaultFunctionalityResizable).getRectangle().getDimension();
   }
 
   public Dimension getAnimateResizableDimension() {
-    return new ODraggable(animateResizable).getRectangle().getDimension();
+    return new Draggable(animateResizable).getRectangle().getDimension();
   }
 
   public Dimension getConstrainResizableAreaContainerDimension() {
-    return new ODraggable(constrainResizableAreaContainer).getRectangle().getDimension();
+    return new Draggable(constrainResizableAreaContainer).getRectangle().getDimension();
   }
 
   public Dimension getConstrainResizableAreaContainerResizableConstrainDimension() {
-    return new ODraggable(constrainResizableAreaContainerResizableConstrain).getRectangle().getDimension();
+    return new Draggable(constrainResizableAreaContainerResizableConstrain).getRectangle().getDimension();
   }
 
   public Dimension getResizableHelperDimension() {
-    return new ODraggable(resizableHelper).getRectangle().getDimension();
+    return new Draggable(resizableHelper).getRectangle().getDimension();
   }
 
   public Dimension getMinMaxSizeDimension() {
-    return new ODraggable(minMaxSize).getRectangle().getDimension();
+    return new Draggable(minMaxSize).getRectangle().getDimension();
   }
 
   public DemoqaResizable resizeDefaultFunctionalityByX(int xOffset) {
-    utils.getActions().moveByX(new ODraggable(utils.findNextElementByCssSelector(defaultFunctionalityResizable, xLineCss)), xOffset);
+    utils.getActions().moveByX(new Draggable(utils.findNextElementByCssSelector(defaultFunctionalityResizable, xLineCss)), xOffset);
     return this;
   }
 
   public DemoqaResizable resizeDefaultFunctionalityByY(int yOffset) {
-    utils.getActions().moveByY(new ODraggable(utils.findNextElementByCssSelector(defaultFunctionalityResizable, yLineCss)), yOffset);
+    utils.getActions().moveByY(new Draggable(utils.findNextElementByCssSelector(defaultFunctionalityResizable, yLineCss)), yOffset);
     return this;
   }
 
   public DemoqaResizable resizeDefaultFunctionalityByXY(int xOffset, int yOffset) {
-    utils.getActions().moveByXY(new ODraggable(utils.findNextElementByCssSelector(defaultFunctionalityResizable, xyLineCss)), xOffset, yOffset);
+    utils.getActions().moveByXY(new Draggable(utils.findNextElementByCssSelector(defaultFunctionalityResizable, xyLineCss)), xOffset, yOffset);
     return this;
   }
 
   public DemoqaResizable resizeAnimateByX(int xOffset) {
-    ODraggable obj = new ODraggable(utils.findNextElementByCssSelector(animateResizable, xLineCss));
+    Draggable obj = new Draggable(utils.findNextElementByCssSelector(animateResizable, xLineCss));
     utils.getActions().moveByX(obj, xOffset);
     utils.getWaits().waitUntilAnimationStop(obj);
     return this;
   }
 
   public DemoqaResizable resizeAnimateByY(int yOffset) {
-    ODraggable obj = new ODraggable(utils.findNextElementByCssSelector(animateResizable, yLineCss));
+    Draggable obj = new Draggable(utils.findNextElementByCssSelector(animateResizable, yLineCss));
     utils.getActions().moveByY(obj, yOffset);
     utils.getWaits().waitUntilAnimationStop(obj);
     return this;
   }
 
   public DemoqaResizable resizeAnimateByXY(int xOffset, int yOffset) {
-    ODraggable obj = new ODraggable(utils.findNextElementByCssSelector(animateResizable, xyLineCss));
+    Draggable obj = new Draggable(utils.findNextElementByCssSelector(animateResizable, xyLineCss));
     utils.getActions().moveByXY(obj, xOffset, yOffset);
     utils.getWaits().waitUntilAnimationStop(obj);
     return this;
   }
 
   public DemoqaResizable resizeConstrainByX(int xOffset) {
-    utils.getActions().moveByX(new ODraggable(utils.findNextElementByCssSelector(constrainResizableAreaContainerResizableConstrain, xLineCss)), xOffset);
+    utils.getActions().moveByX(new Draggable(utils.findNextElementByCssSelector(constrainResizableAreaContainerResizableConstrain, xLineCss)), xOffset);
     return this;
   }
 
   public DemoqaResizable resizeConstrainByY(int yOffset) {
-    utils.getActions().moveByY(new ODraggable(utils.findNextElementByCssSelector(constrainResizableAreaContainerResizableConstrain, yLineCss)), yOffset);
+    utils.getActions().moveByY(new Draggable(utils.findNextElementByCssSelector(constrainResizableAreaContainerResizableConstrain, yLineCss)), yOffset);
     return this;
   }
 
   public DemoqaResizable resizeConstrainByXY(int xOffset, int yOffset) {
-    utils.getActions().moveByXY(new ODraggable(utils.findNextElementByCssSelector(constrainResizableAreaContainerResizableConstrain, xyLineCss)), xOffset, yOffset);
+    utils.getActions().moveByXY(new Draggable(utils.findNextElementByCssSelector(constrainResizableAreaContainerResizableConstrain, xyLineCss)), xOffset, yOffset);
     return this;
   }
 
   public DemoqaResizable resizeHelperByX(int xOffset) {
-    utils.getActions().moveByX(new ODraggable(utils.findNextElementByCssSelector(resizableHelper, xLineCss)), xOffset);
+    utils.getActions().moveByX(new Draggable(utils.findNextElementByCssSelector(resizableHelper, xLineCss)), xOffset);
     return this;
   }
 
   public DemoqaResizable resizeHelperByY(int yOffset) {
-    utils.getActions().moveByY(new ODraggable(utils.findNextElementByCssSelector(resizableHelper, yLineCss)), yOffset);
+    utils.getActions().moveByY(new Draggable(utils.findNextElementByCssSelector(resizableHelper, yLineCss)), yOffset);
     return this;
   }
 
   public DemoqaResizable resizeHelperByXY(int xOffset, int yOffset) {
-    utils.getActions().moveByXY(new ODraggable(utils.findNextElementByCssSelector(resizableHelper, xyLineCss)), xOffset, yOffset);
+    utils.getActions().moveByXY(new Draggable(utils.findNextElementByCssSelector(resizableHelper, xyLineCss)), xOffset, yOffset);
     return this;
   }
 
   public DemoqaResizable resizeMinMaxByX(int xOffset) {
-    utils.getActions().moveByX(new ODraggable(utils.findNextElementByCssSelector(minMaxSize, xLineCss)), xOffset);
+    utils.getActions().moveByX(new Draggable(utils.findNextElementByCssSelector(minMaxSize, xLineCss)), xOffset);
     return this;
   }
 
   public DemoqaResizable resizeMinMaxByY(int yOffset) {
-    utils.getActions().moveByY(new ODraggable(utils.findNextElementByCssSelector(minMaxSize, yLineCss)), yOffset);
+    utils.getActions().moveByY(new Draggable(utils.findNextElementByCssSelector(minMaxSize, yLineCss)), yOffset);
     return this;
   }
 
   public DemoqaResizable resizeMinMaxByXY(int xOffset, int yOffset) {
-    utils.getActions().moveByXY(new ODraggable(utils.findNextElementByCssSelector(minMaxSize, xyLineCss)), xOffset, yOffset);
+    utils.getActions().moveByXY(new Draggable(utils.findNextElementByCssSelector(minMaxSize, xyLineCss)), xOffset, yOffset);
     return this;
   }
 }

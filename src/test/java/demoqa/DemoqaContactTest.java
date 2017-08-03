@@ -5,24 +5,18 @@ import demoqacontact.DemoqaContactForm;
 import enums.DemoqaEnums.DemoqaContactValidationFormText;
 import enums.DemoqaEnums.DemoqaContactValidationInputText;
 import enums.PageUrls.PageUrl;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.OTest;
+import testobject.TestObject;
 
 import java.util.Arrays;
 import java.util.List;
 
-
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class DemoqaContactTest extends OTest {
+public class DemoqaContactTest extends TestObject {
 
-  private static final Logger LOG = LogManager.getLogger("DemoqaContactTest");
 
   private DemoqaContact demoqacontact;
   private DemoqaCommonElements commonElements;
@@ -100,7 +94,7 @@ public class DemoqaContactTest extends OTest {
         "this is\"really\"not\\allowed@example.com");
 
     for (String invalidEmail : invalidEmails) {
-      LOG.info("Get email: " + invalidEmail);
+      //LOG.info("Get email: " + invalidEmail);
       demoqacontact.setEmailInput(invalidEmail);
       demoqacontact.clickSendButton();
       assertTrue("Message confirmation after sended mail. Fail.", demoqacontact.alertMessageFail());

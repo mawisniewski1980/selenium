@@ -1,16 +1,13 @@
 package demoqa;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.OPage;
+import pageobject.PageObject;
 
 
-public class DemoqaAboutUs extends OPage {
+public class DemoqaAboutUs extends PageObject {
 
-  private static final Logger LOG = LogManager.getLogger("DemoqaAboutUs");
 
   public DemoqaAboutUs(WebDriver driver) {
     super(driver);
@@ -21,7 +18,7 @@ public class DemoqaAboutUs extends OPage {
   private WebElement aboutAssText;
 
   public String getAboutAssText() {
-  LOG.info("Get text from article from About Ass page.");
+  //LOG.info("Get text from article from About Ass page.");
   return utils.getText(aboutAssText);
   }
 }

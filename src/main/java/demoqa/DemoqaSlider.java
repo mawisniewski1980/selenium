@@ -1,21 +1,18 @@
 package demoqa;
 
 import enums.DemoqaEnums;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.OPage;
-import utilsobjects.ODraggable;
+import pageobject.PageObject;
+import utilsobjects.Draggable;
 
 
 
 
-public class DemoqaSlider extends OPage {
+public class DemoqaSlider extends PageObject {
 
-  private static final Logger LOG = LogManager.getLogger("DemoqaSlider");
+
 
   public DemoqaSlider(WebDriver driver) {
     super(driver);
@@ -44,12 +41,12 @@ public class DemoqaSlider extends OPage {
 
        if (value < rangeInInput) {
          while (rangeInInput != value) {
-           utils.getActions().moveByX(new ODraggable(rangeSliderHandle), -jump);
+           utils.getActions().moveByX(new Draggable(rangeSliderHandle), -jump);
            rangeInInput = getRangeAmount();
          }
        } else {
          while (rangeInInput != value) {
-           utils.getActions().moveByX(new ODraggable(rangeSliderHandle), jump);
+           utils.getActions().moveByX(new Draggable(rangeSliderHandle), jump);
            rangeInInput = getRangeAmount();
          }
        }

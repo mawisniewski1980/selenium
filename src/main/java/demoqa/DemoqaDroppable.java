@@ -1,23 +1,20 @@
 package demoqa;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.OPage;
-import utilsobjects.ODraggable;
+import pageobject.PageObject;
+import utilsobjects.Draggable;
 
 import java.util.List;
 
 
 
-public class DemoqaDroppable extends OPage {
+public class DemoqaDroppable extends PageObject {
 
-  private static final Logger LOG = LogManager.getLogger("DemoqaDroppable");
 
   public DemoqaDroppable(WebDriver driver) {
     super(driver);
@@ -136,23 +133,23 @@ public class DemoqaDroppable extends OPage {
   }
 
   public void defaultFunctionalityDragAndDrop() {
-    utils.getActions().dragAndDrop(new ODraggable(defaultFunctionalistyDragMe), new ODraggable(defaultFunctionalistyDropMe));
+    utils.getActions().dragAndDrop(new Draggable(defaultFunctionalistyDragMe), new Draggable(defaultFunctionalistyDropMe));
   }
 
   public Point getPositionDefaultFunctionalistyDragMe() {
-    return new ODraggable(defaultFunctionalistyDragMe).getRectangle().getPoint();
+    return new Draggable(defaultFunctionalistyDragMe).getRectangle().getPoint();
   }
 
   public Point getPositionDefaultFunctionalistyDropMe() {
-    return new ODraggable(defaultFunctionalistyDropMe).getRectangle().getPoint();
+    return new Draggable(defaultFunctionalistyDropMe).getRectangle().getPoint();
   }
 
   public void check() {
-    utils.getActions().checkIfElementIsInAnotherElement(new ODraggable(defaultFunctionalistyDragMe), new ODraggable(defaultFunctionalistyDropMe));
+    utils.getActions().checkIfElementIsInAnotherElement(new Draggable(defaultFunctionalistyDragMe), new Draggable(defaultFunctionalistyDropMe));
   }
 
   public void defaultFunctionalityDragAndDropBy(int xOffset, int yOffset) {
-    utils.getActions().dragAndDropByOffset(new ODraggable(defaultFunctionalistyDragMe), xOffset, yOffset);
+    utils.getActions().dragAndDropByOffset(new Draggable(defaultFunctionalistyDragMe), xOffset, yOffset);
   }
 
   public String getAcceptDroppableText() {
@@ -160,11 +157,11 @@ public class DemoqaDroppable extends OPage {
   }
 
   public void acceptNonValidDragAndDrop() {
-    utils.getActions().dragAndDrop(new ODraggable(acceptNonValid), new ODraggable(acceptDroppable));
+    utils.getActions().dragAndDrop(new Draggable(acceptNonValid), new Draggable(acceptDroppable));
   }
 
   public void acceptValidDragAndDrop() {
-    utils.getActions().dragAndDrop(new ODraggable(acceptDragable), new ODraggable(acceptDroppable));
+    utils.getActions().dragAndDrop(new Draggable(acceptDragable), new Draggable(acceptDroppable));
   }
 
   public String getPreventPropagationDroppableText() {
@@ -189,12 +186,12 @@ public class DemoqaDroppable extends OPage {
 
   public void preventPropagationDragAndDropAll() {
 
-    ODraggable drag = new ODraggable(preventPropagationDraggable);
-    ODraggable outDrop = new ODraggable(preventPropagationDroppable);
-    ODraggable outDrop2 = new ODraggable(preventPropagationDroppable2);
-    ODraggable innerDrop = new ODraggable(preventPropagationDroppableInner);
-    ODraggable innerDrop2 = new ODraggable(preventPropagationDroppable2Inner);
-    ODraggable contener = new ODraggable(preventPropagationDraggableContener.findElement(By.cssSelector(".inside_contain")));
+    Draggable drag = new Draggable(preventPropagationDraggable);
+    Draggable outDrop = new Draggable(preventPropagationDroppable);
+    Draggable outDrop2 = new Draggable(preventPropagationDroppable2);
+    Draggable innerDrop = new Draggable(preventPropagationDroppableInner);
+    Draggable innerDrop2 = new Draggable(preventPropagationDroppable2Inner);
+    Draggable contener = new Draggable(preventPropagationDraggableContener.findElement(By.cssSelector(".inside_contain")));
 
     utils.getActions().moveElementFromTopLeftToTopLeft(drag, outDrop)
         .moveElementFromTopLeftToTopLeft(drag, outDrop2)
@@ -204,23 +201,23 @@ public class DemoqaDroppable extends OPage {
   }
 
   public Point getRevertDraggablePosition() {
-    return new ODraggable(revertDraggablePosition).getRectangle().getPoint();
+    return new Draggable(revertDraggablePosition).getRectangle().getPoint();
   }
 
   public Point getRevertDraggablePosition2() {
-    return new ODraggable(revertDraggablePosition2).getRectangle().getPoint();
+    return new Draggable(revertDraggablePosition2).getRectangle().getPoint();
   }
 
   public Point getRevertDropablePosition() {
-    return new ODraggable(revertDropablePosition).getRectangle().getPoint();
+    return new Draggable(revertDropablePosition).getRectangle().getPoint();
   }
 
   public void revertDraggablePosition() {
 
-    ODraggable drag = new ODraggable(revertDraggablePosition);
-    ODraggable drag2 = new ODraggable(revertDraggablePosition2);
-    ODraggable drop = new ODraggable(revertDropablePosition);
-    // ODraggable contener = new ODraggable(revertDraggablePositionContener.findElement(By.cssSelector(".inside_contain")));
+    Draggable drag = new Draggable(revertDraggablePosition);
+    Draggable drag2 = new Draggable(revertDraggablePosition2);
+    Draggable drop = new Draggable(revertDropablePosition);
+    // Draggable contener = new Draggable(revertDraggablePositionContener.findElement(By.cssSelector(".inside_contain")));
 
     Point oDragPositionBefore = drag.getRectangle().getPoint();
     Point oDrag2PositionBefore = drag2.getRectangle().getPoint();
@@ -245,7 +242,7 @@ public class DemoqaDroppable extends OPage {
 
   public DemoqaDroppable openClickCartCatalog(String title) {
 
-    LOG.info("Open Catalog cart by title: " + title);
+    //LOG.info("Open Catalog cart by title: " + title);
     int index = utils.getId(productCatalogCategory, title);
     productCatalogCategory.get(index).click();
     List<WebElement> listCatalogItems = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li"));
@@ -256,13 +253,13 @@ public class DemoqaDroppable extends OPage {
   public DemoqaDroppable dragItemFromCartCatalogToCartItem(String catalogTitle, String itemTitle) {
     openClickCartCatalog(catalogTitle);
 
-    LOG.info("Drag " + itemTitle + " from catalog " + catalogTitle + " to cart");
+    //LOG.info("Drag " + itemTitle + " from catalog " + catalogTitle + " to cart");
     int index = utils.getId(productCatalogCategory, catalogTitle);
     List<WebElement> listCatalogItems = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li"));
     utils.getWaits().waitForVisibilityOfElements(listCatalogItems);
     int index2 = utils.getId(listCatalogItems, itemTitle);
     WebElement listCatalogItem = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li")).get(index2);
-    utils.getActions().moveElementFromCenterToCenter(new ODraggable(listCatalogItem), new ODraggable(cart));
+    utils.getActions().moveElementFromCenterToCenter(new Draggable(listCatalogItem), new Draggable(cart));
     return this;
   }
 

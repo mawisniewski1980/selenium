@@ -3,24 +3,20 @@ package demoqaregistration;
 import enums.DemoqaEnums.DemoqaRegistrationHobby;
 import enums.DemoqaEnums.DemoqaRegistrationMaritalStatus;
 import enums.DemoqaEnums.DemoqaReistrationCountry;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import pageobject.OPage;
+import pageobject.PageObject;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
 
-public class DemoqaRegistration extends OPage {
+public class DemoqaRegistration extends PageObject {
 
-  private static final Logger LOG = LogManager.getLogger("DemoqaRegistration");
+
 
   public DemoqaRegistration(WebDriver driver) {
     super(driver);
@@ -175,17 +171,17 @@ public class DemoqaRegistration extends OPage {
   }
 
   public void setFirstName(String text) {
-    LOG.info("Set [First Name] (require) field: " + text);
+    //LOG.info("Set [First Name] (require) field: " + text);
     utils.setText(firstName, text);
   }
 
   public void setLastName(String text) {
-    LOG.info("Set [Last Name] (require) field: " + text);
+    //LOG.info("Set [Last Name] (require) field: " + text);
     utils.setText(lastName, text);
   }
 
   public void setMaritalStatus(DemoqaRegistrationMaritalStatus maritalStatus) {
-    LOG.info("Set [Marital Status] radio: " + maritalStatus);
+    //LOG.info("Set [Marital Status] radio: " + maritalStatus);
     for (WebElement element : maritalRadio) {
       if (element.getAttribute("value").equalsIgnoreCase(maritalStatus.getText())) {
         element.click();
@@ -194,7 +190,7 @@ public class DemoqaRegistration extends OPage {
   }
 
   public void setHobby(DemoqaRegistrationHobby hobby) {
-    LOG.info("Set [Hobby] checkbox: " + hobby);
+    //LOG.info("Set [Hobby] checkbox: " + hobby);
     for (WebElement element : hobbyCheckbox) {
       if (element.getAttribute("value").equalsIgnoreCase(hobby.getText())) {
         element.click();
@@ -203,13 +199,13 @@ public class DemoqaRegistration extends OPage {
   }
 
   public void setCountry(DemoqaReistrationCountry country) {
-    LOG.info("Set [Country] select: " + country);
+    //LOG.info("Set [Country] select: " + country);
     Select countrySelectOption = new Select(countrySelect);
     countrySelectOption.selectByValue(country.getText());
   }
 
   public void setDayOfBirth(LocalDate dateofBirth) {
-    LOG.info("Set [Day Of Birth]: " + dateofBirth.format(DateTimeFormatter.ISO_LOCAL_DATE));
+    //LOG.info("Set [Day Of Birth]: " + dateofBirth.format(DateTimeFormatter.ISO_LOCAL_DATE));
 
     Select monthSelect = new Select(dateOfBirthMonth);
     monthSelect.selectByValue(Integer.toString(dateofBirth.getMonthValue()));
@@ -223,42 +219,42 @@ public class DemoqaRegistration extends OPage {
   }
 
   public void setPhone(String phoneNumber) {
-    LOG.info("Set [Phone] (require) field: " + phoneNumber);
+    //LOG.info("Set [Phone] (require) field: " + phoneNumber);
     utils.setText(phone, phoneNumber);
   }
 
   public void setUserName(String userNameText) {
-    LOG.info("Set [Username] (require) field: " + userNameText);
+    //LOG.info("Set [Username] (require) field: " + userNameText);
     utils.setText(userName, userNameText);
   }
 
   public void setEmail(String emailText) {
-    LOG.info("Set [email] (require) field: " + emailText);
+    //LOG.info("Set [email] (require) field: " + emailText);
     utils.setText(email, emailText);
   }
 
   public void setYourProfilePicture(String file) {
-    LOG.info("Set [Your Profile Picture] field: " + file);
+    //LOG.info("Set [Your Profile Picture] field: " + file);
 
   }
 
   public void setAboutYourself(String text) {
-    LOG.info("set [About Yourself] textarea: " + text);
+    //LOG.info("set [About Yourself] textarea: " + text);
     utils.setText(aboutYourself, text);
   }
 
   public void setPassword(String text) {
-    LOG.info("set [Password] (require) field: " + text);
+    //LOG.info("set [Password] (require) field: " + text);
     utils.setText(password, text);
   }
 
   public void setConfirmPassword(String text) {
-    LOG.info("set [Confirm Password] (require) field: " + text);
+    //LOG.info("set [Confirm Password] (require) field: " + text);
     utils.setText(confirmPassword, text);
   }
 
   public void fillRegistrationForm(DemoqaRegistrationForm dRegForm) {
-    LOG.info("Fill registration form.");
+    //LOG.info("Fill registration form.");
 
     if (dRegForm != null) {
 

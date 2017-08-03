@@ -2,24 +2,16 @@ package demoqa;
 
 import com.google.common.collect.ImmutableList;
 import enums.PageUrls.PageUrl;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.OTest;
+import testobject.TestObject;
 
 import java.util.List;
 
+import static org.junit.Assert.*;
 
+public class DemoqaSelectableTest extends TestObject {
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-public class DemoqaSelectableTest extends OTest {
-
-  private static final Logger LOG = LogManager.getLogger("DemoqaSelectableTest");
 
   private DemoqaSelectable selectable;
   private DemoqaCommonElements commonElements;

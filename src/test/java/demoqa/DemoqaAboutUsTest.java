@@ -1,22 +1,16 @@
 package demoqa;
 
 import enums.PageUrls.PageUrl;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.OTest;
-
-
-
+import testobject.TestObject;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class DemoqaAboutUsTest extends OTest {
+public class DemoqaAboutUsTest extends TestObject {
 
-  private static final Logger LOG = LogManager.getLogger("DemoqaAboutUsTest");
+
 
   private DemoqaAboutUs demoqaAboutUs;
   private DemoqaCommonElements commonElements;

@@ -1,20 +1,17 @@
 package demoqablog;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.OPage;
+import pageobject.PageObject;
 
 import java.util.List;
 
 
 
-public class DemoqaBlog extends OPage {
+public class DemoqaBlog extends PageObject {
 
-  private static final Logger LOG = LogManager.getLogger("DemoqaBlog");
 
   public DemoqaBlog(WebDriver driver) {
     super(driver);
@@ -41,27 +38,27 @@ public class DemoqaBlog extends OPage {
   private List<WebElement> readMoreEntry;
 
   public List<String> getEntryTitle() {
-    LOG.info("Title of entrys: " + utils.getTextFromWebElementList(titlesEntry));
+    //LOG.info("Title of entrys: " + utils.getTextFromWebElementList(titlesEntry));
     return utils.getTextFromWebElementList(titlesEntry);
   }
 
   public void clickTitleEntry(String title) {
-    LOG.info("Click on title blog article " + title);
+    //LOG.info("Click on title blog article " + title);
     titlesEntry.get(utils.getId(titlesEntry, title)).click();
   }
 
   public void clickDateEntry(String title) {
-    LOG.info("Click on date blog article " + title);
+    //LOG.info("Click on date blog article " + title);
     dateEntry.get(utils.getId(titlesEntry, title)).click();
   }
 
   public void clickImageEntry(String title) {
-    LOG.info("Click on image blog article " + title);
+    //LOG.info("Click on image blog article " + title);
     imageEntry.get(utils.getId(titlesEntry, title)).click();
   }
 
   public void clickReadMoreLinkEntry(String title) {
-    LOG.info("Click on [Read more] button blog article " + title);
+    //LOG.info("Click on [Read more] button blog article " + title);
     readMoreEntry.get(utils.getId(titlesEntry, title)).click();
   }
 }

@@ -2,15 +2,12 @@ package fullcalendar;
 
 import enums.CalendarEnums.TIMEHOURS;
 import enums.CalendarEnums.VIEW;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import pageobject.OPage;
+import pageobject.PageObject;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,11 +16,10 @@ import java.util.List;
 
 
 
-public class FullCalendarOPage extends OPage {
+public class FullCalendarPageObject extends PageObject {
 
-  private static final Logger LOG = LogManager.getLogger("FullCalendarOPage");
 
-  public FullCalendarOPage(WebDriver driver) {
+  public FullCalendarPageObject(WebDriver driver) {
     super(driver);
   }
 
@@ -74,37 +70,37 @@ public class FullCalendarOPage extends OPage {
   @FindBy(css = "#foot a")
   private List<WebElement> linksFooter;
 
-  public FullCalendarOPage todayButtonClick() {
+  public FullCalendarPageObject todayButtonClick() {
     utils.linkClick(todayButton);
     return this;
   }
 
-  public FullCalendarOPage nextButtonClick() {
+  public FullCalendarPageObject nextButtonClick() {
     utils.linkClick(nextButton);
     return this;
   }
 
-  public FullCalendarOPage prevButtonClick() {
+  public FullCalendarPageObject prevButtonClick() {
     utils.linkClick(prevButton);
     return this;
   }
 
-  public FullCalendarOPage monthButtonClick() {
+  public FullCalendarPageObject monthButtonClick() {
     utils.linkClick(monthButton);
     return this;
   }
 
-  public FullCalendarOPage weekButtonClick() {
+  public FullCalendarPageObject weekButtonClick() {
     utils.linkClick(weekButton);
     return this;
   }
 
-  public FullCalendarOPage dayButtonClick() {
+  public FullCalendarPageObject dayButtonClick() {
     utils.linkClick(dayButton);
     return this;
   }
 
-  public FullCalendarOPage listButtonClick() {
+  public FullCalendarPageObject listButtonClick() {
     utils.linkClick(listButton);
     return this;
   }
@@ -145,12 +141,12 @@ public class FullCalendarOPage extends OPage {
   }
 
   public boolean isDateOnCalendar(LocalDate localDate) {
-    LOG.info("Check if date: " + localDate + " is on calendar");
+    //LOG.info("Check if date: " + localDate + " is on calendar");
     if (getAllDayDates().contains(localDate)) {
-      LOG.info("Date: " + localDate + " is on calendar");
+      //LOG.info("Date: " + localDate + " is on calendar");
       return true;
     }
-    LOG.info("Date: " + localDate + " is NOT on calendar");
+    //LOG.info("Date: " + localDate + " is NOT on calendar");
     return false;
   }
 
@@ -161,14 +157,14 @@ public class FullCalendarOPage extends OPage {
     if (localDate.isEqual(currentDay)) {
       isDateOnCalendar(localDate);
     } else if (localDate.isBefore(currentDay)) {
-      LOG.info("Date: " + localDate + " is before " + currentDay);
+      //LOG.info("Date: " + localDate + " is before " + currentDay);
       while (!isDateOnCalendar(localDate)) {
         if (isDateOnCalendar(localDate))
           break;
         prevButtonClick();
       }
     } else if (localDate.isAfter(currentDay)) {
-      LOG.info("Date: " + localDate + " is after " + currentDay);
+      //LOG.info("Date: " + localDate + " is after " + currentDay);
       while (!isDateOnCalendar(localDate)) {
         if (isDateOnCalendar(localDate))
           break;
@@ -209,11 +205,11 @@ public class FullCalendarOPage extends OPage {
 
     fcMoreLinks.get(0);
     for (int i = 0; i < events.size(); i++) {
-      LOG.info(" title - > " + events.get(i).getText());
+      //LOG.info(" title - > " + events.get(i).getText());
 
       if (events.get(i).getText().equals(title)) {
         index = i;
-        LOG.info(" index - > " + i);
+        //LOG.info(" index - > " + i);
       }
     }
     return index;
@@ -234,7 +230,7 @@ public class FullCalendarOPage extends OPage {
 
       for (WebElement element : events) {
         if (element.findElement(By.cssSelector(".fc-title")).getText().equals(event)) {
-          LOG.info("Found event: " + event + ", move mouse to " + localDate + " " + timehours.getStringHour() + " " + timehours.getIndexHour());
+          //LOG.info("Found event: " + event + ", move mouse to " + localDate + " " + timehours.getStringHour() + " " + timehours.getIndexHour());
           action.moveToElement(element).clickAndHold(element).moveToElement(timeSlats.get(timehours.getIndexHour())).release().build().perform();
           break;
 
@@ -246,10 +242,10 @@ public class FullCalendarOPage extends OPage {
         LocalDate date = LocalDate.parse(rowsTimeGrid.get(i).getAttribute("data-date"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         if (date.equals(localDate)) {
-          LOG.info(date + " - " + localDate + " - " + i);
+          //LOG.info(date + " - " + localDate + " - " + i);
           for (WebElement element : events) {
             if (element.findElement(By.cssSelector(".fc-title")).getText().equals(event)) {
-              LOG.info("Found event: " + event + ", move mouse to " + localDate + " " + timehours.getStringHour() + " " + timehours.getIndexHour());
+              //LOG.info("Found event: " + event + ", move mouse to " + localDate + " " + timehours.getStringHour() + " " + timehours.getIndexHour());
               action.moveToElement(element).clickAndHold(element).moveToElement(rowsTimeGrid.get(i)).moveToElement(timeSlats.get(timehours.getIndexHour())).release().build().perform();
               break;
 
@@ -268,7 +264,7 @@ public class FullCalendarOPage extends OPage {
 
           for (WebElement element : events) {
             if (element.findElement(By.cssSelector(".fc-title")).getText().equals(event)) {
-              LOG.info("Found event: " + event + ", move mouse to " + localDate);
+              //LOG.info("Found event: " + event + ", move mouse to " + localDate);
               action.moveToElement(element).clickAndHold(element).moveToElement(anAllDay).release().build().perform();
               break;
             }

@@ -3,33 +3,25 @@ package fullcalendar;
 import enums.CalendarEnums.TIMEHOURS;
 import enums.CalendarEnums.VIEW;
 import enums.PageUrls.PageUrl;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.OTest;
+import testobject.TestObject;
 
 import java.time.LocalDate;
 import java.time.Month;
 
+import static org.junit.Assert.*;
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+public class FullCalendarTest extends TestObject {
 
 
-public class FullCalendarTest extends OTest {
-
-  private static final Logger LOG = LogManager.getLogger("FullCalendarTest");
-
-  private FullCalendarOPage fp;
+  private FullCalendarPageObject fp;
 
   @Before
   public void setTest() {
     setUrl(PageUrl.FULLCALENDAR);
-    fp = new FullCalendarOPage(driver);
+    fp = new FullCalendarPageObject(driver);
   }
 
   @Test
@@ -73,7 +65,7 @@ public class FullCalendarTest extends OTest {
   @Test
   public void checkIfDateNowIsNotOnCalendarMonthView() {
     LocalDate checkedDated = LocalDate.now();
-    LOG.info("Check date " + checkedDated + " on month view");
+    //LOG.info("Check date " + checkedDated + " on month view");
     fp.monthButtonClick();
     assertFalse(fp.isDateOnCalendar(checkedDated));
   }
@@ -81,7 +73,7 @@ public class FullCalendarTest extends OTest {
   @Test
   public void checkIfDateNowIsOnCalendarToday() {
     LocalDate checkedDated = LocalDate.now();
-    LOG.info("Check date " + checkedDated + " after click [Today] button on today view");
+    //LOG.info("Check date " + checkedDated + " after click [Today] button on today view");
     fp.todayButtonClick();
     assertTrue(fp.isDateOnCalendar(checkedDated));
   }
@@ -89,7 +81,7 @@ public class FullCalendarTest extends OTest {
   @Test
   public void checkIfDateNowIsNotOnCalendarWeekView() {
     LocalDate checkedDated = LocalDate.now();
-    LOG.info("Check date " + checkedDated + " on week view");
+    //LOG.info("Check date " + checkedDated + " on week view");
     fp.weekButtonClick();
     assertFalse(fp.isDateOnCalendar(checkedDated));
   }
@@ -97,7 +89,7 @@ public class FullCalendarTest extends OTest {
   @Test
   public void checkIfDateNowIsNotOnCalendarDayView() {
     LocalDate checkedDated = LocalDate.now();
-    LOG.info("Check date " + checkedDated + " on day view");
+    //LOG.info("Check date " + checkedDated + " on day view");
     fp.dayButtonClick();
     assertFalse(fp.isDateOnCalendar(checkedDated));
   }

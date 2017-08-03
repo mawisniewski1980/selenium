@@ -2,17 +2,15 @@ package demoqa;
 
 
 import enums.PageUrls;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-import testobject.OTest;
+import testobject.TestObject;
 
 import static org.junit.Assert.assertEquals;
 
-public class DemoqaTooltipTest extends OTest {
+public class DemoqaTooltipTest extends TestObject {
 
-    private static final Logger LOG = LogManager.getLogger(DemoqaTooltipTest.class);
+
 
     private DemoqaTooltip tooltip;
     private DemoqaCommonElements commonElements;

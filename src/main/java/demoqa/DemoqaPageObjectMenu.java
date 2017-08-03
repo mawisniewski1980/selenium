@@ -1,22 +1,17 @@
 package demoqa;
 
 import demoqaregistration.DemoqaRegistration;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.OPage;
+import pageobject.PageObject;
+
+
+public class DemoqaPageObjectMenu extends PageObject {
 
 
 
-
-public class DemoqaOPageMenu extends OPage {
-
-  private static final Logger LOG = LogManager.getLogger("DemoqaOPageMenu");
-
-  public DemoqaOPageMenu(WebDriver driver) {
+  public DemoqaPageObjectMenu(WebDriver driver) {
     super(driver);
   }
 
@@ -121,9 +116,9 @@ public class DemoqaOPageMenu extends OPage {
     return new DemoqaDatepicker(driver);
   }
 
-  public DemoqaOPageMenu menuLinkClick() {
+  public DemoqaPageObjectMenu menuLinkClick() {
     utils.linkClick(menuLink);
-    return new DemoqaOPageMenu(driver);
+    return new DemoqaPageObjectMenu(driver);
   }
 
   public DemoqaSlider sliderLinkClick() {

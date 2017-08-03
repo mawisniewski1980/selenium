@@ -1,25 +1,21 @@
 package phptravels;
 
 import enums.PageUrls.PageUrl;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.Before;
-import testobject.OTest;
+import testobject.TestObject;
 
 
 
 
-public class PhpTravelsTest extends OTest {
+public class PhpTravelsTest extends TestObject {
 
-  private static final Logger LOG = LogManager.getLogger("PhpTravelsTest");
 
-  // private PhpTravelsUserOPage ptup;
+  // private PhpTravelsUserPageObject ptup;
 
   @Before
   public void setTest() {
     setUrl(PageUrl.PHPTRAVELS_DEMO);
-    // ptup = new PhpTravelsUserOPage(driver);
+    // ptup = new PhpTravelsUserPageObject(driver);
   }
 
 }

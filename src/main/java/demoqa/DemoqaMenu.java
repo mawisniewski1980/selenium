@@ -1,20 +1,17 @@
 package demoqa;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.OPage;
+import pageobject.PageObject;
 
 import java.util.List;
 
 
 
-public class DemoqaMenu extends OPage {
+public class DemoqaMenu extends PageObject {
 
-  private static final Logger LOG = LogManager.getLogger("DemoqaMenu");
 
   public DemoqaMenu(WebDriver driver) {
     super(driver);

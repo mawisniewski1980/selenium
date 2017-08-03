@@ -1,26 +1,20 @@
 package demoqa;
 
+import com.google.common.collect.ImmutableList;
+import demoqablog.DemoqaBlog;
+import enums.PageUrls.PageUrl;
+import org.junit.Before;
+import org.junit.Test;
+import testobject.TestObject;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Before;
-import org.junit.Test;
-
-import com.google.common.collect.ImmutableList;
-
-import demoqablog.DemoqaBlog;
-import enums.PageUrls.PageUrl;
-import testobject.OTest;
 
 
+public class DemoqaBlogTest extends TestObject {
 
-
-public class DemoqaBlogTest extends OTest {
-
-  private static final Logger LOG = LogManager.getLogger("DemoqaBlogTest");
 
   private DemoqaBlog demoqaBlog;
   private DemoqaCommonElements commonElements;
@@ -40,7 +34,7 @@ public class DemoqaBlogTest extends OTest {
 
   @Test
   public void checkEntrysTitle() {
-    assertTrue("Check titles of entry:", demoqaBlog.getEntryTitle().containsAll(ImmutableList.of("Sample Post", "Sample Post2")));
+    assertTrue("Check titles of entry:",demoqaBlog.getEntryTitle().containsAll(ImmutableList.of("Sample Post", "Sample Post2")));
   }
 
   @Test

@@ -1,22 +1,19 @@
 package demoqa;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.OPage;
-import utilsobjects.ODraggable;
+import pageobject.PageObject;
+import utilsobjects.Draggable;
 
 import java.util.List;
 
 
 
-public class DemoqaDraggable extends OPage {
+public class DemoqaDraggable extends PageObject {
 
-  private static final Logger LOG = LogManager.getLogger("DemoqaDraggable");
 
   public DemoqaDraggable(WebDriver driver) {
     super(driver);
@@ -79,62 +76,62 @@ public class DemoqaDraggable extends OPage {
   private List<WebElement> sortableBoxLi;
 
   public Point getPositionDefFuncDraggable() {
-    return new ODraggable(defFuncDraggable).getRectangle().getPoint();
+    return new Draggable(defFuncDraggable).getRectangle().getPoint();
   }
 
   public Point getPositionConMovVertically() {
-    return new ODraggable(conMovVertically).getRectangle().getPoint();
+    return new Draggable(conMovVertically).getRectangle().getPoint();
   }
 
   public Point getPositionConMovHorizontally() {
-    return new ODraggable(conMovHorizontally).getRectangle().getPoint();
+    return new Draggable(conMovHorizontally).getRectangle().getPoint();
   }
 
   public Point getPositionConWrapper1Dimension() {
-    return new ODraggable(conWrapper1).getRectangle().getPoint();
+    return new Draggable(conWrapper1).getRectangle().getPoint();
   }
 
   public Point getPositionConWrapper1Box() {
-    return new ODraggable(conWrapper1Box).getRectangle().getPoint();
+    return new Draggable(conWrapper1Box).getRectangle().getPoint();
   }
 
   public Point getPositionConWrapper2() {
-    return new ODraggable(conWrapper2).getRectangle().getPoint();
+    return new Draggable(conWrapper2).getRectangle().getPoint();
   }
 
   public Point getPositionConWrapper2Box() {
-    return new ODraggable(conWrapper2Box).getRectangle().getPoint();
+    return new Draggable(conWrapper2Box).getRectangle().getPoint();
   }
 
   public Point getPositiondragCursorStyleBox1() {
-    return new ODraggable(dragBox1).getRectangle().getPoint();
+    return new Draggable(dragBox1).getRectangle().getPoint();
   }
 
   public Point getPositiondragCursorStyleBox2() {
-    return new ODraggable(dragBox2).getRectangle().getPoint();
+    return new Draggable(dragBox2).getRectangle().getPoint();
   }
 
   public Point getPositiondragCursorStyleBox3() {
-    return new ODraggable(dragBox3).getRectangle().getPoint();
+    return new Draggable(dragBox3).getRectangle().getPoint();
   }
 
   public DemoqaDraggable dragDefFuncDraggable(int xOffset, int yOffset) {
-    utils.getActions().dragAndDropByOffset(new ODraggable(defFuncDraggable), xOffset, yOffset);
+    utils.getActions().dragAndDropByOffset(new Draggable(defFuncDraggable), xOffset, yOffset);
     return this;
   }
 
   public DemoqaDraggable dragConMovVertically(int xOffset, int yOffset) {
-    utils.getActions().dragAndDropByOffset(new ODraggable(conMovVertically), xOffset, yOffset);
+    utils.getActions().dragAndDropByOffset(new Draggable(conMovVertically), xOffset, yOffset);
     return this;
   }
 
   public DemoqaDraggable dragConMovHorizontally(int xOffset, int yOffset) {
-    utils.getActions().dragAndDropByOffset(new ODraggable(conMovHorizontally), xOffset, yOffset);
+    utils.getActions().dragAndDropByOffset(new Draggable(conMovHorizontally), xOffset, yOffset);
     return this;
   }
 
   public DemoqaDraggable dragConWrapper1Box(int xOffset, int yOffset) {
-    utils.getActions().dragAndDropByOffset(new ODraggable(conWrapper1Box), xOffset, yOffset);
+    utils.getActions().dragAndDropByOffset(new Draggable(conWrapper1Box), xOffset, yOffset);
     return this;
   }
 }
