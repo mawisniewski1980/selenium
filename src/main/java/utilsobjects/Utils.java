@@ -4,6 +4,7 @@ import logs.LogsUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -58,7 +59,13 @@ public class Utils {
   }
 
   public boolean isElementPresent(By locator) {
-    return driver.findElement(locator).isDisplayed();
+    try {
+      driver.findElement(locator).isDisplayed();
+      return true;
+    } catch (NoSuchElementException e) {
+      //TODO
+    }
+    return false;
   }
 
   public boolean isElementsPresent(By locator) {

@@ -5,7 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 import testobject.TestObject;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class DemoqaDatapickerTest extends TestObject {
 
@@ -32,9 +36,19 @@ public class DemoqaDatapickerTest extends TestObject {
     }
 
     @Test
-    public void checkDefaultFunctionalityDate() {
+    public void checkIfDateTodayIsDisplayedOnDefaultFunctionalityDate() {
         commonElements.tabsLinkClick("Default functionality");
-
-
+        demoqaDatepicker.defaultFuncionalityInputClick();
+        assertTrue("Check if date today is displayed on the data picker", demoqaDatepicker.dateUtils.isDateTodayDisplay());
     }
+
+    @Test
+    public void checkIfDateTodayIsEqualsDateOnDefaultFunctionalityDate() {
+
+        commonElements.tabsLinkClick("Default functionality");
+        LocalDate today = LocalDate.now(ZoneId.systemDefault());
+        demoqaDatepicker.defaultFuncionalityInputClick();
+        assertEquals("Check if date today is equals date today on data picker", demoqaDatepicker.dateUtils.getDateToday(), today);
+    }
+
 }

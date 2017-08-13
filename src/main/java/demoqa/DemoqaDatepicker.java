@@ -1,5 +1,6 @@
 package demoqa;
 
+import date.DateUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,8 +11,11 @@ import pageobject.PageObject;
 
 public class DemoqaDatepicker extends PageObject {
 
+  public DateUtils dateUtils;
+
   public DemoqaDatepicker(WebDriver driver) {
     super(driver);
+    dateUtils = new DateUtils(driver);
   }
 
   private final String defaultFuncionalityInputCss = "#datepicker1";
@@ -37,5 +41,11 @@ public class DemoqaDatepicker extends PageObject {
   private final String formatDateSelectCss = "#format";
   @FindBy(css = formatDateSelectCss)
   private WebElement formatDateSelect;
+
+  public DemoqaDatepicker defaultFuncionalityInputClick() {
+    defaultFuncionalityInput.click();
+    utils.getWaits().waitForVisibilityOfElement(dateUtils.getContainer());
+    return this;
+  }
 
 }
