@@ -29,7 +29,7 @@ public class DemoqaBlogTest extends TestObject {
 
   @Test
   public void checkTitle() {
-    assertEquals("Check Blog page title:", "Blog | Demoqa | Just another WordPress site", utils.getTitle());
+    assertEquals("Check Blog page title:", "Blog | Demoqa | Just another WordPress site", demoqaBlog.getTitle());
   }
 
   @Test
@@ -40,28 +40,28 @@ public class DemoqaBlogTest extends TestObject {
   @Test
   public void clickTitleEntry() {
     demoqaBlog.clickTitleEntry("Sample Post");
-    assertEquals("Check Sample Post page title:", "Sample Post | Demoqa", utils.getTitle());
+    assertEquals("Check Sample Post page title:", "Sample Post | Demoqa", demoqaBlog.getTitle());
     assertEquals("Check titles of entry:", "Sample Post", commonElements.getEntryTitle());
   }
 
   @Test
   public void clickDateEntry() {
     demoqaBlog.clickDateEntry("Sample Post");
-    assertEquals("Check Sample Post page title:", "Sample Post | Demoqa", utils.getTitle());
+    assertEquals("Check Sample Post page title:", "Sample Post | Demoqa", demoqaBlog.getTitle());
     assertEquals("Check titles of entry:", "Sample Post", commonElements.getEntryTitle());
   }
 
   @Test
   public void clickImageEntry() {
     demoqaBlog.clickImageEntry("Sample Post2");
-    assertEquals("Check Sample Post2 page title:", "Sample Post2 | Demoqa", utils.getTitle());
+    assertEquals("Check Sample Post2 page title:", "Sample Post2 | Demoqa", demoqaBlog.getTitle());
     assertEquals("Check titles of entry:", "Sample Post2", commonElements.getEntryTitle());
   }
 
   @Test
   public void clickReadMoreLinkEntry() {
     demoqaBlog.clickReadMoreLinkEntry("Sample Post2");
-    assertEquals("Check Sample Post2 page title:", "Sample Post2 | Demoqa", utils.getTitle());
+    assertEquals("Check Sample Post2 page title:", "Sample Post2 | Demoqa", demoqaBlog.getTitle());
     assertEquals("Check titles of entry:", "Sample Post2", commonElements.getEntryTitle());
   }
 }

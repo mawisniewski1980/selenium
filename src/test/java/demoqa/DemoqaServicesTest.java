@@ -23,7 +23,7 @@ public class DemoqaServicesTest extends TestObject {
 
   @Test
   public void checkTitlePage() {
-    assertEquals("Check Services page title:", "Services | Demoqa", utils.getTitle());
+    assertEquals("Check Services page title:", "Services | Demoqa", demoqaServices.getTitle());
   }
 
   @Test

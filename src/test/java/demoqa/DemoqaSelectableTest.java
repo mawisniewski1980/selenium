@@ -26,7 +26,7 @@ public class DemoqaSelectableTest extends TestObject {
 
   @Test
   public void checkPageTitle() {
-    assertEquals("Check Selectable page title:", "Selectable | Demoqa", utils.getTitle());
+    assertEquals("Check Selectable page title:", "Selectable | Demoqa", selectable.getTitle());
   }
 
   @Test

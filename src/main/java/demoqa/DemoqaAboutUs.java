@@ -13,12 +13,12 @@ public class DemoqaAboutUs extends PageObject {
     super(driver);
   }
 
-  private final String aboutAssTextCss = "article .entry-content p";
-  @FindBy(css = aboutAssTextCss)
-  private WebElement aboutAssText;
+  private final String aboutUsTextCss = "article .entry-content p";
+  @FindBy(css = aboutUsTextCss)
+  private WebElement aboutUsText;
 
-  public String getAboutAssText() {
-  //LOG.info("Get text from article from About Ass page.");
-  return utils.getText(aboutAssText);
+  public String getAboutUsText() {
+  //LOG.info("Get text from article from About Us page.");
+  return utils.getText(aboutUsText);
   }
 }

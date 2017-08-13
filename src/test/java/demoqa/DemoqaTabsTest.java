@@ -25,7 +25,7 @@ public class DemoqaTabsTest extends TestObject {
 
   @Test
   public void checkPageTitle() {
-    assertEquals("Check page title", "Tabs | Demoqa", utils.getTitle() );
+    assertEquals("Check page title", "Tabs | Demoqa", tabs.getTitle() );
   }
 
   @Test

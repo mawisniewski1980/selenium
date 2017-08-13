@@ -23,7 +23,7 @@ public class DemoqaAccordionTest extends TestObject {
 
   @Test
   public void checkPageTitle() {
-    assertEquals("Check Accordion page title:", "Accordion | Demoqa", utils.getTitle());
+    assertEquals("Check Accordion page title:", "Accordion | Demoqa", demoqaAccordion.getTitle());
   }
 
   @Test

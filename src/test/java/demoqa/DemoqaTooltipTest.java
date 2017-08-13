@@ -25,7 +25,7 @@ public class DemoqaTooltipTest extends TestObject {
 
     @Test
     public void checkPageTitle() {
-        assertEquals("Check page title", "Tooltip | Demoqa", utils.getTitle() );
+        assertEquals("Check page title", "Tooltip | Demoqa", tooltip.getTitle() );
     }
 
     @Test

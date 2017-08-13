@@ -23,7 +23,7 @@ public class DemoqaDatapickerTest extends TestObject {
 
     @Test
     public void checkPageTitle() {
-        assertEquals("Check Datepicker page title:", "Datepicker | Demoqa", utils.getTitle());
+        assertEquals("Check Datepicker page title:", "Datepicker | Demoqa", demoqaDatepicker.getTitle());
     }
 
     @Test

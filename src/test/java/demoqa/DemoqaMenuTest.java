@@ -23,7 +23,7 @@ public class DemoqaMenuTest extends TestObject {
 
     @Test
     public void checkPageTitle() {
-        assertEquals("Check Menu page title:", "Menu | Demoqa", utils.getTitle());
+        assertEquals("Check Menu page title:", "Menu | Demoqa", dMenu.getTitle());
     }
 
     @Test

@@ -24,7 +24,7 @@ public class DemoqaDroppableTest extends TestObject {
 
   @Test
   public void checkTitle() {
-    assertEquals("Check Droppable page title:", "Droppable | Demoqa", utils.getTitle());
+    assertEquals("Check Droppable page title:", "Droppable | Demoqa", droppable.getTitle());
   }
 
   @Test

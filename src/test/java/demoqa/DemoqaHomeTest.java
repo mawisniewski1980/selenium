@@ -26,38 +26,38 @@ public class DemoqaHomeTest extends TestObject {
 
   @Test
   public void checkPageTitle() {
-    assertEquals("Check Home page title:", "Demoqa | Just another WordPress site", utils.getTitle());
+    assertEquals("Check Home page title:", "Demoqa | Just another WordPress site", demoqaHome.getTitle());
   }
 
   @Test
   public void clickHomeLink() {
     commonElements.demoqaNavbar.aboutUsLinkClick();
     assertEquals("About us", commonElements.getEntryTitle());
-    assertEquals("About us | Demoqa", utils.getTitle());
+    assertEquals("About us | Demoqa", demoqaHome.getTitle());
 
     commonElements.demoqaNavbar.servicesLinkClick();
     assertEquals("Services", commonElements.getEntryTitle());
-    assertEquals("Services | Demoqa", utils.getTitle());
+    assertEquals("Services | Demoqa", demoqaHome.getTitle());
 
     commonElements.demoqaNavbar.draggableLinkClick();
     assertEquals("Draggable", commonElements.getEntryTitle());
-    assertEquals("Draggable | Demoqa", utils.getTitle());
+    assertEquals("Draggable | Demoqa", demoqaHome.getTitle());
 
     commonElements.demoqaNavbar.tabsLinkClick();
     assertEquals("Tabs", commonElements.getEntryTitle());
-    assertEquals("Tabs | Demoqa", utils.getTitle());
+    assertEquals("Tabs | Demoqa", demoqaHome.getTitle());
 
     commonElements.demoqaNavbar.blogLinkClick();
     assertTrue(new DemoqaBlog(driver).getEntryTitle().containsAll(ImmutableList.of("Sample Post", "Sample Post2")));
-    assertEquals("Blog | Demoqa | Just another WordPress site", utils.getTitle());
+    assertEquals("Blog | Demoqa | Just another WordPress site", demoqaHome.getTitle());
 
     commonElements.demoqaNavbar.contactLinkClick();
     assertEquals("Contact", commonElements.getEntryTitle());
-    assertEquals("Contact | Demoqa", utils.getTitle());
+    assertEquals("Contact | Demoqa", demoqaHome.getTitle());
 
     commonElements.demoqaNavbar.homeLinkClick();
     assertEquals("Home", commonElements.getEntryTitle());
-    assertEquals("Demoqa | Just another WordPress site", utils.getTitle());
+    assertEquals("Demoqa | Just another WordPress site", demoqaHome.getTitle());
   }
 
   @Test

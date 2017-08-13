@@ -25,7 +25,7 @@ public class DemoqaSliderTest extends TestObject {
 
     @Test
     public void checkPageTitle() {
-        assertEquals("Check Slider page title:", "Slider | Demoqa", utils.getTitle());
+        assertEquals("Check Slider page title:", "Slider | Demoqa", demoqaSlider.getTitle());
     }
 
     @Test

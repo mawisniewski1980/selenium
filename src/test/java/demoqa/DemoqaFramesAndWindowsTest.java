@@ -23,7 +23,7 @@ public class DemoqaFramesAndWindowsTest extends TestObject {
 
     @Test
     public void checkPageTitle() {
-        assertEquals("Check Frames and windows page title:", "Frames and windows | Demoqa", utils.getTitle());
+        assertEquals("Check Frames and windows page title:", "Frames and windows | Demoqa", demoqaFrames.getTitle());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class DemoqaFramesAndWindowsTest extends TestObject {
 
         commonElements.tabsLinkClick("Open New Window");
         demoqaFrames.newBrowserTabLinkClick();
-        assertEquals("Check Frames and windows page title:", "Frames and windows | Demoqa", utils.getTitle());
+        assertEquals("Check Frames and windows page title:", "Frames and windows | Demoqa", demoqaFrames.getTitle());
         utils.getActions().switchToDefaultWindow();
         assertEquals("Check Frames and windows entry title:", "Frames and windows", commonElements.getEntryTitle());
     }
@@ -48,7 +48,7 @@ public class DemoqaFramesAndWindowsTest extends TestObject {
         demoqaFrames.openSeparateWindowLinkClick();
         utils.getActions().switchToNextWindow();
 
-        assertEquals("Check Frames and windows page title:", "Page Not Found | TOOLSQA", utils.getTitle());
+        assertEquals("Check Frames and windows page title:", "Page Not Found | TOOLSQA", demoqaFrames.getTitle());
     }
 
     @Test
@@ -58,6 +58,6 @@ public class DemoqaFramesAndWindowsTest extends TestObject {
         demoqaFrames.framsetWindowLinkClick();
         utils.getActions().switchToNextWindow();
 
-        assertEquals("Check Frames and windows page title:", "HTML Frames - Example 1", utils.getTitle());
+        assertEquals("Check Frames and windows page title:", "HTML Frames - Example 1", demoqaFrames.getTitle());
     }
 }

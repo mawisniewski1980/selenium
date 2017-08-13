@@ -25,7 +25,7 @@ public class DemoqaResizableTest extends TestObject {
 
   @Test
   public void checkPageTitle() {
-    assertEquals("Check Resizable page title:", "Resizable | Demoqa", utils.getTitle());
+    assertEquals("Check Resizable page title:", "Resizable | Demoqa", resizable.getTitle());
   }
 
   @Test

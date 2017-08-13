@@ -16,4 +16,8 @@ public abstract class PageObject {
     PageFactory.initElements(new AjaxElementLocatorFactory(driver, 90), this);
   }
 
+  public String getTitle() {
+    //LOG.info("Title of page: " + driver.getTitle());
+    return driver.getTitle();
+  }
 }

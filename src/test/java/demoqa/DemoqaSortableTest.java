@@ -27,7 +27,7 @@ public class DemoqaSortableTest extends TestObject {
 
   @Test
   public void checkPageTitle() {
-    assertEquals("Check Sortable page title:", "Sortable | Demoqa", utils.getTitle());
+    assertEquals("Check Sortable page title:", "Sortable | Demoqa", sortable.getTitle());
   }
 
   @Test

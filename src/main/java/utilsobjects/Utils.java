@@ -93,10 +93,7 @@ public class Utils {
     return element.getAttribute("class").contains("active");
   }
 
-  public String getTitle() {
-    //LOG.info("Title of page: " + driver.getTitle());
-    return driver.getTitle();
-  }
+
 
   public List<String> getTextFromWebElementList(List<WebElement> elements) {
     List<String> listStrings = new ArrayList<>();

@@ -25,7 +25,7 @@ public class DemoqaDraggableTest extends TestObject {
 
   @Test
   public void checkPageTitle() {
-    assertEquals("Check Draggable page title:", "Draggable | Demoqa", utils.getTitle());
+    assertEquals("Check Draggable page title:", "Draggable | Demoqa", draggable.getTitle());
   }
 
   @Test

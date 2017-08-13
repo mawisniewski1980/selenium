@@ -14,7 +14,6 @@ import static org.junit.Assert.fail;
 
 public abstract class TestObject {
 
-
   protected WebDriver driver = WebDriverObject.getOWebDriverInstance().initChromeBrowser();
   protected Utils utils = new Utils(driver);
 

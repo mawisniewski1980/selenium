@@ -28,7 +28,7 @@ public class DemoqaRegistrationTest extends TestObject {
 
   @Test
   public void checkPageTitle() {
-    assertEquals("Check Registration page title:", "Registration | Demoqa", utils.getTitle());
+    assertEquals("Check Registration page title:", "Registration | Demoqa", demoqaReg.getTitle());
   }
 
   @Test

@@ -25,7 +25,7 @@ public class DemoqaAboutUsTest extends TestObject {
 
   @Test
   public void checkPageTitle() {
-    assertEquals("Check About Us page title:", "About us | Demoqa", utils.getTitle());
+    assertEquals("Check About Us page title:", "About us | Demoqa", demoqaAboutUs.getTitle());
   }
 
   @Test
@@ -35,7 +35,7 @@ public class DemoqaAboutUsTest extends TestObject {
 
   @Test
   public void checkTextActicleOnAboutAssPageIfContainsSince() {
-    assertTrue ("Check text in article :", demoqaAboutUs.getAboutAssText().contains ("since the 1500s"));
+    assertTrue ("Check text in article :", demoqaAboutUs.getAboutUsText().contains ("since the 1500s"));
   }
 
 }

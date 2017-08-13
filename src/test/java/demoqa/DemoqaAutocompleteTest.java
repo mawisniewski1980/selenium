@@ -25,7 +25,7 @@ public class DemoqaAutocompleteTest extends TestObject {
 
     @Test
     public void checkPageTitle() {
-        assertEquals("Check Menu page title:", "Autocomplete | Demoqa", utils.getTitle());
+        assertEquals("Check Menu page title:", "Autocomplete | Demoqa", dAuto.getTitle());
     }
 
     @Test

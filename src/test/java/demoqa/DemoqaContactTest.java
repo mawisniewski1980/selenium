@@ -31,7 +31,7 @@ public class DemoqaContactTest extends TestObject {
 
   @Test
   public void checkTitle() {
-    assertEquals("Check Contact page title:", "Contact | Demoqa", utils.getTitle());
+    assertEquals("Check Contact page title:", "Contact | Demoqa", demoqacontact.getTitle());
   }
 
   @Test
