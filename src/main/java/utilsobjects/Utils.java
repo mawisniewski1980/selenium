@@ -3,14 +3,13 @@ package utilsobjects;
 import logs.LogsUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import static org.junit.Assert.fail;
 
 public class Utils {
 
@@ -69,38 +68,17 @@ public class Utils {
   }
 
   public boolean isElementsPresent(By locator) {
-    return driver.findElements(locator).size() != 0;
+    return driver.findElements(locator).size() > 0;
   }
 
   public boolean isElementPresent(WebElement element) {
     return element.isDisplayed();
   }
 
-  public boolean isElementsPresent(List<WebElement> elements) {
-    return elements.size() != 0;
-  }
-
-  public boolean isElementEnabled(By locator) {
-    return driver.findElement(locator).isEnabled();
-  }
-
-  public boolean isElementSelected(By locator) {
-    return driver.findElement(locator).isSelected();
-  }
-
-  public boolean isElementEnabled(WebElement element) {
-    return element.isEnabled();
-  }
-
-  public boolean isElementSelected(WebElement element) {
-    return element.isSelected();
-  }
 
   public boolean isElementActive(WebElement element) {
     return element.getAttribute("class").contains("active");
   }
-
-
 
   public List<String> getTextFromWebElementList(List<WebElement> elements) {
     List<String> listStrings = new ArrayList<>();
@@ -109,7 +87,7 @@ public class Utils {
         listStrings.add(el.getText());
       }
     } else {
-      //Fail.fail("List of WebElements is empty.");
+      fail("List of WebElements is empty.");
     }
     return listStrings;
   }
@@ -119,16 +97,13 @@ public class Utils {
     if (isElementPresent(element))
       actions.scrollToElement(element);
     else {
-      //Fail.fail("Element is not present");
+      fail("Element is not present");
     }
     return element.getText();
   }
 
   public Utils setText(WebElement element, String text) {
-    //LOG.info("Set text " + text);
-    actions.scrollToElement(element);
-    element.clear();
-    element.sendKeys(text);
+    setText(element,text,true);
     return this;
   }
 
@@ -153,7 +128,7 @@ public class Utils {
         }
       }
     } else {
-      //Fail.fail("The list of webelements is empty.");
+      fail("The list of webelements is empty.");
     }
     return index;
   }
@@ -182,16 +157,37 @@ public class Utils {
     return RandomStringUtils.randomAscii(legth);
   }
 
-  public void linkClick(List<WebElement> elementList, String title) {
+  public Utils linkClick(List<WebElement> elementList, String title) {
     //LOG.info("Click on link by title: " + title);
     actions.scrollToElement(elementList.get(getId(elementList, title)));
     elementList.get(getId(elementList, title)).click();
+    return this;
   }
 
   public Utils linkClick(WebElement element) {
     //LOG.info("Click on link " + element.getText());
     actions.scrollToElement(element);
     element.click();
+    return this;
+  }
+
+  public Utils hightLightElement(WebElement element) {
+    ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "color: blue; border: 2px solid blue;");
+    return this;
+  }
+
+  public Utils zoomInToElement(WebElement element) {
+    element.sendKeys(Keys.chord(Keys.CONTROL, Keys.ADD));
+    return this;
+  }
+
+  public Utils zoomOutFromElement(WebElement element) {
+    element.sendKeys(Keys.chord(Keys.CONTROL, Keys.SUBTRACT));
+    return this;
+  }
+
+  public Utils zoomReset() {
+    driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL, "0"));
     return this;
   }
 

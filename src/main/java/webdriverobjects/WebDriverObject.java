@@ -36,5 +36,4 @@ public class WebDriverObject {
     System.setProperty(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY, firefoxFilePath);
     return new FirefoxDriver();
   }
-
 }

@@ -6,7 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pageobject.PageObject;
 
-
+import java.time.LocalDate;
+import java.util.List;
 
 
 public class DemoqaDatepicker extends PageObject {
@@ -48,4 +49,12 @@ public class DemoqaDatepicker extends PageObject {
     return this;
   }
 
+  public List<LocalDate> getDates() {
+    utils.getWaits().waitForVisibilityOfElement(dateUtils.getContainer());
+    return dateUtils.getDates();
+  }
+
+  public String getDateFromDefaultFunctionalityInput() {
+    return defaultFuncionalityInput.getAttribute("value");
+  }
 }

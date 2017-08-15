@@ -37,13 +37,13 @@ public class TestRulesObject extends TestWatcher {
         //LOG.error("#########  CLASS " + description.getClassName());
         //LOG.error("#########  METHOD " + description.getMethodName());
         //LOG.error("#########  ERROR " + t.getMessage() + " ###");
-        for(int i = 0; i < t.getStackTrace().length; i++) {
+        //for(int i = 0; i < t.getStackTrace().length; i++) {
             //LOG.error("#########  STACKTRACE " + t.getStackTrace()[i]);
-        }
+        //}
         //LOG.error("#########  SCREEN SHOT FILE");
-        utils.getLogs().setClassName(description.getClassName());
-        utils.getLogs().setMethodName(description.getMethodName());
-        utils.getLogs().takeScreenFile(false);
+        //utils.getLogs().setClassName(description.getClassName());
+        //utils.getLogs().setMethodName(description.getMethodName());
+        //utils.getLogs().takeScreenFile(false);
     }
 
     @Override
@@ -65,9 +65,9 @@ public class TestRulesObject extends TestWatcher {
         //LOG.info("#########  CLASS " + description.getClassName());
         //LOG.info("#########  METHOD " + description.getMethodName());
         //LOG.info("#########  ERROR " + e.getMessage());
-        for(int i = 0; i < e.getStackTrace().length; i++) {
+        //for(int i = 0; i < e.getStackTrace().length; i++) {
             //LOG.info("######### STACKTRACE " + e.getStackTrace()[i]);
-        }
+        //}
     }
 
     @Override

@@ -143,12 +143,10 @@ public class Actions {
     return false;
   }
 
-  /**
-   * Scrolling web page with Selenium Webdriver using java https://www.seleniumeasy.com/selenium-tutorials/scrolling-web-page-with-selenium-webdriver-using-java
-   */
   public Actions scrollToBottom() {
     // //LOG.info("Scroll to bottom");
-    ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    //((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight));");
     return this;
   }
 

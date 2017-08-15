@@ -20,4 +20,11 @@ public class ExampleTest extends TestObject {
   public void openExamplePageTest() {
     assertEquals("Onet.pl", driver.getTitle());
   }
+
+  @Test
+  public void scrollToBottom() {
+    utils.getActions().scrollToBottom();
+    utils.getWaits().waitTime(5);
+  }
+
 }
