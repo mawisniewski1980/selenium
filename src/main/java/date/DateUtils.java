@@ -10,9 +10,7 @@ import pageobject.PageObject;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.TextStyle;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class DateUtils extends PageObject {
 
@@ -172,6 +170,19 @@ public class DateUtils extends PageObject {
         }
     }
 
+    public void setDate(LocalDate date) {
+        setMonthAndYear(date);
+        if(checkIfDateIsOnDatePicker(date)) {
+            for (WebElement element : days) {
+                int day = Integer.parseInt(element.findElement(By.tagName("a")).getText());
+                 if(date.getDayOfMonth() == day) {
+                     element.findElement(By.tagName("a")).click();
+                     break;
+                 }
+            }
+        }
+    }
+
     public boolean checkIfYearIsEqualToYearOnDatePicker(LocalDate date) {
         utils.getWaits().waitForVisibilityOfElement(container);
         if(date.getYear() == getYearAsInt())
@@ -193,9 +204,9 @@ public class DateUtils extends PageObject {
         return false;
     }
 
-    public List<LocalDate> getDates() {
+    public Set<LocalDate> getDates() {
 
-        List<LocalDate> listWithDates = new LinkedList<>();
+        Set<LocalDate> listWithDates = new TreeSet<>();
         utils.getWaits().waitForVisibilityOfElement(container);
 
         for (WebElement element : days) {

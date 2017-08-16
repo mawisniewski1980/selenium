@@ -51,11 +51,13 @@ public class DemoqaDatapickerTest extends TestObject {
         assertEquals("Check if date today is equals date today on data picker", demoqaDatepicker.dateUtils.getDateToday(), today);
     }
 
+    //TODO
     @Test
     public void chooseDateAndCheckWithDateOnInputFieldOnDefaultFunctionality() {
         commonElements.tabsLinkClick("Default functionality");
         demoqaDatepicker.defaultFuncionalityInputClick();
-        demoqaDatepicker.dateUtils.setMonthAndYear(LocalDate.of(2016,11,05));
-        utils.getWaits().waitTime(4);
+        demoqaDatepicker.dateUtils.setDate(LocalDate.of(2016,11,05));
+        utils.getWaits().waitTime(6);
+        System.out.println(demoqaDatepicker.getDateFromDefaultFunctionalityInput());
     }
 }

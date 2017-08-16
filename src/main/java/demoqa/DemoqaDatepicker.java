@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import pageobject.PageObject;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 
 public class DemoqaDatepicker extends PageObject {
@@ -49,7 +49,7 @@ public class DemoqaDatepicker extends PageObject {
     return this;
   }
 
-  public List<LocalDate> getDates() {
+  public Set<LocalDate> getDates() {
     utils.getWaits().waitForVisibilityOfElement(dateUtils.getContainer());
     return dateUtils.getDates();
   }
