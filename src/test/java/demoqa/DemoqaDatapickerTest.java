@@ -7,6 +7,8 @@ import testobject.TestObject;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -48,16 +50,16 @@ public class DemoqaDatapickerTest extends TestObject {
         commonElements.tabsLinkClick("Default functionality");
         LocalDate today = LocalDate.now(ZoneId.systemDefault());
         demoqaDatepicker.defaultFuncionalityInputClick();
-        assertEquals("Check if date today is equals date today on data picker", demoqaDatepicker.dateUtils.getDateToday(), today);
+        assertEquals("Check if date today is equals date today on data picker", today, demoqaDatepicker.dateUtils.getDateToday());
     }
 
-    //TODO
     @Test
     public void chooseDateAndCheckWithDateOnInputFieldOnDefaultFunctionality() {
         commonElements.tabsLinkClick("Default functionality");
         demoqaDatepicker.defaultFuncionalityInputClick();
-        demoqaDatepicker.dateUtils.setDate(LocalDate.of(2016,11,05));
-        utils.getWaits().waitTime(6);
-        System.out.println(demoqaDatepicker.getDateFromDefaultFunctionalityInput());
+        LocalDate dateTest = LocalDate.now().plusDays(1);
+        String date = dateTest.format(DateTimeFormatter.ofPattern("MMMM d, uuuu", Locale.ENGLISH));
+        demoqaDatepicker.dateUtils.setDate(dateTest);
+        assertEquals("Choose date and check with date on input field on Default Functionality.", date, demoqaDatepicker.getDateFromDefaultFunctionalityInput());
     }
 }
