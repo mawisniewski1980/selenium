@@ -1,9 +1,11 @@
 package demoqa;
 
 import date.DateUtils;
+import enums.DemoqaEnums;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import pageobject.PageObject;
 
 import java.time.LocalDate;
@@ -56,5 +58,38 @@ public class DemoqaDatepicker extends PageObject {
 
   public String getDateFromDefaultFunctionalityInput() {
     return defaultFuncionalityInput.getAttribute("value");
+  }
+
+  public String getDateFromAnimationsInput() {
+    return animationsInput.getAttribute("value");
+  }
+
+  public String getDefaultTextFromAnimationsInput() {
+    return animationsInput.getAttribute("placeholder");
+  }
+
+  public void selectAnimations(DemoqaEnums.DemoqaAnimationsList dEnums) {
+    Select anim = new Select(animationsSelect);
+    anim.selectByValue(dEnums.getValue());
+  }
+
+  public DemoqaDatepicker animationsInputClick() {
+    animationsInput.click();
+    utils.getWaits().waitForVisibilityOfElement(dateUtils.getContainer());
+    return this;
+  }
+
+  public String getDateFromDisplayMonthAndYearInput() {
+    return displayMonthYearInput.getAttribute("value");
+  }
+
+  public String getDefaultTextFromDisplayMonthAndYearInput() {
+    return displayMonthYearInput.getAttribute("placeholder");
+  }
+
+  public DemoqaDatepicker displayMonthAndYearInputClick() {
+    displayMonthYearInput.click();
+    utils.getWaits().waitForVisibilityOfElement(dateUtils.getContainer());
+    return this;
   }
 }

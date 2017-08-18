@@ -1,5 +1,6 @@
 package demoqa;
 
+import enums.DemoqaEnums;
 import enums.PageUrls;
 import org.junit.Before;
 import org.junit.Test;
@@ -62,4 +63,56 @@ public class DemoqaDatapickerTest extends TestObject {
         demoqaDatepicker.dateUtils.setDate(dateTest);
         assertEquals("Choose date and check with date on input field on Default Functionality.", date, demoqaDatepicker.getDateFromDefaultFunctionalityInput());
     }
+
+    @Test
+    public void checkDefaultTextOnAnimationsTabInInputField() {
+        commonElements.tabsLinkClick("Animations");
+        assertEquals("Check if default text on input field is visible ", "Pick Date", demoqaDatepicker.getDefaultTextFromAnimationsInput());
+    }
+
+    @Test
+    public void selectAnimationsOnAnimationsTabInInputField() {
+       commonElements.tabsLinkClick("Animations");
+       demoqaDatepicker.selectAnimations(DemoqaEnums.DemoqaAnimationsList.FADEIN);
+        LocalDate dateTest = LocalDate.now().plusDays(3);
+        String date = dateTest.format(DateTimeFormatter.ofPattern("MMMM d, uuuu", Locale.ENGLISH));
+        demoqaDatepicker.animationsInputClick();
+        demoqaDatepicker.dateUtils.setDate(dateTest);
+        assertEquals("Check choosed date ", date, demoqaDatepicker.getDateFromAnimationsInput());
+    }
+
+    @Test
+    public void checkDefaultTextOnDisplayMonthAndYearOption() {
+        commonElements.tabsLinkClick("Display month & year");
+        assertEquals("Check if default text on input field is visible ", "Pick Date", demoqaDatepicker.getDefaultTextFromDisplayMonthAndYearInput());
+    }
+
+
+    @Test
+    public void checkIfDateTodayIsDisplayedOnDisplayMonthAndYearDate() {
+        commonElements.tabsLinkClick("Display month & year");
+        demoqaDatepicker.displayMonthAndYearInputClick();
+        assertTrue("Check if date today is displayed on the data picker", demoqaDatepicker.dateUtils.isDateTodayDisplay());
+    }
+
+    @Test
+    public void checkIfDateTodayIsEqualsDateOnDisplayMonthAndYearDate() {
+        commonElements.tabsLinkClick("Display month & year");
+        LocalDate today = LocalDate.now(ZoneId.systemDefault());
+        demoqaDatepicker.displayMonthAndYearInputClick();
+        assertEquals("Check if date today is equals date today on data picker", today, demoqaDatepicker.dateUtils.getDateToday());
+    }
+
+    //TODO
+    @Test
+    public void setDateOnDisplayMonthAndYearOption() {
+        commonElements.tabsLinkClick("Display month & year");
+
+        LocalDate dateTest = LocalDate.now().plusDays(5);
+        String date = dateTest.format(DateTimeFormatter.ofPattern("MMMM d, uuuu", Locale.ENGLISH));
+        demoqaDatepicker.displayMonthAndYearInputClick();
+
+
+    }
+
 }

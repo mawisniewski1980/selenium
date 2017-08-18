@@ -99,26 +99,23 @@ public class DateUtils extends PageObject {
     }
 
     public LocalDate getDateToday() {
-        utils.getWaits().waitForVisibilityOfElement(container);
-        int month = Integer.parseInt(today.getAttribute("data-month"));
-        int year = Integer.parseInt(today.getAttribute("data-year"));
-        int day = Integer.parseInt(today.findElement(By.tagName("a")).getText());
-        return LocalDate.of(year, month + 1, day);
+        return getDateHelperMethod(today);
+
     }
 
     public LocalDate getCurrentDate() {
-        utils.getWaits().waitForVisibilityOfElement(container);
-        int month = Integer.parseInt(currentDate.getAttribute("data-month"));
-        int year = Integer.parseInt(currentDate.getAttribute("data-year"));
-        int day = Integer.parseInt(currentDate.findElement(By.tagName("a")).getText());
-        return LocalDate.of(year, month + 1, day);
+        return getDateHelperMethod(currentDate);
     }
 
     public LocalDate getActiveDate() {
+        return getDateHelperMethod(activeDate);
+    }
+
+    private LocalDate getDateHelperMethod(WebElement element) {
         utils.getWaits().waitForVisibilityOfElement(container);
-        int month = Integer.parseInt(activeDate.getAttribute("data-month"));
-        int year = Integer.parseInt(activeDate.getAttribute("data-year"));
-        int day = Integer.parseInt(activeDate.findElement(By.tagName("a")).getText());
+        int month = Integer.parseInt(element.getAttribute("data-month"));
+        int year = Integer.parseInt(element.getAttribute("data-year"));
+        int day = Integer.parseInt(element.findElement(By.tagName("a")).getText());
         return LocalDate.of(year, month + 1, day);
     }
 
