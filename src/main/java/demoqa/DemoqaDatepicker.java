@@ -92,4 +92,24 @@ public class DemoqaDatepicker extends PageObject {
     utils.getWaits().waitForVisibilityOfElement(dateUtils.getContainer());
     return this;
   }
+
+  public String getDateFromFormatDateInput() {
+    return formatDateInput.getAttribute("value");
+  }
+
+  public String getDefaultTextFromFormatDateInput() {
+    return formatDateInput.getAttribute("placeholder");
+  }
+
+  public void selectFormatDate(DemoqaEnums.DemoqaFormatDateList dEnums) {
+    Select formatDate = new Select(formatDateSelect);
+    formatDate.selectByValue(dEnums.getValue());
+  }
+
+  public DemoqaDatepicker formatDateInputClick() {
+    formatDateInput.click();
+    utils.getWaits().waitForVisibilityOfElement(dateUtils.getContainer());
+    return this;
+  }
+
 }

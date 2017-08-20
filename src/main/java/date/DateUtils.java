@@ -5,12 +5,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import pageobject.PageObject;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.TextStyle;
-import java.util.*;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class DateUtils extends PageObject {
 
@@ -119,12 +123,6 @@ public class DateUtils extends PageObject {
         return LocalDate.of(year, month + 1, day);
     }
 
-    public void setMonthAndYear(LocalDate date) {
-        utils.getWaits().waitForVisibilityOfElement(container);
-        setYear(date);
-        setMonth(date);
-    }
-
     public void setYear(LocalDate date) {
         utils.getWaits().waitForVisibilityOfElement(container);
         int year = getYearAsInt();
@@ -168,7 +166,10 @@ public class DateUtils extends PageObject {
     }
 
     public void setDate(LocalDate date) {
-        setMonthAndYear(date);
+        utils.getWaits().waitForVisibilityOfElement(container);
+        setYear(date);
+        setMonth(date);
+
         if(checkIfDateIsOnDatePicker(date)) {
             for (WebElement element : days) {
                 int day = Integer.parseInt(element.findElement(By.tagName("a")).getText());
@@ -176,6 +177,50 @@ public class DateUtils extends PageObject {
                      element.findElement(By.tagName("a")).click();
                      break;
                  }
+            }
+        }
+    }
+
+    public void setYearAsSelect(LocalDate date) {
+
+        String yearAsString = Integer.toString(date.getYear());
+        Select years = new Select(year);
+
+        if(utils.getTextFromWebElementList(years.getOptions()).contains(yearAsString)) {
+            if (years.getFirstSelectedOption().getText().equals(yearAsString)) {
+                System.out.println("Year selected already: " + yearAsString);
+            } else {
+                years.selectByVisibleText(yearAsString);
+            }
+        }
+    }
+
+    public void setMonthAsSelect(LocalDate date) {
+
+        Select months = new Select(month);
+        String monthAsString = date.getMonth().getDisplayName(TextStyle.SHORT, Locale.UK);
+
+        if(utils.getTextFromWebElementList(months.getOptions()).contains(monthAsString)) {
+            if (months.getFirstSelectedOption().getText().equals(monthAsString)) {
+                System.out.println("Month selected already: " + monthAsString);
+            } else {
+                months.selectByVisibleText(monthAsString);
+            }
+        }
+    }
+
+    public void setDateMonthYearAsSelect(LocalDate date) {
+        utils.getWaits().waitForVisibilityOfElement(container);
+        setYearAsSelect(date);
+        setMonthAsSelect(date);
+
+        if(checkIfDateIsOnDatePicker(date)) {
+            for (WebElement element : days) {
+                int day = Integer.parseInt(element.findElement(By.tagName("a")).getText());
+                if(date.getDayOfMonth() == day) {
+                    element.findElement(By.tagName("a")).click();
+                    break;
+                }
             }
         }
     }

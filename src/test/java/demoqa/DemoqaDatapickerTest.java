@@ -1,5 +1,6 @@
 package demoqa;
 
+import date.DateFormatterUtils;
 import enums.DemoqaEnums;
 import enums.PageUrls;
 import org.junit.Before;
@@ -8,8 +9,6 @@ import testobject.TestObject;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -59,7 +58,8 @@ public class DemoqaDatapickerTest extends TestObject {
         commonElements.tabsLinkClick("Default functionality");
         demoqaDatepicker.defaultFuncionalityInputClick();
         LocalDate dateTest = LocalDate.now().plusDays(1);
-        String date = dateTest.format(DateTimeFormatter.ofPattern("MMMM d, uuuu", Locale.ENGLISH));
+        String date = DateFormatterUtils.getFormattedDate_MMMMd_uuuu(dateTest);
+
         demoqaDatepicker.dateUtils.setDate(dateTest);
         assertEquals("Choose date and check with date on input field on Default Functionality.", date, demoqaDatepicker.getDateFromDefaultFunctionalityInput());
     }
@@ -75,7 +75,8 @@ public class DemoqaDatapickerTest extends TestObject {
        commonElements.tabsLinkClick("Animations");
        demoqaDatepicker.selectAnimations(DemoqaEnums.DemoqaAnimationsList.FADEIN);
         LocalDate dateTest = LocalDate.now().plusDays(3);
-        String date = dateTest.format(DateTimeFormatter.ofPattern("MMMM d, uuuu", Locale.ENGLISH));
+        String date = DateFormatterUtils.getFormattedDate_MMMMd_uuuu(dateTest);
+
         demoqaDatepicker.animationsInputClick();
         demoqaDatepicker.dateUtils.setDate(dateTest);
         assertEquals("Check choosed date ", date, demoqaDatepicker.getDateFromAnimationsInput());
@@ -103,16 +104,96 @@ public class DemoqaDatapickerTest extends TestObject {
         assertEquals("Check if date today is equals date today on data picker", today, demoqaDatepicker.dateUtils.getDateToday());
     }
 
-    //TODO
     @Test
     public void setDateOnDisplayMonthAndYearOption() {
         commonElements.tabsLinkClick("Display month & year");
 
-        LocalDate dateTest = LocalDate.now().plusDays(5);
-        String date = dateTest.format(DateTimeFormatter.ofPattern("MMMM d, uuuu", Locale.ENGLISH));
+        LocalDate dateTest = LocalDate.now().plusDays(25);
+        String date = DateFormatterUtils.getFormattedDate_MMMMd_uuuu(dateTest);
+
         demoqaDatepicker.displayMonthAndYearInputClick();
+        demoqaDatepicker.dateUtils.setDateMonthYearAsSelect(dateTest);
+        assertEquals("Check choosed date ",  demoqaDatepicker.getDateFromDisplayMonthAndYearInput(), date);
+    }
 
+    @Test
+    public void setDateOnFormatDateAndCheckFormatDefault() {
 
+        commonElements.tabsLinkClick("Format date");
+        LocalDate dataTest = LocalDate.now().plusDays(1);
+        String date = DateFormatterUtils.getFormattedDate_mm_dd_yy_dafault(dataTest);
+
+        demoqaDatepicker.selectFormatDate(DemoqaEnums.DemoqaFormatDateList.ISO);
+        demoqaDatepicker.selectFormatDate(DemoqaEnums.DemoqaFormatDateList.DEFAULT);
+
+        demoqaDatepicker.formatDateInputClick();
+        demoqaDatepicker.dateUtils.setDate(dataTest);
+        assertEquals("Check choosed date", demoqaDatepicker.getDateFromFormatDateInput(), date);
+    }
+
+    @Test
+    public void setDateOnFormatDateAndCheckFormatIso() {
+
+        commonElements.tabsLinkClick("Format date");
+        LocalDate dataTest = LocalDate.now().plusDays(1);
+        String date = DateFormatterUtils.getFormattedDate_yy_mm_dd_iso(dataTest);
+
+        demoqaDatepicker.formatDateInputClick();
+        demoqaDatepicker.dateUtils.setDate(dataTest);
+        demoqaDatepicker.selectFormatDate(DemoqaEnums.DemoqaFormatDateList.ISO);
+        assertEquals("Check choosed date", demoqaDatepicker.getDateFromFormatDateInput(), date);
+    }
+
+    @Test
+    public void setDateOnFormatDateAndCheckFormatShort() {
+
+        commonElements.tabsLinkClick("Format date");
+        LocalDate dataTest = LocalDate.now().plusDays(1);
+        String date = DateFormatterUtils.getFormattedDate_dM_y_short(dataTest);
+
+        demoqaDatepicker.formatDateInputClick();
+        demoqaDatepicker.dateUtils.setDate(dataTest);
+        demoqaDatepicker.selectFormatDate(DemoqaEnums.DemoqaFormatDateList.SHORT);
+        assertEquals("Check choosed date", demoqaDatepicker.getDateFromFormatDateInput(), date);
+    }
+
+    @Test
+    public void setDateOnFormatDateAndCheckFormatMedium() {
+
+        commonElements.tabsLinkClick("Format date");
+        LocalDate dataTest = LocalDate.now().plusDays(2);
+        String date = DateFormatterUtils.getFormattedDate_dMM_y_medium(dataTest);
+
+        demoqaDatepicker.formatDateInputClick();
+        demoqaDatepicker.dateUtils.setDate(dataTest);
+        demoqaDatepicker.selectFormatDate(DemoqaEnums.DemoqaFormatDateList.MEDIUM);
+        assertEquals("Check choosed date", demoqaDatepicker.getDateFromFormatDateInput(), date);
+    }
+
+    @Test
+    public void setDateOnFormatDateAndCheckFormatFull() {
+
+        commonElements.tabsLinkClick("Format date");
+        LocalDate dataTest = LocalDate.now().plusDays(3);
+        String date = DateFormatterUtils.getFormattedDate_DD_dMM_yy_full(dataTest);
+
+        demoqaDatepicker.formatDateInputClick();
+        demoqaDatepicker.dateUtils.setDate(dataTest);
+        demoqaDatepicker.selectFormatDate(DemoqaEnums.DemoqaFormatDateList.FULL);
+        assertEquals("Check choosed date", demoqaDatepicker.getDateFromFormatDateInput(), date);
+    }
+
+    @Test
+    public void setDateOnFormatDateAndCheckFormatWithDay() {
+
+        commonElements.tabsLinkClick("Format date");
+        LocalDate dataTest = LocalDate.now().plusDays(5);
+        String date = DateFormatterUtils.getFormattedDate_day_d_of_MM_inTheYear_yy_withDay(dataTest);
+
+        demoqaDatepicker.formatDateInputClick();
+        demoqaDatepicker.dateUtils.setDate(dataTest);
+        demoqaDatepicker.selectFormatDate(DemoqaEnums.DemoqaFormatDateList.WITHDAY);
+        assertEquals("Check choosed date", demoqaDatepicker.getDateFromFormatDateInput(), date);
     }
 
 }
