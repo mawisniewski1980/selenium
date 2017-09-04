@@ -1,6 +1,7 @@
 package date;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -38,5 +39,13 @@ public class DateFormatterUtils {
 
     public static String getFormattedDate_day_d_of_MM_inTheYear_yy_withDay(LocalDate date) {
         return date.format(DateTimeFormatter.ofPattern("'day 'dd' of 'MMMM' in the year 'uuuu", Locale.ENGLISH));
+    }
+
+    public static String getDateNow_yyyyMMdd() {
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
+
+    public static String getDateTimeNowFormated_yyyyMMdd_HHmmss() {
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 }

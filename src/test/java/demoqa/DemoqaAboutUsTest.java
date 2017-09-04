@@ -10,8 +10,6 @@ import static org.junit.Assert.assertTrue;
 
 public class DemoqaAboutUsTest extends TestObject {
 
-
-
   private DemoqaAboutUs demoqaAboutUs;
   private DemoqaCommonElements commonElements;
 
@@ -25,7 +23,7 @@ public class DemoqaAboutUsTest extends TestObject {
 
   @Test
   public void checkPageTitle() {
-    assertEquals("Check About Us page title:", "About us | Demoqa", demoqaAboutUs.getTitle());
+    assertEquals("Check About Us page title:", "About us | Demoqa22", demoqaAboutUs.getTitle());
   }
 
   @Test

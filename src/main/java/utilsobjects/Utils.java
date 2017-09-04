@@ -16,13 +16,13 @@ public class Utils {
   private WebDriver driver;
   private Waits waits;
   private Actions actions;
-  private LogsUtils logs;
+  private LogsUtils logsUtils;
 
   public Utils(WebDriver driver) {
     this.driver = driver;
     this.actions = new Actions(driver);
     this.waits = new Waits(driver);
-    this.logs = new LogsUtils(driver);
+    this.logsUtils = new LogsUtils(driver);
   }
 
   public WebDriver getDriver() {
@@ -38,7 +38,11 @@ public class Utils {
   }
 
   public LogsUtils getLogs() {
-    return logs;
+    return logsUtils;
+  }
+
+  public String getInfoAboutSystem() {
+    return "[Java " + System.getProperty("java.version") + "][" + System.getProperty("os.name") + ", " + System.getProperty("os.version") + ", " + System.getProperty("os.arch") + "]";
   }
 
   public WebElement findNextElementByCssSelector(WebElement element, By locator) {

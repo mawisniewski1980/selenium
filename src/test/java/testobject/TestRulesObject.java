@@ -5,8 +5,12 @@ import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import utilsobjects.Utils;
 
+import java.util.logging.Logger;
+
 
 public class TestRulesObject extends TestWatcher {
+
+    private static final Logger LOG = Logger.getLogger(TestRulesObject.class.getName());
 
     private Utils utils;
 
@@ -18,6 +22,8 @@ public class TestRulesObject extends TestWatcher {
 
     @Override
     protected void starting(Description description) {
+        utils.getLogs().setClassName(description.getClassName());
+        utils.getLogs().setMethodName(description.getMethodName());
         //LOG.info("###########################################################################################");
         //LOG.info("#########  START " + utils.getLogs().getDateTimeNowFormated_yyyyMMdd_HHmmss());
         //LOG.info("###########################################################################################");
@@ -41,9 +47,9 @@ public class TestRulesObject extends TestWatcher {
             //LOG.error("#########  STACKTRACE " + t.getStackTrace()[i]);
         //}
         //LOG.error("#########  SCREEN SHOT FILE");
-        //utils.getLogs().setClassName(description.getClassName());
-        //utils.getLogs().setMethodName(description.getMethodName());
-        //utils.getLogs().takeScreenFile(false);
+        utils.getLogs().setClassName(description.getClassName());
+        utils.getLogs().setMethodName(description.getMethodName());
+        utils.getLogs().takeScreenFile(false);
     }
 
     @Override

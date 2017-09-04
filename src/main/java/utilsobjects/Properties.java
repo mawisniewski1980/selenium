@@ -4,8 +4,6 @@ import java.io.*;
 
 public class Properties {
 
-
-
     private static java.util.Properties property = new java.util.Properties();
     private static String userPath = System.getProperty("user.dir");
 
@@ -22,5 +20,9 @@ public class Properties {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static String getBasePath() {
+        return getProperty("basepathlogs");
     }
 }

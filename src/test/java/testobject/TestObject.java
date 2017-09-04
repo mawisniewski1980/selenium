@@ -9,10 +9,13 @@ import utilsobjects.Utils;
 import webdriverobjects.WebDriverObject;
 
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import static org.junit.Assert.fail;
 
 public abstract class TestObject {
+
+  private static final Logger LOG = Logger.getLogger(TestObject.class.getName());
 
   protected WebDriver driver = WebDriverObject.getOWebDriverInstance().initChromeBrowser();
   protected Utils utils = new Utils(driver);
@@ -22,6 +25,7 @@ public abstract class TestObject {
 
   @Before
   public void setUpBeforeClass() {
+
     if (driver == null) {
       //LOG.error("Driver cannot be null");
       fail("Driver cannot be null");
