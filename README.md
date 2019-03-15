@@ -1,11 +1,7 @@
-# selenium
-
-# Repository: 
+# Repository:
 ##  Java
-##  JUnit
+##  TestNG
 ##  Selenium
-
-# TODO: https://trello.com/b/9dDLUySd/selenium
 
 # Tested pages:
 # DEMOQA("http://demoqa.com/"),
