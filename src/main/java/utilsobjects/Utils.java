@@ -4,14 +4,17 @@ import logs.LogsUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.openqa.selenium.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.Assert.fail;
 
 public class Utils {
+
+  Logger logger = LoggerFactory.getLogger(getClass());
 
   private WebDriver driver;
   private Waits waits;
@@ -91,17 +94,17 @@ public class Utils {
         listStrings.add(el.getText());
       }
     } else {
-      fail("List of WebElements is empty.");
+      //fail("List of WebElements is empty.");
     }
     return listStrings;
   }
 
   public String getText(WebElement element) {
-    //LOG.info("Get text from element.");
+    logger.info("Get text from element.");
     if (isElementPresent(element))
       actions.scrollToElement(element);
     else {
-      fail("Element is not present");
+      //fail("Element is not present");
     }
     return element.getText();
   }
@@ -112,7 +115,7 @@ public class Utils {
   }
 
   public Utils setText(WebElement element, String text, boolean clearField) {
-    //LOG.info("Set text " + text);
+    logger.info("Set text " + text);
     actions.scrollToElement(element);
     if(clearField) element.clear();
     element.sendKeys(text);
@@ -127,12 +130,12 @@ public class Utils {
       for (int i = 0; i < elements.size(); i++) {
         if (elements.get(i).getText().equals(title)) {
           index = i;
-          // //LOG.info("Index of " + title + " is " + index);
+          // logger.info("Index of " + title + " is " + index);
           return index;
         }
       }
     } else {
-      fail("The list of webelements is empty.");
+      //fail("The list of webelements is empty.");
     }
     return index;
   }
@@ -162,14 +165,14 @@ public class Utils {
   }
 
   public Utils linkClick(List<WebElement> elementList, String title) {
-    //LOG.info("Click on link by title: " + title);
+    logger.info("Click on link by title: " + title);
     actions.scrollToElement(elementList.get(getId(elementList, title)));
     elementList.get(getId(elementList, title)).click();
     return this;
   }
 
   public Utils linkClick(WebElement element) {
-    //LOG.info("Click on link " + element.getText());
+    logger.info("Click on link " + element.getText());
     actions.scrollToElement(element);
     element.click();
     return this;
@@ -196,7 +199,7 @@ public class Utils {
   }
 
   public String getImgExampleFile(String fileName) {
-    //LOG.info("Get example file " + fileName);
+    logger.info("Get example file " + fileName);
     String path = System.getProperty("user.dir") + "\\img\\";
     return path + fileName;
   }

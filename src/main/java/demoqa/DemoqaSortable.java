@@ -89,9 +89,9 @@ public class DemoqaSortable extends PageObject {
     for (int i = 0; i < sumOfColumns; i++) {
       List<WebElement> theList = utils.findNextElementsByCssSelector(portletItemsColumn.get(i), portletItemsListCss);
       int sumOfPortlets = theList.size();
-      //LOG.info("In column " + (i + 1) + " is " + sumOfPortlets + " portlet/portlets");
+      logger.info("In column " + (i + 1) + " is " + sumOfPortlets + " portlet/portlets");
       for (WebElement aTheList : theList) {
-        //LOG.info("Title: " + utils.getTextFromWebElementList(utils.findNextElementsByCssSelector(aTheList, portletItemsHeaderCss)));
+        logger.info("Title: " + utils.getTextFromWebElementList(utils.findNextElementsByCssSelector(aTheList, portletItemsHeaderCss)));
         listStrings.addAll(utils.getTextFromWebElementList(utils.findNextElementsByCssSelector(aTheList, portletItemsHeaderCss)));
       }
     }
@@ -104,13 +104,13 @@ public class DemoqaSortable extends PageObject {
     for (int i = 0; i < sumOfColumns; i++) {
       List<WebElement> theList = utils.findNextElementsByCssSelector(portletItemsColumn.get(i), portletItemsListCss);
       int sumOfPortlets = theList.size();
-      // //LOG.info("In column " + (i + 1) + " is " + sumOfPortlets + " portlet/portlets");
+      // logger.info("In column " + (i + 1) + " is " + sumOfPortlets + " portlet/portlets");
       int col = i + 1;
       for (WebElement aTheList : theList) {
         List<String> theListTitles = utils.getTextFromWebElementList(utils.findNextElementsByCssSelector(aTheList, portletItemsHeaderCss));
-        // //LOG.info("Title: " + theListTitles);
+        // logger.info("Title: " + theListTitles);
         for (int k = 0; k < theListTitles.size(); k++) {
-          //LOG.info("In column " + col + " is portlet " + theListTitles.get(k).toString());
+          logger.info("In column " + col + " is portlet " + theListTitles.get(k).toString());
           mapStrings.put(col, theListTitles.get(k));
         }
       }

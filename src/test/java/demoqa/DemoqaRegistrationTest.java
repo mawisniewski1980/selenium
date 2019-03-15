@@ -4,13 +4,14 @@ import demoqaregistration.DemoqaRegistration;
 import demoqaregistration.DemoqaRegistrationForm;
 import enums.DemoqaEnums.*;
 import enums.PageUrls.PageUrl;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import testobject.TestObject;
 
 import java.time.LocalDate;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
+
 
 public class DemoqaRegistrationTest extends TestObject {
 
@@ -18,7 +19,7 @@ public class DemoqaRegistrationTest extends TestObject {
   private DemoqaRegistration demoqaReg;
   private DemoqaCommonElements commonElements;
 
-  @Before
+  @BeforeTest
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
     demoqaReg = new DemoqaRegistration(driver);

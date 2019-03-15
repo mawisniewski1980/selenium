@@ -3,9 +3,13 @@ package pageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import utilsobjects.Utils;
 
 public abstract class PageObject {
+
+  protected Logger logger = LoggerFactory.getLogger(getClass());
 
   protected WebDriver driver;
   protected Utils utils;
@@ -17,7 +21,7 @@ public abstract class PageObject {
   }
 
   public String getTitle() {
-    //LOG.info("Title of page: " + driver.getTitle());
+    logger.info("Title of page: " + driver.getTitle());
     return driver.getTitle();
   }
 }

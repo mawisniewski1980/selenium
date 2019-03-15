@@ -227,23 +227,17 @@ public class DateUtils extends PageObject {
 
     public boolean checkIfYearIsEqualToYearOnDatePicker(LocalDate date) {
         utils.getWaits().waitForVisibilityOfElement(container);
-        if(date.getYear() == getYearAsInt())
-            return true;
-        return false;
+        return date.getYear() == getYearAsInt();
     }
 
     public boolean checkIfMonthIsEqualToMonthOnDatePicker(LocalDate date) {
         utils.getWaits().waitForVisibilityOfElement(container);
-        if(date.getMonthValue() == getMonthAsInt())
-            return true;
-        return false;
+        return date.getMonthValue() == getMonthAsInt();
     }
 
     public boolean checkIfDateIsOnDatePicker(LocalDate date) {
         utils.getWaits().waitForVisibilityOfElement(container);
-        if(getDates().contains(date))
-            return true;
-        return false;
+        return getDates().contains(date);
     }
 
     public Set<LocalDate> getDates() {

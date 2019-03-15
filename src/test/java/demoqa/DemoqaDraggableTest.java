@@ -1,13 +1,13 @@
 package demoqa;
 
 import enums.PageUrls.PageUrl;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.Point;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import testobject.TestObject;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.testng.Assert.assertNotEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class DemoqaDraggableTest extends TestObject {
 
@@ -15,7 +15,7 @@ public class DemoqaDraggableTest extends TestObject {
   private DemoqaDraggable draggable;
   private DemoqaCommonElements commonElements;
 
-  @Before
+  @BeforeTest
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
     draggable = new DemoqaDraggable(driver);
@@ -39,12 +39,12 @@ public class DemoqaDraggableTest extends TestObject {
     commonElements.tabsLinkClick("Default functionality");
 
     Point position1 = draggable.getPositionDefFuncDraggable();
-    //LOG.info("Position 1 " + position1);
+    logger.info("Position 1 " + position1);
 
     draggable.dragDefFuncDraggable(200, 300);
 
     Point position2 = draggable.getPositionDefFuncDraggable();
-    //LOG.info("Position 2 " + position2);
+    logger.info("Position 2 " + position2);
 
     assertNotEquals(position1, position2);
   }
@@ -55,12 +55,12 @@ public class DemoqaDraggableTest extends TestObject {
     commonElements.tabsLinkClick("Constrain movement");
 
     Point position1 = draggable.getPositionConMovVertically();
-    //LOG.info("Position 1 " + position1);
+    logger.info("Position 1 " + position1);
 
     draggable.dragConMovVertically(0, 100);
 
     Point position2 = draggable.getPositionConMovVertically();
-    //LOG.info("Position 2 " + position2);
+    logger.info("Position 2 " + position2);
 
     assertNotEquals(position1, position2);
   }

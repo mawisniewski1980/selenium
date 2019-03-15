@@ -1,45 +1,66 @@
 package webdriverobjects;
 
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.GeckoDriverService;
-import utilsobjects.Properties;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
 
 import java.util.logging.Logger;
 
 
-public class WebDriverObject {
+public final class WebDriverObject {
 
   private static final Logger LOG = Logger.getLogger(WebDriverObject.class.getName());
 
-  private static WebDriverObject webDriverObjectInstance = null;
-
-  private String userPath = System.getProperty("user.dir");
-  private String chromeFilePath = userPath + Properties.getProperty("chromefilepath");
-  private String firefoxFilePath = userPath + Properties.getProperty("firefoxfilepath");
+  private static WebDriverObject instance;
+  private WebDriver driver;
 
   private WebDriverObject() {
   }
 
-  public static WebDriverObject getOWebDriverInstance() {
-    if(webDriverObjectInstance == null) {
-      return webDriverObjectInstance = new WebDriverObject();
+  public static WebDriverObject getInstance()
+  {
+    if (instance == null)
+    {
+      synchronized (WebDriverObject.class)
+      {
+        if(instance==null)
+        {
+          instance = new WebDriverObject();
+        }
+      }
     }
-    return webDriverObjectInstance;
+    return instance;
   }
 
-  public WebDriver initChromeBrowser() {
+
+  public synchronized WebDriver initChromeBrowser() {
     LOG.info("Driver Chrome Browser");
-    System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, chromeFilePath);
-    return new ChromeDriver();
+    WebDriverManager.chromedriver().setup();
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--incognito");
+    options.addArguments("--start-maximized");
+    return new ChromeDriver(options);
   }
 
-  public WebDriver initFireFoxBrowser() {
+  public synchronized WebDriver initFireFoxBrowser() {
     LOG.info("Driver FireFox Browser");
-    System.setProperty(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY, firefoxFilePath);
-    return new FirefoxDriver();
+    WebDriverManager.firefoxdriver().setup();
+    FirefoxOptions options = new FirefoxOptions();
+    return new FirefoxDriver(options);
   }
+
+  public synchronized WebDriver initInternetExplorerBrowser() {
+    LOG.info("Driver Internet Explorer Browser");
+    WebDriverManager.iedriver().setup();
+    InternetExplorerOptions options = new InternetExplorerOptions();
+    return new InternetExplorerDriver(options);
+  }
+
+
 }

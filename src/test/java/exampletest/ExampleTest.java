@@ -1,24 +1,23 @@
 package exampletest;
 
 import enums.PageUrls;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import testobject.TestObject;
 
-import static org.junit.Assert.assertEquals;
-
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ExampleTest extends TestObject {
 
 
-  @Before
+  @BeforeTest
   public void setTest() {
     setUrl(PageUrls.PageUrl.ONET);
   }
 
   @Test
   public void openExamplePageTest() {
-    assertEquals("Onet.pl", driver.getTitle());
+    assertThat("Onet.pl").isEqualTo(driver.getTitle());
   }
 
   @Test

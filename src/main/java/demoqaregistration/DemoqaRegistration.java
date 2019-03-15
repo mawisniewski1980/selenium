@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import pageobject.PageObject;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -171,17 +172,17 @@ public class DemoqaRegistration extends PageObject {
   }
 
   public void setFirstName(String text) {
-    //LOG.info("Set [First Name] (require) field: " + text);
+    logger.info("Set [First Name] (require) field: " + text);
     utils.setText(firstName, text);
   }
 
   public void setLastName(String text) {
-    //LOG.info("Set [Last Name] (require) field: " + text);
+    logger.info("Set [Last Name] (require) field: " + text);
     utils.setText(lastName, text);
   }
 
   public void setMaritalStatus(DemoqaRegistrationMaritalStatus maritalStatus) {
-    //LOG.info("Set [Marital Status] radio: " + maritalStatus);
+    logger.info("Set [Marital Status] radio: " + maritalStatus);
     for (WebElement element : maritalRadio) {
       if (element.getAttribute("value").equalsIgnoreCase(maritalStatus.getText())) {
         element.click();
@@ -190,7 +191,7 @@ public class DemoqaRegistration extends PageObject {
   }
 
   public void setHobby(DemoqaRegistrationHobby hobby) {
-    //LOG.info("Set [Hobby] checkbox: " + hobby);
+    logger.info("Set [Hobby] checkbox: " + hobby);
     for (WebElement element : hobbyCheckbox) {
       if (element.getAttribute("value").equalsIgnoreCase(hobby.getText())) {
         element.click();
@@ -199,13 +200,13 @@ public class DemoqaRegistration extends PageObject {
   }
 
   public void setCountry(DemoqaReistrationCountry country) {
-    //LOG.info("Set [Country] select: " + country);
+    logger.info("Set [Country] select: " + country);
     Select countrySelectOption = new Select(countrySelect);
     countrySelectOption.selectByValue(country.getText());
   }
 
   public void setDayOfBirth(LocalDate dateofBirth) {
-    //LOG.info("Set [Day Of Birth]: " + dateofBirth.format(DateTimeFormatter.ISO_LOCAL_DATE));
+    logger.info("Set [Day Of Birth]: " + dateofBirth.format(DateTimeFormatter.ISO_LOCAL_DATE));
 
     Select monthSelect = new Select(dateOfBirthMonth);
     monthSelect.selectByValue(Integer.toString(dateofBirth.getMonthValue()));
@@ -219,42 +220,42 @@ public class DemoqaRegistration extends PageObject {
   }
 
   public void setPhone(String phoneNumber) {
-    //LOG.info("Set [Phone] (require) field: " + phoneNumber);
+    logger.info("Set [Phone] (require) field: " + phoneNumber);
     utils.setText(phone, phoneNumber);
   }
 
   public void setUserName(String userNameText) {
-    //LOG.info("Set [Username] (require) field: " + userNameText);
+    logger.info("Set [Username] (require) field: " + userNameText);
     utils.setText(userName, userNameText);
   }
 
   public void setEmail(String emailText) {
-    //LOG.info("Set [email] (require) field: " + emailText);
+    logger.info("Set [email] (require) field: " + emailText);
     utils.setText(email, emailText);
   }
 
   public void setYourProfilePicture(String file) {
-    //LOG.info("Set [Your Profile Picture] field: " + file);
+    logger.info("Set [Your Profile Picture] field: " + file);
 
   }
 
   public void setAboutYourself(String text) {
-    //LOG.info("set [About Yourself] textarea: " + text);
+    logger.info("set [About Yourself] textarea: " + text);
     utils.setText(aboutYourself, text);
   }
 
   public void setPassword(String text) {
-    //LOG.info("set [Password] (require) field: " + text);
+    logger.info("set [Password] (require) field: " + text);
     utils.setText(password, text);
   }
 
   public void setConfirmPassword(String text) {
-    //LOG.info("set [Confirm Password] (require) field: " + text);
+    logger.info("set [Confirm Password] (require) field: " + text);
     utils.setText(confirmPassword, text);
   }
 
   public void fillRegistrationForm(DemoqaRegistrationForm dRegForm) {
-    //LOG.info("Fill registration form.");
+    logger.info("Fill registration form.");
 
     if (dRegForm != null) {
 

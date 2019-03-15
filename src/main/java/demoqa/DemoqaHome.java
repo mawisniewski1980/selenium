@@ -50,7 +50,7 @@ public class DemoqaHome extends PageObject {
   }
 
   public String getTabsContentTitle(String title) {
-    //LOG.info("Get title from content");
+    logger.info("Get title from content");
     return tabsContent.get(utils.getId(tabsLinks, title)).getText();
   }
 

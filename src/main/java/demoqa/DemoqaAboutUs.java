@@ -18,7 +18,7 @@ public class DemoqaAboutUs extends PageObject {
   private WebElement aboutUsText;
 
   public String getAboutUsText() {
-  //LOG.info("Get text from article from About Us page.");
+  logger.info("Get text from article from About Us page.");
   return utils.getText(aboutUsText);
   }
 }

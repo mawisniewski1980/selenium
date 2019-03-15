@@ -141,13 +141,9 @@ public class FullCalendarPageObject extends PageObject {
   }
 
   public boolean isDateOnCalendar(LocalDate localDate) {
-    //LOG.info("Check if date: " + localDate + " is on calendar");
-    if (getAllDayDates().contains(localDate)) {
-      //LOG.info("Date: " + localDate + " is on calendar");
-      return true;
-    }
-    //LOG.info("Date: " + localDate + " is NOT on calendar");
-    return false;
+    logger.info("Check if date: " + localDate + " is on calendar");
+      logger.info("Date: " + localDate + " is on calendar");
+      return getAllDayDates().contains(localDate);
   }
 
   public void setDate(LocalDate localDate) {
@@ -157,14 +153,14 @@ public class FullCalendarPageObject extends PageObject {
     if (localDate.isEqual(currentDay)) {
       isDateOnCalendar(localDate);
     } else if (localDate.isBefore(currentDay)) {
-      //LOG.info("Date: " + localDate + " is before " + currentDay);
+      logger.info("Date: " + localDate + " is before " + currentDay);
       while (!isDateOnCalendar(localDate)) {
         if (isDateOnCalendar(localDate))
           break;
         prevButtonClick();
       }
     } else if (localDate.isAfter(currentDay)) {
-      //LOG.info("Date: " + localDate + " is after " + currentDay);
+      logger.info("Date: " + localDate + " is after " + currentDay);
       while (!isDateOnCalendar(localDate)) {
         if (isDateOnCalendar(localDate))
           break;
@@ -205,11 +201,11 @@ public class FullCalendarPageObject extends PageObject {
 
     fcMoreLinks.get(0);
     for (int i = 0; i < events.size(); i++) {
-      //LOG.info(" title - > " + events.get(i).getText());
+      logger.info(" title - > " + events.get(i).getText());
 
       if (events.get(i).getText().equals(title)) {
         index = i;
-        //LOG.info(" index - > " + i);
+        logger.info(" index - > " + i);
       }
     }
     return index;
@@ -230,7 +226,7 @@ public class FullCalendarPageObject extends PageObject {
 
       for (WebElement element : events) {
         if (element.findElement(By.cssSelector(".fc-title")).getText().equals(event)) {
-          //LOG.info("Found event: " + event + ", move mouse to " + localDate + " " + timehours.getStringHour() + " " + timehours.getIndexHour());
+          logger.info("Found event: " + event + ", move mouse to " + localDate + " " + timehours.getStringHour() + " " + timehours.getIndexHour());
           action.moveToElement(element).clickAndHold(element).moveToElement(timeSlats.get(timehours.getIndexHour())).release().build().perform();
           break;
 
@@ -242,10 +238,10 @@ public class FullCalendarPageObject extends PageObject {
         LocalDate date = LocalDate.parse(rowsTimeGrid.get(i).getAttribute("data-date"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         if (date.equals(localDate)) {
-          //LOG.info(date + " - " + localDate + " - " + i);
+          logger.info(date + " - " + localDate + " - " + i);
           for (WebElement element : events) {
             if (element.findElement(By.cssSelector(".fc-title")).getText().equals(event)) {
-              //LOG.info("Found event: " + event + ", move mouse to " + localDate + " " + timehours.getStringHour() + " " + timehours.getIndexHour());
+              logger.info("Found event: " + event + ", move mouse to " + localDate + " " + timehours.getStringHour() + " " + timehours.getIndexHour());
               action.moveToElement(element).clickAndHold(element).moveToElement(rowsTimeGrid.get(i)).moveToElement(timeSlats.get(timehours.getIndexHour())).release().build().perform();
               break;
 
@@ -258,13 +254,13 @@ public class FullCalendarPageObject extends PageObject {
     } else if (view.equals(VIEW.MONTH)) {
       monthButtonClick();
       for (WebElement anAllDay : allDay) {
-        LocalDate date = LocalDate.parse(anAllDay.getAttribute("data-date").toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDate date = LocalDate.parse(anAllDay.getAttribute("data-date"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         if (date.equals(localDate)) {
 
           for (WebElement element : events) {
             if (element.findElement(By.cssSelector(".fc-title")).getText().equals(event)) {
-              //LOG.info("Found event: " + event + ", move mouse to " + localDate);
+              logger.info("Found event: " + event + ", move mouse to " + localDate);
               action.moveToElement(element).clickAndHold(element).moveToElement(anAllDay).release().build().perform();
               break;
             }

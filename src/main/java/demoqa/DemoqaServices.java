@@ -22,7 +22,7 @@ public class DemoqaServices extends PageObject {
   private WebElement demoqaServicesText;
 
   public String getDemoqaServicesText(){
-    //LOG.info("Get text from Demoqa Services page");
+    logger.info("Get text from Demoqa Services page");
     return utils.getText(demoqaServicesText);
   }
 }

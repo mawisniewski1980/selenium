@@ -5,6 +5,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -13,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Waits {
 
+  Logger logger = LoggerFactory.getLogger(getClass());
 
   private WebDriverWait waits;
 
@@ -44,7 +47,7 @@ public class Waits {
    * http://www.testingexcellence.com/webdriver-wait-page-load-example-java/
    */
   public Waits waitForPageLoad() {
-    //LOG.info("Wait for page load finish.");
+    logger.info("Wait for page load finish.");
     ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
       public Boolean apply(WebDriver driver) {
         return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
@@ -56,7 +59,7 @@ public class Waits {
 
   public Waits waitTime(long timeout) {
     try {
-      //LOG.info("Wait: " + timeout + " seconds");
+      logger.info("Wait: " + timeout + " seconds");
       TimeUnit.SECONDS.sleep(timeout);
     } catch (InterruptedException e) {
       e.printStackTrace();

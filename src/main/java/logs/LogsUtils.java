@@ -70,13 +70,13 @@ public class LogsUtils {
             destFile = new File(getBasePathFileName() + ".png");
             FileUtils.copyFile(screenShoot, destFile);
         } catch (IOException e) {
-            ////LOG.error("Cannot copy file");
+            //logger.error("Cannot copy file");
         }
         if(!pass) {
             try {
                 FileUtils.moveFile(destFile, new File(getFailPath() + ".png"));
             } catch (IOException e) {
-                ////LOG.error("Cannot move file");
+                //logger.error("Cannot move file");
             }
         }
     }
@@ -88,9 +88,9 @@ public class LogsUtils {
 
     public void takeWebriverLogs() {
         List<LogEntry> entries = driver.manage().logs().get(LogType.BROWSER).getAll();
-        ////LOG.info(entries.size() + " " + LogType.BROWSER + " log entries found");
+        //logger.info(entries.size() + " " + LogType.BROWSER + " log entries found");
         for (LogEntry entry : entries) {
-            ////LOG.info("Level ");
+            //logger.info("Level ");
         }
     }
 

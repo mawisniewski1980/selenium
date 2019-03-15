@@ -3,12 +3,13 @@ package demoqa;
 import com.google.common.collect.ImmutableList;
 import demoqablog.DemoqaBlog;
 import enums.PageUrls.PageUrl;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import testobject.TestObject;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 
 public class DemoqaHomeTest extends TestObject {
 
@@ -16,7 +17,7 @@ public class DemoqaHomeTest extends TestObject {
   private DemoqaHome demoqaHome;
   private DemoqaCommonElements commonElements;
 
-  @Before
+  @BeforeTest
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
     demoqaHome = new DemoqaHome(driver);

@@ -1,11 +1,12 @@
 package demoqa;
 
 import enums.PageUrls;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import testobject.TestObject;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
+
 
 public class DemoqaFramesAndWindowsTest extends TestObject {
 
@@ -13,7 +14,7 @@ public class DemoqaFramesAndWindowsTest extends TestObject {
     private DemoqaFramesAndWindows demoqaFrames;
     private DemoqaCommonElements commonElements;
 
-    @Before
+    @BeforeTest
     public void setUrl() {
         setUrl(PageUrls.PageUrl.DEMOQA);
         demoqaFrames = new DemoqaFramesAndWindows(driver);

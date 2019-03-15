@@ -2,13 +2,14 @@ package demoqa;
 
 import com.google.common.collect.ImmutableList;
 import enums.PageUrls.PageUrl;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import testobject.TestObject;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.testng.Assert.*;
+
 
 public class DemoqaSelectableTest extends TestObject {
 
@@ -16,7 +17,7 @@ public class DemoqaSelectableTest extends TestObject {
   private DemoqaSelectable selectable;
   private DemoqaCommonElements commonElements;
 
-  @Before
+  @BeforeTest
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
     selectable = new DemoqaSelectable(driver);

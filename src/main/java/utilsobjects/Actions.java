@@ -5,12 +5,16 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 
 
 public class Actions {
+
+  Logger logger = LoggerFactory.getLogger(getClass());
 
 
   private WebDriver driver;
@@ -22,14 +26,14 @@ public class Actions {
   }
 
   public Actions dragAndDrop(Draggable drag, Draggable drop) {
-    //LOG.info("Drag element " + drag.getCenter() + " to " + drop.getCenter());
+    logger.info("Drag element " + drag.getCenter() + " to " + drop.getCenter());
     actions.dragAndDrop(drag.getElement(), drop.getElement());
     actions.build().perform();
     return this;
   }
 
   public Actions dragAndDropByOffset(Draggable drag, int xOffset, int yOffset) {
-    //LOG.info("Drag element by offset " + "(" + xOffset + "," + yOffset + ")");
+    logger.info("Drag element by offset " + "(" + xOffset + "," + yOffset + ")");
     actions.dragAndDropBy(drag.getElement(), xOffset, yOffset);
     actions.build().perform();
     return this;
@@ -144,14 +148,14 @@ public class Actions {
   }
 
   public Actions scrollToBottom() {
-    // //LOG.info("Scroll to bottom");
+    // logger.info("Scroll to bottom");
     //((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
     ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight));");
     return this;
   }
 
   public Actions scrollTo(WebElement element) {
-    // //LOG.info("Scroll to element " + element.getLocation());
+    // logger.info("Scroll to element " + element.getLocation());
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     return this;
   }

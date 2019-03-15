@@ -1,11 +1,12 @@
 package demoqa;
 
 import enums.PageUrls.PageUrl;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import testobject.TestObject;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
+
 
 public class DemoqaServicesTest extends TestObject {
 
@@ -13,7 +14,7 @@ public class DemoqaServicesTest extends TestObject {
   private DemoqaServices demoqaServices;
   private DemoqaCommonElements commonElements;
 
-  @Before
+  @BeforeTest
   public void setUrl() {
     setUrl(PageUrl.DEMOQA);
     demoqaServices = new DemoqaServices(driver);

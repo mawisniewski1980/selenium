@@ -38,27 +38,27 @@ public class DemoqaBlog extends PageObject {
   private List<WebElement> readMoreEntry;
 
   public List<String> getEntryTitle() {
-    //LOG.info("Title of entrys: " + utils.getTextFromWebElementList(titlesEntry));
+    logger.info("Title of entrys: " + utils.getTextFromWebElementList(titlesEntry));
     return utils.getTextFromWebElementList(titlesEntry);
   }
 
   public void clickTitleEntry(String title) {
-    //LOG.info("Click on title blog article " + title);
+    logger.info("Click on title blog article " + title);
     titlesEntry.get(utils.getId(titlesEntry, title)).click();
   }
 
   public void clickDateEntry(String title) {
-    //LOG.info("Click on date blog article " + title);
+    logger.info("Click on date blog article " + title);
     dateEntry.get(utils.getId(titlesEntry, title)).click();
   }
 
   public void clickImageEntry(String title) {
-    //LOG.info("Click on image blog article " + title);
+    logger.info("Click on image blog article " + title);
     imageEntry.get(utils.getId(titlesEntry, title)).click();
   }
 
   public void clickReadMoreLinkEntry(String title) {
-    //LOG.info("Click on [Read more] button blog article " + title);
+    logger.info("Click on [Read more] button blog article " + title);
     readMoreEntry.get(utils.getId(titlesEntry, title)).click();
   }
 }

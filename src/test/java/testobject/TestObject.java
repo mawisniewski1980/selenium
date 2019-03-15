@@ -1,33 +1,32 @@
 package testobject;
 
 import enums.PageUrls.PageUrl;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
+
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import utilsobjects.Utils;
 import webdriverobjects.WebDriverObject;
 
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
-import static org.junit.Assert.fail;
+import static org.assertj.core.api.Java6Assertions.fail;
 
 public abstract class TestObject {
 
-  private static final Logger LOG = Logger.getLogger(TestObject.class.getName());
+  protected Logger logger = LoggerFactory.getLogger(getClass());
 
-  protected WebDriver driver = WebDriverObject.getOWebDriverInstance().initChromeBrowser();
+  protected WebDriver driver = WebDriverObject.getInstance().initChromeBrowser();
   protected Utils utils = new Utils(driver);
 
-  @Rule
-  public TestRulesObject rules = new TestRulesObject(utils);
 
-  @Before
+  @BeforeClass
   public void setUpBeforeClass() {
 
     if (driver == null) {
-      //LOG.error("Driver cannot be null");
+      logger.error("Driver cannot be null");
       fail("Driver cannot be null");
     }
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -36,64 +35,64 @@ public abstract class TestObject {
     driver.manage().window().maximize();
   }
 
-  @After
+  @AfterClass
   public void tearDownAfterClass() {
-
+    driver.quit();
   }
 
   protected void setUrl(PageUrl url) {
 
     switch (url) {
     case DEMOQA: {
-      //LOG.info("Open Url: " + url.getAddress());
+      logger.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case ONET: {
-      //LOG.info("Open Url: " + url.getAddress());
+      logger.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case FULLCALENDAR: {
-      //LOG.info("Open Url: " + url.getAddress());
+      logger.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case ORANGEHRM: {
-      //LOG.info("Open Url: " + url.getAddress());
+      logger.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case PHPTRAVELS_ADMIN: {
-      //LOG.info("Open Url: " + url.getAddress());
+      logger.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case PHPTRAVELS_DEMO: {
-      //LOG.info("Open Url: " + url.getAddress());
+      logger.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case PHPTRAVELS_SUPPLIER: {
-      //LOG.info("Open Url: " + url.getAddress());
+      logger.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     case PHPTRAVELS_USER: {
-      //LOG.info("Open Url: " + url.getAddress());
+      logger.info("Open Url: " + url.getAddress());
       driver.navigate().to(url.getAddress());
       break;
     }
 
     default: {
-      //LOG.error("No Url !");
+      logger.error("No Url !");
       fail("No Url !");
       break;
     }

@@ -39,7 +39,7 @@ public class DemoqaCommonElements extends PageObject {
   private List<WebElement> tabsLinksA;
 
   public String getEntryTitle() {
-    //LOG.info("Title of entry: " + title.getText());
+    logger.info("Title of entry: " + title.getText());
     return title.getText();
   }
 
@@ -47,7 +47,7 @@ public class DemoqaCommonElements extends PageObject {
     if (!(tabsLinksA.get(utils.getId(tabsLinksA, title)).getAttribute("class").contains("ui-state-active"))) {
       utils.linkClick(tabsLinksA, title);
     } else {
-      //LOG.info("Tab '" + title + "' is active.");
+      logger.info("Tab '" + title + "' is active.");
     }
   }
 

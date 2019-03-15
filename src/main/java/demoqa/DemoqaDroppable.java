@@ -242,7 +242,7 @@ public class DemoqaDroppable extends PageObject {
 
   public DemoqaDroppable openClickCartCatalog(String title) {
 
-    //LOG.info("Open Catalog cart by title: " + title);
+    logger.info("Open Catalog cart by title: " + title);
     int index = utils.getId(productCatalogCategory, title);
     productCatalogCategory.get(index).click();
     List<WebElement> listCatalogItems = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li"));
@@ -253,7 +253,7 @@ public class DemoqaDroppable extends PageObject {
   public DemoqaDroppable dragItemFromCartCatalogToCartItem(String catalogTitle, String itemTitle) {
     openClickCartCatalog(catalogTitle);
 
-    //LOG.info("Drag " + itemTitle + " from catalog " + catalogTitle + " to cart");
+    logger.info("Drag " + itemTitle + " from catalog " + catalogTitle + " to cart");
     int index = utils.getId(productCatalogCategory, catalogTitle);
     List<WebElement> listCatalogItems = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li"));
     utils.getWaits().waitForVisibilityOfElements(listCatalogItems);

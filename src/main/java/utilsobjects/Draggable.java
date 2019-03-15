@@ -55,7 +55,7 @@ public class Draggable {
   }
 
   public Point getCenter() {
-    // //LOG.info("Center of the webelement");
+    // logger.info("Center of the webelement");
     int x = getX() + getWidth() / 2;
     int y = getY() + getHeight() / 2;
     return new Point(x, y);
