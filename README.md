@@ -4,7 +4,7 @@
 ##  Selenium
 
 # Tested pages:
-# DEMOQA("http://demoqa.com/"),
+# DEMOQA("http://pages.com/"),
 # FULLCALENDAR("https://fullcalendar.io/js/fullcalendar-3.0.1/demos/agenda-views.html")
 
 ##################################### Future ########################################################

@@ -1,7 +1,5 @@
 package testobject;
 
-import enums.PageUrls.PageUrl;
-
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,65 +35,8 @@ public abstract class TestObject {
 
   @AfterClass
   public void tearDownAfterClass() {
+    driver.manage().deleteAllCookies();
     driver.quit();
   }
 
-  protected void setUrl(PageUrl url) {
-
-    switch (url) {
-    case DEMOQA: {
-      logger.info("Open Url: " + url.getAddress());
-      driver.navigate().to(url.getAddress());
-      break;
-    }
-
-    case ONET: {
-      logger.info("Open Url: " + url.getAddress());
-      driver.navigate().to(url.getAddress());
-      break;
-    }
-
-    case FULLCALENDAR: {
-      logger.info("Open Url: " + url.getAddress());
-      driver.navigate().to(url.getAddress());
-      break;
-    }
-
-    case ORANGEHRM: {
-      logger.info("Open Url: " + url.getAddress());
-      driver.navigate().to(url.getAddress());
-      break;
-    }
-
-    case PHPTRAVELS_ADMIN: {
-      logger.info("Open Url: " + url.getAddress());
-      driver.navigate().to(url.getAddress());
-      break;
-    }
-
-    case PHPTRAVELS_DEMO: {
-      logger.info("Open Url: " + url.getAddress());
-      driver.navigate().to(url.getAddress());
-      break;
-    }
-
-    case PHPTRAVELS_SUPPLIER: {
-      logger.info("Open Url: " + url.getAddress());
-      driver.navigate().to(url.getAddress());
-      break;
-    }
-
-    case PHPTRAVELS_USER: {
-      logger.info("Open Url: " + url.getAddress());
-      driver.navigate().to(url.getAddress());
-      break;
-    }
-
-    default: {
-      logger.error("No Url !");
-      fail("No Url !");
-      break;
-    }
-    }
-  }
 }

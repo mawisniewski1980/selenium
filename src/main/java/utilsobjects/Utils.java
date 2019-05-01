@@ -1,6 +1,5 @@
 package utilsobjects;
 
-import logs.LogsUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.openqa.selenium.*;
@@ -19,13 +18,11 @@ public class Utils {
   private WebDriver driver;
   private Waits waits;
   private Actions actions;
-  private LogsUtils logsUtils;
 
   public Utils(WebDriver driver) {
     this.driver = driver;
     this.actions = new Actions(driver);
     this.waits = new Waits(driver);
-    this.logsUtils = new LogsUtils(driver);
   }
 
   public WebDriver getDriver() {
@@ -40,9 +37,6 @@ public class Utils {
     return actions;
   }
 
-  public LogsUtils getLogs() {
-    return logsUtils;
-  }
 
   public String getInfoAboutSystem() {
     return "[Java " + System.getProperty("java.version") + "][" + System.getProperty("os.name") + ", " + System.getProperty("os.version") + ", " + System.getProperty("os.arch") + "]";
