@@ -6,15 +6,18 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
-import utilsobjects.Draggable;
+import abstracts.AbstractPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import utils.Draggable;
 
 import java.util.List;
 
 
 
-public class DemoqaDroppable extends PageObject {
+public class DemoqaDroppable extends AbstractPage {
 
+  private static final Logger LOG = LoggerFactory.getLogger(DemoqaDroppable.class);
 
   public DemoqaDroppable(WebDriver driver) {
     super(driver);
@@ -242,7 +245,7 @@ public class DemoqaDroppable extends PageObject {
 
   public DemoqaDroppable openClickCartCatalog(String title) {
 
-    logger.info("Open Catalog cart by title: " + title);
+    LOG.info("Open Catalog cart by title: " + title);
     int index = utils.getId(productCatalogCategory, title);
     productCatalogCategory.get(index).click();
     List<WebElement> listCatalogItems = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li"));
@@ -253,7 +256,7 @@ public class DemoqaDroppable extends PageObject {
   public DemoqaDroppable dragItemFromCartCatalogToCartItem(String catalogTitle, String itemTitle) {
     openClickCartCatalog(catalogTitle);
 
-    logger.info("Drag " + itemTitle + " from catalog " + catalogTitle + " to cart");
+    LOG.info("Drag " + itemTitle + " from catalog " + catalogTitle + " to cart");
     int index = utils.getId(productCatalogCategory, catalogTitle);
     List<WebElement> listCatalogItems = productCatalog.findElement(By.id(productCatalogCategory.get(index).getAttribute("aria-controls"))).findElements(By.tagName("li"));
     utils.getWaits().waitForVisibilityOfElements(listCatalogItems);

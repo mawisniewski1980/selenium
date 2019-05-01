@@ -23,11 +23,11 @@
 		<assertj.version>3.12.1</assertj.version>
 		<webdrivermanager.version>3.3.0</webdrivermanager.version>
 		<jfairy.version>0.5.9</jfairy.version>
-		<org.slf4j.version>1.7.26</org.slf4j.version>
+		<slf4j.version>1.7.26</slf4j.version>
+		<logback.version>1.2.3</logback.version>
 	</properties>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -80,12 +80,21 @@
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${org.slf4j.version}</version>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
 
-
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
 
 	</dependencies>
 </project>

@@ -1,4 +1,4 @@
-package utilsobjects;
+package utils;
 
 
 import org.openqa.selenium.Dimension;

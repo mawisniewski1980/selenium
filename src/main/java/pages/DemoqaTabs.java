@@ -4,13 +4,13 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import abstracts.AbstractPage;
 
 import java.util.List;
 
 
 
-public class DemoqaTabs extends PageObject {
+public class DemoqaTabs extends AbstractPage {
 
 
 

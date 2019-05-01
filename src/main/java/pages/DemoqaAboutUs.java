@@ -3,11 +3,14 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import abstracts.AbstractPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
-public class DemoqaAboutUs extends PageObject {
+public class DemoqaAboutUs extends AbstractPage {
 
+  private static final Logger LOG = LoggerFactory.getLogger(DemoqaAboutUs.class);
 
   public DemoqaAboutUs(WebDriver driver) {
     super(driver);
@@ -18,7 +21,7 @@ public class DemoqaAboutUs extends PageObject {
   private WebElement aboutUsText;
 
   public String getAboutUsText() {
-  logger.info("Get text from article from About Us page.");
+    LOG.info("Get text from article from About Us page.");
   return utils.getText(aboutUsText);
   }
 }

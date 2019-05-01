@@ -4,8 +4,10 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
-import utilsobjects.Draggable;
+import abstracts.AbstractPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import utils.Draggable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,8 +15,9 @@ import java.util.List;
 
 
 
-public class DemoqaSelectable extends PageObject {
+public class DemoqaSelectable extends AbstractPage {
 
+  private static final Logger LOG = LoggerFactory.getLogger(DemoqaSelectable.class);
 
   public DemoqaSelectable(WebDriver driver) {
     super(driver);
@@ -39,40 +42,40 @@ public class DemoqaSelectable extends PageObject {
   private List<WebElement> serializeFeedbackItems;
 
   public DemoqaSelectable selectDefaltFunctionalityOneItem(String title) {
-    logger.info("Select one item " + title + " on Defalt Functionality");
+    LOG.info("Select one item " + title + " on Defalt Functionality");
     utils.getActions().selectItemByClick(defaultFunctionalityItems, title);
     return this;
   }
 
   public DemoqaSelectable selectDisplayAsGridOneItem(String title) {
-    logger.info("Select one item " + title + " on Display As Grid");
+    LOG.info("Select one item " + title + " on Display As Grid");
     utils.getActions().selectItemByClick(displayAsGridItems, title);
     return this;
   }
 
   public DemoqaSelectable selectSerializeFeedbackOneItem(String title) {
-    logger.info("Select one item " + title + " on Serialize Feedback");
+    LOG.info("Select one item " + title + " on Serialize Feedback");
     utils.getActions().selectItemByClick(serializeFeedbackItems, title);
     return this;
   }
 
   public boolean isDefaltFunctionalityItemSelected(String title) {
-    logger.info("Is " + title + " is selected on Defalt Functionality");
+    LOG.info("Is " + title + " is selected on Defalt Functionality");
     return defaultFunctionalityItems.get(utils.getId(defaultFunctionalityItems, title)).getAttribute("class").contains(selectedCss);
   }
 
   public boolean isDisplayAsGridItemSelected(String title) {
-    logger.info("Is " + title + " is selected on Display As Grid");
+    LOG.info("Is " + title + " is selected on Display As Grid");
     return displayAsGridItems.get(utils.getId(displayAsGridItems, title)).getAttribute("class").contains(selectedCss);
   }
 
   public boolean isSerializeFeedbackItemSelected(String title) {
-    logger.info("Is " + title + " is selected on Serialize Feedback");
+    LOG.info("Is " + title + " is selected on Serialize Feedback");
     return serializeFeedbackItems.get(utils.getId(serializeFeedbackItems, title)).getAttribute("class").contains(selectedCss);
   }
 
   public DemoqaSelectable selectDefaltFunctionalityMoreItems(String one, String two) {
-    logger.info("Select more items from item " + one + " to " + two + " on Defalt Functionality");
+    LOG.info("Select more items from item " + one + " to " + two + " on Defalt Functionality");
     Draggable objOne = new Draggable(defaultFunctionalityItems.get(utils.getId(defaultFunctionalityItems, one)));
     Draggable objTwo = new Draggable(defaultFunctionalityItems.get(utils.getId(defaultFunctionalityItems, two)));
     utils.getActions().selectFromCenterToCenter(objOne, objTwo);
@@ -80,7 +83,7 @@ public class DemoqaSelectable extends PageObject {
   }
 
   public DemoqaSelectable selectDisplayAsGridMoreItems(String one, String two) {
-    logger.info("Select more items from item " + one + " to " + two + " on Display As Grid");
+    LOG.info("Select more items from item " + one + " to " + two + " on Display As Grid");
     Draggable objOne = new Draggable(displayAsGridItems.get(utils.getId(displayAsGridItems, one)));
     Draggable objTwo = new Draggable(displayAsGridItems.get(utils.getId(displayAsGridItems, two)));
     utils.getActions().selectFromCenterToCenter(objOne, objTwo);
@@ -88,7 +91,7 @@ public class DemoqaSelectable extends PageObject {
   }
 
   public DemoqaSelectable selectSerializeFeedbackMoreItems(String one, String two) {
-    logger.info("Select more items from item " + one + " to " + two + " on Serialize Feedback");
+    LOG.info("Select more items from item " + one + " to " + two + " on Serialize Feedback");
     Draggable objOne = new Draggable(serializeFeedbackItems.get(utils.getId(serializeFeedbackItems, one)));
     Draggable objTwo = new Draggable(serializeFeedbackItems.get(utils.getId(serializeFeedbackItems, two)));
     utils.getActions().selectFromCenterToCenter(objOne, objTwo);
@@ -100,19 +103,19 @@ public class DemoqaSelectable extends PageObject {
   }
 
   public DemoqaSelectable selectDefaltFunctionalityMoreItemsWithCTRL(List<String> titles) {
-    logger.info("Select items " + titles + " on Defalt Functionality");
+    LOG.info("Select items " + titles + " on Defalt Functionality");
     utils.getActions().selectItemByClickWithCTRL(defaultFunctionalityItems, titles);
     return this;
   }
 
   public DemoqaSelectable selectDisplayAsGridMoreItemsWithCTRL(List<String> titles) {
-    logger.info("Select items " + titles + " on Display As Grid");
+    LOG.info("Select items " + titles + " on Display As Grid");
     utils.getActions().selectItemByClickWithCTRL(displayAsGridItems, titles);
     return this;
   }
 
   public DemoqaSelectable selectSerializeFeedbackMoreItemsWithCTRL(List<String> titles) {
-    logger.info("Select items " + titles + " on Serialize Feedback");
+    LOG.info("Select items " + titles + " on Serialize Feedback");
     utils.getActions().selectItemByClickWithCTRL(serializeFeedbackItems, titles);
     return this;
   }

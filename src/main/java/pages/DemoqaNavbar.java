@@ -3,13 +3,13 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import abstracts.AbstractPage;
 
 import java.util.List;
 
 
 
-public class DemoqaNavbar extends PageObject {
+public class DemoqaNavbar extends AbstractPage {
 
 
 

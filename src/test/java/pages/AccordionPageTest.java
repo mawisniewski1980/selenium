@@ -2,12 +2,13 @@ package pages;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import testobject.TestObject;
+import abstracts.AbstractTest;
+import utils.Property;
 
 import static org.testng.Assert.assertEquals;
 
 
-public class DemoqaAccordionTest extends TestObject {
+public class AccordionPageTest extends AbstractTest {
 
 
   private DemoqaAccordion demoqaAccordion;
@@ -15,7 +16,7 @@ public class DemoqaAccordionTest extends TestObject {
 
   @BeforeTest
   public void setUrl() {
-    driver.navigate().to("http://demoqa.com/");
+    driver.navigate().to(Property.getInstance().getProp("pageurl"));
     demoqaAccordion = new DemoqaAccordion(driver);
     commonElements = new DemoqaCommonElements(driver);
     commonElements.demoqaMenu.accordionLinkClick();

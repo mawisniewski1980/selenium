@@ -4,13 +4,17 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import abstracts.AbstractPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 
 
-public class DemoqaHome extends PageObject {
+public class DemoqaHome extends AbstractPage {
+
+  private static final Logger LOG = LoggerFactory.getLogger(DemoqaHome.class);
 
 
   public DemoqaHome(WebDriver driver) {
@@ -50,7 +54,7 @@ public class DemoqaHome extends PageObject {
   }
 
   public String getTabsContentTitle(String title) {
-    logger.info("Get title from content");
+    LOG.info("Get title from content");
     return tabsContent.get(utils.getId(tabsLinks, title)).getText();
   }
 

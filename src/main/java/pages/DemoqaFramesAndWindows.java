@@ -4,10 +4,10 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import abstracts.AbstractPage;
 
 
-public class DemoqaFramesAndWindows extends PageObject {
+public class DemoqaFramesAndWindows extends AbstractPage {
 
 
   public DemoqaFramesAndWindows(WebDriver driver) {

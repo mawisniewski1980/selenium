@@ -4,22 +4,25 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import abstracts.AbstractPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 
 
-public class DemoqaCommonElements extends PageObject {
+public class DemoqaCommonElements extends AbstractPage {
 
+  private static final Logger LOG = LoggerFactory.getLogger(DemoqaCommonElements.class);
 
   public DemoqaNavbar demoqaNavbar;
-  public DemoqaPageObjectMenu demoqaMenu;
+  public DemoqaAbstractPageMenu demoqaMenu;
 
   public DemoqaCommonElements(WebDriver driver) {
     super(driver);
     this.demoqaNavbar = new DemoqaNavbar(driver);
-    this.demoqaMenu = new DemoqaPageObjectMenu(driver);
+    this.demoqaMenu = new DemoqaAbstractPageMenu(driver);
   }
 
   private final String titleCss = ".entry-title";
@@ -39,7 +42,7 @@ public class DemoqaCommonElements extends PageObject {
   private List<WebElement> tabsLinksA;
 
   public String getEntryTitle() {
-    logger.info("Title of entry: " + title.getText());
+    LOG.info("Title of entry: " + title.getText());
     return title.getText();
   }
 
@@ -47,7 +50,7 @@ public class DemoqaCommonElements extends PageObject {
     if (!(tabsLinksA.get(utils.getId(tabsLinksA, title)).getAttribute("class").contains("ui-state-active"))) {
       utils.linkClick(tabsLinksA, title);
     } else {
-      logger.info("Tab '" + title + "' is active.");
+      LOG.info("Tab '" + title + "' is active.");
     }
   }
 

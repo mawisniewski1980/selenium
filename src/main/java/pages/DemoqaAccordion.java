@@ -4,13 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import abstracts.AbstractPage;
 
 import java.util.List;
 
 
 
-public class DemoqaAccordion extends PageObject {
+public class DemoqaAccordion extends AbstractPage {
 
 
   public DemoqaAccordion(WebDriver driver) {

@@ -5,11 +5,11 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
-import utilsobjects.Draggable;
+import abstracts.AbstractPage;
+import utils.Draggable;
 
 
-public class DemoqaResizable extends PageObject {
+public class DemoqaResizable extends AbstractPage {
 
 
   public DemoqaResizable(WebDriver driver) {

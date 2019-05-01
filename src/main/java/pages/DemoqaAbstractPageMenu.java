@@ -3,16 +3,16 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import abstracts.AbstractPage;
 
 import static selectors.Selectors.ACCORDION;
 
 
-public class DemoqaPageObjectMenu extends PageObject {
+public class DemoqaAbstractPageMenu extends AbstractPage {
 
 
 
-  public DemoqaPageObjectMenu(WebDriver driver) {
+  public DemoqaAbstractPageMenu(WebDriver driver) {
     super(driver);
   }
 
@@ -109,14 +109,9 @@ public class DemoqaPageObjectMenu extends PageObject {
     return new DemoqaAutocomplete(driver);
   }
 
-  public DemoqaPageObjectMenu menuLinkClick() {
+  public DemoqaAbstractPageMenu menuLinkClick() {
     utils.linkClick(menuLink);
-    return new DemoqaPageObjectMenu(driver);
-  }
-
-  public DemoqaSlider sliderLinkClick() {
-    utils.linkClick(sliderLink);
-    return new DemoqaSlider(driver);
+    return new DemoqaAbstractPageMenu(driver);
   }
 
   public DemoqaTabs tabsLinkClick() {

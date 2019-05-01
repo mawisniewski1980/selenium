@@ -1,4 +1,4 @@
-package webdriverobjects;
+package configuration;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,29 +9,28 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.logging.Logger;
 
+public final class WebDriverInit {
 
-public final class WebDriverObject {
+  private static final Logger LOG = LoggerFactory.getLogger(WebDriverInit.class);
 
-  private static final Logger LOG = Logger.getLogger(WebDriverObject.class.getName());
+  private static WebDriverInit instance;
 
-  private static WebDriverObject instance;
-  private WebDriver driver;
-
-  private WebDriverObject() {
+  private WebDriverInit() {
   }
 
-  public static WebDriverObject getInstance()
+  public static WebDriverInit getInstance()
   {
     if (instance == null)
     {
-      synchronized (WebDriverObject.class)
+      synchronized (WebDriverInit.class)
       {
         if(instance==null)
         {
-          instance = new WebDriverObject();
+          instance = new WebDriverInit();
         }
       }
     }
@@ -43,8 +42,7 @@ public final class WebDriverObject {
     LOG.info("Driver Chrome Browser");
     WebDriverManager.chromedriver().setup();
     ChromeOptions options = new ChromeOptions();
-    options.addArguments("--incognito");
-    options.addArguments("--start-maximized");
+    options.addArguments("--incognito", "--start-maximized");
     return new ChromeDriver(options);
   }
 

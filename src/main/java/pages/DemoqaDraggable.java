@@ -5,14 +5,14 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
-import utilsobjects.Draggable;
+import abstracts.AbstractPage;
+import utils.Draggable;
 
 import java.util.List;
 
 
 
-public class DemoqaDraggable extends PageObject {
+public class DemoqaDraggable extends AbstractPage {
 
 
   public DemoqaDraggable(WebDriver driver) {

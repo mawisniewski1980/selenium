@@ -4,14 +4,14 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.PageObject;
+import abstracts.AbstractPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
+public class DemoqaServices extends AbstractPage {
 
-
-public class DemoqaServices extends PageObject {
-
-
+  private static final Logger LOG = LoggerFactory.getLogger(DemoqaServices.class);
 
   public DemoqaServices(WebDriver driver) {
     super(driver);
@@ -22,7 +22,7 @@ public class DemoqaServices extends PageObject {
   private WebElement demoqaServicesText;
 
   public String getDemoqaServicesText(){
-    logger.info("Get text from Demoqa Services page");
+    LOG.info("Get text from Demoqa Services page");
     return utils.getText(demoqaServicesText);
   }
 }

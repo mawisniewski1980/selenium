@@ -1,22 +1,22 @@
-package testobject;
+package abstracts;
 
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import utilsobjects.Utils;
-import webdriverobjects.WebDriverObject;
+import utils.Utils;
+import configuration.WebDriverInit;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Java6Assertions.fail;
 
-public abstract class TestObject {
+public abstract class AbstractTest {
 
   protected Logger logger = LoggerFactory.getLogger(getClass());
 
-  protected WebDriver driver = WebDriverObject.getInstance().initChromeBrowser();
+  protected WebDriver driver = WebDriverInit.getInstance().initChromeBrowser();
   protected Utils utils = new Utils(driver);
 
 
