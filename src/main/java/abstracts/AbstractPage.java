@@ -1,27 +1,24 @@
 package abstracts;
 
+import factories.MyPageFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utils.Utils;
 
 public abstract class AbstractPage {
 
   private static final Logger LOG = LoggerFactory.getLogger(AbstractPage.class);
 
-  protected WebDriver driver;
-  protected Utils utils;
+  private MyPageFactory pageFactory;
 
-  public AbstractPage(WebDriver driver) {
-    this.driver = driver;
-    this.utils = new Utils(driver);
-    PageFactory.initElements(new AjaxElementLocatorFactory(driver, 90), this);
+  public AbstractPage(MyPageFactory pageFactory, WebDriver driver) {
+    this.pageFactory = pageFactory;
+    PageFactory.initElements(new AjaxElementLocatorFactory(driver, 30), this);
   }
 
-  public Utils utils() {
-    return utils;
+  public MyPageFactory getPageFactory() {
+    return pageFactory;
   }
-
 }

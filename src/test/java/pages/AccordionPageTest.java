@@ -8,18 +8,15 @@ import static org.assertj.core.api.Assertions.*;
 
 public class AccordionPageTest extends AbstractTest {
 
-  private AccordionPage accordionPage;
-
   @BeforeTest
   public void beforeTest() {
     openUrl();
-    accordionPage = new AccordionPage(driver);
-    navi.accordionLinkClick();
+    myPageFactory.getNavigationPage().accordionLinkClick();
   }
 
   @Test
   public void checkPageTitle() {
-   assertThat("Accordion – ToolsQA – Demo Website to Practice Automation").isEqualTo(accordionPage.utils().getTitle());
+   assertThat("Accordion – ToolsQA – Demo Website to Practice Automation").isEqualTo(myPageFactory.getUtils().getTitle());
   }
 
 }

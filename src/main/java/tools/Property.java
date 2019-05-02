@@ -1,12 +1,10 @@
-package utils;
+package tools;
 
-import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Objects;
 import java.util.Properties;
 
 public enum Property {
@@ -16,9 +14,10 @@ public enum Property {
     private static final Logger LOG = LoggerFactory.getLogger(Property.class);
 
     private Properties prop = new Properties();
+    private String config = "config.properties";
 
     Property() {
-        try (InputStream inputStream = Property.class.getClassLoader().getResourceAsStream("config.properties")) {
+        try (InputStream inputStream = Property.class.getClassLoader().getResourceAsStream(config)) {
             prop.load(inputStream);
         } catch (IOException  e) {
             e.printStackTrace();

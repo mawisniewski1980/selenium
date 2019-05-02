@@ -1,5 +1,6 @@
 package pages;
 
+import factories.MyPageFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,11 @@ import static selectors.Selectors.ACCORDION;
 
 
 public class NavigationPage extends AbstractPage {
+
+
+  public NavigationPage(MyPageFactory pageFactory, WebDriver driver) {
+    super(pageFactory, driver);
+  }
 
   private final String registrationLinkCss = "#menu-item-374";
   @FindBy(css = registrationLinkCss)
@@ -67,18 +73,14 @@ public class NavigationPage extends AbstractPage {
   private WebElement framesAndWindows;
 
 
-  public NavigationPage(WebDriver driver) {
-    super(driver);
-  }
 
 
 ///////////////////////////////////////////////
 
 
-
   public AccordionPage accordionLinkClick() {
-    utils.linkClick(accordionLink);
-    return new AccordionPage(driver);
+    getPageFactory().getUtils().linkClick(accordionLink);
+    return getPageFactory().getAccordionPage();
   }
 
 

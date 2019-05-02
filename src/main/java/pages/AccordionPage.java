@@ -1,5 +1,6 @@
 package pages;
 
+import factories.MyPageFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,8 +14,8 @@ import java.util.List;
 public class AccordionPage extends AbstractPage {
 
 
-  public AccordionPage(WebDriver driver) {
-    super(driver);
+  public AccordionPage(MyPageFactory pageFactory, WebDriver driver) {
+    super(pageFactory, driver);
   }
 
   private final String defaultFunctionalityItemsCss = "#accordion h3";
@@ -35,17 +36,19 @@ public class AccordionPage extends AbstractPage {
   @FindBy(css = fillSpaceItemsCss)
   private List<WebElement> fillSpaceItems;
 
+
+
   private boolean checkIfSectionIsExpanded(List<WebElement> listOfElements, String title) {
-    return listOfElements.get(utils.getId(listOfElements, title)).getAttribute("aria-expanded").equals("true");
+    return listOfElements.get(getPageFactory().getUtils().getId(listOfElements, title)).getAttribute("aria-expanded").equals("true");
   }
 
   private String getTextFromExpandedDiv(List<WebElement> listOfElements, String title){
-    String expandetDivID = listOfElements.get(utils.getId(listOfElements, title)).getAttribute("aria-controls");
-    return utils.findNextElementByCssSelector(driver.findElement(By.id(expandetDivID)), By.tagName("p")).getText();
+    String expandetDivID = listOfElements.get(getPageFactory().getUtils().getId(listOfElements, title)).getAttribute("aria-controls");
+    return getPageFactory().getUtils().findNextElementByCssSelector(getPageFactory().getDriver().findElement(By.id(expandetDivID)), By.tagName("p")).getText();
   }
 
   public AccordionPage clickDefFuncSection(String title) {
-    utils.linkClick(defaultFunctionalityItems, title);
+    getPageFactory().getUtils().linkClick(defaultFunctionalityItems, title);
     return this;
   }
 
@@ -62,16 +65,16 @@ public class AccordionPage extends AbstractPage {
   }
 
   public AccordionPage clickCustIcoToggleButton() {
-    utils.linkClick(customizeIconsButton);
+    getPageFactory().getUtils().linkClick(customizeIconsButton);
     return this;
   }
 
   public boolean checkIfIcoIsVisibleOnCustIcoTab(String title) {
-    return utils.findNextElementsByCssSelector(customizeIconsItems.get(utils.getId(customizeIconsItems, title)), By.cssSelector(customizeIconsOnItemsCss)).size() > 0;
+    return getPageFactory().getUtils().findNextElementsByCssSelector(customizeIconsItems.get(getPageFactory().getUtils().getId(customizeIconsItems, title)), By.cssSelector(customizeIconsOnItemsCss)).size() > 0;
   }
 
   public AccordionPage clickCustIcoSection(String title) {
-    utils.linkClick(customizeIconsItems, title);
+    getPageFactory().getUtils().linkClick(customizeIconsItems, title);
     return this;
   }
 
@@ -88,7 +91,7 @@ public class AccordionPage extends AbstractPage {
   }
 
   public AccordionPage clickFillSpaceSection(String title) {
-    utils.linkClick(fillSpaceItems, title);
+    getPageFactory().getUtils().linkClick(fillSpaceItems, title);
     return this;
   }
 

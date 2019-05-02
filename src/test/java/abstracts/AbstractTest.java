@@ -1,13 +1,13 @@
 package abstracts;
 
+import factories.MyPageFactory;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import pages.NavigationPage;
-import utils.Property;
-import configuration.WebDriverInit;
+import tools.Property;
+import tools.WebDriverInit;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,8 +17,8 @@ public abstract class AbstractTest {
 
   private static final Logger LOG = LoggerFactory.getLogger(AbstractTest.class);
 
-  protected WebDriver driver = WebDriverInit.getInstance().initChromeBrowser();
-  protected NavigationPage navi = new NavigationPage(driver);
+  private WebDriver driver = WebDriverInit.INSTANCE.initChromeBrowser();
+  protected MyPageFactory myPageFactory = new MyPageFactory(driver);
 
   @BeforeClass
   public void setUpBeforeClass() {

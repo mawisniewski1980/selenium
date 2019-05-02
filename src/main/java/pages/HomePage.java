@@ -1,6 +1,7 @@
 package pages;
 
 
+import factories.MyPageFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,8 +18,8 @@ public class HomePage extends AbstractPage {
   private static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
 
 
-  public HomePage(WebDriver driver) {
-    super(driver);
+  public HomePage(MyPageFactory pageFactory, WebDriver driver) {
+    super(pageFactory, driver);
   }
 
   private final String imgLogoCss = "#site_navigation a.site-anchor";
@@ -49,7 +50,9 @@ public class HomePage extends AbstractPage {
   @FindBy(css = gplusIconCss)
   private WebElement gplusIcon;
 
-  public void tabsLinkClick(String title) {
+
+
+/*  public void tabsLinkClick(String title) {
     utils.linkClick(tabsLinks, title);
   }
 
@@ -60,6 +63,6 @@ public class HomePage extends AbstractPage {
 
   public void clickOnFacebookIcon() {
     utils.linkClick(facebookIcon);
-  }
+  }*/
 
 }
