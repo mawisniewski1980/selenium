@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Actions {
 
-  Logger logger = LoggerFactory.getLogger(getClass());
+  private static final Logger LOG = LoggerFactory.getLogger(Actions.class);
 
 
   private WebDriver driver;
@@ -26,14 +26,14 @@ public class Actions {
   }
 
   public Actions dragAndDrop(Draggable drag, Draggable drop) {
-    logger.info("Drag element " + drag.getCenter() + " to " + drop.getCenter());
+    LOG.info("Drag element " + drag.getCenter() + " to " + drop.getCenter());
     actions.dragAndDrop(drag.getElement(), drop.getElement());
     actions.build().perform();
     return this;
   }
 
   public Actions dragAndDropByOffset(Draggable drag, int xOffset, int yOffset) {
-    logger.info("Drag element by offset " + "(" + xOffset + "," + yOffset + ")");
+    LOG.info("Drag element by offset " + "(" + xOffset + "," + yOffset + ")");
     actions.dragAndDropBy(drag.getElement(), xOffset, yOffset);
     actions.build().perform();
     return this;
@@ -101,7 +101,6 @@ public class Actions {
 
   public Actions moveByXYWithWait(Draggable drag, int xOffset, int yOffset, int wait) {
     actions.moveToElement(drag.getElement()).clickAndHold().moveByOffset(xOffset, yOffset);
-    new Utils(driver).getWaits().waitTime(wait);
     actions.release().build().perform();
     return this;
   }
@@ -148,14 +147,14 @@ public class Actions {
   }
 
   public Actions scrollToBottom() {
-    // logger.info("Scroll to bottom");
+    // LOG.info("Scroll to bottom");
     //((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
     ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight));");
     return this;
   }
 
   public Actions scrollTo(WebElement element) {
-    // logger.info("Scroll to element " + element.getLocation());
+    // LOG.info("Scroll to element " + element.getLocation());
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     return this;
   }

@@ -1,19 +1,23 @@
 package utils;
 
+import com.google.common.base.Strings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Properties;
 
-public final class Property {
+public enum Property {
 
-    private static Property ourInstance = new Property();
+    INSTANCE;
+
+    private static final Logger LOG = LoggerFactory.getLogger(Property.class);
+
     private Properties prop = new Properties();
 
-    public static Property getInstance() {
-        return ourInstance;
-    }
-
-    private Property() {
+    Property() {
         try (InputStream inputStream = Property.class.getClassLoader().getResourceAsStream("config.properties")) {
             prop.load(inputStream);
         } catch (IOException  e) {
@@ -22,6 +26,10 @@ public final class Property {
     }
 
     public String getProp(String key) {
-        return prop.getProperty(key);
+        return isPropertyExists(key) ? prop.getProperty(key) : null;
+    }
+
+    private boolean isPropertyExists(String key) {
+        return prop.get(key) != null;
     }
 }

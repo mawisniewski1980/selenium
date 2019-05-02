@@ -20,8 +20,8 @@ public abstract class AbstractPage {
     PageFactory.initElements(new AjaxElementLocatorFactory(driver, 90), this);
   }
 
-  public String getTitle() {
-    LOG.info("Title of page: {}", driver.getTitle());
-    return driver.getTitle();
+  public Utils utils() {
+    return utils;
   }
+
 }

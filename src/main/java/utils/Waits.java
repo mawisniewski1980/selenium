@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Waits {
 
-  Logger logger = LoggerFactory.getLogger(getClass());
+  private static final Logger LOG = LoggerFactory.getLogger(Waits.class);
 
   private WebDriverWait waits;
 
@@ -47,7 +47,7 @@ public class Waits {
    * http://www.testingexcellence.com/webdriver-wait-page-load-example-java/
    */
   public Waits waitForPageLoad() {
-    logger.info("Wait for page load finish.");
+    LOG.info("Wait for page load finish.");
     ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
       public Boolean apply(WebDriver driver) {
         return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
@@ -59,7 +59,7 @@ public class Waits {
 
   public Waits waitTime(long timeout) {
     try {
-      logger.info("Wait: " + timeout + " seconds");
+      LOG.info("Wait: " + timeout + " seconds");
       TimeUnit.SECONDS.sleep(timeout);
     } catch (InterruptedException e) {
       e.printStackTrace();

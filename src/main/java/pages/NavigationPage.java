@@ -5,16 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import abstracts.AbstractPage;
 
+
 import static selectors.Selectors.ACCORDION;
 
 
-public class DemoqaAbstractPageMenu extends AbstractPage {
-
-
-
-  public DemoqaAbstractPageMenu(WebDriver driver) {
-    super(driver);
-  }
+public class NavigationPage extends AbstractPage {
 
   private final String registrationLinkCss = "#menu-item-374";
   @FindBy(css = registrationLinkCss)
@@ -40,7 +35,6 @@ public class DemoqaAbstractPageMenu extends AbstractPage {
   @FindBy(css = sortableLinkCss)
   private WebElement sortableLink;
 
-  private final String accordionLinkCss = "#menu-item-144";
   @FindBy(xpath = ACCORDION)
   private WebElement accordionLink;
 
@@ -73,60 +67,19 @@ public class DemoqaAbstractPageMenu extends AbstractPage {
   private WebElement framesAndWindows;
 
 
-
-  public DemoqaDraggable draggableLinkClick() {
-    utils.linkClick(draggableLink);
-    return new DemoqaDraggable(driver);
+  public NavigationPage(WebDriver driver) {
+    super(driver);
   }
 
-  public DemoqaDroppable droppableLinkClick() {
-    utils.linkClick(droppableLink);
-    return new DemoqaDroppable(driver);
-  }
 
-  public DemoqaResizable resizableLinkClick() {
-    utils.linkClick(resizableLink);
-    return new DemoqaResizable(driver);
-  }
+///////////////////////////////////////////////
 
-  public DemoqaSelectable selectableLinkClick() {
-    utils.linkClick(selectableLink);
-    return new DemoqaSelectable(driver);
-  }
 
-  public DemoqaSortable sortableLinkClick() {
-    utils.linkClick(sortableLink);
-    return new DemoqaSortable(driver);
-  }
 
-  public DemoqaAccordion accordionLinkClick() {
+  public AccordionPage accordionLinkClick() {
     utils.linkClick(accordionLink);
-    return new DemoqaAccordion(driver);
+    return new AccordionPage(driver);
   }
 
-  public DemoqaAutocomplete autocompleteLinkClick() {
-    utils.linkClick(autocompleteLink);
-    return new DemoqaAutocomplete(driver);
-  }
-
-  public DemoqaAbstractPageMenu menuLinkClick() {
-    utils.linkClick(menuLink);
-    return new DemoqaAbstractPageMenu(driver);
-  }
-
-  public DemoqaTabs tabsLinkClick() {
-    utils.linkClick(tabsLink);
-    return new DemoqaTabs(driver);
-  }
-
-  public DemoqaTooltip tooltipLinkClick() {
-    utils.linkClick(tooltipLink);
-    return new DemoqaTooltip(driver);
-  }
-
-  public DemoqaFramesAndWindows framesAndWindowsLinkClick() {
-    utils.linkClick(framesAndWindows);
-    return new DemoqaFramesAndWindows(driver);
-  }
 
 }

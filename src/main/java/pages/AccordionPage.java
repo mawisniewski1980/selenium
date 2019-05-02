@@ -10,10 +10,10 @@ import java.util.List;
 
 
 
-public class DemoqaAccordion extends AbstractPage {
+public class AccordionPage extends AbstractPage {
 
 
-  public DemoqaAccordion(WebDriver driver) {
+  public AccordionPage(WebDriver driver) {
     super(driver);
   }
 
@@ -44,9 +44,8 @@ public class DemoqaAccordion extends AbstractPage {
     return utils.findNextElementByCssSelector(driver.findElement(By.id(expandetDivID)), By.tagName("p")).getText();
   }
 
-  public DemoqaAccordion clickDefFuncSection(String title) {
+  public AccordionPage clickDefFuncSection(String title) {
     utils.linkClick(defaultFunctionalityItems, title);
-    utils.getWaits().waitTime(1);
     return this;
   }
 
@@ -62,7 +61,7 @@ public class DemoqaAccordion extends AbstractPage {
     return emptyText;
   }
 
-  public DemoqaAccordion clickCustIcoToggleButton() {
+  public AccordionPage clickCustIcoToggleButton() {
     utils.linkClick(customizeIconsButton);
     return this;
   }
@@ -71,9 +70,8 @@ public class DemoqaAccordion extends AbstractPage {
     return utils.findNextElementsByCssSelector(customizeIconsItems.get(utils.getId(customizeIconsItems, title)), By.cssSelector(customizeIconsOnItemsCss)).size() > 0;
   }
 
-  public DemoqaAccordion clickCustIcoSection(String title) {
+  public AccordionPage clickCustIcoSection(String title) {
     utils.linkClick(customizeIconsItems, title);
-    utils.getWaits().waitTime(1);
     return this;
   }
 
@@ -89,9 +87,8 @@ public class DemoqaAccordion extends AbstractPage {
     return emptyText;
   }
 
-  public DemoqaAccordion clickFillSpaceSection(String title) {
+  public AccordionPage clickFillSpaceSection(String title) {
     utils.linkClick(fillSpaceItems, title);
-    utils.getWaits().waitTime(1);
     return this;
   }
 

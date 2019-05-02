@@ -12,12 +12,12 @@ import java.util.List;
 
 
 
-public class DemoqaHome extends AbstractPage {
+public class HomePage extends AbstractPage {
 
-  private static final Logger LOG = LoggerFactory.getLogger(DemoqaHome.class);
+  private static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
 
 
-  public DemoqaHome(WebDriver driver) {
+  public HomePage(WebDriver driver) {
     super(driver);
   }
 

@@ -5,7 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import utils.Utils;
+import pages.NavigationPage;
+import utils.Property;
 import configuration.WebDriverInit;
 
 import java.util.concurrent.TimeUnit;
@@ -14,17 +15,15 @@ import static org.assertj.core.api.Java6Assertions.fail;
 
 public abstract class AbstractTest {
 
-  protected Logger logger = LoggerFactory.getLogger(getClass());
+  private static final Logger LOG = LoggerFactory.getLogger(AbstractTest.class);
 
   protected WebDriver driver = WebDriverInit.getInstance().initChromeBrowser();
-  protected Utils utils = new Utils(driver);
-
+  protected NavigationPage navi = new NavigationPage(driver);
 
   @BeforeClass
   public void setUpBeforeClass() {
 
     if (driver == null) {
-      logger.error("Driver cannot be null");
       fail("Driver cannot be null");
     }
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -37,6 +36,12 @@ public abstract class AbstractTest {
   public void tearDownAfterClass() {
     driver.manage().deleteAllCookies();
     driver.quit();
+  }
+
+  protected void openUrl() {
+    String url = Property.INSTANCE.getProp("pageUrl");
+    LOG.info("Opening page {}", url);
+    driver.navigate().to(url);
   }
 
 }
