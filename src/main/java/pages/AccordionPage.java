@@ -1,11 +1,10 @@
 package pages;
 
+import abstracts.AbstractPage;
 import factories.MyPageFactory;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import abstracts.AbstractPage;
 
 import java.util.List;
 
@@ -14,8 +13,8 @@ import java.util.List;
 public class AccordionPage extends AbstractPage {
 
 
-  public AccordionPage(MyPageFactory pageFactory, WebDriver driver) {
-    super(pageFactory, driver);
+  public AccordionPage(MyPageFactory pageFactory) {
+    super(pageFactory);
   }
 
   private final String defaultFunctionalityItemsCss = "#accordion h3";

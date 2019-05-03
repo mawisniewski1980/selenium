@@ -18,9 +18,9 @@ public class MyPageFactory {
 
     public MyPageFactory(WebDriver driver) {
         this.driver = driver;
-        navigationPage = new NavigationPage(this, driver);
-        homePage = new HomePage(this, driver);
-        accordionPage = new AccordionPage(this, driver);
+        navigationPage = new NavigationPage(this);
+        homePage = new HomePage(this);
+        accordionPage = new AccordionPage(this);
         utils = new Utils(driver);
     }
 

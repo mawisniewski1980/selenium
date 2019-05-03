@@ -1,11 +1,10 @@
 package pages;
 
 
+import abstracts.AbstractPage;
 import factories.MyPageFactory;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import abstracts.AbstractPage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,8 +17,8 @@ public class HomePage extends AbstractPage {
   private static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
 
 
-  public HomePage(MyPageFactory pageFactory, WebDriver driver) {
-    super(pageFactory, driver);
+  public HomePage(MyPageFactory pageFactory) {
+    super(pageFactory);
   }
 
   private final String imgLogoCss = "#site_navigation a.site-anchor";

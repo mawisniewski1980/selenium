@@ -1,11 +1,9 @@
 package pages;
 
+import abstracts.AbstractPage;
 import factories.MyPageFactory;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import abstracts.AbstractPage;
-
 
 import static selectors.Selectors.ACCORDION;
 
@@ -13,8 +11,8 @@ import static selectors.Selectors.ACCORDION;
 public class NavigationPage extends AbstractPage {
 
 
-  public NavigationPage(MyPageFactory pageFactory, WebDriver driver) {
-    super(pageFactory, driver);
+  public NavigationPage(MyPageFactory pageFactory) {
+    super(pageFactory);
   }
 
   private final String registrationLinkCss = "#menu-item-374";

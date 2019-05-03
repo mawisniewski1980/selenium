@@ -13,12 +13,16 @@ public abstract class AbstractPage {
 
   private MyPageFactory pageFactory;
 
-  public AbstractPage(MyPageFactory pageFactory, WebDriver driver) {
+  public AbstractPage(MyPageFactory pageFactory) {
     this.pageFactory = pageFactory;
-    PageFactory.initElements(new AjaxElementLocatorFactory(driver, 30), this);
+    PageFactory.initElements(new AjaxElementLocatorFactory(this.pageFactory.getDriver(), 30), this);
   }
 
   public MyPageFactory getPageFactory() {
     return pageFactory;
+  }
+
+  public WebDriver getDriver() {
+    return pageFactory.getDriver();
   }
 }
