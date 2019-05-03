@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static org.jsoup.helper.Validate.fail;
+
 
 public class Utils {
 
@@ -73,6 +75,7 @@ public class Utils {
   }
 
   public boolean isElementPresent(WebElement element) {
+    LOG.info("Check element present {}", element);
     return element.isDisplayed();
   }
 
@@ -94,11 +97,13 @@ public class Utils {
   }
 
   public String getText(WebElement element) {
-    LOG.info("Get text from element.");
-    if (isElementPresent(element))
+    LOG.info("Get text from element: {}", element);
+    if (isElementPresent(element)) {
       actions.scrollToElement(element);
+    }
+
     else {
-      //fail("Element is not present");
+      fail("Element is not present");
     }
     return element.getText();
   }
@@ -168,6 +173,7 @@ public class Utils {
   public Utils linkClick(WebElement element) {
     LOG.info("Click on link " + element.getText());
     actions.scrollToElement(element);
+    hightLightElement(element);
     element.click();
     return this;
   }

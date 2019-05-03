@@ -1,85 +1,97 @@
 package pages;
 
 import abstracts.AbstractPage;
-import factories.MyPageFactory;
+import factories.SimplePageFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static selectors.Selectors.ACCORDION;
+import static selectors.Selectors.*;
 
 
 public class NavigationPage extends AbstractPage {
 
 
-  public NavigationPage(MyPageFactory pageFactory) {
-    super(pageFactory);
-  }
+    public NavigationPage(SimplePageFactory pageFactory) {
+        super(pageFactory);
+    }
 
-  private final String registrationLinkCss = "#menu-item-374";
-  @FindBy(css = registrationLinkCss)
-  private WebElement registrationLink;
+    @FindBy(xpath = HOME)
+    private WebElement homeLink;
 
-  private final String draggableLinkCss = "#menu-item-140";
-  @FindBy(css = draggableLinkCss)
-  private WebElement draggableLink;
+    @FindBy(xpath = INTERACTIONS)
+    private WebElement interactionsLink;
 
-  private final String droppableLinkCss = "#menu-item-141";
-  @FindBy(css = droppableLinkCss)
-  private WebElement droppableLink;
+    @FindBy(xpath = WIDGETS)
+    private WebElement widgetsLink;
 
-  private final String resizableLinkCss = "#menu-item-143";
-  @FindBy(css = resizableLinkCss)
-  private WebElement resizableLink;
+    @FindBy(xpath = SORTABLE)
+    private WebElement sortableLink;
 
-  private final String selectableLinkCss = "#menu-item-142";
-  @FindBy(css = selectableLinkCss)
-  private WebElement selectableLink;
+    @FindBy(xpath = SELECTABLE)
+    private WebElement selectableLink;
 
-  private final String sortableLinkCss = "#menu-item-151";
-  @FindBy(css = sortableLinkCss)
-  private WebElement sortableLink;
+    @FindBy(xpath = RESIZABLE)
+    private WebElement resizableLink;
 
-  @FindBy(xpath = ACCORDION)
-  private WebElement accordionLink;
+    @FindBy(xpath = DROPPABLE)
+    private WebElement droppableLink;
 
-  private final String autocompleteLinkCss = "#menu-item-145";
-  @FindBy(css = autocompleteLinkCss)
-  private WebElement autocompleteLink;
+    @FindBy(xpath = DRAGGABLE)
+    private WebElement draggableLink;
 
-  private final String datepickerLinkCss = "#menu-item-146";
-  @FindBy(css = datepickerLinkCss)
-  private WebElement datepickerLink;
+    @FindBy(xpath = TOOLTIP)
+    private WebElement tooltipLink;
 
-  private final String menuLinkCss = "#menu-item-147";
-  @FindBy(css = menuLinkCss)
-  private WebElement menuLink;
+    @FindBy(xpath = TABS)
+    private WebElement tabsLink;
 
-  private final String sliderLinkCss = "#menu-item-97";
-  @FindBy(css = sliderLinkCss)
-  private WebElement sliderLink;
+    @FindBy(xpath = SPINNER)
+    private WebElement spinnerLink;
 
-  private final String tabsLinkCss = "#menu-item-98";
-  @FindBy(css = tabsLinkCss)
-  private WebElement tabsLink;
+    @FindBy(xpath = SLIDER)
+    private WebElement sliderLink;
 
-  private final String tooltipLinkCss = "#menu-item-99";
-  @FindBy(css = tooltipLinkCss)
-  private WebElement tooltipLink;
+    @FindBy(xpath = SELECT_MENU)
+    private WebElement selectmenuLink;
 
-  private final String framesAndWindowsCss = "#menu-item-148";
-  @FindBy(css = framesAndWindowsCss)
-  private WebElement framesAndWindows;
+    @FindBy(xpath = PROGRESS_BAR)
+    private WebElement progressbarLink;
+
+    @FindBy(xpath = MENU)
+    private WebElement menuLink;
+
+    @FindBy(xpath = DIALOG)
+    private WebElement dialogLink;
+
+    @FindBy(xpath = DATEPICKER)
+    private WebElement datepickerLink;
+
+    @FindBy(xpath = CONTROLGROUP)
+    private WebElement controlgroupLink;
+
+    @FindBy(xpath = CHECKBOX_RADIO)
+    private WebElement checkboxradioLink;
+
+    @FindBy(xpath = BUTTON)
+    private WebElement buttonLink;
+
+    @FindBy(xpath = AUTOCOMPLETE)
+    private WebElement autocompleteLink;
+
+    @FindBy(xpath = ACCORDION)
+    private WebElement accordionLink;
 
 
+    public HomePage homePageClick() {
+        factory().utils().linkClick(homeLink);
+        return factory().getHomePage();
+    }
 
+    public AccordionPage accordionLinkClick() {
+        factory().utils().linkClick(accordionLink);
+        return factory().getAccordionPage();
+    }
 
-///////////////////////////////////////////////
-
-
-  public AccordionPage accordionLinkClick() {
-    getPageFactory().getUtils().linkClick(accordionLink);
-    return getPageFactory().getAccordionPage();
-  }
 
 
 }

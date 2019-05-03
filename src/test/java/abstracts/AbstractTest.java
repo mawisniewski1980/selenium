@@ -1,6 +1,6 @@
 package abstracts;
 
-import factories.MyPageFactory;
+import factories.SimplePageFactory;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,8 +17,8 @@ public abstract class AbstractTest {
 
   private static final Logger LOG = LoggerFactory.getLogger(AbstractTest.class);
 
-  private WebDriver driver = WebDriverInit.INSTANCE.initChromeBrowser();
-  protected MyPageFactory myPageFactory = new MyPageFactory(driver);
+  protected WebDriver driver = WebDriverInit.INSTANCE.initChromeBrowser();
+  protected SimplePageFactory factory = new SimplePageFactory(driver);
 
   @BeforeClass
   public void setUpBeforeClass() {

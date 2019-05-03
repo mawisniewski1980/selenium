@@ -2,6 +2,8 @@ package selectors;
 
 public final class Selectors {
 
+    public static final String ENTRY_TITLE = ".entry-title";
+
     public static final String HOME = "//a[contains(text(),'Home')]";
     public static final String INTERACTIONS = "//a[contains(text(),'Interactions')]";
     public static final String WIDGETS = "//a[contains(text(),'Widgets')]";
@@ -25,6 +27,9 @@ public final class Selectors {
     public static final String BUTTON = "//a[contains(text(),'Button')]";
     public static final String AUTOCOMPLETE = "//a[contains(text(),'Autocomplete')]";
     public static final String ACCORDION = "//a[contains(text(),'Accordion')]";
+
+    //HOME PAGE
+    public static final String HOME_LOGO = "#logo-events img";
 
 
 }

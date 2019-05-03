@@ -1,7 +1,6 @@
 package abstracts;
 
-import factories.MyPageFactory;
-import org.openqa.selenium.WebDriver;
+import factories.SimplePageFactory;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.slf4j.Logger;
@@ -11,18 +10,16 @@ public abstract class AbstractPage {
 
   private static final Logger LOG = LoggerFactory.getLogger(AbstractPage.class);
 
-  private MyPageFactory pageFactory;
+  protected SimplePageFactory pageFactory;
 
-  public AbstractPage(MyPageFactory pageFactory) {
+  public AbstractPage(SimplePageFactory pageFactory) {
     this.pageFactory = pageFactory;
     PageFactory.initElements(new AjaxElementLocatorFactory(this.pageFactory.getDriver(), 30), this);
   }
 
-  public MyPageFactory getPageFactory() {
+  protected SimplePageFactory factory() {
     return pageFactory;
   }
 
-  public WebDriver getDriver() {
-    return pageFactory.getDriver();
-  }
+
 }

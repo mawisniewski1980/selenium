@@ -11,12 +11,16 @@ public class AccordionPageTest extends AbstractTest {
   @BeforeTest
   public void beforeTest() {
     openUrl();
-    myPageFactory.getNavigationPage().accordionLinkClick();
+    factory.navigation().accordionLinkClick();
   }
 
   @Test
   public void checkPageTitle() {
-   assertThat("Accordion – ToolsQA – Demo Website to Practice Automation").isEqualTo(myPageFactory.getUtils().getTitle());
+   assertThat("Accordion – ToolsQA – Demo Website to Practice Automation").isEqualTo(factory.utils().getTitle());
   }
 
+  @Test
+  public void checkEntryTitle() {
+    assertThat("Accordion").isEqualTo(factory.basePage().getEntryTitle());
+  }
 }
