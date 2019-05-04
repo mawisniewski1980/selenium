@@ -5,10 +5,14 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class Draggable {
+
+  private static final Logger LOG = LoggerFactory.getLogger(Draggable.class);
+
 
   private WebElement element;
 

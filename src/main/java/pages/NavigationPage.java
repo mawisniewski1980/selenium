@@ -4,15 +4,18 @@ import abstracts.AbstractPage;
 import factories.SimplePageFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static selectors.Selectors.*;
 
 
 public class NavigationPage extends AbstractPage {
 
+    private static final Logger LOG = LoggerFactory.getLogger(NavigationPage.class);
 
-    public NavigationPage(SimplePageFactory pageFactory) {
-        super(pageFactory);
+    public NavigationPage(SimplePageFactory factory) {
+        super(factory);
     }
 
     @FindBy(xpath = HOME)
@@ -83,13 +86,13 @@ public class NavigationPage extends AbstractPage {
 
 
     public HomePage homePageClick() {
-        factory().utils().linkClick(homeLink);
-        return factory().getHomePage();
+       utils.linkClick(homeLink);
+       return factory.homePage();
     }
 
     public AccordionPage accordionLinkClick() {
-        factory().utils().linkClick(accordionLink);
-        return factory().getAccordionPage();
+        utils.linkClick(accordionLink);
+        return factory.accordionPage();
     }
 
 

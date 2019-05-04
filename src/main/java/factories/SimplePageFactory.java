@@ -1,44 +1,45 @@
 package factories;
 
-import org.jsoup.Connection;
+import abstracts.AbstractPage;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pages.AccordionPage;
 import pages.BasePage;
 import pages.HomePage;
 import pages.NavigationPage;
-import utils.Utils;
 
 public class SimplePageFactory {
 
-    private WebDriver driver;
-    private Utils utils;
+    private static final Logger LOG = LoggerFactory.getLogger(SimplePageFactory.class);
 
-    public SimplePageFactory(WebDriver driver) {
+    private WebDriver driver;
+
+    public SimplePageFactory() {
+    }
+
+    public SimplePageFactory setDriver(WebDriver driver) {
         this.driver = driver;
-        utils = new Utils(driver);
+        return this;
     }
 
     public WebDriver getDriver() {
         return driver;
     }
 
-    public Utils utils() {
-        return utils;
+    public NavigationPage navigation() {
+        return new NavigationPage(this);
     }
 
     public BasePage basePage() {
         return new BasePage(this);
     }
 
-    public NavigationPage navigation() {
-        return new NavigationPage(this);
-    }
-
-    public HomePage getHomePage() {
+    public HomePage homePage() {
         return new HomePage(this);
     }
 
-    public AccordionPage getAccordionPage() {
+    public AccordionPage accordionPage() {
         return new AccordionPage(this);
     }
 

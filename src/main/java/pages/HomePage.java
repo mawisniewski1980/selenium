@@ -18,8 +18,8 @@ public class HomePage extends AbstractPage {
   private static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
 
 
-  public HomePage(SimplePageFactory pageFactory) {
-    super(pageFactory);
+  public HomePage(SimplePageFactory factory) {
+    super(factory);
   }
 
   @FindBy(css = HOME_LOGO)
@@ -27,7 +27,7 @@ public class HomePage extends AbstractPage {
 
 
   public HomePage imgLogoClick() {
-    factory().utils().linkClick(imgLogo);
+    utils.linkClick(imgLogo);
     return this;
   }
 

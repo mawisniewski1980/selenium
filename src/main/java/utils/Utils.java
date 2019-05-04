@@ -35,11 +35,6 @@ public class Utils {
     return actions;
   }
 
-  public String getTitle() {
-    LOG.info("Title: {}", driver.getTitle());
-    return driver.getTitle();
-  }
-
   public String getInfoAboutSystem() {
     return "[Java " + System.getProperty("java.version") + "][" + System.getProperty("os.name") + ", " + System.getProperty("os.version") + ", " + System.getProperty("os.arch") + "]";
   }
