@@ -17,8 +17,8 @@ public abstract class AbstractTest {
 
   private static final Logger LOG = LoggerFactory.getLogger(AbstractTest.class);
 
-  protected WebDriver driver = WebDriverInit.INSTANCE.initChromeBrowser();
-  protected SimplePageFactory factory = new SimplePageFactory().setDriver(driver);
+  private WebDriver driver = WebDriverInit.INSTANCE.initChromeBrowser();
+  protected SimplePageFactory factory = SimplePageFactory.INSTANCE.setDriver(driver);
 
   @BeforeClass
   public void setUpBeforeClass() {

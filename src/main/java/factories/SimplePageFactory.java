@@ -1,6 +1,5 @@
 package factories;
 
-import abstracts.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,13 +8,15 @@ import pages.BasePage;
 import pages.HomePage;
 import pages.NavigationPage;
 
-public class SimplePageFactory {
+public enum SimplePageFactory {
+
+    INSTANCE;
 
     private static final Logger LOG = LoggerFactory.getLogger(SimplePageFactory.class);
 
     private WebDriver driver;
 
-    public SimplePageFactory() {
+    SimplePageFactory() {
     }
 
     public SimplePageFactory setDriver(WebDriver driver) {
