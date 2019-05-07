@@ -1,5 +1,6 @@
 package pages;
 
+import enums.Pages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeTest;
@@ -26,5 +27,10 @@ public class AccordionPageTest extends AbstractTest {
   @Test
   public void checkEntryTitle() {
     assertThat("Accordion").isEqualTo(factory.basePage().getEntryTitle());
+  }
+
+  @Test
+  public void checkEntryTitle2() {
+    assertThat("Accordion").isEqualTo(((BasePage) factory.createPage(Pages.BASE)).getEntryTitle());
   }
 }

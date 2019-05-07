@@ -1,5 +1,7 @@
 package factories;
 
+import abstracts.AbstractPage;
+import enums.Pages;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,5 +46,19 @@ public enum SimplePageFactory {
         return new AccordionPage(this);
     }
 
+    public AbstractPage createPage(Pages page) {
+        switch(page) {
 
+            case NAVIGATION:
+                return new NavigationPage(this);
+            case BASE:
+                return new BasePage(this);
+            case HOME:
+                return new HomePage(this);
+            case ACCORDION:
+                return new AccordionPage(this);
+                default:
+                    return null;
+        }
+    }
 }

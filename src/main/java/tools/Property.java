@@ -5,7 +5,10 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.MessageFormat;
 import java.util.Properties;
+
+import static exceptions.PropertiesMessageExceptions.NO_KEY_EXISTS;
 
 public enum Property {
 
@@ -24,8 +27,12 @@ public enum Property {
         }
     }
 
-    public String getProp(String key) {
-        return isPropertyExists(key) ? prop.getProperty(key) : null;
+    public String getPropertyValue(String key) {
+        if(isPropertyExists(key)) {
+            return prop.getProperty(key);
+        } else {
+            throw new IllegalStateException(MessageFormat.format(NO_KEY_EXISTS, key));
+        }
     }
 
     private boolean isPropertyExists(String key) {

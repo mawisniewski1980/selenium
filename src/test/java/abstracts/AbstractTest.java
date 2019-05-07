@@ -17,11 +17,13 @@ public abstract class AbstractTest {
 
   private static final Logger LOG = LoggerFactory.getLogger(AbstractTest.class);
 
-  private WebDriver driver = WebDriverInit.INSTANCE.initChromeBrowser();
+  private WebDriver   driver = WebDriverInit.INSTANCE.initChromeBrowser();
   protected SimplePageFactory factory = SimplePageFactory.INSTANCE.setDriver(driver);
 
   @BeforeClass
   public void setUpBeforeClass() {
+
+
 
     if (driver == null) {
       fail("Driver cannot be null");
@@ -36,10 +38,11 @@ public abstract class AbstractTest {
   public void tearDownAfterClass() {
     driver.manage().deleteAllCookies();
     driver.quit();
+    driver.close();
   }
 
   protected void openUrl() {
-    String url = Property.INSTANCE.getProp("pageUrl");
+    String url = Property.INSTANCE.getPropertyValue("pageUrl");
     LOG.info("Opening page {}", url);
     driver.navigate().to(url);
   }
