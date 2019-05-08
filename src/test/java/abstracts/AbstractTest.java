@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import tools.Property;
 import tools.WebDriverInit;
 
@@ -17,13 +19,21 @@ public abstract class AbstractTest {
 
   private static final Logger LOG = LoggerFactory.getLogger(AbstractTest.class);
 
-  private WebDriver   driver = WebDriverInit.INSTANCE.initChromeBrowser();
+  private WebDriver driver = WebDriverInit.INSTANCE.initChromeBrowser();
   protected SimplePageFactory factory = SimplePageFactory.INSTANCE.setDriver(driver);
 
+  @BeforeSuite
+  public void beforeSuite(){
+    LOG.info("Starting tests...");
+  }
+
+  @AfterSuite
+  public void afterSuite(){
+    LOG.info("Stopping tests...");
+  }
+
   @BeforeClass
-  public void setUpBeforeClass() {
-
-
+  public void beforeClass() {
 
     if (driver == null) {
       fail("Driver cannot be null");
@@ -35,10 +45,10 @@ public abstract class AbstractTest {
   }
 
   @AfterClass
-  public void tearDownAfterClass() {
+  public void afterClass() {
     driver.manage().deleteAllCookies();
-    driver.quit();
     driver.close();
+    driver.quit();
   }
 
   protected void openUrl() {
