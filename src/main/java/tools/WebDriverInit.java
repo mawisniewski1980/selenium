@@ -13,13 +13,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public enum WebDriverInit {
-
-    INSTANCE;
+public final class WebDriverInit {
 
     private static final Logger LOG = LoggerFactory.getLogger(WebDriverInit.class);
 
-    public synchronized WebDriver initChromeBrowser() {
+    public WebDriverInit() {
+    }
+
+    public ChromeDriver initChromeBrowser() {
         LOG.info("Driver Chrome Browser");
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -27,14 +28,14 @@ public enum WebDriverInit {
         return new ChromeDriver(options);
     }
 
-    public synchronized WebDriver initFireFoxBrowser() {
+    public FirefoxDriver initFireFoxBrowser() {
         LOG.info("Driver FireFox Browser");
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions options = new FirefoxOptions();
         return new FirefoxDriver(options);
     }
 
-    public synchronized WebDriver initInternetExplorerBrowser() {
+    public InternetExplorerDriver initInternetExplorerBrowser() {
         LOG.info("Driver Internet Explorer Browser");
         WebDriverManager.iedriver().setup();
         InternetExplorerOptions options = new InternetExplorerOptions();

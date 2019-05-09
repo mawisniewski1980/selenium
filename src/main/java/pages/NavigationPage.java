@@ -1,7 +1,7 @@
 package pages;
 
 import abstracts.AbstractPage;
-import factories.SimplePageFactory;
+import factories.FactoryPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
@@ -14,7 +14,7 @@ public class NavigationPage extends AbstractPage {
 
     private static final Logger LOG = LoggerFactory.getLogger(NavigationPage.class);
 
-    public NavigationPage(SimplePageFactory factory) {
+    public NavigationPage(FactoryPage factory) {
         super(factory);
     }
 
@@ -87,12 +87,12 @@ public class NavigationPage extends AbstractPage {
 
     public HomePage homePageClick() {
        utils.linkClick(homeLink);
-       return factory.homePage();
+       return factory.getHomePage();
     }
 
     public AccordionPage accordionLinkClick() {
         utils.linkClick(accordionLink);
-        return factory.accordionPage();
+        return factory.getAccordionPage();
     }
 
 

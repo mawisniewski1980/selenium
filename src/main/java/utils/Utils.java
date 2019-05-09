@@ -3,6 +3,8 @@ package utils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,21 +20,29 @@ public class Utils {
   private static final Logger LOG = LoggerFactory.getLogger(Utils.class);
 
   private WebDriver driver;
-  private Waits waits;
-  private Actions actions;
+  private WaitUtil waitUtil;
+  private ActionUtil actionUtil;
 
   public Utils(WebDriver driver) {
     this.driver = driver;
-    this.actions = new Actions(driver);
-    this.waits = new Waits(driver);
+    this.actionUtil = new ActionUtil(driver);
+    this.waitUtil = new WaitUtil(driver);
   }
 
-  public Waits waits() {
-    return waits;
+  public WaitUtil getWaits() {
+    return waitUtil;
   }
 
-  public Actions actions() {
-    return actions;
+  public Wait getWait() {
+    return waitUtil.getWait();
+  }
+
+  public ActionUtil getActions() {
+    return actionUtil;
+  }
+
+  public Actions getAction() {
+    return actionUtil.getActions();
   }
 
   public String getInfoAboutSystem() {
@@ -94,7 +104,7 @@ public class Utils {
   public String getText(WebElement element) {
     LOG.info("Get text from element: {}", element);
     if (isElementPresent(element)) {
-      actions.scrollToElement(element);
+      actionUtil.scrollToElement(element);
     }
 
     else {
@@ -110,7 +120,7 @@ public class Utils {
 
   public Utils setText(WebElement element, String text, boolean clearField) {
     LOG.info("Set text " + text);
-    actions.scrollToElement(element);
+    actionUtil.scrollToElement(element);
     if(clearField) element.clear();
     element.sendKeys(text);
     return this;
@@ -120,7 +130,7 @@ public class Utils {
     int index = -1;
 
     if (elements.size() > 0) {
-      waits.waitForVisibilityOfElements(elements);
+      waitUtil.waitForVisibilityOfElements(elements);
       for (int i = 0; i < elements.size(); i++) {
         if (elements.get(i).getText().equals(title)) {
           index = i;
@@ -160,14 +170,14 @@ public class Utils {
 
   public Utils linkClick(List<WebElement> elementList, String title) {
     LOG.info("Click on link by title: " + title);
-    actions.scrollToElement(elementList.get(getId(elementList, title)));
+    actionUtil.scrollToElement(elementList.get(getId(elementList, title)));
     elementList.get(getId(elementList, title)).click();
     return this;
   }
 
   public Utils linkClick(WebElement element) {
     LOG.info("Click on link " + element.getText());
-    actions.scrollToElement(element);
+    actionUtil.scrollToElement(element);
     hightLightElement(element);
     element.click();
     return this;
@@ -199,5 +209,38 @@ public class Utils {
     return path + fileName;
   }
 
+  public Utils selectItemByClick(List<WebElement> elements, String title) {
+    elements.get(new Utils(driver).getId(elements, title)).click();
+    return this;
+  }
 
+  public Utils selectItemByClickWithCTRL(List<WebElement> elements, List<String> titles) {
+    getActions().getActions().keyDown(Keys.LEFT_CONTROL);
+    for (String text : titles) {
+      linkClick(elements.get(getId(elements, text)));
+    }
+    getActions().getActions().keyUp(Keys.CONTROL).build().perform();
+    return this;
+  }
+
+  public Utils switchToDefaultContent(){
+    driver.switchTo().defaultContent();
+    getWaits().waitForPageLoad();
+    return this;
+  }
+
+  public Utils switchToDefaultWindow(){
+    driver.switchTo().window(driver.getWindowHandle());
+    getWaits().waitForPageLoad();
+    return this;
+  }
+
+  public Utils switchToNextWindow() {
+    switchToDefaultWindow();
+    for(String nextWindow : driver.getWindowHandles()){
+      driver.switchTo().window(nextWindow);
+    }
+    getWaits().waitForPageLoad();
+    return this;
+  }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="AccordionPageTest" parallel="methods" thread-count="3">
-    <test name="D:/serwer/workspace/selenium/src/test/java/pages/AccordionPageTest.java">
+<suite name="AccordionPageTest" parallel="methods" thread-count="1" verbose="10">
+    <test name="src/test/java/pages/AccordionPageTest.java">
         <classes>
             <class name="pages.AccordionPageTest">
                 <methods>

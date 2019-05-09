@@ -13,7 +13,6 @@ public class Draggable {
 
   private static final Logger LOG = LoggerFactory.getLogger(Draggable.class);
 
-
   private WebElement element;
 
   public Draggable(WebElement element) {
@@ -22,10 +21,6 @@ public class Draggable {
 
   public WebElement getElement() {
     return element;
-  }
-
-  public String getText() {
-    return element.getText();
   }
 
   public Rectangle getRectangle() {
@@ -65,4 +60,9 @@ public class Draggable {
     return new Point(x, y);
   }
 
+  public int getThisDistanceBetweenCenterToCenterOther(Draggable drop) {
+    double dx = this.getCenter().getX() - drop.getCenter().getX();
+    double dy = this.getCenter().getY() - drop.getCenter().getY();
+    return (int) Math.sqrt(dx * dx + dy * dy);
+  }
 }
