@@ -149,7 +149,7 @@ public class ActionUtil {
 
   public ActionUtil scrollToElement(WebElement element) {
     Draggable obj = new Draggable(element);
-    ((JavascriptExecutor) driver).executeScript("window.scrollTo(" + obj.getCenter().getX() + "," + (obj.getCenter().getY() - 150) + ");");
+    ((JavascriptExecutor) driver).executeScript("window.scrollTo(" + obj.getCenter().getX() + "," + (obj.getCenter().getY() - 200) + ");");
     return this;
   }
 

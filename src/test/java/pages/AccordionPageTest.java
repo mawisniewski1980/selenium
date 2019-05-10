@@ -36,6 +36,34 @@ public class AccordionPageTest extends AbstractTest {
         assertThat(accordionPage.isSectionSelected("Section 1")).isTrue();
     }
 
+    @Test
+    public void checkTextInSectionOne() {
+        String sectionTitle = "Section 1";
+        accordionPage.click(sectionTitle);
+        assertThat(accordionPage.getText(sectionTitle)).isEqualTo(AccordionPage.SECTION1_TEXT);
+    }
+
+    @Test
+    public void checkTextInSectionTwo() {
+        String sectionTitle = "Section 2";
+        accordionPage.click(sectionTitle);
+        assertThat(accordionPage.getText(sectionTitle)).isEqualTo(AccordionPage.SECTION2_TEXT);
+    }
+
+    @Test
+    public void checkTextInSectionThree() {
+        String sectionTitle = "Section 3";
+        accordionPage.click(sectionTitle);
+        assertThat(accordionPage.getText(sectionTitle)).isEqualTo(AccordionPage.SECTION3_TEXT);
+    }
+
+    @Test
+    public void checkTextInSectionFour() {
+        String sectionTitle = "Section 4";
+        accordionPage.click(sectionTitle);
+        assertThat(accordionPage.getText(sectionTitle)).isEqualTo(AccordionPage.SECTION4_TEXT);
+    }
+
     @AfterMethod
     public void afterMethod() {
         LOG.info("@AfterMethod: after method...");

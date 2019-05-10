@@ -130,16 +130,11 @@ public class Utils {
     int index = -1;
 
     if (elements.size() > 0) {
-      waitUtil.waitForVisibilityOfElements(elements);
       for (int i = 0; i < elements.size(); i++) {
         if (elements.get(i).getText().equals(title)) {
           index = i;
-          // LOG.info("Index of " + title + " is " + index);
-          return index;
         }
       }
-    } else {
-      //fail("The list of webelements is empty.");
     }
     return index;
   }

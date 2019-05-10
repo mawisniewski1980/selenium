@@ -34,7 +34,7 @@ public final class Selectors {
     //ACCORDION
     public static final String SECTION_ITEMS = "#accordion h3";
     public static final String SECTION_ITEMS_ICON = "#accordion h3";
-    public static final String SECTION_CONTENT = ".ui-accordion-content";
+    public static final String SECTION_CONTENT = ".ui-accordion-content p:first-of-type";
 
 
 

@@ -17,6 +17,10 @@ public class AccordionPage extends AbstractPage {
 
     private static final Logger LOG = LoggerFactory.getLogger(AccordionPage.class);
 
+    public static final String SECTION1_TEXT = "Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.";
+    public static final String SECTION2_TEXT = "Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna.";
+    public static final String SECTION3_TEXT = "Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.";
+    public static final String SECTION4_TEXT = "Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.";
 
     public AccordionPage(FactoryPage factory) {
         super(factory);
@@ -29,7 +33,6 @@ public class AccordionPage extends AbstractPage {
     @FindBy(css = SECTION_ITEMS_ICON)
     private List<WebElement> sectionItemsIcons;
 
-    private final String sectionItemsIconParagraph = "p";
     @FindBy(css = SECTION_CONTENT)
     private List<WebElement> sectionContents;
 
@@ -46,4 +49,12 @@ public class AccordionPage extends AbstractPage {
         return isTrue(title, "aria-selected");
     }
 
+    public AccordionPage click(String title) {
+        utils.linkClick(sectionItems, title);
+        return this;
+    }
+
+    public String getText(String title) {
+        return utils.getTextFromWebElementList(sectionContents).get(utils.getId(sectionItems, title));
+    }
 }
