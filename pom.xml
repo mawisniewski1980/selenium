@@ -24,7 +24,7 @@
 		<webdrivermanager.version>3.3.0</webdrivermanager.version>
 		<jfairy.version>0.5.9</jfairy.version>
 		<slf4j.version>1.7.26</slf4j.version>
-		<logback.version>1.2.3</logback.version>
+		<logback.version>1.2.10</logback.version>
 	</properties>
 
 	<dependencies>
