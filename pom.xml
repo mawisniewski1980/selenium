@@ -19,7 +19,7 @@
 		<seleniumjava.verion>3.141.59</seleniumjava.verion>
 		<apachecommonstext.version>1.6</apachecommonstext.version>
 		<apachecommonsmath.version>3.6.1</apachecommonsmath.version>
-		<googleguava.version>31.0.1-jre</googleguava.version>
+		<googleguava.version>32.0.0-jre</googleguava.version>
 		<assertj.version>3.12.1</assertj.version>
 		<webdrivermanager.version>3.3.0</webdrivermanager.version>
 		<jfairy.version>0.5.9</jfairy.version>
